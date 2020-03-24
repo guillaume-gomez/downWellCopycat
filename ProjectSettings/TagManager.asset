@@ -13,8 +13,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - bloc
+  - player
   - 
   - 
   - 
@@ -40,4 +40,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: bloc
+    uniqueID: 635363329
+    locked: 0
+  - name: player
+    uniqueID: 4025475923
     locked: 0
