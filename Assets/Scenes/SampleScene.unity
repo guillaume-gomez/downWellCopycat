@@ -5370,10 +5370,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bloc: {fileID: 8257940167194319867, guid: 6ff5d654ed63baa24a33ee875ea7a0dd, type: 3}
+  spawnObject: {fileID: 8000934017337026541, guid: f21ca753ebe68824ba7a71bfec000968,
+    type: 3}
   xSize: 40
   ySize: 100
   xOrigin: -20
   yOrigin: 0
+  sizeXHoleMin: 25
+  sizeXHoleMax: 25
+  sizeYPathMin: 5
+  sizeYPathMax: 10
 --- !u!4 &2124229117
 Transform:
   m_ObjectHideFlags: 0
