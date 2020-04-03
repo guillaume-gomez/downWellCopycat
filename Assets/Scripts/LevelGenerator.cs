@@ -5,6 +5,7 @@ using UnityEngine;
 public class LevelGenerator : MonoBehaviour
 {
     public GameObject bloc;
+    public GameObject[] rooms;
     public GameObject spawnObject;
     // size of the level
     public int xSize = 50;
@@ -18,8 +19,11 @@ public class LevelGenerator : MonoBehaviour
     public int sizeYPathMin = 5;
     public int sizeYPathMax = 10;
 
+    private int roomHeight = 0;
+
     void Awake()
     {
+       roomHeight = 20;
        CreateBorders();
        SpawnObjects();
     }
@@ -51,36 +55,14 @@ public class LevelGenerator : MonoBehaviour
     private void SpawnObjects() {
         Transform spwawnHolder = new GameObject("SpawnObjects").transform;
         spwawnHolder.transform.SetParent(transform);
-        int xMiddle = xSize / 2;
-        int middleY = sizeYPathMax - sizeYPathMin;
-        for(int y = yOrigin; y < (yOrigin + ySize); y += Random.Range(sizeYPathMin, sizeYPathMax + 1))
-        //for(int y = yOrigin; y < (yOrigin + ySize); y++)
-        {
-            int sizeXHole = Random.Range(sizeXHoleMin, sizeXHoleMax + 1);
-            int middleSizeXHole = sizeXHole / 2;
+        Vector3 position = new Vector3(0f, 0f, 0f);
+        for(int y = yOrigin + roomHeight; y <= yOrigin + ySize; y+= roomHeight){
+            position.Set(xOrigin , -y, 0.0f);
+            GameObject obj = Instantiate(rooms[Random.Range(0, rooms.Length)], position, transform.rotation);
+            obj.transform.SetParent(spwawnHolder);
 
-            int rangeSizeXHole = Random.Range(2, sizeXHoleMin - 2);
-            int yRange = 0;//Random.Range(- middleY + 2 , middleY - 2);
-
-            Vector3 position = new Vector3(0f, 0f, 0f);
-
-            for(int x = xOrigin ; x < (xOrigin + xSize); ++x)
-            {
-                if(x <= (xOrigin + xMiddle - middleSizeXHole) || x >= (xOrigin + xMiddle + middleSizeXHole) )
-                {
-                    position.Set(x, -y, 0.0f);
-                    GameObject obj = Instantiate(spawnObject, position, transform.rotation);
-                    obj.transform.SetParent(spwawnHolder);
-                }
-                else if(x > (xOrigin + xMiddle - middleSizeXHole + rangeSizeXHole ) && x < (xOrigin + xMiddle + middleSizeXHole - rangeSizeXHole ) )
-                {
-                    Debug.Log(-(y + yRange));
-                    position.Set(x, -(y + yRange), 0.0f);
-                    GameObject obj = Instantiate(spawnObject, position, transform.rotation);
-                    obj.transform.SetParent(spwawnHolder);
-                }
-            }
         }
+
     }
 
     // Start is called before the first frame update
