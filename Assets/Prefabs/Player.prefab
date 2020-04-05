@@ -206,9 +206,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minGroundNormalY: 0.65
-  gravityModifier: 1
+  gravityModifier: 2
   maxSpeed: 10
-  jumpTakeOffSpeed: 12
+  jumpTakeOffSpeed: 10
   jumpPressedRememberTime: 1
   groundedRememberTime: 0.2
   horizontalDampingBasic: 0.401
@@ -230,7 +230,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: 75537ce48f47a4c26ba0679e745ee428, type: 2}
   m_Interpolate: 1
   m_SleepingMode: 0
@@ -279,4 +279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6501300fb1220fb34995f49707732f7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 461870415339726162, guid: 644b6dc8f327236bf9f7563d1e1f4faf, type: 3}
+  bullet: {fileID: 1013452606, guid: 644b6dc8f327236bf9f7563d1e1f4faf, type: 3}
+  thrustBulletToPlayer: 2
+  shootPressedTimerRemember: 0.25
+  nbBullet: 12

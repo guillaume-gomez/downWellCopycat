@@ -33,11 +33,13 @@ public class PlayerController : PhysicsObject {
     private float groundedRemember = 0.0f;
     //private Animator animator;
     private Weapon weapon;
+    private bool shoot;
 
 
     // Use this for initialization
     void Awake ()
     {
+        shoot = false;
         spriteRenderer = GetComponent<SpriteRenderer> ();
         //animator = GetComponent<Animator> ();
         weapon = transform.Find("WeaponPosition").Find("Weapon").GetComponent<Weapon>();
@@ -70,8 +72,12 @@ public class PlayerController : PhysicsObject {
 
         jumpPressedRemember = jumpPressedRemember - Time.deltaTime;
 
+
         if(Input.GetButtonDown("Jump")) {
             jumpPressedRemember = jumpPressedRememberTime;
+            if(!IsGrounded()) {
+                shoot = true;
+            }
         }
 
         if (Input.GetButtonUp("Jump"))
@@ -79,18 +85,31 @@ public class PlayerController : PhysicsObject {
             if (velocity.y > 0) {
                 velocity.y = velocity.y * cutJumpHeight;
             }
+            // in case oof shooting
+            shoot = false;
         }
 
-        if ((jumpPressedRemember > 0.0f) && (groundedRemember > 0.0f)) {
+        if (CanJump() && IsGrounded())
+        {
             jumpPressedRemember = 0.0f;
             groundedRemember = 0.0f;
             velocity.y = jumpTakeOffSpeed;
+ 
+            weapon.Reload();
         }
 
-        if(Input.GetButtonUp("Fire1")) {
-            velocity.y = weapon.TriggerGun();
+        if(weapon.CanShoot() && shoot) {
+            velocity.y = weapon.Shoot();
         }
 
+        if(IsGrounded())
+        {
+            weapon.Reload();
+        }
+
+        // if(!weapon.CanShoot()) {
+        //     shoot = false;
+        // }
 
         bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < 0.01f));
         if (flipSprite) 
@@ -101,5 +120,13 @@ public class PlayerController : PhysicsObject {
         //animator.SetBool ("grounded", grounded);
         //animator.SetFloat ("velocityX", Mathf.Abs (velocity.x) / maxSpeed);
         targetVelocity = move * maxSpeed;
+    }
+
+    bool CanJump() {
+        return jumpPressedRemember > 0.0f;
+    }
+
+    bool IsGrounded() {
+        return groundedRemember > 0.0f;
     }
 }
