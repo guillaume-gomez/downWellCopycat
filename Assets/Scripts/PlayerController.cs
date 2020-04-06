@@ -107,10 +107,6 @@ public class PlayerController : PhysicsObject {
             weapon.Reload();
         }
 
-        // if(!weapon.CanShoot()) {
-        //     shoot = false;
-        // }
-
         bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < 0.01f));
         if (flipSprite) 
         {
@@ -122,11 +118,38 @@ public class PlayerController : PhysicsObject {
         targetVelocity = move * maxSpeed;
     }
 
-    bool CanJump() {
+    bool CanJump()
+    {
         return jumpPressedRemember > 0.0f;
     }
 
-    bool IsGrounded() {
+    bool IsGrounded()
+    {
         return groundedRemember > 0.0f;
+    }
+
+    void Hurt()
+    {
+
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        Enemy enemy = collision.collider.GetComponent<Enemy>();
+        if(!enemy) {
+            return;
+        }
+        foreach(ContactPoint2D point in collision.contacts)
+        {
+            Debug.DrawLine(point.point, point.point + point.normal, Color.blue,10);
+            if( point.normal.y >= 0.9f )
+            {
+                velocity.y = jumpTakeOffSpeed;
+                enemy.Hurt();
+            } else
+            {
+                Hurt();
+            }
+        }
     }
 }
