@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class Enemy: MonoBehaviour
+public class EnemyPhysicsObject : PhysicsObject
 {
     public Transform target;
 
@@ -14,12 +14,11 @@ public class Enemy: MonoBehaviour
     int currentWaypoint = 0;
     bool reachEndOfPath = false;
 
-    Rigidbody2D rb2d;
     Seeker seeker;
 
-    void OnEnable()
+    protected void OnEnable()
     {
-        rb2d = GetComponent<Rigidbody2D>();
+        base.OnEnable();
         seeker = GetComponent<Seeker>();
     }
 
@@ -33,8 +32,9 @@ public class Enemy: MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
+        base.Start();
         InvokeRepeating("UpdatePath", 0f, 0.5f);
     }
 
@@ -48,8 +48,10 @@ public class Enemy: MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
+        base.Update();
+
         if(path == null)
         {
             return;
@@ -65,10 +67,9 @@ public class Enemy: MonoBehaviour
         }
 
         Vector2 direction = ((Vector2) path.vectorPath[currentWaypoint] - rb2d.position).normalized;
-        Vector2 force = direction * speed * Time.deltaTime;
-        float distance = Vector2.Distance(rb2d.position, path.vectorPath[currentWaypoint]);
+        targetVelocity = direction;
 
-        rb2d.AddForce(force);
+        float distance = Vector2.Distance(rb2d.position, path.vectorPath[currentWaypoint]);
 
         if(distance < nextWaypointDistance)
         {
