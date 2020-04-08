@@ -9,6 +9,7 @@ public class Enemy: MonoBehaviour
 
     public float speed = 200f;
     public float nextWaypointDistance = 3f;
+    public float maxDistanceVision = 10f;
 
     Path path;
     int currentWaypoint = 0;
@@ -52,6 +53,10 @@ public class Enemy: MonoBehaviour
     {
         if(path == null)
         {
+            return;
+        }
+
+        if(Vector2.Distance(rb2d.position, target.position) > maxDistanceVision) {
             return;
         }
 
