@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAroundPlatform : MonoBehaviour
+public class EnemyAroundPlatform : EnemyBase
 {
   public float speed;
   public float waitTime;

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6041848027711120908}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: spot (1)
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6041848028147792924}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: spot
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -73,9 +73,9 @@ GameObject:
   - component: {fileID: 6041848028224567948}
   - component: {fileID: 6041848028224567947}
   - component: {fileID: 6041848028224567951}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -187,9 +187,9 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_Interpolate: 1
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &6041848028224567951
 MonoBehaviour:
@@ -219,7 +219,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6041848028372833289}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: spot (2)
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -249,9 +249,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6041848028478411529}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Enemy3
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -281,7 +281,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6041848028498817836}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: spot (3)
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -311,7 +311,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6041848028841381119}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: spots
   m_TagString: Untagged
   m_Icon: {fileID: 0}

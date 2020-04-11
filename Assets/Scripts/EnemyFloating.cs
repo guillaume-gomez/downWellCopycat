@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class Enemy: MonoBehaviour
+public class EnemyFloating: EnemyBase
 {
     public Transform target;
 
@@ -79,11 +79,6 @@ public class Enemy: MonoBehaviour
         {
             currentWaypoint++;
         }
-
     }
 
-    public void Hurt()
-    {
-        Destroy(this.gameObject);
-    }
 }

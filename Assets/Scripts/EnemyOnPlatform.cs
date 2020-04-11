@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyOnPlatform : MonoBehaviour
+public class EnemyOnPlatform : EnemyBase
 {
   public float speed;
   public Transform groundDetection;
@@ -15,7 +15,6 @@ public class EnemyOnPlatform : MonoBehaviour
     transform.Translate(Vector2.right * speed * Time.deltaTime);
 
     RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, distance);
-    Debug.Log(groundInfo.collider);
     if(!groundInfo.collider)
     {
         if(movingRight)
