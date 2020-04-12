@@ -6,14 +6,15 @@ public class EnemyBase : MonoBehaviour
 {
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
-        {
-            PlayerController player = collision.collider.GetComponent<PlayerController>();
-            if(!player) {
-                return;
-            }
-            player.Hurt();
-        }
+        // let the player check this by himself
+        // if (collision.gameObject.tag == "Player")
+        // {
+        //     PlayerController player = collision.collider.GetComponent<PlayerController>();
+        //     if(!player) {
+        //         return;
+        //     }
+        //     player.Hurt();
+        // }
         if(collision.gameObject.tag == "Bullet")
         {
           Hurt();

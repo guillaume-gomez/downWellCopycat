@@ -25,6 +25,7 @@ public class PlayerController : PhysicsObject {
     [Range(0, 1)]
     public float cutJumpHeight = 0.5f;
 
+    public int life = 4;
 
     private SpriteRenderer spriteRenderer;
     // allows to jump few frames before to be grounded
@@ -34,6 +35,8 @@ public class PlayerController : PhysicsObject {
     //private Animator animator;
     private Weapon weapon;
     private bool shoot;
+    private bool unvisible = false;
+    public float unvisibleTimer = 3.0f;
 
 
     // Use this for initialization
@@ -85,7 +88,7 @@ public class PlayerController : PhysicsObject {
             if (velocity.y > 0) {
                 velocity.y = velocity.y * cutJumpHeight;
             }
-            // in case oof shooting
+            // in case of shooting
             shoot = false;
         }
 
@@ -97,8 +100,7 @@ public class PlayerController : PhysicsObject {
  
             weapon.Reload();
         }
-
-        if(weapon.CanShoot() && shoot) {
+        else if (weapon.CanShoot() && shoot) {
             velocity.y = weapon.Shoot();
         }
 
@@ -128,19 +130,30 @@ public class PlayerController : PhysicsObject {
         return groundedRemember > 0.0f;
     }
 
-    void Hurt()
+    public void Hurt(EnemyBase enemy)
     {
-
+        if(!unvisible) {
+            life = life -1;
+            if(life == 0){
+                //Destroy(gameObject);
+            }
+            StartCoroutine(FlashSprite(GetComponent<SpriteRenderer>(), 0.0f, 1f, 0.3f, unvisibleTimer));
+            StartCoroutine(GetUnvisible(unvisibleTimer, enemy));
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Enemy enemy = collision.collider.GetComponent<Enemy>();
+        if(unvisible) {
+            return;
+        }
+        EnemyBase enemy = collision.collider.GetComponent<EnemyBase>();
         if(!enemy) {
             return;
         }
         foreach(ContactPoint2D point in collision.contacts)
         {
+
             Debug.DrawLine(point.point, point.point + point.normal, Color.blue,10);
             if( point.normal.y >= 0.9f )
             {
@@ -148,8 +161,44 @@ public class PlayerController : PhysicsObject {
                 enemy.Hurt();
             } else
             {
-                Hurt();
+                Hurt(enemy);
             }
         }
     }
+
+    IEnumerator FlashSprite(SpriteRenderer renderer, float minAlpha, float maxAlpha, float interval, float duration)
+    {
+        Color colorNow = renderer.color;
+        Color minColor = new Color(renderer.color.r, renderer.color.g, renderer.color.b, minAlpha);
+        Color maxColor = new Color(renderer.color.r, renderer.color.g, renderer.color.b, maxAlpha);
+
+        float currentInterval = 0;
+        while(duration > 0)
+        {
+            float tColor = currentInterval / interval;
+            renderer.color = Color.Lerp(minColor, maxColor, tColor);
+
+            currentInterval += Time.deltaTime;
+            if(currentInterval >= interval)
+            {
+                Color temp = minColor;
+                minColor = maxColor;
+                maxColor = temp;
+                currentInterval = currentInterval - interval;
+            }
+            duration -= Time.deltaTime;
+            yield return null;
+        }
+        renderer.color = maxColor;
+    }
+
+    IEnumerator GetUnvisible(float unvisibleTimer, EnemyBase enemy)
+    {
+        unvisible = true;
+        enemy.gameObject.layer = LayerMask.NameToLayer("enemy_hurt");
+        yield return new WaitForSeconds(unvisibleTimer);
+        unvisible = false;
+        enemy.gameObject.layer = LayerMask.NameToLayer("enemy");
+    }
+
 }
