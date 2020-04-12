@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
+using Pathfinding;
 
 public class LevelGenerator : MonoBehaviour
 {
@@ -27,6 +29,7 @@ public class LevelGenerator : MonoBehaviour
        CreateBorders();
        SpawnObjects();
     }
+
 
     private void CreateBorders() {
         Transform boardHolder = new GameObject("Borders").transform;
@@ -60,7 +63,6 @@ public class LevelGenerator : MonoBehaviour
             position.Set(xOrigin , -y, 0.0f);
             GameObject obj = Instantiate(rooms[Random.Range(0, rooms.Length)], position, transform.rotation);
             obj.transform.SetParent(spwawnHolder);
-
         }
 
     }
@@ -68,7 +70,36 @@ public class LevelGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        AstarData data = AstarPath.active.data;
+        data.cacheStartup = true;
+        GridGraph gridGraph = data.gridGraph;
+        int nodeSize = 1;
+
+        // Setting up the default parameters.
+        gridGraph.width = xSize;
+        gridGraph.depth = ySize;
+        gridGraph.nodeSize = 1;
+
+        // Calculating the centre based on node size and number of nodes
+        gridGraph.center.x = xOrigin + (xSize * nodeSize) / 2;
+        gridGraph.center.y = yOrigin + (ySize * nodeSize) / 2;
+        gridGraph.center = new Vector3(gridGraph.center.x, -gridGraph.center.y, gridGraph.center.z);
+
+        // Updates internal size from the above values
+        gridGraph.UpdateSizeFromWidthDepth();
+
+        AstarPath.active.Scan(gridGraph);
+
+        Invoke("asyncScan", 2);
+    }
+
+    // some instantiation (like bloc) are not completed after Start LevelGenerator method.
+    // So we call this function to scan again optimistically (render scene might take more than 2 seconds ?)
+    void asyncScan() {
+        AstarData data = AstarPath.active.data;
+        data.cacheStartup = true;
+        GridGraph gridGraph = data.gridGraph;
+        AstarPath.active.Scan(gridGraph);
     }
 
     // Update is called once per frame
@@ -76,4 +107,5 @@ public class LevelGenerator : MonoBehaviour
     {
         
     }
+
 }
