@@ -10,7 +10,7 @@ public class SpawnObject : MonoBehaviour
     {
         int rand = Random.Range(0, objects.Length);
         GameObject choosedObject = objects[rand];
-        GameObject instance = (GameObject) Instantiate(choosedObject, transform.position, choosedObject.transform.rotation);
+        GameObject instance = (GameObject) Instantiate(choosedObject, transform.position + choosedObject.transform.position, choosedObject.transform.rotation);
         instance.transform.parent = transform;
 
         //Destroy(gameObject);
