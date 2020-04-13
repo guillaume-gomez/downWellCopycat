@@ -13,7 +13,6 @@ public class EnemyFloating: EnemyBase
 
     Path path;
     int currentWaypoint = 0;
-    bool reachEndOfPath = false;
 
     Rigidbody2D rb2d;
     Seeker seeker;
@@ -60,13 +59,9 @@ public class EnemyFloating: EnemyBase
             return;
         }
 
-        if(currentWaypoint >= path.vectorPath.Count)
+        if(currentWaypoint >= path.vectorPath.Count) //react end of path
         {
-            reachEndOfPath = true;
             return;
-        } else
-        {
-            reachEndOfPath = false;
         }
 
         Vector2 direction = ((Vector2) path.vectorPath[currentWaypoint] - rb2d.position).normalized;

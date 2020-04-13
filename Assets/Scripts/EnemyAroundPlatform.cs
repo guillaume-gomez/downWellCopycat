@@ -8,7 +8,7 @@ public class EnemyAroundPlatform : EnemyBase
   public float waitTime;
   public Transform[] spots;
 
-  private float startWaitTime;
+  public float startWaitTime = 0.0f;
   private int indexSpot = 0;
 
   void Start()
