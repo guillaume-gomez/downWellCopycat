@@ -23,7 +23,7 @@ public class LevelGenerator : MonoBehaviour
 
     private int roomHeight = 0;
 
-    void Awake()
+    public void SetupScene(int level)
     {
        roomHeight = 20;
        CreateBorders();
@@ -75,18 +75,13 @@ public class LevelGenerator : MonoBehaviour
         GridGraph gridGraph = data.gridGraph;
         int nodeSize = 1;
 
-        // Setting up the default parameters.
-        gridGraph.width = xSize;
-        gridGraph.depth = ySize;
-        gridGraph.nodeSize = 1;
-
         // Calculating the centre based on node size and number of nodes
         gridGraph.center.x = xOrigin + (xSize * nodeSize) / 2;
         gridGraph.center.y = yOrigin + (ySize * nodeSize) / 2;
         gridGraph.center = new Vector3(gridGraph.center.x, -gridGraph.center.y, gridGraph.center.z);
 
         // Updates internal size from the above values
-        gridGraph.UpdateSizeFromWidthDepth();
+        gridGraph.SetDimensions(xSize, ySize, nodeSize);
 
         AstarPath.active.Scan(gridGraph);
 
