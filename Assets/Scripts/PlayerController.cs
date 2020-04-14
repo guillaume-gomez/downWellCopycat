@@ -26,6 +26,7 @@ public class PlayerController : PhysicsObject {
     public float cutJumpHeight = 0.5f;
 
     public int life = 4;
+    public HealthBar healthBar;
 
     private SpriteRenderer spriteRenderer;
     // allows to jump few frames before to be grounded
@@ -42,6 +43,8 @@ public class PlayerController : PhysicsObject {
     // Use this for initialization
     void Awake ()
     {
+        life = 4;
+        healthBar.SetMaxHealth(life);
         shoot = false;
         spriteRenderer = GetComponent<SpriteRenderer> ();
         //animator = GetComponent<Animator> ();
@@ -134,6 +137,7 @@ public class PlayerController : PhysicsObject {
     {
         if(!unvisible) {
             life = life -1;
+            healthBar.SetMaxHealth(life);
             if(life == 0){
                 //Destroy(gameObject);
             }
