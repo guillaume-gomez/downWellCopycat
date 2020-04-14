@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8339190253927060814}
   - component: {fileID: 8339190253927060815}
   - component: {fileID: 256743122855610220}
+  - component: {fileID: 5054640527909460898}
   m_Layer: 8
   m_Name: BreakableBloc
   m_TagString: Untagged
@@ -108,3 +109,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &5054640527909460898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8339190253927060812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dbe41ae1debe2d8fa98222f65eaa056, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chopSound1: {fileID: 0}
+  chopSound2: {fileID: 0}
+  dmgSprite: {fileID: 21300000, guid: d5c716c8368feb427aa34ebe40e9a9cd, type: 3}
+  hp: 3
