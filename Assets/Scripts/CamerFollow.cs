@@ -5,7 +5,7 @@ using UnityEngine;
 public class CamerFollow : MonoBehaviour
 {
     public Transform player;
-    public float dampTime = 0.4f;
+    public float dampTime = 0.1f;
     public float zDistance = -10f;
     private Vector3 cameraPos;
     private Vector3 velocity = Vector3.zero;
