@@ -9,17 +9,24 @@ public class CaveBlocs : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log("OnTriggerEnter2D " + col.gameObject.name);
         if(col.gameObject.name == "Player")
         {
             cave.SetActive(true);
         }
     }
 
-    void OnTriggerExit2D(Collider2D other)
+    void OnTriggerExit2D(Collider2D col)
     {
-        Debug.Log("OnTriggerEnter2D");
-        cave.SetActive(false);
+        Vector3 size = GetComponent<BoxCollider2D>().bounds.size;
+        float absPositionX = Mathf.Abs(col.gameObject.transform.position.x);
+        float positionAbs = Mathf.Abs(gameObject.transform.position.x);
+
+        if( col.gameObject.name == "Player" &&
+           (absPositionX < positionAbs ||
+            absPositionX > positionAbs + size.x))
+         {
+             cave.SetActive(false);
+         }
     }
 
 }
