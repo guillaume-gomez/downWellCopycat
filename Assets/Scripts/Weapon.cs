@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Weapon : MonoBehaviour
 {
@@ -14,27 +15,39 @@ public class Weapon : MonoBehaviour
     public int nbBullet = 12;
     protected int currentBullet = 12;
 
+    private Slider slider;
+
+    public void Start()
+    {
+        GameObject sliderObj = GameObject.Find("WeaponBarSlider");
+        if(sliderObj)
+        {
+            slider = sliderObj.GetComponent<Slider>();
+            slider.maxValue = nbBullet;
+            slider.value = nbBullet;
+        }
+    }
+
     public float Shoot()
     {
-       // if (CanShoot())
-        //{
-            shootPressedTimer = 0.0f;
-            Rigidbody2D bulletClone =  Instantiate(bullet, transform.position, transform.rotation);
-            bulletClone.velocity = transform.TransformDirection(- transform.up * bulletSpeed);
-            currentBullet = currentBullet - 1;
-            return thrustBulletToPlayer;
-        //}
-        //return 0.0f;
+        shootPressedTimer = 0.0f;
+        Rigidbody2D bulletClone =  Instantiate(bullet, transform.position, transform.rotation);
+        bulletClone.velocity = transform.TransformDirection(- transform.up * bulletSpeed);
+        currentBullet = currentBullet - 1;
+        if(slider)
+        {
+            slider.value = currentBullet;
+        }
+        return thrustBulletToPlayer;
     }
 
-    public void StopShoot()
-    {
-        
-    }
-
-    public void Reload() 
+    public void Reload()
     {
         currentBullet = nbBullet;
+        if(slider)
+        {
+            slider.value = currentBullet;
+        }
     }
 
     public bool CanShoot()
