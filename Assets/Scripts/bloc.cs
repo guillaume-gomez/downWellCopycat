@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class bloc : MonoBehaviour
 {
-    // ON COLLIDE REMOVE THIS
     // Start is called before the first frame update
     void Start()
     {
         
+        //Debug.Log("stated bloc");
     }
 
     // Update is called once per frame

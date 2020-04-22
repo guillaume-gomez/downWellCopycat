@@ -55,4 +55,18 @@ public class SoundManager : MonoBehaviour
         //Play the clip.
         efxSource.Play();
     }
+
+    public void SetMusicVolume(float volume)
+    {
+        Debug.Log("volume " + volume);
+        musicSource.volume = Mathf.Log(10, volume) * 20.0f;
+    }
+
+
+    public void SetVFXVolume(float volume)
+    {
+        Debug.Log("VFX " + volume);
+        efxSource.volume = Mathf.Log(10, volume) * 20.0f;
+    }
+
 }
