@@ -41,11 +41,10 @@ public class GameManager : MonoBehaviour
  
      void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
      {
-        Debug.Log("Level Loaded");
-        Debug.Log(scene.name);
-        Debug.Log(mode);
+        //Debug.Log("Level Loaded");
+        //Debug.Log(scene.name);
+        //Debug.Log(mode);
         level++;
-        InitGame();
      }
 
 
@@ -53,7 +52,6 @@ public class GameManager : MonoBehaviour
     {
         doingSetup = true;
         Invoke("HideLevelImage", levelStartDelay);
-
         levelScript.SetupScene(level);
 
     }
@@ -67,12 +65,12 @@ public class GameManager : MonoBehaviour
     //Update is called every frame.
     void Update()
     {
-
     }
 
     //GameOver is called when the player reaches 0 food points
     public void GameOver()
     {
+        Debug.Log("GameOver");
         //Disable this GameManager.
         enabled = false;
     }
