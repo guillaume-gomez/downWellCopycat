@@ -26,7 +26,7 @@ public class PlayerController : PhysicsObject {
     public float cutJumpHeight = 0.5f;
 
     public int life = 4;
-    public HealthBar healthBar;
+    private HealthBar healthBar;
 
     private SpriteRenderer spriteRenderer;
     // allows to jump few frames before to be grounded
@@ -44,11 +44,24 @@ public class PlayerController : PhysicsObject {
     void Awake ()
     {
         life = 4;
-        healthBar.SetMaxHealth(life);
         shoot = false;
         spriteRenderer = GetComponent<SpriteRenderer> ();
         //animator = GetComponent<Animator> ();
-        weapon = transform.Find("WeaponPosition").Find("Weapon").GetComponent<Weapon>();
+        Transform weaponObj = transform.Find("WeaponPosition").Find("Weapon");
+        if(weaponObj)
+        {
+            weapon = weaponObj.GetComponent<Weapon>();
+        }
+    }
+
+    protected new void Start()
+    {
+        base.Start();
+        GameObject healthBarObj = GameObject.Find("HealthBar");
+        if(healthBarObj)
+        {   healthBar = healthBarObj.GetComponent<HealthBar>();
+            healthBar.SetMaxHealth(life);
+        }
     }
 
     protected override void ComputeVelocity()
@@ -100,8 +113,6 @@ public class PlayerController : PhysicsObject {
             jumpPressedRemember = 0.0f;
             groundedRemember = 0.0f;
             velocity.y = jumpTakeOffSpeed;
- 
-            weapon.Reload();
         }
         else if (weapon.CanShoot() && shoot) {
             velocity.y = weapon.Shoot();
@@ -137,7 +148,10 @@ public class PlayerController : PhysicsObject {
     {
         if(!unvisible) {
             life = life -1;
-            healthBar.SetMaxHealth(life);
+            if(healthBar)
+            {
+                healthBar.SetHealth(life);
+            }
             if(life == 0){
                 //Destroy(gameObject);
             }
