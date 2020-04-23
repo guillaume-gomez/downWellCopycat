@@ -153,7 +153,7 @@ public class PlayerController : PhysicsObject {
                 healthBar.SetHealth(life);
             }
             if(life == 0){
-                //Destroy(gameObject);
+                GameManager.instance.GameOver();
             }
             StartCoroutine(FlashSprite(GetComponent<SpriteRenderer>(), 0.0f, 1f, 0.3f, unvisibleTimer));
             StartCoroutine(GetUnvisible(unvisibleTimer, enemy));
@@ -213,10 +213,16 @@ public class PlayerController : PhysicsObject {
     IEnumerator GetUnvisible(float unvisibleTimer, EnemyBase enemy)
     {
         unvisible = true;
-        enemy.gameObject.layer = LayerMask.NameToLayer("enemy_hurt");
+        if(enemy)
+        {
+            enemy.gameObject.layer = LayerMask.NameToLayer("enemy_hurt");
+        }
         yield return new WaitForSeconds(unvisibleTimer);
         unvisible = false;
-        enemy.gameObject.layer = LayerMask.NameToLayer("enemy");
+        if(enemy)
+        {
+            enemy.gameObject.layer = LayerMask.NameToLayer("enemy");
+        }
     }
 
 }
