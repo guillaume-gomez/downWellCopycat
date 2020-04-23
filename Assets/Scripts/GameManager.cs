@@ -8,8 +8,13 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null;                //Static instance of GameManager which allows it to be accessed by any other script.
 
     private LevelGenerator levelScript;                        //Store a reference to our LevelGenerator which will set up the level.
-    private int level = 1;                                    //Current level number, expressed in game as "Day 1".
+    private GameData gamedata;
     private bool doingSetup = true;                            //Boolean to check if we're setting up board, prevent Player from moving during setup.
+
+    public GameData Gamedata
+    {
+        get => gamedata;
+    }
 
     void Awake()
     {
@@ -44,16 +49,16 @@ public class GameManager : MonoBehaviour
         //Debug.Log("Level Loaded");
         //Debug.Log(scene.name);
         //Debug.Log(mode);
-        level++;
+        gamedata.level++;
      }
 
 
     void InitGame()
     {
         doingSetup = true;
+        Load();
         Invoke("HideLevelImage", levelStartDelay);
-        levelScript.SetupScene(level);
-
+        levelScript.SetupScene(gamedata.level);
     }
 
     //Hides black image used between levels
@@ -73,5 +78,33 @@ public class GameManager : MonoBehaviour
         Debug.Log("GameOver");
         //Disable this GameManager.
         enabled = false;
+        Save();
     }
+
+    public void WinLevel()
+    {
+        Debug.Log("WinLevel");
+        enabled = true;
+        Save();
+    }
+
+    public void Save()
+    {
+        SaveSystem.SaveGame();
+    }
+
+    public void Load()
+    {
+        GameData data = SaveSystem.LoadGame();
+        gamedata = data;
+        Debug.Log("level " + gamedata.level);
+        Debug.Log("score " + gamedata.score);
+    }
+
+    public void AddScore(int point)
+    {
+        Debug.Log("totot");
+        gamedata.score += point;
+    }
+
 }
