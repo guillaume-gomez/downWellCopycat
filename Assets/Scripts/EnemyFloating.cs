@@ -10,6 +10,7 @@ public class EnemyFloating: EnemyBase
     public float speed = 200f;
     public float nextWaypointDistance = 3f;
     public float maxDistanceVision = 10f;
+    public bool hasLimitY = false;
 
     Path path;
     int currentWaypoint = 0;
@@ -55,7 +56,13 @@ public class EnemyFloating: EnemyBase
             return;
         }
 
-        if(Vector2.Distance(rb2d.position, target.position) > maxDistanceVision) {
+        if(Vector2.Distance(rb2d.position, target.position) > maxDistanceVision)
+        {
+            return;
+        }
+
+        if(hasLimitY && rb2d.position.y <= target.position.y)
+        {
             return;
         }
 

@@ -203,6 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 387b36f73eecd6f6ab0e804cc42f3a13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyScore: 3
   speed: 2
   waitTime: 2
   spots:
@@ -210,6 +211,7 @@ MonoBehaviour:
   - {fileID: 6041848027711120908}
   - {fileID: 6041848028372833289}
   - {fileID: 6041848028498817836}
+  startWaitTime: 0
 --- !u!1 &6041848028372833288
 GameObject:
   m_ObjectHideFlags: 0

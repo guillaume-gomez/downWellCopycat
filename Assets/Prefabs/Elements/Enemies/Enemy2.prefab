@@ -174,5 +174,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 512cfacc5f9c18a85a37c48b1c2bd77c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyScore: 3
   speed: 2
   groundDetection: {fileID: 3638551397249459147}
