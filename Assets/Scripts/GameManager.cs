@@ -97,13 +97,10 @@ public class GameManager : MonoBehaviour
     {
         GameData data = SaveSystem.LoadGame();
         gamedata = data;
-        Debug.Log("level " + gamedata.level);
-        Debug.Log("score " + gamedata.score);
     }
 
     public void AddScore(int point)
     {
-        Debug.Log("totot");
         gamedata.score += point;
     }
 

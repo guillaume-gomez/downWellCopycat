@@ -13,4 +13,17 @@ public class GameData
         level = _level;
         score = _score;
     }
+
+    public string valueFromString(string key)
+    {
+        switch(key)
+        {
+            case "level":
+                return level.ToString();
+            case "score":
+                return score.ToString();
+            default:
+                return "";
+        }
+    } 
 }
