@@ -22,6 +22,11 @@ public class EnemyFloating: EnemyBase
     {
         rb2d = GetComponent<Rigidbody2D>();
         seeker = GetComponent<Seeker>();
+        // in case someone forgot to assign it
+        if(!target)
+        {
+            target = GameObject.FindGameObjectWithTag("Player").transform;
+        }
     }
 
     void OnPathComplete(Path p)
