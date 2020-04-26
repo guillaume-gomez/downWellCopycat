@@ -6,7 +6,7 @@ public class BreakableBloc : MonoBehaviour
     public AudioClip chopSound1;
     public AudioClip chopSound2;
     public Sprite dmgSprite;
-    public int hp = 3;
+    public float hp = 3.0f;
 
 
     private SpriteRenderer spriteRenderer;
@@ -18,7 +18,7 @@ public class BreakableBloc : MonoBehaviour
     }
 
 
-    public void DamageBloc(int loss)
+    public void DamageBloc(float loss)
     {
         //SoundManager.instance.RandomizeSfx (chopSound1, chopSound2);
         spriteRenderer.sprite = dmgSprite;
