@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &1181132144194311093
+--- !u!1001 &891549231019583534
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 3957757689061076371, guid: 31ff3fe6847f42501b3f9d8a587db044,
         type: 3}
       propertyPath: m_Name
-      value: Gun
+      value: machineGun
       objectReference: {fileID: 0}
     - target: {fileID: 4955838965633727005, guid: 31ff3fe6847f42501b3f9d8a587db044,
         type: 3}
@@ -106,7 +106,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: c697492e5e45da735859d9240881e753,
+      objectReference: {fileID: 21300000, guid: a5850647f4027392199a8a78c3b17d24,
         type: 3}
     - target: {fileID: 7200974616576338402, guid: 31ff3fe6847f42501b3f9d8a587db044,
         type: 3}
@@ -115,13 +115,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8852556650836462881, guid: 31ff3fe6847f42501b3f9d8a587db044,
         type: 3}
-      propertyPath: damage
-      value: 1
+      propertyPath: shootPressedTimerRemember
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8852556650836462881, guid: 31ff3fe6847f42501b3f9d8a587db044,
+        type: 3}
+      propertyPath: nbBullet
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8852556650836462881, guid: 31ff3fe6847f42501b3f9d8a587db044,
         type: 3}
       propertyPath: weaponName
-      value: gun
+      value: machineGun
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31ff3fe6847f42501b3f9d8a587db044, type: 3}

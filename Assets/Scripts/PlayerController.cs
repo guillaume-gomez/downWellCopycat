@@ -34,7 +34,7 @@ public class PlayerController : PhysicsObject {
     // allow jump few frame after leaving the floor
     private float groundedRemember = 0.0f;
     //private Animator animator;
-    private Weapon weapon;
+    private Inventory inventory;
     private bool shoot;
     private bool unvisible = false;
     public float unvisibleTimer = 3.0f;
@@ -46,12 +46,8 @@ public class PlayerController : PhysicsObject {
         life = 4;
         shoot = false;
         spriteRenderer = GetComponent<SpriteRenderer> ();
+        inventory = GetComponent<Inventory>();
         //animator = GetComponent<Animator> ();
-        Transform weaponObj = transform.Find("WeaponPosition").Find("Weapon");
-        if(weaponObj)
-        {
-            weapon = weaponObj.GetComponent<Weapon>();
-        }
     }
 
     protected new void Start()
@@ -114,13 +110,13 @@ public class PlayerController : PhysicsObject {
             groundedRemember = 0.0f;
             velocity.y = jumpTakeOffSpeed;
         }
-        else if (weapon.CanShoot() && shoot) {
-            velocity.y = weapon.Shoot();
+        else if (inventory.CanShoot() && shoot) {
+            velocity.y = inventory.Shoot();
         }
 
         if(IsGrounded())
         {
-            weapon.Reload();
+            inventory.Reload();
         }
 
         bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < 0.01f));
@@ -176,7 +172,7 @@ public class PlayerController : PhysicsObject {
             if( point.normal.y >= 0.9f )
             {
                 velocity.y = jumpTakeOffSpeed;
-                enemy.Hurt();
+                enemy.Hurt(inventory.GetDamage());
             } else
             {
                 Hurt(enemy);
