@@ -16,8 +16,10 @@ public class EnemyAroundPlatform : EnemyBase
     waitTime = startWaitTime;
   }
   
-  void Update()
+  protected new void Update()
   {
+    base.Update();
+    
     transform.position = Vector2.MoveTowards(transform.position, spots[indexSpot].position, speed * Time.deltaTime);
     if(Vector2.Distance(transform.position, spots[indexSpot].position) < 0.1f)
     {
@@ -34,9 +36,18 @@ public class EnemyAroundPlatform : EnemyBase
       {
         indexSpot = 0;
       }
-
-
     }
+  }
+
+  public void SetSlotsFromPlatform(Vector3 size, Vector3 position)
+  {
+    spots[0].position = new Vector3(position.x - 1, position.y + 1, 0.0f);
+
+    spots[1].position = new Vector3(position.x + size.x + 1, position.y + 1, 0.0f);
+
+    spots[2].position = new Vector3(position.x + size.x + 1, position.y - 1, 0.0f);
+
+    spots[3].position = new Vector3(position.x - 1, position.y - 1, 0.0f);
   }
 
 }

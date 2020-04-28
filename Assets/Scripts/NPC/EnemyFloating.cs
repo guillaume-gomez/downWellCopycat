@@ -54,8 +54,10 @@ public class EnemyFloating: EnemyBase
     }
 
     // Update is called once per frame
-    void Update()
+    protected new void Update()
     {
+        base.Update();
+
         if(path == null)
         {
             return;

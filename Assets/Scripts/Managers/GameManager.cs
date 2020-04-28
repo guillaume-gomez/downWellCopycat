@@ -10,10 +10,17 @@ public class GameManager : MonoBehaviour
     private LevelGenerator levelScript;                        //Store a reference to our LevelGenerator which will set up the level.
     private GameData gamedata;
     private bool doingSetup = true;                            //Boolean to check if we're setting up board, prevent Player from moving during setup.
+    private bool pauseGame = false;
 
     public GameData Gamedata
     {
         get => gamedata;
+    }
+
+    public bool PauseGame
+    {
+        get => pauseGame;
+
     }
 
     void Awake()

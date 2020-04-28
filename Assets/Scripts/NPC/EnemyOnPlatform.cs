@@ -10,8 +10,10 @@ public class EnemyOnPlatform : EnemyBase
   private float distance = 1.0f;
   private bool movingRight = true;
 
-  void Update()
+  protected new void Update()
   {
+    base.Update();
+
     transform.Translate(Vector2.right * speed * Time.deltaTime);
 
     RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, distance);

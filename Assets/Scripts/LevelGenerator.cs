@@ -10,6 +10,7 @@ public class LevelGenerator : MonoBehaviour
     public GameObject[] rooms;
     public GameObject endRoom;
     public GameObject spawnObject;
+
     // size of the level
     public int xSize = 50;
     public int ySize = 100;

@@ -165,6 +165,7 @@ public class PlayerController : PhysicsObject {
         if(!enemy) {
             return;
         }
+        
         foreach(ContactPoint2D point in collision.contacts)
         {
 
