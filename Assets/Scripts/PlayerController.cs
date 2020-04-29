@@ -37,7 +37,7 @@ public class PlayerController : PhysicsObject {
     private Inventory inventory;
     private bool shoot;
     private bool unvisible = false;
-    public float unvisibleTimer = 3.0f;
+    public float unvisibleTimer = 0.5f;
 
 
     // Use this for initialization
@@ -151,7 +151,7 @@ public class PlayerController : PhysicsObject {
             if(life == 0){
                 GameManager.instance.GameOver();
             }
-            StartCoroutine(FlashSprite(GetComponent<SpriteRenderer>(), 0.0f, 1f, 0.3f, unvisibleTimer));
+            StartCoroutine(FlashSprite(GetComponent<SpriteRenderer>(), 0.0f, 1f, 0.1f, unvisibleTimer));
             StartCoroutine(GetUnvisible(unvisibleTimer, enemy));
         }
     }

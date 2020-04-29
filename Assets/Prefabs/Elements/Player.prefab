@@ -232,7 +232,7 @@ MonoBehaviour:
   horizontalDampingWhenTurning: 0.394
   cutJumpHeight: 0.5
   life: 4
-  unvisibleTimer: 3
+  unvisibleTimer: 1
 --- !u!50 &1240762958806285134
 Rigidbody2D:
   serializedVersion: 4
