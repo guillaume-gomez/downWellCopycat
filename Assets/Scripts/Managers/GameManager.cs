@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
 
     private LevelGenerator levelScript;                        //Store a reference to our LevelGenerator which will set up the level.
     private GameData gamedata;
-    private bool doingSetup = true;                            //Boolean to check if we're setting up board, prevent Player from moving during setup.
     private bool pauseGame = false;
 
     public GameData Gamedata
@@ -41,37 +40,34 @@ public class GameManager : MonoBehaviour
 
      void OnEnable()
      {
-      //Tell our 'OnLevelFinishedLoading' function to start listening for a scene change as soon as this script is enabled.
-         SceneManager.sceneLoaded += OnLevelFinishedLoading;
+        //Tell our 'OnLevelFinishedLoading' function to start listening for a scene change as soon as this script is enabled.
+        SceneManager.sceneLoaded += OnLevelFinishedLoading;
+        Debug.Log("OnEnable");
      }
  
      void OnDisable()
      {
-     //Tell our 'OnLevelFinishedLoading' function to stop listening for a scene change as soon as this script is disabled. Remember to always have an unsubscription for every delegate you subscribe to!
-         SceneManager.sceneLoaded -= OnLevelFinishedLoading;
+        //Tell our 'OnLevelFinishedLoading' function to stop listening for a scene change as soon as this script is disabled. Remember to always have an unsubscription for every delegate you subscribe to!
+        SceneManager.sceneLoaded -= OnLevelFinishedLoading;
+        Debug.Log("OnDisable");
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
      }
  
      void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
      {
-        //Debug.Log("Level Loaded");
+        Debug.Log("Level Loaded");
         //Debug.Log(scene.name);
         //Debug.Log(mode);
         gamedata.level++;
+        InitGame();
      }
 
 
     void InitGame()
     {
-        doingSetup = true;
+        gameObject.SetActive(true);
         Load();
-        Invoke("HideLevelImage", levelStartDelay);
         levelScript.SetupScene(gamedata.level);
-    }
-
-    //Hides black image used between levels
-    void HideLevelImage()
-    {
-        doingSetup = false;
     }
 
     //Update is called every frame.
@@ -84,14 +80,14 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("GameOver");
         //Disable this GameManager.
-        enabled = false;
+        //gameObject.SetActive(false);
         Save();
     }
 
     public void WinLevel()
     {
         Debug.Log("WinLevel");
-        enabled = true;
+        //gameObject.SetActive(false);
         Save();
     }
 
