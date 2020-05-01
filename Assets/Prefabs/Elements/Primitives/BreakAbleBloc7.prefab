@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5324088576736276115}
+  - component: {fileID: 1377809275259106335}
   - component: {fileID: -3713043751170846627}
   m_Layer: 0
   m_Name: BreakAbleBloc7
@@ -38,6 +39,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1377809275259106335
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5324088576736276114}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 7, y: 1}
+  m_EdgeRadius: 0
 --- !u!114 &-3713043751170846627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53,6 +80,7 @@ MonoBehaviour:
   enemies:
   - {fileID: 6844951920497846240, guid: d10987b03ab53b569880e9e68b5e7770, type: 3}
   - {fileID: 3638551397553188711, guid: 4a577bacd92a79c0496e0965d8afe92b, type: 3}
+  - {fileID: 6892612120836584776, guid: 90a1238fc322e50479ffbc9e3ba25195, type: 3}
 --- !u!1001 &5324088575954266046
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60,6 +88,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5324088576736276115}
     m_Modifications:
+    - target: {fileID: 256743122855610220, guid: 385da0c782a4314a5be0cb906e80e009,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8339190253927060812, guid: 385da0c782a4314a5be0cb906e80e009,
         type: 3}
       propertyPath: m_Name
@@ -135,6 +168,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5324088576736276115}
     m_Modifications:
+    - target: {fileID: 256743122855610220, guid: 385da0c782a4314a5be0cb906e80e009,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8339190253927060812, guid: 385da0c782a4314a5be0cb906e80e009,
         type: 3}
       propertyPath: m_Name
@@ -210,6 +248,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5324088576736276115}
     m_Modifications:
+    - target: {fileID: 256743122855610220, guid: 385da0c782a4314a5be0cb906e80e009,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8339190253927060812, guid: 385da0c782a4314a5be0cb906e80e009,
         type: 3}
       propertyPath: m_Name
@@ -285,6 +328,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5324088576736276115}
     m_Modifications:
+    - target: {fileID: 256743122855610220, guid: 385da0c782a4314a5be0cb906e80e009,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8339190253927060812, guid: 385da0c782a4314a5be0cb906e80e009,
         type: 3}
       propertyPath: m_Name
@@ -360,6 +408,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5324088576736276115}
     m_Modifications:
+    - target: {fileID: 256743122855610220, guid: 385da0c782a4314a5be0cb906e80e009,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8339190253927060812, guid: 385da0c782a4314a5be0cb906e80e009,
         type: 3}
       propertyPath: m_Name
@@ -435,6 +488,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5324088576736276115}
     m_Modifications:
+    - target: {fileID: 256743122855610220, guid: 385da0c782a4314a5be0cb906e80e009,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8339190253927060812, guid: 385da0c782a4314a5be0cb906e80e009,
         type: 3}
       propertyPath: m_Name
@@ -510,6 +568,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5324088576736276115}
     m_Modifications:
+    - target: {fileID: 256743122855610220, guid: 385da0c782a4314a5be0cb906e80e009,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8339190253927060812, guid: 385da0c782a4314a5be0cb906e80e009,
         type: 3}
       propertyPath: m_Name
