@@ -7,6 +7,8 @@ public class EnemyBase : MonoBehaviour
 
     public int enemyScore = 0;
     public float life = 1;
+    protected Vector3 slotSize;
+    protected Vector3 slotPosition;
 
     public void Hurt(float loss)
     {
@@ -18,11 +20,18 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
-    protected void Update()
+    protected bool CannotMove()
     {
-        if(GameManager.instance.PauseGame)
-        {
-            return;
-        }
+        return GameManager.instance.PauseGame;
+    }
+
+    public void SetSlotSize(Vector3 _slotSize)
+    {
+        slotSize = _slotSize;
+    }
+
+    public void SetSlotPosition(Vector3 _position)
+    {
+        slotPosition = _position;
     }
 }

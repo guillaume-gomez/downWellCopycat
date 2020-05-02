@@ -10,9 +10,12 @@ public class EnemyOnPlatform : EnemyBase
   private float distance = 1.0f;
   private bool movingRight = true;
 
-  protected new void Update()
+  protected void Update()
   {
-    base.Update();
+    if(CannotMove())
+    {
+      return;
+    }
 
     transform.Translate(Vector2.right * speed * Time.deltaTime);
 

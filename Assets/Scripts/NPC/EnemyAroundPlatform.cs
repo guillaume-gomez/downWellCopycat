@@ -7,6 +7,7 @@ public class EnemyAroundPlatform : EnemyBase
   public float speed;
   public float waitTime;
   public Transform[] spots;
+  public GameObject enemyObject;
 
   public float startWaitTime = 0.0f;
   private int indexSpot = 0;
@@ -14,14 +15,18 @@ public class EnemyAroundPlatform : EnemyBase
   void Start()
   {
     waitTime = startWaitTime;
+    SetSlotsFromPlatform();
   }
   
-  protected new void Update()
+  protected void Update()
   {
-    base.Update();
+    if(CannotMove())
+    {
+      return;
+    }
     
-    transform.position = Vector2.MoveTowards(transform.position, spots[indexSpot].position, speed * Time.deltaTime);
-    if(Vector2.Distance(transform.position, spots[indexSpot].position) < 0.1f)
+    enemyObject.transform.position = Vector2.MoveTowards(enemyObject.transform.position, spots[indexSpot].position, speed * Time.deltaTime);
+    if(Vector2.Distance(enemyObject.transform.position, spots[indexSpot].position) < 0.1f)
     {
       if(waitTime <= 0)
       {
@@ -39,15 +44,16 @@ public class EnemyAroundPlatform : EnemyBase
     }
   }
 
-  public void SetSlotsFromPlatform(Vector3 size, Vector3 position)
+  public void SetSlotsFromPlatform()
   {
-    spots[0].position = new Vector3(position.x - 1, position.y + 1, 0.0f);
+    float offset = 1f;
+    spots[0].position = new Vector3(slotPosition.x - (slotSize.x/2) - offset, slotPosition.y + (slotSize.y/2) + offset, 0.0f);
 
-    spots[1].position = new Vector3(position.x + size.x + 1, position.y + 1, 0.0f);
+    spots[1].position = new Vector3(slotPosition.x + (slotSize.x/2) + offset, slotPosition.y + (slotSize.y/2) + offset, 0.0f);
 
-    spots[2].position = new Vector3(position.x + size.x + 1, position.y - 1, 0.0f);
+    spots[2].position = new Vector3(slotPosition.x + (slotSize.x/2) + offset, slotPosition.y - (slotSize.y/2) - offset, 0.0f);
 
-    spots[3].position = new Vector3(position.x - 1, position.y - 1, 0.0f);
+    spots[3].position = new Vector3(slotPosition.x - (slotSize.x/2) - offset, slotPosition.y - (slotSize.y/2) - offset, 0.0f);
   }
 
 }
