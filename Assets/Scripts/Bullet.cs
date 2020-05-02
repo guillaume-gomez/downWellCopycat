@@ -26,6 +26,7 @@ public class Bullet : MonoBehaviour
         EnemyBase enemy = collision.collider.GetComponent<EnemyBase>();
         if(enemy) {
             enemy.Hurt(damage);
+            GameManager.instance.IncCombo();
             return;
         }
     }
