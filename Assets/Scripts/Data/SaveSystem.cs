@@ -29,7 +29,7 @@ public static class SaveSystem
         } else
         {
             Debug.LogError("Save file not found in " + path);
-            return new GameData(-1,-1);
+            return new GameData(-1,-1, -1);
         }
     }
 }

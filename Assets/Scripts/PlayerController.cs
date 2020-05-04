@@ -148,7 +148,8 @@ public class PlayerController : PhysicsObject {
             {
                 healthBar.SetHealth(life);
             }
-            if(life == 0){
+            if(life == 0)
+            {
                 GameManager.instance.GameOver();
             }
             StartCoroutine(FlashSprite(GetComponent<SpriteRenderer>(), 0.0f, 1f, 0.1f, unvisibleTimer));
@@ -163,6 +164,8 @@ public class PlayerController : PhysicsObject {
         }
         EnemyBase enemy = collision.collider.GetComponent<EnemyBase>();
         if(!enemy) {
+            // otherwise it must be floor
+            GameManager.instance.ResetCombo();
             return;
         }
         
@@ -174,6 +177,7 @@ public class PlayerController : PhysicsObject {
             {
                 velocity.y = jumpTakeOffSpeed;
                 enemy.Hurt(inventory.GetDamage());
+                GameManager.instance.IncCombo();
             } else
             {
                 Hurt(enemy);
