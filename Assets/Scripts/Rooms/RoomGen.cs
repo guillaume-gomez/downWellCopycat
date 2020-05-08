@@ -7,6 +7,7 @@ public class RoomGen : MonoBehaviour
     public SpawnObject[] lefts;
     public SpawnObject[] rights;
     public SpawnObject[] centers;
+    [Range(0,1.0f)]
     public float percentage = 1.0f;
 
 
@@ -15,19 +16,28 @@ public class RoomGen : MonoBehaviour
     {
         for(int i = 0; i < lefts.Length; i++)
         {
-            lefts[i].Init();
+            if(lefts[i].gameObject.activeSelf && Random.Range(0.0f, 1.0f) <= percentage)
+            {
+
+                lefts[i].Init();
+            }
         }
 
         for(int i = 0; i < rights.Length; i++)
         {
-            rights[i].Init();
+            if(rights[i].gameObject.activeSelf && Random.Range(0.0f, 1.0f) <= percentage)
+            {
+                rights[i].Init();
+            }
         }
 
         for(int i = 0; i < centers.Length; i++)
         {
-            centers[i].Init();
+            if(centers[i].gameObject.activeSelf && Random.Range(0.0f, 1.0f) <= percentage)
+            {
+                centers[i].Init();
+            }
         }
-        // todo instanciate object depending of each others
     }
 
     // Update is called once per frame

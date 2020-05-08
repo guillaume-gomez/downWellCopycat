@@ -9,16 +9,21 @@ public class SpawnEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        float shouldDisplayRandom = Random.Range(0.0f, 1.0f);
+        if(shouldDisplayRandom >= 1.0f) {
+            return;
+        }
         int rand = Random.Range(0, enemies.Length);
         GameObject choosedEnemy = enemies[rand];
-        Vector3 offsetPosition = new Vector3(0.0f, 1.0f, 0.0f);
-        GameObject instance = (GameObject) Instantiate(choosedEnemy, transform.position + offsetPosition, transform.rotation);
+        Vector3 size = GetComponent<BoxCollider2D>().size;
+        float height = size.y;
+        GameObject instance = (GameObject) Instantiate(choosedEnemy, transform.position + Vector3.Scale(size/2.0f, choosedEnemy.transform.position), transform.rotation);
         instance.transform.parent = transform;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        EnemyBase enemyBase = instance.GetComponent<EnemyBase>();
+        if(enemyBase) {
+            // only for Enmey with slots...
+            enemyBase.SetSlotSize(size);
+            enemyBase.SetSlotPosition(transform.position);
+        }
     }
 }

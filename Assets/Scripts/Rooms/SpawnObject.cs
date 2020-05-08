@@ -4,19 +4,7 @@ using UnityEngine;
 
 public class SpawnObject : MonoBehaviour
 {
-    public bool noSpawn = false;
     public GameObject[] objects;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        if(noSpawn)
-        {
-            return;
-        }
-        Init();
-        //Destroy(gameObject);
-    }
 
     public void Init()
     {
