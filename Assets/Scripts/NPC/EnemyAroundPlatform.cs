@@ -8,7 +8,7 @@ public class EnemyAroundPlatform : EnemyBase
   public Transform[] groundDetections;
   int layerMastk;
 
-  private float distance = 0.5f;
+  private float distance = 1.0f;
   private bool movingRight = true;
 
   protected void Start()
