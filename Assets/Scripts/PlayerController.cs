@@ -169,19 +169,24 @@ public class PlayerController : PhysicsObject {
             return;
         }
         
+        bool hasJumpedOnEnemy = false;
         foreach(ContactPoint2D point in collision.contacts)
         {
-
             Debug.DrawLine(point.point, point.point + point.normal, Color.blue,10);
             if( point.normal.y >= 0.9f )
             {
-                velocity.y = jumpTakeOffSpeed;
-                enemy.Hurt(inventory.GetDamage());
-                GameManager.instance.IncCombo();
-            } else
-            {
-                Hurt(enemy);
+              hasJumpedOnEnemy = true;
             }
+        }
+
+        if(hasJumpedOnEnemy)
+        {
+            velocity.y = jumpTakeOffSpeed;
+            enemy.Hurt(inventory.GetDamage());
+        }
+        else
+        {
+            Hurt(enemy);
         }
     }
 

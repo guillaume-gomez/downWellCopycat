@@ -19,18 +19,19 @@ public class SpawnEnemy : MonoBehaviour
         Vector3 sizeEnemy = choosedEnemy.GetComponent<BoxCollider2D>().size;
         float heightEnemy = sizeEnemy.y;
 
-        Vector3 sizePlatform = GetComponent<BoxCollider2D>().size;
+        BoxCollider2D boxCollider2D = GetComponent<BoxCollider2D>();
+        Vector3 sizePlatform = boxCollider2D.size;
         float heightPlatform = sizePlatform.y;
 
         Vector3 position;
         // above the platorm
         if(choosedEnemy.transform.position.y == 1)
         {
-            position = new Vector3(transform.position.x, transform.position.y + (heightPlatform/2.0f) , transform.position.z);
+            position = new Vector3(transform.position.x, transform.parent.position.y + (heightPlatform/2.0f) , transform.position.z);
         }
         else // below the platform
         {
-            position = new Vector3(transform.position.x, transform.position.y - heightEnemy - (heightPlatform/2.0f) , transform.position.z);
+            position = new Vector3(transform.position.x, transform.parent.position.y - (heightEnemy/2.0f) - (heightPlatform/2.0f) , transform.position.z);
         }
 
         GameObject instance = (GameObject) Instantiate(choosedEnemy, position, transform.rotation);
@@ -41,5 +42,8 @@ public class SpawnEnemy : MonoBehaviour
             enemyBase.SetSlotSize(sizePlatform);
             enemyBase.SetSlotPosition(transform.position);
         }
+
+        // disable BoxCollider2D
+        boxCollider2D.enabled = false;
     }
 }

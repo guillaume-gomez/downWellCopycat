@@ -17,6 +17,7 @@ public class EnemyBase : MonoBehaviour
         {
             Destroy(this.gameObject);
             GameManager.instance.AddScore(enemyScore);
+            GameManager.instance.IncCombo();
         }
     }
 
