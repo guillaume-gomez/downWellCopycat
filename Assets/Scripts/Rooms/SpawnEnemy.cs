@@ -15,14 +15,30 @@ public class SpawnEnemy : MonoBehaviour
         }
         int rand = Random.Range(0, enemies.Length);
         GameObject choosedEnemy = enemies[rand];
-        Vector3 size = GetComponent<BoxCollider2D>().size;
-        float height = size.y;
-        GameObject instance = (GameObject) Instantiate(choosedEnemy, transform.position + Vector3.Scale(size/2.0f, choosedEnemy.transform.position), transform.rotation);
-        instance.transform.parent = transform;
+
+        Vector3 sizeEnemy = choosedEnemy.GetComponent<BoxCollider2D>().size;
+        float heightEnemy = sizeEnemy.y;
+
+        Vector3 sizePlatform = GetComponent<BoxCollider2D>().size;
+        float heightPlatform = sizePlatform.y;
+
+        Vector3 position;
+        // above the platorm
+        if(choosedEnemy.transform.position.y == 1)
+        {
+            position = new Vector3(transform.position.x, transform.position.y + (heightPlatform/2.0f) , transform.position.z);
+        }
+        else // below the platform
+        {
+            position = new Vector3(transform.position.x, transform.position.y - heightEnemy - (heightPlatform/2.0f) , transform.position.z);
+        }
+
+        GameObject instance = (GameObject) Instantiate(choosedEnemy, position, transform.rotation);
+        instance.transform.parent = transform.parent.transform; // spawner
         EnemyBase enemyBase = instance.GetComponent<EnemyBase>();
         if(enemyBase) {
             // only for Enmey with slots...
-            enemyBase.SetSlotSize(size);
+            enemyBase.SetSlotSize(sizePlatform);
             enemyBase.SetSlotPosition(transform.position);
         }
     }
