@@ -118,7 +118,11 @@ MonoBehaviour:
   bloc: {fileID: 8257940167194319867, guid: 6ff5d654ed63baa24a33ee875ea7a0dd, type: 3}
   rooms:
   - {fileID: 6672203148154926776, guid: a9be71a95f6ef7f58b01fbefa194d4c7, type: 3}
+  - {fileID: 8894060815227080131, guid: 5f7df1f9ed4db40df9f6b908539a83d2, type: 3}
+  - {fileID: 5721654331588436516, guid: 738210bf218a890f0940127c382de977, type: 3}
   endRoom: {fileID: 2631641138411012843, guid: d9356279e368181679d7a086e368e95c, type: 3}
+  caveRoom: {fileID: 8008416117604980676, guid: 4470bd635bd7da359abf76f84b4e0c7e,
+    type: 3}
   spawnObject: {fileID: 8000934017337026541, guid: f21ca753ebe68824ba7a71bfec000968,
     type: 3}
   xSize: 40
@@ -138,7 +142,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelStartDelay: 2
-  comboText: {fileID: 8323399487881983660}
 --- !u!1 &8573133971520216075
 GameObject:
   m_ObjectHideFlags: 0
