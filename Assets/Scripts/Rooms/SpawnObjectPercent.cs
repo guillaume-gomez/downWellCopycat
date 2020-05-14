@@ -14,4 +14,8 @@ public class SpawnObjectPercent : SpawnObject
         }
     }
 
+    void Start() {
+        Init();
+    }
+
 }
