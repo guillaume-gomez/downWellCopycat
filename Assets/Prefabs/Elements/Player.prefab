@@ -223,8 +223,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minGroundNormalY: 0.65
   gravityModifier: 3
-  maxSpeed: 10
-  jumpTakeOffSpeed: 12
+  maxSpeed: 12
+  jumpTakeOffSpeed: 14
   jumpPressedRememberTime: 0.2
   groundedRememberTime: 0.25
   horizontalDampingBasic: 0.401
