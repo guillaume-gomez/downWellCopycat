@@ -43,7 +43,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.5813457, g: 0.8385255, b: 0.8679245, a: 0}
+  m_BackGroundColor: {r: 0.23616055, g: 0.26999626, b: 0.2735849, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -60,7 +60,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -96,6 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29898ded7d5f8d66b9e1617df7ef1dca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1408912869998767710, guid: 7fe0ee718dda2a4bcb011395a2b20498, type: 3}
-  dampTime: 0.4
+  player: {fileID: 0}
+  dampTime: 0.05
   zDistance: -10
