@@ -1,18 +1,26 @@
+using System;
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections.ObjectModel; // Add this using statement
 
+[Serializable]
 public class CharacterStat
 {
     public readonly ReadOnlyCollection<StatModifier> StatModifiers; // Add this variable
         // Add this variable
-    private float lastBaseValue = float.MinValue;
+    protected float lastBaseValue = float.MinValue;
     private float BaseValue;
     // Add these variables
-    private bool isDirty = true;
-    private float _value;
+    protected bool isDirty = true;
+    protected float _value;
 
-    private readonly List<StatModifier> statModifiers;
+    protected readonly List<StatModifier> statModifiers;
+
+    public CharacterStat()
+    {
+        statModifiers = new List<StatModifier>();
+        StatModifiers = statModifiers.AsReadOnly();
+    }
 
     public CharacterStat(float baseValue)
     {
@@ -22,7 +30,7 @@ public class CharacterStat
     }
 
     // Change Value
-    public float Value {
+    public virtual float Value {
         get {
             if(isDirty || lastBaseValue != BaseValue) {
                 lastBaseValue = BaseValue;
@@ -66,7 +74,7 @@ public class CharacterStat
     }
 
 
-    public void AddModifier(StatModifier mod)
+    public virtual void AddModifier(StatModifier mod)
     {
         isDirty = true;
         statModifiers.Add(mod);
@@ -84,7 +92,7 @@ public class CharacterStat
     }
 
     // And change the RemoveModifier method
-    public bool RemoveModifier(StatModifier mod)
+    public virtual bool RemoveModifier(StatModifier mod)
     {
         if (statModifiers.Remove(mod))
         {
@@ -95,7 +103,7 @@ public class CharacterStat
     }
 
 
-    public bool RemoveAllModifiersFromSource(object source)
+    public virtual bool RemoveAllModifiersFromSource(object source)
     {
         bool didRemove = false;
      
