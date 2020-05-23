@@ -5,12 +5,19 @@ using System.Collections;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
+    private CharacterStat characterStat;
     private GameData gamedata;
 
     public GameData GameData
     {
         get => gamedata;
         set => gamedata = value;
+    }
+
+    public CharacterStat CharacterStat
+    {
+        get => characterStat;
+        set => characterStat = value;
     }
 
     void Awake()
@@ -40,4 +47,6 @@ public class GameManager : MonoBehaviour
     {
         gamedata.score += point;
     }
+
+
 }
