@@ -7,13 +7,15 @@ public class Introduction : MonoBehaviour
 {
     public LevelGenerator levelScript;
     public PlayerController playerScript;
+    public GameObject canvas;
     private GameObject bordersObj;
     private float borderSizeY = 50.0f;
+
     
     void Awake()
     {
         levelScript.CreateBorders();
-        Invoke("MovePlayer", 5.0f);
+        //Invoke("MovePlayer", 0.75f);
     }
 
     void Start()
@@ -33,8 +35,8 @@ public class Introduction : MonoBehaviour
 
         if (playerScript.transform.position.y < -10.0f - borderSizeY)
         {
-            Debug.Log("horreur");
-            StartCoroutine(LoadAsynchronously(1));
+            //StartCoroutine(LoadAsynchronously(SceneManager.GetActiveScene().buildIndex + 1));
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
     }
@@ -46,7 +48,14 @@ public class Introduction : MonoBehaviour
 
     IEnumerator LoadAsynchronously (int sceneIndex)
     {
+        Debug.Log("routine");
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
         return null;
+    }
+
+    public void PickABonus(int index)
+    {
+        MovePlayer();
+        canvas.SetActive(false);
     }
 }
