@@ -16,14 +16,14 @@ public class EnemyBase : MonoBehaviour
         if (life <= 0.0f)
         {
             Destroy(this.gameObject);
-            GameManager.instance.AddScore(enemyScore);
-            GameManager.instance.IncCombo();
+            LevelManager.instance.AddScore(enemyScore);
+            LevelManager.instance.IncCombo();
         }
     }
 
     protected bool CannotMove()
     {
-        return GameManager.instance.PauseGame;
+        return LevelManager.instance.PauseGame;
     }
 
     public void SetSlotSize(Vector3 _slotSize)

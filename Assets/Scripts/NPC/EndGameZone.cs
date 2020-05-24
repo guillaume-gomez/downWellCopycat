@@ -8,7 +8,7 @@ public class EndGameZone : MonoBehaviour
     {
         if(col.gameObject.name == "Player")
         {
-            GameManager.instance.WinLevel();
+            LevelManager.instance.WinLevel();
         }
     }
 }
