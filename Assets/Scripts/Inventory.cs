@@ -12,7 +12,6 @@ public class Inventory : MonoBehaviour
     void Awake()
     {
         weaponPosition = transform.Find("WeaponPosition");
-        Debug.Log(weaponPosition);
         // if a weapon is already here
         if(slots.Length > 0)
         {
