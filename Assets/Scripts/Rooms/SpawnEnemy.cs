@@ -10,7 +10,7 @@ public class SpawnEnemy : MonoBehaviour
     void Start()
     {
         float shouldDisplayRandom = Random.Range(0.0f, 1.0f);
-        if(shouldDisplayRandom >= 1.0f) {
+        if(shouldDisplayRandom >= 0.5f) {
             return;
         }
         int rand = Random.Range(0, enemies.Length);
@@ -42,8 +42,5 @@ public class SpawnEnemy : MonoBehaviour
             enemyBase.SetSlotSize(sizePlatform);
             enemyBase.SetSlotPosition(transform.position);
         }
-
-        // disable BoxCollider2D
-        boxCollider2D.enabled = false;
     }
 }
