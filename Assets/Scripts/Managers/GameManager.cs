@@ -5,7 +5,7 @@ using System.Collections;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
-    private CharacterStat characterStat;
+    private CharacterStats characterStats;
     private GameData gamedata;
 
     public GameData GameData
@@ -14,10 +14,10 @@ public class GameManager : MonoBehaviour
         set => gamedata = value;
     }
 
-    public CharacterStat CharacterStat
+    public CharacterStats CharacterStats
     {
-        get => characterStat;
-        set => characterStat = value;
+        get => characterStats;
+        set => characterStats = value;
     }
 
     void Awake()
