@@ -22,11 +22,6 @@ public class EnemyFloating: EnemyBase
     {
         rb2d = GetComponent<Rigidbody2D>();
         seeker = GetComponent<Seeker>();
-        // in case someone forgot to assign it
-        if(!target)
-        {
-            target = GameObject.FindGameObjectWithTag("Player").transform;
-        }
     }
 
     void OnPathComplete(Path p)
@@ -41,6 +36,12 @@ public class EnemyFloating: EnemyBase
     // Start is called before the first frame update
     void Start()
     {
+        // in case someone forgot to assign it
+        if(!target)
+        {
+            target = GameObject.FindGameObjectWithTag("Player").transform;
+
+        }
         InvokeRepeating("UpdatePath", 0f, 0.5f);
     }
 
