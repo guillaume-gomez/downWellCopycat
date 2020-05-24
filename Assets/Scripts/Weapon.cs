@@ -11,7 +11,7 @@ public class Weapon : MonoBehaviour
     public float shootPressedTimerRemember = 0.3f;
     public float damage = 1.0f;
 
-    protected float bulletSpeed = 25.0f;
+    protected float bulletSpeed = 35.0f;
     protected float shootPressedTimer = 0.0f;
 
     public int nbBullet = 12;
