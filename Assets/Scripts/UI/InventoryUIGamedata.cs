@@ -1,18 +1,18 @@
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class InventoryUIGamedata : MonoBehaviour
 {
-    private Text text;
+    private TextMeshProUGUI text;
     public string gamedatakey;
 
     void Start()
     {
-        text = GetComponent<Text>();
+        text = GetComponent<TextMeshProUGUI>();
 
         if(GameManager.instance)
         {
-            string value = GameManager.instance.Gamedata.valueFromString(gamedatakey);
+            string value = GameManager.instance.GameData.valueFromString(gamedatakey);
             text.text += ": " + value;
         }
     }
