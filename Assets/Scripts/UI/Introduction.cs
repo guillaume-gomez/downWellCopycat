@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Introduction : MonoBehaviour
@@ -8,8 +9,11 @@ public class Introduction : MonoBehaviour
     public LevelGenerator levelScript;
     public PlayerController playerScript;
     public GameObject canvas;
+    public GameObject[] bonusItems;
+
     private GameObject bordersObj;
     private float borderSizeY = 50.0f;
+    private int nbBonusAvailable = 4;
 
     
     void Awake()
@@ -21,6 +25,21 @@ public class Introduction : MonoBehaviour
     void Start()
     {
         bordersObj = GameObject.Find("Borders");
+
+        Transform itemsParent = GameObject.Find("BonusPanel").transform;
+
+        for(int i = 0; i < nbBonusAvailable; ++i)
+        {
+            Vector3 position = new Vector3(0f, 0f, 0f);
+            int bonusItemsIndex = Random.Range(0, bonusItems.Length);
+            GameObject obj = Instantiate(bonusItems[bonusItemsIndex], position, transform.rotation);
+            
+            // get callback function
+            Button button = obj.GetComponent<Button>();
+            button.onClick.AddListener(delegate { PickABonus(); });
+
+            obj.transform.SetParent(itemsParent);
+        }
 
     }
 
@@ -53,7 +72,7 @@ public class Introduction : MonoBehaviour
         return null;
     }
 
-    public void PickABonus(int index)
+    public void PickABonus()
     {
         MovePlayer();
         canvas.SetActive(false);

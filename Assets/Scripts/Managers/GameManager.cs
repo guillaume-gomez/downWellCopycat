@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
+        CharacterStats = new CharacterStats();
     }
 
     public void Save(int scoreLastGame, int level)
@@ -47,6 +48,5 @@ public class GameManager : MonoBehaviour
     {
         gamedata.score += point;
     }
-
 
 }

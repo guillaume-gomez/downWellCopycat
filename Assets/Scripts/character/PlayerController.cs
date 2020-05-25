@@ -47,7 +47,8 @@ public class PlayerController : PhysicsObject {
     // Use this for initialization
     void Awake ()
     {
-        life = 4;
+        life = (int) GameManager.instance.CharacterStats.life.Value;
+        Debug.Log("Life ==> " + life);
         shoot = false;
         spriteRenderer = GetComponent<SpriteRenderer> ();
         inventory = GetComponent<Inventory>();

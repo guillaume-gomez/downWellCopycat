@@ -14,13 +14,14 @@ public class Weapon : MonoBehaviour
     protected float bulletSpeed = 35.0f;
     protected float shootPressedTimer = 0.0f;
 
-    public int nbBullet = 12;
+    private int nbBullet = 12;
     protected int currentBullet = 12;
 
     private Slider slider;
 
     public void Start()
     {
+        nbBullet = (int) GameManager.instance.CharacterStats.weaponAbilities.Value;
         GameObject sliderObj = GameObject.Find("WeaponBarSlider");
         if(sliderObj)
         {

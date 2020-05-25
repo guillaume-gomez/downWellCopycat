@@ -118,4 +118,16 @@ public class CharacterStat
         }
         return didRemove;
     }
+
+    public virtual bool RemoveAllNotifier()
+    {
+        bool didRemove = false;
+        for (int i = statModifiers.Count - 1; i >= 0; i--)
+        {
+            isDirty = true;
+            didRemove = true;
+            statModifiers.RemoveAt(i);
+        }
+        return didRemove;
+    }
 }
