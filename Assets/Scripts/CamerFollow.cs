@@ -9,10 +9,21 @@ public class CamerFollow : MonoBehaviour
     public float zDistance = -10f;
     private Vector3 cameraPos;
     private Vector3 velocity = Vector3.zero;
+    private bool shouldFollow = true;
 
     void Update()
     {
+        if(!shouldFollow)
+        {
+            return;
+        }
+
         cameraPos = new Vector3(player.position.x, player.position.y, zDistance);
         transform.position = Vector3.SmoothDamp(gameObject.transform.position, cameraPos, ref velocity, dampTime);
+    }
+
+    public void Unfollow()
+    {
+        shouldFollow = false;
     }
 }
