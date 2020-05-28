@@ -538,6 +538,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1528990334}
   m_CullTransparentMesh: 0
+--- !u!114 &1647176349 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2580680675649638333, guid: f1e0130001f5f10028dee7146404ddd9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1902288372}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29898ded7d5f8d66b9e1617df7ef1dca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1755152399
 GameObject:
   m_ObjectHideFlags: 0
@@ -616,6 +628,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1983434418}
+    - target: {fileID: 4290748177710672476, guid: f1e0130001f5f10028dee7146404ddd9,
+        type: 3}
+      propertyPath: orthographic size
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4290748177710672479, guid: f1e0130001f5f10028dee7146404ddd9,
         type: 3}
       propertyPath: m_Name
@@ -703,7 +720,7 @@ PrefabInstance:
     - target: {fileID: 5713276984163739319, guid: fa6460a48ca7b11f3a172cd2cc9d4acb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 45
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5713276984163739319, guid: fa6460a48ca7b11f3a172cd2cc9d4acb,
         type: 3}
@@ -898,6 +915,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelScript: {fileID: 2057040325}
   playerScript: {fileID: 1069535679}
+  cameraScript: {fileID: 1647176349}
   canvas: {fileID: 1415547154}
   bonusItems:
   - {fileID: 8951051847779064660, guid: 5704072d7783d6ab8a98307be4982bda, type: 3}
@@ -910,7 +928,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2057040322}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.330692, y: 5.192776, z: -5.520617}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -934,7 +952,7 @@ MonoBehaviour:
   endRoom: {fileID: 0}
   caveRoom: {fileID: 0}
   spawnObject: {fileID: 0}
-  xSize: 50
+  xSize: 40
   ySize: 200
-  xOrigin: 20
+  xOrigin: -20
   yOrigin: 0
