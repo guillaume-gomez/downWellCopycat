@@ -5,10 +5,12 @@ using System.Collections;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance = null;
+    public CamerFollow cameraScript;
     private ComboText comboText;
 
     private LevelGenerator levelScript;
     private bool pauseGame = false;
+    private bool endGamePanel = false;
     private int currentCombo;
     private int score;
     private int level;
@@ -17,6 +19,11 @@ public class LevelManager : MonoBehaviour
     {
         get => pauseGame;
 
+    }
+
+    public bool EndGamePanel
+    {
+        get => endGamePanel;
     }
 
     public int CurrentCombo
@@ -73,6 +80,7 @@ public class LevelManager : MonoBehaviour
     {
         gameObject.SetActive(true);
         currentCombo = 0;
+        endGamePanel = false;
         levelScript.SetupScene(level);
     }
 
@@ -84,11 +92,17 @@ public class LevelManager : MonoBehaviour
 
     public void WinLevel()
     {
+        cameraScript.Unfollow();
         Debug.Log("WinLevel");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        endGamePanel = true;
         level = level + 1;
         Save();
+        Invoke("LoadIntroScene", 2.0f);
+    }
 
+    public void LoadIntroScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1);
     }
 
     public void Save()
@@ -113,5 +127,4 @@ public class LevelManager : MonoBehaviour
         comboText.UpdateCombo(currentCombo);
     }
 
-// to do add bonus in the inventory
 }
