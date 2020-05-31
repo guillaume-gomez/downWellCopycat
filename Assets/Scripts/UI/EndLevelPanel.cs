@@ -1,3 +1,4 @@
+using TMPro;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,29 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class EndLevelPanel : MonoBehaviour
 {
+  public TextMeshProUGUI levelText;
 
-   private float timerOpen = 2.0f;
-   private bool isOpen = false;
-   public GameObject panelUI;
-
-   void Update()
-   {
-        if(LevelManager.instance.EndGamePanel && !isOpen) {
-          Open();
-          Invoke("Done", timerOpen);
-        }
-   }
-
-   private void Open()
-   {
-      panelUI.SetActive(true);
-   }
-
-  private void Done()
+  public void SetLevel(string level)
   {
-    isOpen = false;
-    panelUI.SetActive(false);
+    levelText.text = level + " - 125";
   }
-
 
 }
