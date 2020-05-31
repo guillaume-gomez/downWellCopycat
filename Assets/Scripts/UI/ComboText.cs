@@ -8,7 +8,13 @@ public class ComboText : MonoBehaviour
     void Start()
     {
         text = GetComponent<TextMeshProUGUI>();
-        UpdateCombo(0);
+        LevelManager.instance.OnUpdateCombo += OnUpdateCombo;
+        UpdateCombo(LevelManager.instance.CurrentCombo);
+    }
+
+    private void OnUpdateCombo(object sender, System.EventArgs e)
+    {
+        UpdateCombo(LevelManager.instance.CurrentCombo);
     }
 
     public void UpdateCombo(int currentCombo)

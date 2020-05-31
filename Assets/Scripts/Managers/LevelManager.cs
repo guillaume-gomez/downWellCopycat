@@ -8,6 +8,7 @@ public class LevelManager : MonoBehaviour
     public static LevelManager instance = null;
     public event EventHandler OnWin;
     public event EventHandler OnLose;
+    public event EventHandler OnUpdateCombo;
 
     private ComboText comboText;
     private LevelGenerator levelScript;
@@ -125,13 +126,13 @@ public class LevelManager : MonoBehaviour
     public void IncCombo()
     {
         currentCombo = currentCombo + 1;
-        comboText.UpdateCombo(currentCombo);
+        OnUpdateCombo(this, EventArgs.Empty);
     }
 
     public void ResetCombo()
     {
         currentCombo = 0;
-        comboText.UpdateCombo(currentCombo);
+        OnUpdateCombo(this, EventArgs.Empty);
     }
 
 }
