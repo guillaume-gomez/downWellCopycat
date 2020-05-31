@@ -8,6 +8,19 @@ public class HealthBar : MonoBehaviour
     public Slider slider;
     public Gradient gradient;
     public Image fill;
+    public PlayerController playerController;
+
+    private void Awake()
+    {
+        playerController.OnHurt += OnPlayerHurt;
+        SetMaxHealth(playerController.Life);
+    }
+
+    private void OnPlayerHurt(object sender, System.EventArgs e)
+    {
+        // later the params will give the value
+        SetHealth((int) slider.value - 1);
+    }
 
     public void SetMaxHealth(int health)
     {

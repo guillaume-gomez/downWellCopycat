@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,6 +25,9 @@ public class PlayerController : PhysicsObject {
     [SerializeField]
     [Range(0, 1)]
     public float cutJumpHeight = 0.5f;
+
+    public event EventHandler OnHurt;
+
 
     private int life = 4;
     private HealthBar healthBar;
@@ -58,11 +62,6 @@ public class PlayerController : PhysicsObject {
     protected new void Start()
     {
         base.Start();
-        GameObject healthBarObj = GameObject.Find("HealthBar");
-        if(healthBarObj)
-        {   healthBar = healthBarObj.GetComponent<HealthBar>();
-            healthBar.SetMaxHealth(life);
-        }
     }
 
     protected override void ComputeVelocity()
@@ -149,10 +148,7 @@ public class PlayerController : PhysicsObject {
     {
         if(!unvisible) {
             life = life -1;
-            if(healthBar)
-            {
-                healthBar.SetHealth(life);
-            }
+            OnHurt(this, EventArgs.Empty);
             if(life == 0)
             {
                 LevelManager.instance.GameOver();
