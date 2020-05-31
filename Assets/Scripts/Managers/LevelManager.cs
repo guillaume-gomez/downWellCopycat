@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
@@ -5,12 +6,12 @@ using System.Collections;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance = null;
-    public CamerFollow cameraScript;
-    private ComboText comboText;
+    public event EventHandler OnWin;
+    public event EventHandler OnLose;
 
+    private ComboText comboText;
     private LevelGenerator levelScript;
     private bool pauseGame = false;
-    private bool endGamePanel = false;
     private int currentCombo;
     private int score;
     private int level;
@@ -21,14 +22,14 @@ public class LevelManager : MonoBehaviour
 
     }
 
-    public bool EndGamePanel
-    {
-        get => endGamePanel;
-    }
-
     public int CurrentCombo
     {
         get => currentCombo;
+    }
+
+    public int Level
+    {
+        get => level;
     }
 
     void Awake()
@@ -54,6 +55,7 @@ public class LevelManager : MonoBehaviour
         {
             comboText = comboTextObj.GetComponent<ComboText>();
         }
+        level = 0;
     }
 
      void OnEnable()
@@ -71,7 +73,6 @@ public class LevelManager : MonoBehaviour
      void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
      {
         Debug.Log("Level Loaded");
-        level = 0; // todo fix that GameManager.instance.GameData.level;
         InitGame();
      }
 
@@ -80,21 +81,22 @@ public class LevelManager : MonoBehaviour
     {
         gameObject.SetActive(true);
         currentCombo = 0;
-        endGamePanel = false;
         levelScript.SetupScene(level);
     }
 
     public void GameOver()
     {
         Debug.Log("GameOver");
+        OnLose(this, EventArgs.Empty);
         Save();
+        Invoke("GoBackMenu", 5.0f);
+
     }
 
     public void WinLevel()
     {
-        cameraScript.Unfollow();
         Debug.Log("WinLevel");
-        endGamePanel = true;
+        OnWin(this, EventArgs.Empty);
         level = level + 1;
         Save();
         Invoke("LoadIntroScene", 2.0f);
@@ -103,6 +105,11 @@ public class LevelManager : MonoBehaviour
     public void LoadIntroScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1);
+    }
+
+    public void GoBackMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public void Save()

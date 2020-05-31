@@ -7,12 +7,22 @@ public class CanvasLevelManager : MonoBehaviour
     public GameObject endLevelPanel;
     public GameObject gameOverPanel;
 
+    void Awake()
+    {
+        if(LevelManager.instance)
+        {
+            LevelManager.instance.OnWin += OpenEndLevelPanel;
+            LevelManager.instance.OnLose += OpenGameOverPanel;
 
-    public void OpenEndLevelPanel()
+        }
+    }
+
+    public void OpenEndLevelPanel(object sender, System.EventArgs e)
     {
         endLevelPanel.SetActive(true);
         EndLevelPanel panel = endLevelPanel.GetComponent<EndLevelPanel>();
         panel.SetLevel(LevelManager.instance.Level.ToString());
+        Invoke("CloseEndLevelPanel", 2.0f);
     }
 
     public void CloseEndLevelPanel()
@@ -20,9 +30,10 @@ public class CanvasLevelManager : MonoBehaviour
         endLevelPanel.SetActive(false);
     }
 
-    public void OpenGameOverPanel()
+    public void OpenGameOverPanel(object sender, System.EventArgs e)
     {
         gameOverPanel.SetActive(true);
+        Invoke("CloseGameOverPanel", 5.0f);
     }
 
     public void CloseGameOverPanel()

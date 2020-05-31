@@ -1,6 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class CamerFollow : MonoBehaviour
 {
@@ -10,6 +11,14 @@ public class CamerFollow : MonoBehaviour
     private Vector3 cameraPos;
     private Vector3 velocity = Vector3.zero;
     private bool shouldFollow = true;
+
+    void Awake()
+    {
+        if(LevelManager.instance)
+        {
+            LevelManager.instance.OnWin += OnUnFollow;
+        }
+    }
 
     void Update()
     {
@@ -24,6 +33,14 @@ public class CamerFollow : MonoBehaviour
 
     public void Unfollow()
     {
+        Debug.Log("Unfollow");
         shouldFollow = false;
     }
+
+    private void OnUnFollow(object sender, System.EventArgs e)
+    {
+        Unfollow();
+    }
+
+
 }
