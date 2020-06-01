@@ -1,7 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
+
+public class WeaponEventArgs : EventArgs
+{
+    public int bullet { get; set; }
+}
 
 public class Weapon : MonoBehaviour
 {
@@ -11,24 +18,18 @@ public class Weapon : MonoBehaviour
     public float shootPressedTimerRemember = 0.3f;
     public float damage = 1.0f;
 
+    public event EventHandler<WeaponEventArgs> OnShootHandler;
+
     protected float bulletSpeed = 35.0f;
     protected float shootPressedTimer = 0.0f;
 
     private int nbBullet = 12;
     protected int currentBullet = 12;
 
-    private Slider slider;
-
     public void Start()
     {
         nbBullet = (int) GameManager.instance.CharacterStats.weaponAbilities.Value;
-        GameObject sliderObj = GameObject.Find("WeaponBarSlider");
-        if(sliderObj)
-        {
-            slider = sliderObj.GetComponent<Slider>();
-            slider.maxValue = nbBullet;
-            slider.value = nbBullet;
-        }
+        OnShoot(nbBullet);
     }
 
     public virtual float Shoot()
@@ -49,7 +50,8 @@ public class Weapon : MonoBehaviour
         bulletObj.GetComponent<Bullet>().damage = damage;
 
         currentBullet = currentBullet - 1;
-        UpdateUI(currentBullet);
+        OnShoot(currentBullet);
+
         return thrustBulletToPlayer;
     }
 
@@ -72,25 +74,15 @@ public class Weapon : MonoBehaviour
 
 
         currentBullet = currentBullet - 1;
-        UpdateUI(currentBullet);
-        return thrustBulletToPlayer;
-    }
+        OnShoot(currentBullet);
 
-    protected void UpdateUI(float _currentBullet)
-    {
-        if(slider)
-        {
-            slider.value = _currentBullet;
-        }
+        return thrustBulletToPlayer;
     }
 
     public void Reload()
     {
         currentBullet = nbBullet;
-        if(slider)
-        {
-            slider.value = currentBullet;
-        }
+        OnShoot(currentBullet);
     }
 
     public bool CanShoot()
@@ -106,5 +98,18 @@ public class Weapon : MonoBehaviour
     void FixedUpdate()
     {
         shootPressedTimer = shootPressedTimer + Time.deltaTime;
+    }
+
+    protected virtual void OnShoot(int bullet)
+    {
+        EventHandler<WeaponEventArgs> handler = OnShootHandler;
+
+        WeaponEventArgs args = new WeaponEventArgs();
+        args.bullet = bullet;
+        
+        if (handler != null)
+        {
+            handler(this, args);
+        }
     }
 }
