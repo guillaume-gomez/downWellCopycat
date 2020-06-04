@@ -115,7 +115,7 @@ public class LevelManager : MonoBehaviour
 
     public void Save()
     {
-        GameManager.instance.Save(score, level);
+        GameManager.instance.Save(score);
     }
 
     public void AddScore(int point)
