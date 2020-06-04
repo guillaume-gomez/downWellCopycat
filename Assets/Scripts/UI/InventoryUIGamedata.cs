@@ -12,7 +12,7 @@ public class InventoryUIGamedata : MonoBehaviour
 
         if(GameManager.instance)
         {
-            string value = GameManager.instance.GameData.valueFromString(gamedatakey);
+            string value = GameManager.instance.GeneralStatistics.valueFromString(gamedatakey);
             text.text += ": " + value;
         }
     }

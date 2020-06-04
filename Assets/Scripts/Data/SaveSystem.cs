@@ -10,11 +10,11 @@ public static class SaveSystem
         string path = Application.persistentDataPath + "/game.dat";
         FileStream stream = new FileStream(path, FileMode.Create);
         
-        formatter.Serialize(stream, GameManager.instance.GameData);
+        formatter.Serialize(stream, GameManager.instance.GeneralStatistics);
         stream.Close();
     }
 
-    public static GameData LoadGame()
+    public static GeneralStatistics LoadGame()
     {
         string path = Application.persistentDataPath + "/game.dat";
         if(File.Exists(path))
@@ -22,14 +22,14 @@ public static class SaveSystem
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
 
-            GameData data = formatter.Deserialize(stream) as GameData;
+            GeneralStatistics data = formatter.Deserialize(stream) as GeneralStatistics;
             stream.Close();
 
             return data;
         } else
         {
             Debug.LogError("Save file not found in " + path);
-            return new GameData(-1,-1, -1);
+            return new GeneralStatistics(-1, -1);
         }
     }
 
@@ -59,6 +59,35 @@ public static class SaveSystem
         {
             Debug.LogError("Save file not found in " + path);
             return new CharacterStats();
+        }
+    }
+
+        public static void SaveLevelSystem()
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/levelSystem.dat";
+        FileStream stream = new FileStream(path, FileMode.Create);
+        
+        formatter.Serialize(stream, GameManager.instance.LevelSystem);
+        stream.Close();
+    }
+
+    public static LevelSystem LoadLevelSystem()
+    {
+        string path = Application.persistentDataPath + "/levelSystem.dat";
+        if(File.Exists(path))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
+
+            LevelSystem data = formatter.Deserialize(stream) as LevelSystem;
+            stream.Close();
+
+            return data;
+        } else
+        {
+            Debug.LogError("Save file not found in " + path);
+            return new LevelSystem();
         }
     }
 }

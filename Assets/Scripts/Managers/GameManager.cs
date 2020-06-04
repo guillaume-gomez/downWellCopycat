@@ -6,18 +6,25 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
     private CharacterStats characterStats;
-    private GameData gamedata;
+    private GeneralStatistics generalStatistics;
+    private LevelSystem levelSystem;
 
-    public GameData GameData
+    public GeneralStatistics GeneralStatistics
     {
-        get => gamedata;
-        set => gamedata = value;
+        get => generalStatistics;
+        set => generalStatistics = value;
     }
 
     public CharacterStats CharacterStats
     {
         get => characterStats;
         set => characterStats = value;
+    }
+
+    public LevelSystem LevelSystem
+    {
+        get => levelSystem;
+        set => levelSystem = value;
     }
 
     void Awake()
@@ -31,22 +38,28 @@ public class GameManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
+        Load();
+    }
+
+    public void Load()
+    {
         CharacterStats = new CharacterStats();
+
+        generalStatistics = SaveSystem.LoadGame();;
+
+        levelSystem = SaveSystem.LoadLevelSystem();
     }
 
     public void Save(int scoreLastGame, int level)
     {
         AddScore(scoreLastGame);
-        if(level > gamedata.level)
-        {
-            gamedata.level = level;
-        }
         SaveSystem.SaveGame();
+        SaveSystem.SaveLevelSystem();
     }
 
     public void AddScore(int point)
     {
-        gamedata.score += point;
+        generalStatistics.score += point;
     }
 
 }

@@ -20,7 +20,6 @@ public class LevelManager : MonoBehaviour
     public bool PauseGame
     {
         get => pauseGame;
-
     }
 
     public int CurrentCombo
@@ -57,6 +56,7 @@ public class LevelManager : MonoBehaviour
             comboText = comboTextObj.GetComponent<ComboText>();
         }
         level = 0;
+        score = 0;
     }
 
      void OnEnable()
