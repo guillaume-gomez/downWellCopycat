@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class GameData
+public class GeneralStatistics
 {
-    public int level;
     public int score;
     public int maxCombo;
 
-    public GameData(int _level, int _score, int _maxCombo)
+    public GeneralStatistics(int _score, int _maxCombo)
     {
-        level = _level;
         score = _score;
         maxCombo = _maxCombo;
     }
@@ -20,8 +18,6 @@ public class GameData
     {
         switch(key)
         {
-            case "level":
-                return level.ToString();
             case "score":
                 return score.ToString();
             case "maxCombo":
