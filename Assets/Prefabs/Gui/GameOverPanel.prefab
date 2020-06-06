@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 628066050405209683}
   - component: {fileID: 628066050405209680}
   - component: {fileID: 5926883752202967806}
+  - component: {fileID: 5559907554776492591}
   m_Layer: 5
   m_Name: GameOverPanel
   m_TagString: Untagged
@@ -91,6 +92,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panel: {fileID: 8658845147000995868}
   line: {fileID: 9146499795692248009, guid: 3be0d3af699a5dfe4b9dd9195e75ad88, type: 3}
+--- !u!95 &5559907554776492591
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 628066050405209686}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6e4f21e7700387ca1bc016ffda119988, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &628066051294577520
 GameObject:
   m_ObjectHideFlags: 0
