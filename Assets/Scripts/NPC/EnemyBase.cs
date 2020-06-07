@@ -18,6 +18,7 @@ public class EnemyBase : MonoBehaviour
             Destroy(this.gameObject);
             LevelManager.instance.AddScore(enemyScore);
             LevelManager.instance.IncCombo();
+            LevelManager.instance.IncEnemyKill();
         }
     }
 
