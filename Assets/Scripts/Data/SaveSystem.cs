@@ -7,7 +7,7 @@ public static class SaveSystem
     public static void SaveGame()
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/game.dat";
+        string path = Application.persistentDataPath + "/generalStatistics.dat";
         FileStream stream = new FileStream(path, FileMode.Create);
         
         formatter.Serialize(stream, GameManager.instance.GeneralStatistics);
@@ -16,7 +16,7 @@ public static class SaveSystem
 
     public static GeneralStatistics LoadGame()
     {
-        string path = Application.persistentDataPath + "/game.dat";
+        string path = Application.persistentDataPath + "/generalStatistics.dat";
         if(File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
