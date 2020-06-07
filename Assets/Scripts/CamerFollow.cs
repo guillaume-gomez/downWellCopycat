@@ -33,7 +33,7 @@ public class CamerFollow : MonoBehaviour
 
     public void Unfollow()
     {
-        Debug.Log("Unfollow");
+        //Debug.Log("Unfollow");
         shouldFollow = false;
     }
 
