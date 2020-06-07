@@ -331,7 +331,7 @@ PrefabInstance:
     - target: {fileID: 4219679313515386028, guid: 92084eec381a369599ed9443577cbacd,
         type: 3}
       propertyPath: ySize
-      value: 40
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 4219679313515386028, guid: 92084eec381a369599ed9443577cbacd,
         type: 3}
@@ -573,6 +573,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5971180133105629528, guid: 7fe0ee718dda2a4bcb011395a2b20498,
+        type: 3}
+      propertyPath: jumpTakeOffSpeed
+      value: 22
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fe0ee718dda2a4bcb011395a2b20498, type: 3}
 --- !u!4 &550088660 stripped
@@ -591,6 +596,37 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc0083d9e84c7bb0fa5bbe3f5bf6f153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &590052123 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 572580414932527391, guid: 92084eec381a369599ed9443577cbacd,
+    type: 3}
+  m_PrefabInstance: {fileID: 488929744}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &590052124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590052123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66c2bc7737a426ab2a825273f904e07f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 913230537}
+--- !u!114 &913230537 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7779164350308044526, guid: 7fe0ee718dda2a4bcb011395a2b20498,
+    type: 3}
+  m_PrefabInstance: {fileID: 550088659}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6501300fb1220fb34995f49707732f7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1026245821 stripped
