@@ -20,7 +20,7 @@ public class Weapon : MonoBehaviour
 
     public event EventHandler<WeaponEventArgs> OnShootHandler;
 
-    protected float bulletSpeed = 35.0f;
+    protected float bulletSpeed = 50.0f;
     protected float shootPressedTimer = 0.0f;
 
     private int nbBullet = 12;
