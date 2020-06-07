@@ -14,6 +14,8 @@ public class LevelManager : MonoBehaviour
     private LevelGenerator levelScript;
     private bool pauseGame = false;
     private int currentCombo;
+    private int maxCombo;
+    private int nbKilled;
     private int score;
     private int level;
 
@@ -32,6 +34,21 @@ public class LevelManager : MonoBehaviour
         get => level;
     }
 
+    public int NbKilled
+    {
+        get => nbKilled;
+    }
+
+    public int MaxCombo
+    {
+        get => maxCombo;
+    }
+
+    public int Score
+    {
+        get => score;
+    }
+
     void Awake()
     {
         if (instance == null)
@@ -45,30 +62,33 @@ public class LevelManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         levelScript = GetComponent<LevelGenerator>();
+        Debug.Log("Awake");
         // for debugging only InitGame();
     }
 
     void Start()
     {
+        Debug.Log("Start");
         GameObject comboTextObj = GameObject.Find("ComboText");
         if(comboTextObj)
         {
             comboText = comboTextObj.GetComponent<ComboText>();
         }
         level = 0;
+        nbKilled = 0;
         score = 0;
     }
 
      void OnEnable()
      {
         SceneManager.sceneLoaded += OnLevelFinishedLoading;
-        Debug.Log("OnEnable");
+        //Debug.Log("OnEnable");
      }
  
      void OnDisable()
      {
         SceneManager.sceneLoaded -= OnLevelFinishedLoading;
-        Debug.Log("OnDisable");
+        //Debug.Log("OnDisable");
      }
  
      void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
@@ -87,6 +107,7 @@ public class LevelManager : MonoBehaviour
 
     public void GameOver()
     {
+        //Time.timeScale = 0.0f;
         Debug.Log("GameOver");
         OnLose(this, EventArgs.Empty);
         Save();
@@ -123,9 +144,17 @@ public class LevelManager : MonoBehaviour
         score += point;
     }
 
+    public void IncEnemyKill()
+    {
+        nbKilled += 1;
+    }
+
     public void IncCombo()
     {
         currentCombo = currentCombo + 1;
+        if(currentCombo > maxCombo) {
+            maxCombo = currentCombo;
+        }
         OnUpdateCombo(this, EventArgs.Empty);
     }
 
