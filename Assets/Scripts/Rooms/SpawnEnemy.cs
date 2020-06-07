@@ -10,7 +10,7 @@ public class SpawnEnemy : MonoBehaviour
     void Start()
     {
         float shouldDisplayRandom = Random.Range(0.0f, 1.0f);
-        if(shouldDisplayRandom >= 0.5f) {
+        if(shouldDisplayRandom >= 0.75f) {
             return;
         }
         int rand = Random.Range(0, enemies.Length);
