@@ -10,7 +10,7 @@ public class EndLevelPanel : MonoBehaviour
 
   public void SetLevel(string level)
   {
-    levelText.text = level + " - 125";
+    levelText.text = "You reach level " + level; //level + " - 125";
   }
 
 }
