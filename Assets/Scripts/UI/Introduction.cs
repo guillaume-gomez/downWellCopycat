@@ -8,6 +8,7 @@ public class Introduction : MonoBehaviour
 {
     public LevelGenerator levelScript;
     public PlayerController playerScript;
+    public CamerFollow cameraScript;
     public GameObject canvas;
     public GameObject[] bonusItems;
 
@@ -52,17 +53,18 @@ public class Introduction : MonoBehaviour
             bordersObj.transform.position = new Vector3(position.x, 10.0f, position.z);
         }
 
-        if (playerScript.transform.position.y < -10.0f - borderSizeY)
-        {
-            //StartCoroutine(LoadAsynchronously(SceneManager.GetActiveScene().buildIndex + 1));
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
-
     }
 
     void MovePlayer()
     {
-        playerScript.gravityModifier = 1.0f;
+        cameraScript.Unfollow();
+        playerScript.gravityModifier = 3.0f;
+        Invoke("GoToLevel", 1.0f);
+    }
+
+    void GoToLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     IEnumerator LoadAsynchronously (int sceneIndex)
