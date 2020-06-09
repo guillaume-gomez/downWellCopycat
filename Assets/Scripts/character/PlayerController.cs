@@ -23,8 +23,12 @@ public class PlayerController : PhysicsObject {
     [Range(0, 1)]
     public float horizontalDampingWhenTurning = 0.5f;
     [SerializeField]
-    [Range(0, 1)]
-    public float cutJumpHeight = 0.5f;
+    [Range(0, 10)]
+    public float fallMultiplier = 1f;
+    [SerializeField]
+    [Range(0, 10)]
+    public float lowJumpMultiplier = 1f;
+
 
     public event EventHandler OnHurt;
 
@@ -102,18 +106,16 @@ public class PlayerController : PhysicsObject {
         if (Input.GetButtonUp("Jump"))
         {
             if (velocity.y > 0) {
-                Debug.Log(cutJumpHeight);
-                velocity.y = velocity.y * cutJumpHeight;
+                velocity.y = velocity.y * ( lowJumpMultiplier - 1 );
             }
             // in case of shooting
             shoot = false;
         }
 
         //try this
-        // if (velocity.y > 0) {
-        //         Debug.Log(cutJumpHeight);
-        //         velocity.y = velocity.y * cutJumpHeight;
-        //     }
+        if (velocity.y < 0) {
+            velocity.y = velocity.y * ( fallMultiplier -1);
+        }
 
         if (CanJump() && IsGrounded())
         {
