@@ -28,6 +28,7 @@ public class PlayerController : PhysicsObject {
     [SerializeField]
     [Range(0, 10)]
     public float lowJumpMultiplier = 1f;
+    public float vYmax = 9999f;
 
 
     public event EventHandler OnHurt;
@@ -112,7 +113,6 @@ public class PlayerController : PhysicsObject {
             shoot = false;
         }
 
-        //try this
         if (velocity.y < 0) {
             velocity.y = velocity.y * ( fallMultiplier -1);
         }
@@ -123,6 +123,12 @@ public class PlayerController : PhysicsObject {
             groundedRemember = 0.0f;
             velocity.y = jumpTakeOffSpeed;
         }
+
+        // limit the fall velocity
+        if(velocity.y < -vYmax) {
+            velocity.y = -vYmax;
+        }
+
         else if (inventory.CanShoot() && shoot) {
             velocity.y = inventory.Shoot();
         }

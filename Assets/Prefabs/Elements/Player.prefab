@@ -222,16 +222,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minGroundNormalY: 0.65
-  gravityModifier: 3
+  gravityModifier: 5
   maxSpeed: 12
-  jumpTakeOffSpeed: 14
+  jumpTakeOffSpeed: 22
   jumpPressedRememberTime: 0.2
   groundedRememberTime: 0.25
   horizontalDampingBasic: 0.401
   horizontalDampingWhenStopping: 0.362
   horizontalDampingWhenTurning: 0.394
-  cutJumpHeight: 0.5
-  life: 4
+  fallMultiplier: 2.15
+  lowJumpMultiplier: 0.9
+  vYmax: 45
   unvisibleTimer: 1
 --- !u!50 &1240762958806285134
 Rigidbody2D:
