@@ -67,5 +67,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: pyramidR
       objectReference: {fileID: 0}
+    - target: {fileID: 3452337978606736985, guid: a01fcc06808c5bb1894fdee1ed89338c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Bloc
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a01fcc06808c5bb1894fdee1ed89338c, type: 3}

@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ccR
       objectReference: {fileID: 0}
+    - target: {fileID: 4769549121931352647, guid: aea9e0c33d72d55609e52f2135f27b69,
+        type: 3}
+      propertyPath: m_TagString
+      value: Bloc
+      objectReference: {fileID: 0}
     - target: {fileID: 8341068604929273371, guid: aea9e0c33d72d55609e52f2135f27b69,
         type: 3}
       propertyPath: m_LocalPosition.x

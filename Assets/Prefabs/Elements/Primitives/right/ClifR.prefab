@@ -67,5 +67,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ClifR
       objectReference: {fileID: 0}
+    - target: {fileID: 7166870141059496255, guid: 96b073becf9edaaacafca324ee0d8402,
+        type: 3}
+      propertyPath: m_TagString
+      value: Bloc
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96b073becf9edaaacafca324ee0d8402, type: 3}

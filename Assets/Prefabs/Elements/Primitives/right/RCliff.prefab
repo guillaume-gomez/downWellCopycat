@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RCliff
       objectReference: {fileID: 0}
+    - target: {fileID: 4416475920086982265, guid: 1d4609b7fb3cf38c79edc311e901d537,
+        type: 3}
+      propertyPath: m_TagString
+      value: Bloc
+      objectReference: {fileID: 0}
     - target: {fileID: 4542838050663996170, guid: 1d4609b7fb3cf38c79edc311e901d537,
         type: 3}
       propertyPath: m_LocalPosition.x

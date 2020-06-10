@@ -67,5 +67,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RL
       objectReference: {fileID: 0}
+    - target: {fileID: 8517026766425562637, guid: 5aa1b857fca84a898a31bc017d33191a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Bloc
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5aa1b857fca84a898a31bc017d33191a, type: 3}

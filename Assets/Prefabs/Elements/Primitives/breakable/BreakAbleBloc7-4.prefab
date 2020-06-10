@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: -3713043751170846627}
   m_Layer: 0
   m_Name: BreakAbleBloc7-4
-  m_TagString: Untagged
+  m_TagString: BreakableBloc
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

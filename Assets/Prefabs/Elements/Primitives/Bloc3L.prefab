@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1812825311156374287}
   m_Layer: 0
-  m_Name: 3L
-  m_TagString: Untagged
+  m_Name: Bloc3L
+  m_TagString: Bloc
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

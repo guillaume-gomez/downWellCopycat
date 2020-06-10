@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8827672243066870407}
   m_Layer: 0
   m_Name: BreakAbleBloc3-2
-  m_TagString: Untagged
+  m_TagString: BreakableBloc
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,6 +99,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakAbleBloc3 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7512469455719722792, guid: 085f4efb95bdcc17188d65ffd03a74e2,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 7512469455719722793, guid: 085f4efb95bdcc17188d65ffd03a74e2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -183,6 +188,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BreakAbleBloc3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7512469455719722792, guid: 085f4efb95bdcc17188d65ffd03a74e2,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7512469455719722793, guid: 085f4efb95bdcc17188d65ffd03a74e2,
         type: 3}

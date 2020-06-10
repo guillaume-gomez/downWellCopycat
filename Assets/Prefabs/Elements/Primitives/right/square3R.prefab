@@ -67,5 +67,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: square3R
       objectReference: {fileID: 0}
+    - target: {fileID: 8110692108519347332, guid: 129d3a04ad2351e69a09e80951f5fb14,
+        type: 3}
+      propertyPath: m_TagString
+      value: Bloc
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 129d3a04ad2351e69a09e80951f5fb14, type: 3}

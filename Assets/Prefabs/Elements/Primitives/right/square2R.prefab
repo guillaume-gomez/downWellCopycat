@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: square2R
       objectReference: {fileID: 0}
+    - target: {fileID: 2025038079519731507, guid: 5dbf93f326573ef6498565d500cdfbc0,
+        type: 3}
+      propertyPath: m_TagString
+      value: Bloc
+      objectReference: {fileID: 0}
     - target: {fileID: 2434038265311461637, guid: 5dbf93f326573ef6498565d500cdfbc0,
         type: 3}
       propertyPath: m_LocalPosition.x
