@@ -20,12 +20,11 @@ public class EnemyAroundPlatform : EnemyBase
 
   protected bool onPlatform()
   {
-    
     for(int i = 0; i < groundDetections.Length; ++i)
     {
       RaycastHit2D groundInfo = Physics2D.Raycast(groundDetections[i].position, -transform.up, distance, layerMastk);
       //Debug.DrawLine(groundDetections[i].position, groundDetections[i].position - (transform.up * distance), Color.red,100);
-      if(groundInfo.collider)
+      if (groundInfo.collider && (groundInfo.collider.tag == "Bloc" || groundInfo.collider.tag == "BreakableBloc") )
       {
         return true;
       }
