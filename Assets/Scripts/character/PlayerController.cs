@@ -186,18 +186,33 @@ public class PlayerController : PhysicsObject {
         }
         
         bool hasJumpedOnEnemy = false;
+        bool hurtEnemyDuringJump = false;
+
         foreach(ContactPoint2D point in collision.contacts)
         {
             Debug.DrawLine(point.point, point.point + point.normal, Color.blue,10);
-            if( point.normal.y >= 0.5f)
+            // if fall into enemy
+            if( point.normal.y >= 0.9f)
             {
               hasJumpedOnEnemy = true;
+              
+            }
+
+            // contact with an enemy after the ascendant phase
+            if(velocity.y > 0)
+            {
+                hurtEnemyDuringJump = true;
             }
         }
+
 
         if(hasJumpedOnEnemy)
         {
             velocity.y = jumpTakeOffSpeed * 0.5f;
+            enemy.Hurt(inventory.GetDamage());
+        }
+        else if(hurtEnemyDuringJump)
+        {
             enemy.Hurt(inventory.GetDamage());
         }
         else
