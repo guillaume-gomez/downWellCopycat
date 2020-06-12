@@ -139,7 +139,7 @@ public class PlayerController : PhysicsObject {
         }
 
         bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < 0.01f));
-        if (flipSprite) 
+        if (flipSprite)
         {
             spriteRenderer.flipX = !spriteRenderer.flipX;
         }
@@ -184,22 +184,22 @@ public class PlayerController : PhysicsObject {
             LevelManager.instance.ResetCombo();
             return;
         }
-        
+
         bool hasJumpedOnEnemy = false;
         bool hurtEnemyDuringJump = false;
 
         foreach(ContactPoint2D point in collision.contacts)
         {
             Debug.DrawLine(point.point, point.point + point.normal, Color.blue,10);
+            Debug.Log(point.normal);
             // if fall into enemy
             if( point.normal.y >= 0.9f)
             {
               hasJumpedOnEnemy = true;
-              
             }
 
             // contact with an enemy after the ascendant phase
-            if(velocity.y > 0)
+            if(velocity.y > 0 && Math.Abs(point.normal.x) == 1.0f)
             {
                 hurtEnemyDuringJump = true;
             }
