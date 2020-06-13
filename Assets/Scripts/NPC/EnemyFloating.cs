@@ -50,7 +50,6 @@ public class EnemyFloating: EnemyBase
         if(seeker.IsDone())
         {
             seeker.StartPath(rb2d.position, target.position, OnPathComplete);
-        
         }
     }
 
