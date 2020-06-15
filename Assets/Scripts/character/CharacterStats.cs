@@ -9,7 +9,6 @@ public class CharacterStats
 
     public CharacterStats()
     {
-        Debug.Log("pooo");
         // default value of life
         life = new CharacterStat(4);
         weaponAbilities = new CharacterStat(12);

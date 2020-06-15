@@ -15,8 +15,6 @@ public class AmmoText : MonoBehaviour
 
     private void OnUpdateSlider(object sender, WeaponEventArgs e)
     {
-        Debug.Log("coucou");
         slider.value = e.bullet;
     }
-
 }
