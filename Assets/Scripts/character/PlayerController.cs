@@ -104,7 +104,7 @@ public class PlayerController : PhysicsObject {
             }
         }
 
-        if (Input.GetButtonUp("Jump"))
+        if(Input.GetButtonUp("Jump"))
         {
             if (velocity.y > 0) {
                 velocity.y = velocity.y * ( lowJumpMultiplier - 1 );
@@ -129,7 +129,7 @@ public class PlayerController : PhysicsObject {
             velocity.y = -vYmax;
         }
 
-        else if (inventory.CanShoot() && shoot) {
+        if (inventory.CanShoot() && shoot) {
             velocity.y = inventory.Shoot();
         }
 
@@ -191,7 +191,6 @@ public class PlayerController : PhysicsObject {
         foreach(ContactPoint2D point in collision.contacts)
         {
             Debug.DrawLine(point.point, point.point + point.normal, Color.blue,10);
-            Debug.Log(point.normal);
             // if fall into enemy
             if( point.normal.y >= 0.9f)
             {
@@ -204,7 +203,6 @@ public class PlayerController : PhysicsObject {
                 hurtEnemyDuringJump = true;
             }
         }
-
 
         if(hasJumpedOnEnemy)
         {
