@@ -7,10 +7,11 @@ public class FrogEnemy : EnemyBase
     public float maxDistanceVision = 50;
     public float jumpVelocity = 30;
     public Transform target;
+    public float jumpRememberTime = 2.0f;
 
     private bool isJumping;
-    Rigidbody2D rb2d;
-    
+    private Rigidbody2D rb2d;
+    private float jumpRemember;
 
     void OnEnable()
     {
@@ -20,6 +21,7 @@ public class FrogEnemy : EnemyBase
     void Start()
     {
         isJumping = false;
+        jumpRemember = 0.0f;
     }
 
     void Update()
@@ -28,10 +30,13 @@ public class FrogEnemy : EnemyBase
             return;
         }
 
-        Vector2 norm = (target.position - transform.position).normalized;
-        if(!isJumping)
+        jumpRemember = jumpRemember + Time.deltaTime;
+
+        Vector2 direction = (target.position - transform.position);
+        if(!isJumping && jumpRemember >= jumpRememberTime)
         {
-            rb2d.velocity = new Vector2 (rb2d.velocity.x, jumpVelocity);
+            jumpRemember = 0.0f;
+            rb2d.velocity = new Vector2 (direction.x, jumpVelocity);
             isJumping = true;
         }
     }
@@ -40,7 +45,6 @@ public class FrogEnemy : EnemyBase
     {
         if(collision.gameObject.tag == "Bloc" || collision.gameObject.tag == "BreakableBloc") {
             isJumping = false;
-            Debug.Log("penus");
         }
     }
 }
