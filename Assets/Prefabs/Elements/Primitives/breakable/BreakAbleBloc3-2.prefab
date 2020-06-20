@@ -77,6 +77,7 @@ MonoBehaviour:
   - {fileID: 3638551397553188711, guid: 4a577bacd92a79c0496e0965d8afe92b, type: 3}
   - {fileID: 5815458887183426506, guid: bb6a83010a7f74f048305b895a4e013c, type: 3}
   - {fileID: 6892612120836584776, guid: 90a1238fc322e50479ffbc9e3ba25195, type: 3}
+  - {fileID: 785508040387150609, guid: de9e388174ae174d5a0575e15d2695ae, type: 3}
 --- !u!1001 &1981815471132106508
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -84,6 +85,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5571896959376631770}
     m_Modifications:
+    - target: {fileID: -1524218213628956445, guid: 085f4efb95bdcc17188d65ffd03a74e2,
+        type: 3}
+      propertyPath: enemies.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: -1524218213628956445, guid: 085f4efb95bdcc17188d65ffd03a74e2,
         type: 3}
       propertyPath: m_Enabled
@@ -174,6 +180,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5571896959376631770}
     m_Modifications:
+    - target: {fileID: -1524218213628956445, guid: 085f4efb95bdcc17188d65ffd03a74e2,
+        type: 3}
+      propertyPath: enemies.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: -1524218213628956445, guid: 085f4efb95bdcc17188d65ffd03a74e2,
         type: 3}
       propertyPath: m_Enabled
