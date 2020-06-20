@@ -6,7 +6,6 @@ public class FrogEnemy : EnemyBase
 {
     public float maxDistanceVision = 50;
     public float jumpVelocity = 30;
-    public Transform target;
     public float jumpRememberTime = 2.0f;
 
     private bool isJumping;
@@ -20,6 +19,7 @@ public class FrogEnemy : EnemyBase
 
     void Start()
     {
+        base.Start();
         isJumping = false;
         jumpRemember = 0.0f;
     }

@@ -5,12 +5,14 @@ using Pathfinding;
 
 public class EnemyFloating: EnemyBase
 {
-    public Transform target;
-
+    
     public float speed = 200f;
     public float nextWaypointDistance = 3f;
     public float maxDistanceVision = 10f;
     public bool hasLimitY = false;
+    public float rememberTime = 0.5f;
+
+    private float remember;
 
     Path path;
     int currentWaypoint = 0;
@@ -22,6 +24,7 @@ public class EnemyFloating: EnemyBase
     {
         rb2d = GetComponent<Rigidbody2D>();
         seeker = GetComponent<Seeker>();
+        remember = 0.0f;
     }
 
     void OnPathComplete(Path p)
@@ -36,12 +39,7 @@ public class EnemyFloating: EnemyBase
     // Start is called before the first frame update
     void Start()
     {
-        // in case someone forgot to assign it
-        if(!target)
-        {
-            target = GameObject.FindGameObjectWithTag("Player").transform;
-
-        }
+        base.Start();
         InvokeRepeating("UpdatePath", 0f, 0.5f);
     }
 
@@ -80,12 +78,17 @@ public class EnemyFloating: EnemyBase
         {
             return;
         }
+        remember = remember + Time.deltaTime;
 
-        Vector2 direction = ((Vector2) path.vectorPath[currentWaypoint] - rb2d.position).normalized;
-        Vector2 force = direction * speed * Time.deltaTime;
         float distance = Vector2.Distance(rb2d.position, path.vectorPath[currentWaypoint]);
 
-        rb2d.AddForce(force);
+        Vector2 direction = ((Vector2) path.vectorPath[currentWaypoint] - rb2d.position).normalized;
+        Vector2 force = direction * speed; //* Time.deltaTime;
+        if(remember >= rememberTime)
+        {
+            rb2d.AddForce(force);
+            remember = 0.0f;
+        }
 
         if(distance < nextWaypointDistance)
         {
