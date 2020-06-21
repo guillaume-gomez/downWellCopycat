@@ -18,6 +18,7 @@ public class LevelManager : MonoBehaviour
     private int nbKilled;
     private int score;
     private int level;
+    private int money;
 
     public bool PauseGame
     {
@@ -49,6 +50,11 @@ public class LevelManager : MonoBehaviour
         get => score;
     }
 
+    public int Money
+    {
+        get => money;
+    }
+
     void Awake()
     {
         if (instance == null)
@@ -77,6 +83,7 @@ public class LevelManager : MonoBehaviour
         level = 0;
         nbKilled = 0;
         score = 0;
+        money = 0;
     }
 
      void OnEnable()
@@ -136,7 +143,7 @@ public class LevelManager : MonoBehaviour
 
     public void Save()
     {
-        GameManager.instance.Save(score);
+        GameManager.instance.Save(score, money);
     }
 
     public void AddScore(int point)
@@ -147,6 +154,11 @@ public class LevelManager : MonoBehaviour
     public void IncEnemyKill()
     {
         nbKilled += 1;
+    }
+
+    public void TakeMoney(int _money)
+    {
+        money += _money;
     }
 
     public void IncCombo()

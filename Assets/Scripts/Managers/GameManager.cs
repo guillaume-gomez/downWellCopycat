@@ -45,14 +45,16 @@ public class GameManager : MonoBehaviour
     {
         CharacterStats = new CharacterStats();
 
-        generalStatistics = SaveSystem.LoadGame();;
+        generalStatistics = SaveSystem.LoadGame();
 
         levelSystem = SaveSystem.LoadLevelSystem();
     }
 
-    public void Save(int scoreLastGame)
+    public void Save(int scoreLastGame, int moneyLastGame)
     {
         AddScore(scoreLastGame);
+        AddMoney(moneyLastGame);
+
         SaveSystem.SaveGame();
         SaveSystem.SaveLevelSystem();
     }
@@ -61,6 +63,11 @@ public class GameManager : MonoBehaviour
     {
         generalStatistics.score += points;
         levelSystem.AddExperience(points);
+    }
+
+    public void AddMoney(int money)
+    {
+        levelSystem.SaveMoney(money);
     }
 
 }

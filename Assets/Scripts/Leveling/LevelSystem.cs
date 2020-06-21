@@ -11,9 +11,13 @@ public class LevelSystem
     private int level;
     private int experience;
     private int experienceToNextLevel;
+    private int money;
+
+    private float saveMoneyPercentage = 0.10f;
 
     public LevelSystem()
     {
+        money = 0;
         level = 0;
         experience = 0;
         experienceToNextLevel = 100;
@@ -35,6 +39,11 @@ public class LevelSystem
         {
             OnExperienceChanged(this, EventArgs.Empty);
         }
+    }
+
+    public void SaveMoney(int _money)
+    {
+        money = (int)(_money * saveMoneyPercentage);
     }
 
     public int GetLevelNumber()
