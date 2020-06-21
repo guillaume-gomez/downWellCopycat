@@ -7,8 +7,7 @@ public class CamerFollow : MonoBehaviour
 {
     public Transform player;
     public float dampTime = 0.1f;
-    public float zDistance = -10f;
-    private Vector3 cameraPos;
+    public Vector3 offset;
     private Vector3 velocity = Vector3.zero;
     private bool shouldFollow = true;
 
@@ -27,8 +26,8 @@ public class CamerFollow : MonoBehaviour
             return;
         }
 
-        cameraPos = new Vector3(player.position.x, player.position.y, zDistance);
-        transform.position = Vector3.SmoothDamp(gameObject.transform.position, cameraPos, ref velocity, dampTime);
+        Vector3 cameraPos = new Vector3(player.position.x, player.position.y, transform.position.z) + offset;
+        transform.position = Vector3.SmoothDamp(transform.position, cameraPos, ref velocity, dampTime);
     }
 
     public void Unfollow()
