@@ -115,7 +115,8 @@ MonoBehaviour:
   - {fileID: 6570074647788955983}
   - {fileID: 1206705324840603282}
   - {fileID: 7098819785902704263}
-  percentage: 1
+  percentageCenter: 1
+  percentageSide: 0.212
 --- !u!1001 &278811228349024618
 PrefabInstance:
   m_ObjectHideFlags: 0
