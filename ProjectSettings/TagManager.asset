@@ -24,7 +24,7 @@ TagManager:
   - enemy
   - enemy_hurt
   - weapon
-  - 
+  - collectible
   - 
   - 
   - 
@@ -46,12 +46,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: bloc
-    uniqueID: 635363329
+  - name: collectible
+    uniqueID: 2973530669
+    locked: 0
+  - name: enemy
+    uniqueID: 2857149867
     locked: 0
   - name: player
     uniqueID: 4025475923
     locked: 0
-  - name: enemy
-    uniqueID: 2857149867
+  - name: bloc
+    uniqueID: 635363329
     locked: 0
