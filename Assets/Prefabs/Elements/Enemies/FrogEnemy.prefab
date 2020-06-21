@@ -143,9 +143,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 732a481209981ac9188b642b6f10fcc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
   enemyScore: 1
   life: 1
-  target: {fileID: 0}
+  coin: {fileID: 7196461070395765437, guid: 28426c3f44616d913a8f649cee2a5d6c, type: 3}
   maxDistanceVision: 10
   jumpVelocity: 5
   jumpRememberTime: 2

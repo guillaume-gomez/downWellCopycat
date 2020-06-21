@@ -236,8 +236,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac70d29a434f79217b9f5c32390b1837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
   enemyScore: 3
   life: 1
+  coin: {fileID: 7196461070395765437, guid: 28426c3f44616d913a8f649cee2a5d6c, type: 3}
   speed: 2
   groundDetections:
   - {fileID: 5815458887013396326}
