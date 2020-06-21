@@ -168,7 +168,7 @@ public class PlayerController : PhysicsObject {
             {
                 LevelManager.instance.GameOver();
             }
-            StartCoroutine(FlashSprite(GetComponent<SpriteRenderer>(), 0.0f, 1f, 0.1f, unvisibleTimer));
+            StartCoroutine(FlashSprite(GetComponent<SpriteRenderer>(), 0.0f, 1.0f, 1.0f/unvisibleTimer, unvisibleTimer));
             StartCoroutine(GetUnvisible(unvisibleTimer, enemy));
         }
     }
