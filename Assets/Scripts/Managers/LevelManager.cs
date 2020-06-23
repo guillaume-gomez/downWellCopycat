@@ -13,46 +13,9 @@ public class LevelManager : MonoBehaviour
     private ComboText comboText;
     private LevelGenerator levelScript;
     private bool pauseGame = false;
-    private int currentCombo;
-    private int maxCombo;
-    private int nbKilled;
-    private int score;
-    private int level;
-    private int money;
-
     public bool PauseGame
     {
         get => pauseGame;
-    }
-
-    public int CurrentCombo
-    {
-        get => currentCombo;
-    }
-
-    public int Level
-    {
-        get => level;
-    }
-
-    public int NbKilled
-    {
-        get => nbKilled;
-    }
-
-    public int MaxCombo
-    {
-        get => maxCombo;
-    }
-
-    public int Score
-    {
-        get => score;
-    }
-
-    public int Money
-    {
-        get => money;
     }
 
     void Awake()
@@ -74,16 +37,11 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("Start");
         GameObject comboTextObj = GameObject.Find("ComboText");
         if(comboTextObj)
         {
             comboText = comboTextObj.GetComponent<ComboText>();
         }
-        level = 0;
-        nbKilled = 0;
-        score = 0;
-        money = 0;
     }
 
      void OnEnable()
@@ -91,13 +49,13 @@ public class LevelManager : MonoBehaviour
         SceneManager.sceneLoaded += OnLevelFinishedLoading;
         //Debug.Log("OnEnable");
      }
- 
+
      void OnDisable()
      {
         SceneManager.sceneLoaded -= OnLevelFinishedLoading;
         //Debug.Log("OnDisable");
      }
- 
+
      void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
      {
         Debug.Log("Level Loaded");
@@ -108,8 +66,7 @@ public class LevelManager : MonoBehaviour
     void InitGame()
     {
         gameObject.SetActive(true);
-        currentCombo = 0;
-        levelScript.SetupScene(level);
+        levelScript.SetupScene(GameManager.instance.LevelSystem.level);
     }
 
     public void GameOver()
@@ -117,7 +74,7 @@ public class LevelManager : MonoBehaviour
         //Time.timeScale = 0.0f;
         Debug.Log("GameOver");
         OnLose(this, EventArgs.Empty);
-        Save();
+        GameManager.instance.EndRun();
         Invoke("GoBackMenu", 5.0f);
 
     }
@@ -126,8 +83,8 @@ public class LevelManager : MonoBehaviour
     {
         Debug.Log("WinLevel");
         OnWin(this, EventArgs.Empty);
-        level = level + 1;
-        Save();
+        GameManager.instance.LevelSystem.level += 1;
+        GameManager.instance.Save();
         Invoke("LoadIntroScene", 2.0f);
     }
 
@@ -141,38 +98,33 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    public void Save()
-    {
-        GameManager.instance.Save(score, money);
-    }
-
     public void AddScore(int point)
     {
-        score += point;
+        GameManager.instance.LevelSystem.score += point;
     }
 
     public void IncEnemyKill()
     {
-        nbKilled += 1;
+        GameManager.instance.LevelSystem.nbKilled += 1;
     }
 
     public void TakeMoney(int _money)
     {
-        money += _money;
+        GameManager.instance.LevelSystem.money += _money;
     }
 
     public void IncCombo()
     {
-        currentCombo = currentCombo + 1;
-        if(currentCombo > maxCombo) {
-            maxCombo = currentCombo;
+        GameManager.instance.LevelSystem.currentCombo += 1;
+        if(GameManager.instance.LevelSystem.currentCombo > GameManager.instance.LevelSystem.maxCombo) {
+            GameManager.instance.LevelSystem.maxCombo = GameManager.instance.LevelSystem.currentCombo;
         }
         OnUpdateCombo(this, EventArgs.Empty);
     }
 
     public void ResetCombo()
     {
-        currentCombo = 0;
+        GameManager.instance.LevelSystem.currentCombo = 0;
         OnUpdateCombo(this, EventArgs.Empty);
     }
 

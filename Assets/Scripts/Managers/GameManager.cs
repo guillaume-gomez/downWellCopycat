@@ -50,24 +50,23 @@ public class GameManager : MonoBehaviour
         levelSystem = SaveSystem.LoadLevelSystem();
     }
 
-    public void Save(int scoreLastGame, int moneyLastGame)
+    public void EndRun()
     {
-        AddScore(scoreLastGame);
-        AddMoney(moneyLastGame);
+        Save();
+        levelSystem.InitGame();
+    }
 
+    public void StartRun()
+    {
+        LevelSystem.InitGame();
+    }
+
+    public void Save()
+    {
+        generalStatistics.SaveMoney(levelSystem.money);
+        generalStatistics.SaveExperience(levelSystem.experience);
         SaveSystem.SaveGame();
         SaveSystem.SaveLevelSystem();
-    }
-
-    public void AddScore(int points)
-    {
-        generalStatistics.score += points;
-        levelSystem.AddExperience(points);
-    }
-
-    public void AddMoney(int money)
-    {
-        levelSystem.SaveMoney(money);
     }
 
 }
