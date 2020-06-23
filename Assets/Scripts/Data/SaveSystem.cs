@@ -9,7 +9,7 @@ public static class SaveSystem
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/generalStatistics.dat";
         FileStream stream = new FileStream(path, FileMode.Create);
-        
+
         formatter.Serialize(stream, GameManager.instance.GeneralStatistics);
         stream.Close();
     }
@@ -38,7 +38,7 @@ public static class SaveSystem
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/characterStat.dat";
         FileStream stream = new FileStream(path, FileMode.Create);
-        
+
         formatter.Serialize(stream, GameManager.instance.CharacterStats);
         stream.Close();
     }
@@ -67,7 +67,7 @@ public static class SaveSystem
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/levelSystem.dat";
         FileStream stream = new FileStream(path, FileMode.Create);
-        
+
         formatter.Serialize(stream, GameManager.instance.LevelSystem);
         stream.Close();
     }

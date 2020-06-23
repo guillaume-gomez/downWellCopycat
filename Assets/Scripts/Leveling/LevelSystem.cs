@@ -8,19 +8,35 @@ public class LevelSystem
     public event EventHandler OnExperienceChanged;
     public event EventHandler OnLevelChanged;
 
-    private int level;
-    private int experience;
-    private int experienceToNextLevel;
-    private int money;
-
-    private float saveMoneyPercentage = 0.10f;
+    public int level;
+    public int experience;
+    public int experienceToNextLevel;
+    public int money;
+    public int currentCombo;
+    public int maxCombo;
+    public int nbKilled;
+    public int score;
 
     public LevelSystem()
     {
         money = 0;
-        level = 0;
+        level = 1;
         experience = 0;
         experienceToNextLevel = 100;
+        currentCombo = 0;
+        maxCombo = 0;
+        nbKilled = 0;
+        score = 0;
+    }
+
+    public void InitGame()
+    {
+        money = 0;
+        level = 1;
+        currentCombo = 0;
+        maxCombo = 0;
+        nbKilled = 0;
+        score = 0;
     }
 
     public void AddExperience(int amount)
@@ -39,16 +55,6 @@ public class LevelSystem
         {
             OnExperienceChanged(this, EventArgs.Empty);
         }
-    }
-
-    public void SaveMoney(int _money)
-    {
-        money = (int)(_money * saveMoneyPercentage);
-    }
-
-    public int GetLevelNumber()
-    {
-        return level;
     }
 
 }
