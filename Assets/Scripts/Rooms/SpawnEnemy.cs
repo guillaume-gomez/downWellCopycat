@@ -36,11 +36,5 @@ public class SpawnEnemy : MonoBehaviour
 
         GameObject instance = (GameObject) Instantiate(choosedEnemy, position, transform.rotation);
         instance.transform.parent = transform.parent.transform; // spawner
-        EnemyBase enemyBase = instance.GetComponent<EnemyBase>();
-        if(enemyBase) {
-            // only for Enmey with slots...
-            enemyBase.SetSlotSize(sizePlatform);
-            enemyBase.SetSlotPosition(transform.position);
-        }
     }
 }

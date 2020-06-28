@@ -27,7 +27,6 @@ public class LevelManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
         DontDestroyOnLoad(gameObject);
 
         levelScript = GetComponent<LevelGenerator>();
