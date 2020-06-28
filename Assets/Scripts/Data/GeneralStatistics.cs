@@ -7,26 +7,24 @@ public class GeneralStatistics
 {
     public int score;
     public int maxCombo;
-    public int money;
+    public float money;
     public int experience;
+    public float saveMoneyPercentage;
 
-    private float saveMoneyPercentage = 0.10f;
 
-
-    public GeneralStatistics(int _score, int _maxCombo)
+    public GeneralStatistics()
     {
-        score = _score;
-        maxCombo = _maxCombo;
+        score = 0;
+        maxCombo = 0;
+        money = 0;
+        experience = 0;
+        saveMoneyPercentage = 0.1f;
     }
 
-    public void SaveMoney(int _money)
+    public void AddDataFromPreviousRun(LevelSystem ls)
     {
-        money = (int)(_money * saveMoneyPercentage);
-    }
-
-    public void SaveExperience(int _experience)
-    {
-        experience = _experience;
+        money += ls.money * saveMoneyPercentage;
+        experience += ls.experience;
     }
 
     public string valueFromString(string key)

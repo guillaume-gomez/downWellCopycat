@@ -17,6 +17,7 @@ public static class SaveSystem
     public static GeneralStatistics LoadGame()
     {
         string path = Application.persistentDataPath + "/generalStatistics.dat";
+        Debug.Log(path);
         if(File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
@@ -28,8 +29,8 @@ public static class SaveSystem
             return data;
         } else
         {
-            Debug.LogError("Save file not found in " + path);
-            return new GeneralStatistics(-1, -1);
+            Debug.LogWarning("Save file not found in " + path);
+            return new GeneralStatistics();
         }
     }
 
@@ -57,12 +58,12 @@ public static class SaveSystem
             return data;
         } else
         {
-            Debug.LogError("Save file not found in " + path);
+            Debug.LogWarning("Save file not found in " + path);
             return new CharacterStats();
         }
     }
 
-        public static void SaveLevelSystem()
+    public static void SaveLevelSystem()
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/levelSystem.dat";
@@ -86,7 +87,7 @@ public static class SaveSystem
             return data;
         } else
         {
-            Debug.LogError("Save file not found in " + path);
+            Debug.LogWarning("Save file not found in " + path);
             return new LevelSystem();
         }
     }
