@@ -53,7 +53,6 @@ public class GameManager : MonoBehaviour
     public void EndRun()
     {
         Save();
-        levelSystem.InitGame();
     }
 
     public void StartRun()
@@ -63,10 +62,9 @@ public class GameManager : MonoBehaviour
 
     public void Save()
     {
-        generalStatistics.SaveMoney(levelSystem.money);
-        generalStatistics.SaveExperience(levelSystem.experience);
+        generalStatistics.AddDataFromPreviousRun(levelSystem);
+        Debug.Log(generalStatistics.money);
         SaveSystem.SaveGame();
-        SaveSystem.SaveLevelSystem();
     }
 
 }

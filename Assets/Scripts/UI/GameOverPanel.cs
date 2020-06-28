@@ -13,10 +13,14 @@ public class GameOverPanel : MonoBehaviour
     {
         stats = new Dictionary<string, string>();
         // ... Add some keys and values.
-        stats.Add("level", LevelManager.instance.Level.ToString());
-        stats.Add("score", LevelManager.instance.Score.ToString());
-        stats.Add("max combo", LevelManager.instance.MaxCombo.ToString());
-        stats.Add("nb killed", LevelManager.instance.NbKilled.ToString());
+        stats.Add("level", GameManager.instance.LevelSystem.level.ToString());
+        stats.Add("score", GameManager.instance.LevelSystem.score.ToString());
+        stats.Add("max combo", GameManager.instance.LevelSystem.maxCombo.ToString());
+        stats.Add("nb killed", GameManager.instance.LevelSystem.nbKilled.ToString());
+        stats.Add("money",
+            GameManager.instance.GeneralStatistics.money + " + " +
+            GameManager.instance.LevelSystem.money + " * " +
+            GameManager.instance.GeneralStatistics.saveMoneyPercentage.ToString("#.00") );
     }
 
     void Start()

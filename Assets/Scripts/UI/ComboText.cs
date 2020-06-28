@@ -9,12 +9,12 @@ public class ComboText : MonoBehaviour
     {
         text = GetComponent<TextMeshProUGUI>();
         LevelManager.instance.OnUpdateCombo += OnUpdateCombo;
-        UpdateCombo(LevelManager.instance.CurrentCombo);
+        UpdateCombo(GameManager.instance.LevelSystem.currentCombo);
     }
 
     private void OnUpdateCombo(object sender, System.EventArgs e)
     {
-        UpdateCombo(LevelManager.instance.CurrentCombo);
+        UpdateCombo(GameManager.instance.LevelSystem.currentCombo);
     }
 
     public void UpdateCombo(int currentCombo)

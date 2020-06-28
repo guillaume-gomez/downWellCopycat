@@ -16,7 +16,6 @@ public class Introduction : MonoBehaviour
     private float borderSizeY = 50.0f;
     private int nbBonusAvailable = 4;
 
-    
     void Awake()
     {
         levelScript.CreateBorders();
@@ -34,7 +33,7 @@ public class Introduction : MonoBehaviour
             Vector3 position = new Vector3(0f, 0f, 0f);
             int bonusItemsIndex = Random.Range(0, bonusItems.Length);
             GameObject obj = Instantiate(bonusItems[bonusItemsIndex], position, transform.rotation);
-            
+
             // get callback function
             Button button = obj.GetComponent<Button>();
             button.onClick.AddListener(delegate { PickABonus(); });

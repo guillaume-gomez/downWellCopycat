@@ -73,7 +73,6 @@ public class LevelManager : MonoBehaviour
         //Time.timeScale = 0.0f;
         Debug.Log("GameOver");
         OnLose(this, EventArgs.Empty);
-        GameManager.instance.EndRun();
         Invoke("GoBackMenu", 5.0f);
 
     }
@@ -94,6 +93,7 @@ public class LevelManager : MonoBehaviour
 
     public void GoBackMenu()
     {
+        GameManager.instance.EndRun();
         SceneManager.LoadScene(0);
     }
 

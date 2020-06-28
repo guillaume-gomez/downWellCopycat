@@ -21,7 +21,7 @@ public class CanvasLevelManager : MonoBehaviour
     {
         endLevelPanel.SetActive(true);
         EndLevelPanel panel = endLevelPanel.GetComponent<EndLevelPanel>();
-        panel.SetLevel(LevelManager.instance.Level.ToString());
+        panel.SetLevel(GameManager.instance.LevelSystem.level.ToString());
         Invoke("CloseEndLevelPanel", 2.0f);
     }
 
