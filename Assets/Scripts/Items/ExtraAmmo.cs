@@ -6,7 +6,7 @@ public class ExtraAmmo : MonoBehaviour
     {
         GameManager.instance.CharacterStats.weaponAbilities.AddModifier(new StatModifier(1, StatModType.Flat, this));
     }
- 
+
     public void Unequip()
     {
         GameManager.instance.CharacterStats.weaponAbilities.RemoveAllModifiersFromSource(this);
