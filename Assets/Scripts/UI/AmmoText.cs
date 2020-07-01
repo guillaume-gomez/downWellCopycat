@@ -1,10 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class AmmoText : MonoBehaviour
 {
     private Slider slider;
     public Weapon weapon;
+    public TextMeshProUGUI text;
 
     void Awake()
     {
@@ -16,5 +18,6 @@ public class AmmoText : MonoBehaviour
     private void OnUpdateSlider(object sender, WeaponEventArgs e)
     {
         slider.value = e.bullet;
+        text.text = e.bullet.ToString();
     }
 }
