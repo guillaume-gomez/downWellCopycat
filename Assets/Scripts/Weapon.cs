@@ -102,14 +102,12 @@ public class Weapon : MonoBehaviour
 
     protected virtual void OnShoot(int bullet)
     {
-        EventHandler<WeaponEventArgs> handler = OnShootHandler;
-
         WeaponEventArgs args = new WeaponEventArgs();
         args.bullet = bullet;
-        
-        if (handler != null)
+
+        if (OnShootHandler != null)
         {
-            handler(this, args);
+            OnShootHandler(this, args);
         }
     }
 }
