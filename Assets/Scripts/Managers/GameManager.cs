@@ -63,7 +63,6 @@ public class GameManager : MonoBehaviour
     public void Save()
     {
         generalStatistics.AddDataFromPreviousRun(levelSystem);
-        Debug.Log(generalStatistics.money);
         SaveSystem.SaveGame();
     }
 
