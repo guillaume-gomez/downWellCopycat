@@ -3,6 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public class OnLifeChangedEventArgs : EventArgs
+{
+    public int life { get; set; }
+}
+
 public class PlayerController : PhysicsObject {
 
     [SerializeField]
@@ -30,8 +35,10 @@ public class PlayerController : PhysicsObject {
     public float lowJumpMultiplier = 1f;
     public float vYmax = 9999f;
 
+    public ParticleSystem dust;
 
-    public event EventHandler OnHurt;
+
+    public event EventHandler<OnLifeChangedEventArgs> OnLifeChanged;
 
 
     private int life = 4;
@@ -50,14 +57,26 @@ public class PlayerController : PhysicsObject {
 
     public int Life {
         get => life;
-        set => life = value;
+        set {
+            life = value;
+
+            OnLifeChangedEventArgs args = new OnLifeChangedEventArgs();
+            args.life = value;
+            if(OnLifeChanged != null)
+            {
+                OnLifeChanged(this, args);
+            }
+        }
     }
 
     // Use this for initialization
     void Awake ()
     {
-        life = (int) GameManager.instance.CharacterStats.life.Value;
-        Debug.Log("Life ==> " + life);
+        // set up improvments
+        Life = (int) GameManager.instance.CharacterStats.life.Value;
+        jumpTakeOffSpeed += GameManager.instance.CharacterStats.jumpTakeOffSpeed.Value;
+        maxSpeed += GameManager.instance.CharacterStats.maxSpeed.Value;
+
         shoot = false;
         spriteRenderer = GetComponent<SpriteRenderer> ();
         inventory = GetComponent<Inventory>();
@@ -114,11 +133,12 @@ public class PlayerController : PhysicsObject {
         }
 
         if (velocity.y < 0) {
-            velocity.y = velocity.y * ( fallMultiplier -1);
+            velocity.y = velocity.y * ( fallMultiplier - 1);
         }
 
         if (CanJump() && IsGrounded())
         {
+            CreateDust();
             jumpPressedRemember = 0.0f;
             groundedRemember = 0.0f;
             velocity.y = jumpTakeOffSpeed;
@@ -141,6 +161,7 @@ public class PlayerController : PhysicsObject {
         bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < 0.01f));
         if (flipSprite)
         {
+            CreateDust();
             spriteRenderer.flipX = !spriteRenderer.flipX;
         }
 
@@ -162,8 +183,8 @@ public class PlayerController : PhysicsObject {
     public void Hurt(EnemyBase enemy)
     {
         if(!unvisible) {
-            life = life -1;
-            OnHurt(this, EventArgs.Empty);
+            Life = life -1;
+
             if(life == 0)
             {
                 LevelManager.instance.GameOver();
@@ -203,7 +224,6 @@ public class PlayerController : PhysicsObject {
                 hurtEnemyDuringJump = true;
             }
         }
-
         if(hasJumpedOnEnemy)
         {
             velocity.y = jumpTakeOffSpeed * 0.5f;
@@ -258,6 +278,11 @@ public class PlayerController : PhysicsObject {
         {
             enemy.gameObject.layer = LayerMask.NameToLayer("enemy");
         }
+    }
+
+    void CreateDust()
+    {
+        dust.Play();
     }
 
 }
