@@ -11,9 +11,9 @@ static class EnemyConstants
     };
 
     public static readonly Vector3[] Size = {
-        new Vector3( 1.0f, 1.0f, 1.0f  ),
-        new Vector3( 2.0f, 2.0f, 2.0f ),
-        new Vector3( 3.0f, 3.0f, 3.0f ),
+        new Vector3( 1.0f, 1.0f, 1.0f ),
+        new Vector3( 1.75f, 1.75f, 1.75f ),
+        new Vector3( 2.5f, 2.5f, 2.5f ),
     };
 }
 
@@ -22,7 +22,7 @@ public class EnemyBase : MonoBehaviour
 {
     public Transform target;
     public int enemyScore = 0;
-    [Range(1, 4)]
+    [Range(1, 3)]
     public float life = 1;
     public GameObject coin;
     protected Vector3 slotSize;
@@ -31,15 +31,17 @@ public class EnemyBase : MonoBehaviour
 
     public float Life {
         get => life;
-        set => life = value;
+        set {
+            life = value;
+            computeColor();
+            computeSize();
+        }
     }
 
 
     protected void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();
-        computeColor();
-        computeSize();
     }
 
     protected void Start()
@@ -54,6 +56,8 @@ public class EnemyBase : MonoBehaviour
     public void Hurt(float loss)
     {
         life = life - loss;
+        computeColor();
+
         if (life <= 0.0f)
         {
             Destroy(this.gameObject);
