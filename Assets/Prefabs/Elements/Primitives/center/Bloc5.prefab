@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6880233422570672439}
+  - component: {fileID: 2732466956319500665}
+  - component: {fileID: 671878394255434928}
   m_Layer: 0
   m_Name: Bloc5
   m_TagString: Untagged
@@ -37,6 +39,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &2732466956319500665
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3886652540786161186}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 5, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &671878394255434928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3886652540786161186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1481584d6d0485c448d96eb5138832d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies:
+  - {fileID: 6844951920497846240, guid: d10987b03ab53b569880e9e68b5e7770, type: 3}
+  - {fileID: 3638551397553188711, guid: 4a577bacd92a79c0496e0965d8afe92b, type: 3}
+  - {fileID: 5815458887183426506, guid: bb6a83010a7f74f048305b895a4e013c, type: 3}
+  - {fileID: 6892612120836584776, guid: 90a1238fc322e50479ffbc9e3ba25195, type: 3}
+  - {fileID: 785508040387150609, guid: de9e388174ae174d5a0575e15d2695ae, type: 3}
 --- !u!1001 &2037181738245374945
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -7,15 +7,41 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8593863551264881491, guid: 4631e8342c14a584f9d0bfd3b60cf5cd,
+        type: 3}
+      propertyPath: enemies.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -8593863551264881491, guid: 4631e8342c14a584f9d0bfd3b60cf5cd,
+        type: 3}
+      propertyPath: enemies.Array.data[2]
+      value: 
+      objectReference: {fileID: 785508040387150609, guid: de9e388174ae174d5a0575e15d2695ae,
+        type: 3}
     - target: {fileID: 1318513847298303016, guid: 4631e8342c14a584f9d0bfd3b60cf5cd,
         type: 3}
       propertyPath: m_Name
-      value: Bloc7
+      value: Bloc7 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1384169156834813504, guid: 4631e8342c14a584f9d0bfd3b60cf5cd,
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976561081631421076, guid: 4631e8342c14a584f9d0bfd3b60cf5cd,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976561081631421076, guid: 4631e8342c14a584f9d0bfd3b60cf5cd,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976561081631421076, guid: 4631e8342c14a584f9d0bfd3b60cf5cd,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5369266714215128898, guid: 4631e8342c14a584f9d0bfd3b60cf5cd,
         type: 3}
