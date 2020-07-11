@@ -46,6 +46,11 @@ MonoBehaviour:
   bloc: {fileID: 8257940167194319867, guid: 6ff5d654ed63baa24a33ee875ea7a0dd, type: 3}
   rooms:
   - {fileID: 6672203148154926776, guid: a9be71a95f6ef7f58b01fbefa194d4c7, type: 3}
+  - {fileID: 8894060815227080131, guid: 5f7df1f9ed4db40df9f6b908539a83d2, type: 3}
+  - {fileID: 5721654331588436516, guid: 738210bf218a890f0940127c382de977, type: 3}
+  - {fileID: 4334378301085817930, guid: aa8060ee3b7f9d44596224c54404024f, type: 3}
+  - {fileID: 4804257107579781393, guid: 0811550f60a0b1d4ba7c9b7667d4acd3, type: 3}
+  - {fileID: 1278714116299658817, guid: 627155b7fe7324d4ba29fffb890156fc, type: 3}
   endRoom: {fileID: 2631641138411012843, guid: d9356279e368181679d7a086e368e95c, type: 3}
   caveRoom: {fileID: 8008416117604980676, guid: 4470bd635bd7da359abf76f84b4e0c7e,
     type: 3}

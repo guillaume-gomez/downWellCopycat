@@ -6,8 +6,8 @@ static class EnemyConstants
 {
     public static readonly Color[] ColorsEnemy = {
         new Color( 0.0f, 0.0f, 1.0f , 1.0f ),
-        new Color( 0.0f, 0.0f, 0.65f, 1.0f ),
-        new Color( 0.0f, 0.0f, 0.49f, 1.0f ),
+        new Color( 0.0f, 0.0f, 0.5f, 1.0f ),
+        new Color( 0.0f, 0.0f, 0.25f, 1.0f ),
     };
 
     public static readonly Vector3[] Size = {
@@ -100,6 +100,7 @@ public class EnemyBase : MonoBehaviour
                 color = EnemyConstants.ColorsEnemy[2];
             break;
         }
+        Debug.Log(sprite.color);
         sprite.color = color;
     }
 

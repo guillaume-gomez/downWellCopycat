@@ -70,8 +70,8 @@ public class LevelManager : MonoBehaviour
 
     public void GameOver()
     {
-        //Time.timeScale = 0.0f;
         Debug.Log("GameOver");
+        pauseGame = true;
         OnLose(this, EventArgs.Empty);
         Invoke("GoBackMenu", 5.0f);
 

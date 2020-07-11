@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnEnemy : MonoBehaviour
 {
     public GameObject[] enemies;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +15,9 @@ public class SpawnEnemy : MonoBehaviour
         }
         int rand = Random.Range(0, enemies.Length);
         GameObject choosedEnemy = enemies[rand];
+        GameObject instance = (GameObject) Instantiate(choosedEnemy, new Vector3(0.0f, 0.0f, 0.0f), transform.rotation);
+
+        instance.GetComponent<EnemyBase>().Life = Random.Range(1, 3);
 
         Vector3 sizeEnemy = choosedEnemy.GetComponent<BoxCollider2D>().size;
         float heightEnemy = sizeEnemy.y;
@@ -34,7 +37,7 @@ public class SpawnEnemy : MonoBehaviour
             position = new Vector3(transform.position.x, transform.parent.position.y - (heightEnemy/2.0f) - (heightPlatform/2.0f) , transform.position.z);
         }
 
-        GameObject instance = (GameObject) Instantiate(choosedEnemy, position, transform.rotation);
+        instance.transform.position = position;
         instance.transform.parent = transform.parent.transform; // spawner
     }
 }
