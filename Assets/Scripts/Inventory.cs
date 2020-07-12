@@ -57,7 +57,7 @@ public class Inventory : MonoBehaviour
     {
         if(activeWeapon)
         {
-            activeWeapon.Shoot();
+            return activeWeapon.Shoot();
         }
         return 0.0f;
     }
