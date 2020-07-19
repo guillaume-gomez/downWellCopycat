@@ -15,6 +15,12 @@ static class EnemyConstants
         new Vector3( 1.75f, 1.75f, 1.75f ),
         new Vector3( 2.5f, 2.5f, 2.5f ),
     };
+
+    public static readonly float[] Damage = {
+        0.5f,
+        1.0f,
+        2.0f,
+    };
 }
 
 
@@ -22,6 +28,7 @@ public class EnemyBase : MonoBehaviour
 {
     public Transform target;
     public int enemyScore = 0;
+    public float damage = 0.0f;
     [Range(1, 3)]
     public float life = 1;
     public GameObject coin;
@@ -34,6 +41,13 @@ public class EnemyBase : MonoBehaviour
         set {
             life = value;
             computeColor();
+        }
+    }
+
+    public float Damage {
+        get => damage;
+        set {
+            damage = value;
             computeSize();
         }
     }
@@ -100,14 +114,13 @@ public class EnemyBase : MonoBehaviour
                 color = EnemyConstants.ColorsEnemy[2];
             break;
         }
-        Debug.Log(sprite.color);
         sprite.color = color;
     }
 
     private void computeSize()
     {
         Vector3 size = new Vector3();
-        switch(life) {
+        switch(damage) {
             case 1:
                 transform.localScale = EnemyConstants.Size[0];
             break;
@@ -122,4 +135,5 @@ public class EnemyBase : MonoBehaviour
             break;
         }
     }
+
 }
