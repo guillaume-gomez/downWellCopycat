@@ -45,11 +45,11 @@ public class CharacterStat
     {
         float finalValue = BaseValue;
         float sumPercentAdd = 0; // This will hold the sum of our "PercentAdd" modifiers
-     
+
         for (int i = 0; i < statModifiers.Count; i++)
         {
             StatModifier mod = statModifiers[i];
-     
+
             if (mod.Type == StatModType.Flat)
             {
                 finalValue += mod.Value;
@@ -69,7 +69,6 @@ public class CharacterStat
                 finalValue *= 1 + mod.Value;
             }
         }
-     
         return Mathf.Round(finalValue);
     }
 
@@ -80,7 +79,6 @@ public class CharacterStat
         statModifiers.Add(mod);
         statModifiers.Sort(CompareModifierOrder);
     }
-     
     // Add this method to the CharacterStat class
     protected virtual int CompareModifierOrder(StatModifier a, StatModifier b)
     {
@@ -106,7 +104,6 @@ public class CharacterStat
     public virtual bool RemoveAllModifiersFromSource(object source)
     {
         bool didRemove = false;
-     
         for (int i = statModifiers.Count - 1; i >= 0; i--)
         {
             if (statModifiers[i].Source == source)
@@ -117,6 +114,17 @@ public class CharacterStat
             }
         }
         return didRemove;
+    }
+
+    public CharacterStat GetPersistantModifiers()
+    {
+        CharacterStat characterStatOnlyPermanent = new CharacterStat(BaseValue);
+        List<StatModifier> statModifiersPermanent = statModifiers.FindAll(statModifier => statModifier.Persistant == true);
+        for(int i = 0; i < statModifiersPermanent.Count; ++i)
+        {
+            characterStatOnlyPermanent.AddModifier(statModifiersPermanent[i]);
+        }
+        return characterStatOnlyPermanent;
     }
 
     public virtual bool RemoveAllNotifier()
