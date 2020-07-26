@@ -5,9 +5,18 @@ using UnityEngine;
 public class SpawnEnemy : MonoBehaviour
 {
     public GameObject[] enemies;
+    public bool autoEnable = true;
 
     // Start is called before the first frame update
     void Start()
+    {
+        if(autoEnable)
+        {
+            Init();
+        }
+    }
+
+    public void Init()
     {
         float shouldDisplayRandom = Random.Range(0.0f, 1.0f);
         if(shouldDisplayRandom >= 0.75f) {
@@ -17,14 +26,19 @@ public class SpawnEnemy : MonoBehaviour
         GameObject choosedEnemy = enemies[rand];
         GameObject instance = (GameObject) Instantiate(choosedEnemy, new Vector3(0.0f, 0.0f, 0.0f), transform.rotation);
 
-        instance.GetComponent<EnemyBase>().Life = Random.Range(1, 3);
+        float lifeAnDamage =  Random.Range(1, 3);
+        instance.GetComponent<EnemyBase>().Life = lifeAnDamage;
+        instance.GetComponent<EnemyBase>().Damage = lifeAnDamage;
 
-        Vector3 sizeEnemy = choosedEnemy.GetComponent<BoxCollider2D>().size;
-        float heightEnemy = sizeEnemy.y;
+        float heightEnemy = instance.GetComponent<EnemyBase>().Height();
 
         BoxCollider2D boxCollider2D = GetComponent<BoxCollider2D>();
-        Vector3 sizePlatform = boxCollider2D.size;
-        float heightPlatform = sizePlatform.y;
+        float heightPlatform = 0.0f;
+        if(boxCollider2D != null)
+        {
+            Vector3 sizePlatform = boxCollider2D.size;
+            heightPlatform = sizePlatform.y;
+        }
 
         Vector3 position;
         // above the platorm

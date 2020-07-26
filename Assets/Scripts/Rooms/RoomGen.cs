@@ -5,7 +5,9 @@ using UnityEngine;
 public class RoomGen : MonoBehaviour
 {
     public SpawnObject[] lefts;
+    public SpawnEnemy[] leftsEnemy;
     public SpawnObject[] rights;
+    public SpawnEnemy[] rightsEnemy;
     public SpawnObject[] centers;
     [Range(0,1.0f)]
     public float percentageCenter = 1.0f;
@@ -20,8 +22,13 @@ public class RoomGen : MonoBehaviour
         {
             if(lefts[i].gameObject.activeSelf && Random.Range(0.0f, 1.0f) <= percentageSide)
             {
-
                 lefts[i].Init();
+            }
+            else if(
+                i < leftsEnemy.Length &&
+                leftsEnemy[i].gameObject.activeSelf && Random.Range(0.0f, 1.0f) <= percentageSide)
+            {
+                leftsEnemy[i].Init();
             }
         }
 
@@ -30,6 +37,12 @@ public class RoomGen : MonoBehaviour
             if(rights[i].gameObject.activeSelf && Random.Range(0.0f, 1.0f) <= percentageSide)
             {
                 rights[i].Init();
+            }
+            else if(
+                i < rightsEnemy.Length &&
+                rightsEnemy[i].gameObject.activeSelf && Random.Range(0.0f, 1.0f) <= percentageSide)
+            {
+                rightsEnemy[i].Init();
             }
         }
 
@@ -45,6 +58,5 @@ public class RoomGen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 }
