@@ -505,6 +505,35 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5298914374704994782, guid: 0ec7ea8d244d740ab8e74893d5629e2b,
+        type: 3}
+      propertyPath: bonusItems.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5298914374704994782, guid: 0ec7ea8d244d740ab8e74893d5629e2b,
+        type: 3}
+      propertyPath: bonusItems.Array.data[0]
+      value: 
+      objectReference: {fileID: 8951051847779064660, guid: 5704072d7783d6ab8a98307be4982bda,
+        type: 3}
+    - target: {fileID: 5298914374704994782, guid: 0ec7ea8d244d740ab8e74893d5629e2b,
+        type: 3}
+      propertyPath: bonusItems.Array.data[1]
+      value: 
+      objectReference: {fileID: 7336739800555289913, guid: c5e1abf8fab1bb5758665c321a84cbb7,
+        type: 3}
+    - target: {fileID: 5298914374704994782, guid: 0ec7ea8d244d740ab8e74893d5629e2b,
+        type: 3}
+      propertyPath: bonusItems.Array.data[2]
+      value: 
+      objectReference: {fileID: 9045174661125108952, guid: 07dc9db1889892e4a873340cc895b418,
+        type: 3}
+    - target: {fileID: 5298914374704994782, guid: 0ec7ea8d244d740ab8e74893d5629e2b,
+        type: 3}
+      propertyPath: bonusItems.Array.data[3]
+      value: 
+      objectReference: {fileID: 3249195102557359437, guid: 5c1ea93e5ffa3224c91d2139b8891753,
+        type: 3}
     - target: {fileID: 5298914375507111460, guid: 0ec7ea8d244d740ab8e74893d5629e2b,
         type: 3}
       propertyPath: m_CellSize.x
