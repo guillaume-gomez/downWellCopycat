@@ -35,6 +35,7 @@ public class EnemyBase : MonoBehaviour
     protected Vector3 slotSize;
     protected Vector3 slotPosition;
     private SpriteRenderer sprite;
+    public bool canBeJumped = true;
 
     public float Life {
         get => life;
@@ -95,6 +96,16 @@ public class EnemyBase : MonoBehaviour
     public void SetSlotPosition(Vector3 _position)
     {
         slotPosition = _position;
+    }
+
+    public virtual float Height()
+    {
+        BoxCollider2D boxCollider = GetComponent<BoxCollider2D>();
+        if(boxCollider != null)
+        {
+            return boxCollider.size.y;
+        }
+        return 0.0f;
     }
 
     private void computeColor()

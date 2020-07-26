@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -36,6 +36,8 @@ public class PlayerController : PhysicsObject {
     public float vYmax = 9999f;
 
     public ParticleSystem dust;
+
+    public TimeManager timeManager;
 
 
     public event EventHandler<OnLifeChangedEventArgs> OnLifeChanged;
@@ -126,14 +128,14 @@ public class PlayerController : PhysicsObject {
         if(Input.GetButtonUp("Jump"))
         {
             if (velocity.y > 0) {
-                velocity.y = velocity.y * ( lowJumpMultiplier - 1 );
+                velocity.y = velocity.y * ( lowJumpMultiplier - 1.0f );
             }
             // in case of shooting
             shoot = false;
         }
 
         if (velocity.y < 0) {
-            velocity.y = velocity.y * ( fallMultiplier - 1);
+            velocity.y = velocity.y * ( fallMultiplier - 1.0f);
         }
 
         if (CanJump() && IsGrounded())
@@ -183,14 +185,19 @@ public class PlayerController : PhysicsObject {
     public void Hurt(EnemyBase enemy)
     {
         if(!unvisible) {
-            Life = life -1;
+            if(life >= 1) {
+                // todo add armor
+                Life = life - (int)enemy.Damage;
+            }
 
-            if(life == 0)
+            if(life <= 0)
             {
                 LevelManager.instance.GameOver();
+                return;
             }
             StartCoroutine(FlashSprite(GetComponent<SpriteRenderer>(), 0.0f, 1.0f, 1.0f/unvisibleTimer, unvisibleTimer));
             StartCoroutine(GetUnvisible(unvisibleTimer, enemy));
+            timeManager.DoSlowMotion();
         }
     }
 
@@ -209,24 +216,27 @@ public class PlayerController : PhysicsObject {
         bool hasJumpedOnEnemy = false;
         bool hurtEnemyDuringJump = false;
 
-        foreach(ContactPoint2D point in collision.contacts)
+        if(enemy.canBeJumped) // else you can jump on it so player will be hurt
         {
-            Debug.DrawLine(point.point, point.point + point.normal, Color.blue,10);
-            // if fall into enemy
-            if( point.normal.y >= 0.9f)
+            foreach(ContactPoint2D point in collision.contacts)
             {
-              hasJumpedOnEnemy = true;
-            }
+                Debug.DrawLine(point.point, point.point + point.normal, Color.blue,10);
+                // if fall into enemy
+                if( point.normal.y >= 0.9f)
+                {
+                  hasJumpedOnEnemy = true;
+                }
 
-            // contact with an enemy after the ascendant phase
-            if(velocity.y > 0 && Math.Abs(point.normal.x) == 1.0f)
-            {
-                hurtEnemyDuringJump = true;
+                // contact with an enemy after the ascendant phase
+                if(velocity.y > 0 && Math.Abs(point.normal.x) == 1.0f)
+                {
+                    hurtEnemyDuringJump = true;
+                }
             }
         }
         if(hasJumpedOnEnemy)
         {
-            velocity.y = jumpTakeOffSpeed * 0.5f;
+            velocity.y = jumpTakeOffSpeed * 0.75f;
             enemy.Hurt(inventory.GetDamage());
         }
         else if(hurtEnemyDuringJump)

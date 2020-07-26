@@ -5,7 +5,7 @@ using Pathfinding;
 
 public class EnemyFloating: EnemyBase
 {
-    
+
     public float speed = 200f;
     public float nextWaypointDistance = 3f;
     public float maxDistanceVision = 10f;
@@ -35,6 +35,7 @@ public class EnemyFloating: EnemyBase
             currentWaypoint = 0;
         }
     }
+
 
     // Start is called before the first frame update
     void Start()
