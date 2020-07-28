@@ -28,6 +28,16 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2283799131039440756, guid: d10987b03ab53b569880e9e68b5e7770,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2283799131039440756, guid: d10987b03ab53b569880e9e68b5e7770,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2286670496632133000, guid: d10987b03ab53b569880e9e68b5e7770,
         type: 3}
       propertyPath: drawGizmos
