@@ -6,6 +6,7 @@ public class SpawnEnemy : MonoBehaviour
 {
     public GameObject[] enemies;
     public bool autoEnable = true;
+    private Transform parentEnemy;
 
     // Start is called before the first frame update
     void Start()
@@ -16,8 +17,21 @@ public class SpawnEnemy : MonoBehaviour
         }
     }
 
+    void SetEnemyParent()
+    {
+        if(autoEnable)
+        {
+            parentEnemy = transform.parent;
+        }
+        else
+        {
+            parentEnemy = transform;
+        }
+    }
+
     public void Init()
     {
+        SetEnemyParent();
         float shouldDisplayRandom = Random.Range(0.0f, 1.0f);
         if(shouldDisplayRandom >= 0.75f) {
             return;
@@ -44,14 +58,14 @@ public class SpawnEnemy : MonoBehaviour
         // above the platorm
         if(choosedEnemy.transform.position.y == 1)
         {
-            position = new Vector3(transform.position.x, transform.parent.position.y + (heightPlatform/2.0f) , transform.position.z);
+            position = new Vector3(transform.position.x, parentEnemy.position.y + (heightPlatform/2.0f) , transform.position.z);
         }
         else // below the platform
         {
-            position = new Vector3(transform.position.x, transform.parent.position.y - (heightEnemy/2.0f) - (heightPlatform/2.0f) , transform.position.z);
+            position = new Vector3(transform.position.x, parentEnemy.position.y - (heightEnemy/2.0f) - (heightPlatform/2.0f) , transform.position.z);
         }
 
         instance.transform.position = position;
-        instance.transform.parent = transform.parent.transform; // spawner
+        instance.transform.parent = parentEnemy; // spawner
     }
 }
