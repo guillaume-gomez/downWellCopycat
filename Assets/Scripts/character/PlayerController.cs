@@ -208,11 +208,11 @@ public class PlayerController : PhysicsObject {
         }
         EnemyBase enemy = collision.collider.GetComponent<EnemyBase>();
         if(!enemy) {
+            //Debug.Log(collision.collider.name);
             // otherwise it must be floor
             LevelManager.instance.ResetCombo();
             return;
         }
-
         bool hasJumpedOnEnemy = false;
         bool hurtEnemyDuringJump = false;
 
@@ -220,7 +220,8 @@ public class PlayerController : PhysicsObject {
         {
             foreach(ContactPoint2D point in collision.contacts)
             {
-                Debug.DrawLine(point.point, point.point + point.normal, Color.blue,10);
+                //Debug.DrawLine(point.point, point.point + point.normal, Color.red,100);
+                //Debug.Log(point.normal);
                 // if fall into enemy
                 if( point.normal.y >= 0.9f)
                 {
