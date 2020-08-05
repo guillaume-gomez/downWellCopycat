@@ -100,12 +100,7 @@ public class EnemyBase : MonoBehaviour
 
     public virtual float Height()
     {
-        BoxCollider2D boxCollider = GetComponent<BoxCollider2D>();
-        if(boxCollider != null)
-        {
-            return boxCollider.size.y;
-        }
-        return 0.0f;
+        return transform.localScale.y;
     }
 
     private void computeColor()
