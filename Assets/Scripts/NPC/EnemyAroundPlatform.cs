@@ -14,15 +14,17 @@ public class EnemyAroundPlatform : EnemyBase
   // if the enemy is locked and turn around himself
   // no detection is more than  4 rotations (each corner)
   private int noDectection = 0;
+  private int layerBloc;
 
   protected void OnEnable()
   {
       rb2d = GetComponent<Rigidbody2D>();
+      layerBloc = LayerMask.NameToLayer("bloc");
   }
 
   protected void Start()
   {
-    // check raycast to everything except enemy layer (espacially itself)
+    // check raycast to everything except" enemy layer (espacially itself)
     layerMastk = 1 << LayerMask.NameToLayer("enemy");
     layerMastk = ~layerMastk;
   }
@@ -33,7 +35,7 @@ public class EnemyAroundPlatform : EnemyBase
     {
       RaycastHit2D groundInfo = Physics2D.Raycast(groundDetections[i].position, -transform.up, distance, layerMastk);
       //Debug.DrawLine(groundDetections[i].position, groundDetections[i].position - (transform.up * distance), Color.red,100);
-      if (groundInfo.collider && (groundInfo.collider.tag == "Bloc" || groundInfo.collider.tag == "BreakableBloc") )
+      if (groundInfo.collider && groundInfo.collider.gameObject.layer == layerBloc )
       {
         return true;
       }
@@ -60,7 +62,7 @@ public class EnemyAroundPlatform : EnemyBase
           {
             RaycastHit2D groundInfo = Physics2D.Raycast(groundDetections[i].position, -transform.up, distance, layerMastk);
             Debug.DrawLine(groundDetections[i].position, groundDetections[i].position - (transform.up * distance), Color.red,100);
-            if (groundInfo.collider && (groundInfo.collider.tag == "Bloc" || groundInfo.collider.tag == "BreakableBloc") )
+            if (groundInfo.collider && groundInfo.collider.gameObject.layer == layerBloc )
             {
               //return true;
               transform.position += -groundInfo.distance * transform.up;
@@ -68,7 +70,6 @@ public class EnemyAroundPlatform : EnemyBase
             }
           }
         }
-
     } else {
       noDectection = 0;
     }
