@@ -9,8 +9,6 @@ public class Bullet : MonoBehaviour
     void Start()
     {   
         transform.Rotate(new Vector3(0,0,90));
-        // if body does not collide, it destroy itself after 2 secondes
-        Destroy(gameObject, 2);
     }
 
 
@@ -28,6 +26,11 @@ public class Bullet : MonoBehaviour
             enemy.Hurt(damage);
             return;
         }
+    }
+
+    void OnBecameInvisible()
+    {
+        Destroy(gameObject);
     }
 
 }
