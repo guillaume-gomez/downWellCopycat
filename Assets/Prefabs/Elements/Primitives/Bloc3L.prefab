@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1812825311156374287}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bloc3L
   m_TagString: Bloc
   m_Icon: {fileID: 0}

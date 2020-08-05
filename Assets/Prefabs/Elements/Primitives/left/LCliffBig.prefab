@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6786600654869696980}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LCliffBig
   m_TagString: Bloc
   m_Icon: {fileID: 0}

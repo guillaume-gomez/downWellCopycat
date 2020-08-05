@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5571896959376631770}
   - component: {fileID: 2177483132435648640}
   - component: {fileID: 8827672243066870407}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BreakAbleBloc3-2
   m_TagString: BreakableBloc
   m_Icon: {fileID: 0}
@@ -78,6 +78,7 @@ MonoBehaviour:
   - {fileID: 5815458887183426506, guid: bb6a83010a7f74f048305b895a4e013c, type: 3}
   - {fileID: 6892612120836584776, guid: 90a1238fc322e50479ffbc9e3ba25195, type: 3}
   - {fileID: 785508040387150609, guid: de9e388174ae174d5a0575e15d2695ae, type: 3}
+  autoEnable: 1
 --- !u!1001 &1981815471132106508
 PrefabInstance:
   m_ObjectHideFlags: 0

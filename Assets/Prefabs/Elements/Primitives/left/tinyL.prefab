@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2767269685580039804}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tinyL
   m_TagString: Bloc
   m_Icon: {fileID: 0}
