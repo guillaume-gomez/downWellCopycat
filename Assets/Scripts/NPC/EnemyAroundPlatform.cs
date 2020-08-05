@@ -11,6 +11,9 @@ public class EnemyAroundPlatform : EnemyBase
 
   private float distance = 1.0f;
   private bool movingRight = true;
+  // if the enemy is locked and turn around himself
+  // no detection is more than  4 rotations (each corner)
+  private int noDectection = 0;
 
   protected void OnEnable()
   {
@@ -49,23 +52,25 @@ public class EnemyAroundPlatform : EnemyBase
     rb2d.position = rb2d.position + (new Vector2(direction.x, direction.y) * speed * Time.deltaTime);
     if(!onPlatform())
     {
-        //Debug.Break();
-        transform.eulerAngles += new Vector3(0.0f, 0.0f, -90f);
-        for(int i = 0; i < groundDetections.Length; ++i)
-        {
-          RaycastHit2D groundInfo = Physics2D.Raycast(groundDetections[i].position, -transform.up, distance, layerMastk);
-          Debug.DrawLine(groundDetections[i].position, groundDetections[i].position - (transform.up * distance), Color.red,100);
-          if (groundInfo.collider && (groundInfo.collider.tag == "Bloc" || groundInfo.collider.tag == "BreakableBloc") )
+        noDectection++;
+        if(noDectection < 4) {
+          transform.eulerAngles += new Vector3(0.0f, 0.0f, -90f);
+          // ajust position to collide with the platform
+          for(int i = 0; i < groundDetections.Length; ++i)
           {
-            //return true;
-            transform.position += -groundInfo.distance * transform.up;
-            break;
+            RaycastHit2D groundInfo = Physics2D.Raycast(groundDetections[i].position, -transform.up, distance, layerMastk);
+            Debug.DrawLine(groundDetections[i].position, groundDetections[i].position - (transform.up * distance), Color.red,100);
+            if (groundInfo.collider && (groundInfo.collider.tag == "Bloc" || groundInfo.collider.tag == "BreakableBloc") )
+            {
+              //return true;
+              transform.position += -groundInfo.distance * transform.up;
+              break;
+            }
           }
         }
-        //Debug.DrawLine(transform.position, transform.position - (transform.up * distance), Color.red,100);
-        //Debug.Break();
+
     } else {
-      // adjust position due to rotation overlap
+      noDectection = 0;
     }
   }
 
