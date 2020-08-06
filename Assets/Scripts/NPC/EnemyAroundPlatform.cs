@@ -64,7 +64,7 @@ public class EnemyAroundPlatform : EnemyBase
             Debug.DrawLine(groundDetections[i].position, groundDetections[i].position - (transform.up * distance), Color.red,100);
             if (groundInfo.collider && groundInfo.collider.gameObject.layer == layerBloc )
             {
-              //return true;
+              //return trmais j'ai pas decidé d'etre forcéue;
               transform.position += -groundInfo.distance * transform.up;
               break;
             }
