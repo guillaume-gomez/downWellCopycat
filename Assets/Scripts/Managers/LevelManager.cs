@@ -12,11 +12,7 @@ public class LevelManager : MonoBehaviour
 
     private ComboText comboText;
     private LevelGenerator levelScript;
-    private bool pauseGame = false;
-    public bool PauseGame
-    {
-        get => pauseGame;
-    }
+    public static bool PauseGame = false;
 
     void Awake()
     {
@@ -71,10 +67,10 @@ public class LevelManager : MonoBehaviour
     public void GameOver()
     {
         Debug.Log("GameOver");
-        pauseGame = true;
+        Time.timeScale = 0.0f;
+        PauseGame = true;
         OnLose(this, EventArgs.Empty);
-        Invoke("GoBackMenu", 5.0f);
-
+        StartCoroutine(GoBackMenu());
     }
 
     public void WinLevel()
@@ -91,8 +87,11 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1);
     }
 
-    public void GoBackMenu()
+    IEnumerator GoBackMenu()
     {
+        yield return new WaitForSecondsRealtime(5);
+        Time.timeScale = 1.0f;
+        PauseGame = false;
         GameManager.instance.EndRun();
         SceneManager.LoadScene(0);
     }

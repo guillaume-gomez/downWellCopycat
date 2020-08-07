@@ -85,7 +85,7 @@ public class EnemyBase : MonoBehaviour
 
     protected bool CannotMove()
     {
-        return LevelManager.instance.PauseGame;
+        return LevelManager.PauseGame;
     }
 
     public void SetSlotSize(Vector3 _slotSize)
