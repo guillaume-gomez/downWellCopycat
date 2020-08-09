@@ -6,6 +6,7 @@ public class EnemyAroundPlatform : EnemyBase
 {
   public float speed;
   public Transform[] groundDetections;
+  public Transform horizontalDetection;
   private int layerMastk;
   protected Rigidbody2D rb2d;
 
@@ -50,8 +51,24 @@ public class EnemyAroundPlatform : EnemyBase
       return;
     }
 
-    Vector3 direction = movingRight ? transform.right : - transform.right;
-    rb2d.position = rb2d.position + (new Vector2(direction.x, direction.y) * speed * Time.deltaTime);
+    RaycastHit2D groundInfof = Physics2D.Raycast(horizontalDetection.position, Vector2.right, 0.05f);
+    if(groundInfof.collider && groundInfof.collider.gameObject.layer == layerBloc)
+    {
+        if(movingRight)
+        {
+            transform.eulerAngles = new Vector3(0.0f, -180f, 0.0f);
+            movingRight = false;
+        } else
+        {
+            transform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
+            movingRight = true;
+        }
+        return;
+    }
+
+    //Vector2 direction = movingRight ? transform.right : - transform.right;
+    //rb2d.position = rb2d.position + direction * speed * Time.deltaTime;
+    transform.Translate(Vector2.right * speed * Time.deltaTime);
     if(!onPlatform())
     {
         noDectection++;
@@ -61,7 +78,7 @@ public class EnemyAroundPlatform : EnemyBase
           for(int i = 0; i < groundDetections.Length; ++i)
           {
             RaycastHit2D groundInfo = Physics2D.Raycast(groundDetections[i].position, -transform.up, distance, layerMastk);
-            Debug.DrawLine(groundDetections[i].position, groundDetections[i].position - (transform.up * distance), Color.red,100);
+            Debug.DrawLine(groundDetections[i].position, groundDetections[i].position - (transform.up * distance), Color.red, 5);
             if (groundInfo.collider && groundInfo.collider.gameObject.layer == layerBloc )
             {
               //return trmais j'ai pas decidé d'etre forcéue;
