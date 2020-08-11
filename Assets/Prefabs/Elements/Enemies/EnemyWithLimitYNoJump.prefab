@@ -98,6 +98,12 @@ PrefabInstance:
       propertyPath: damage
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6288616398689469075, guid: d10987b03ab53b569880e9e68b5e7770,
+        type: 3}
+      propertyPath: coin
+      value: 
+      objectReference: {fileID: -9087340583689344853, guid: 28426c3f44616d913a8f649cee2a5d6c,
+        type: 3}
     - target: {fileID: 6844951918920513452, guid: d10987b03ab53b569880e9e68b5e7770,
         type: 3}
       propertyPath: m_Mass
