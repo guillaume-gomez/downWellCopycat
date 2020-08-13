@@ -25,7 +25,7 @@ public class Coin : MonoBehaviour
         angle += 0.5f * Time.deltaTime;
 
         sprite.color = new Color(1f, 1f, 1f, alpha);
-        alpha -= 0.1f * Time.deltaTime;
+        alpha -= 0.25f * Time.deltaTime;
 
         if(alpha <= 0.0f) {
             Destroy(gameObject);
