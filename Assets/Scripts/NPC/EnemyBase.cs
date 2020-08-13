@@ -29,9 +29,11 @@ public class EnemyBase : MonoBehaviour
     public Transform target;
     public int enemyScore = 0;
     public float damage = 0.0f;
-    [Range(1, 3)]
+    [Range(1, 4)]
     public float life = 1;
-    public GameObject coin;
+    public Coin coin;
+    [Range(1, 20)]
+    public int coinValue;
     protected Vector3 slotSize;
     protected Vector3 slotPosition;
     private SpriteRenderer sprite;
@@ -79,7 +81,8 @@ public class EnemyBase : MonoBehaviour
             LevelManager.instance.AddScore(enemyScore);
             LevelManager.instance.IncEnemyKill();
             LevelManager.instance.IncCombo();
-            Instantiate(coin, transform.position, transform.rotation);
+            Coin coinInstance = Instantiate(coin, transform.position, transform.rotation) as Coin;
+            coinInstance.CoinValue = coinValue;
         }
     }
 
@@ -101,6 +104,13 @@ public class EnemyBase : MonoBehaviour
     public virtual float Height()
     {
         return transform.localScale.y;
+    }
+
+    void insertColor()
+    {
+        Color revertColor = new Color(1.0f, 1.0f, 1.0f, 1.0f) - sprite.color;
+        revertColor.a = 1.0f;
+        sprite.color = revertColor;
     }
 
     private void computeColor()
