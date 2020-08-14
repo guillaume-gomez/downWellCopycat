@@ -3,18 +3,17 @@ using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
-    public string[] inventories;
-    public GameObject item;
+    public GameObject[] bonusItems;
 
     void Start()
     {
         Transform itemsParent = GameObject.Find("ItemsParent").transform;
         itemsParent.transform.SetParent(transform);
-        
-        for(int i = 0; i < inventories.Length; ++i)
+
+        for(int i = 0; i < bonusItems.Length; ++i)
         {
             Vector3 position = new Vector3(0f, 0f, 0f);
-            GameObject obj = Instantiate(item, position, transform.rotation);
+            GameObject obj = Instantiate(bonusItems[i], position, transform.rotation);
             obj.transform.SetParent(itemsParent);
         }
     }

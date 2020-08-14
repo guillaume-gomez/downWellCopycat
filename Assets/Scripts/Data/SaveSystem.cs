@@ -40,7 +40,7 @@ public static class SaveSystem
         string path = Application.persistentDataPath + "/characterStat.dat";
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        formatter.Serialize(stream, GameManager.instance.CharacterStats);
+        formatter.Serialize(stream, GameManager.instance.CharacterStats.SavePersistantCharacterStats());
         stream.Close();
     }
 
