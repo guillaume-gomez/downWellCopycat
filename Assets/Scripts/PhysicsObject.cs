@@ -48,6 +48,7 @@ public class PhysicsObject : MonoBehaviour {
         velocity += gravityModifier * Physics2D.gravity * Time.deltaTime;
         velocity.x = targetVelocity.x;
 
+
         grounded = false;
 
         Vector2 deltaPosition = velocity * Time.deltaTime;
@@ -70,8 +71,8 @@ public class PhysicsObject : MonoBehaviour {
         if (distance > minMoveDistance)
         {
             int count = rb2d.Cast(move, contactFilter, hitBuffer, distance + shellRadius);
-            Debug.DrawRay(rb2d.transform.position, move, Color.blue);
-            hitBufferList.Clear ();
+            //Debug.DrawRay(rb2d.transform.position, move, Color.blue);
+            hitBufferList.Clear();
             for (int i = 0; i < count; i++) {
                 hitBufferList.Add(hitBuffer[i]);
             }
