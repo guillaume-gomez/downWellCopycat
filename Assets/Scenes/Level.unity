@@ -391,7 +391,7 @@ PrefabInstance:
     - target: {fileID: 4219679313515386028, guid: 92084eec381a369599ed9443577cbacd,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6157663810924753923, guid: 92084eec381a369599ed9443577cbacd,
         type: 3}
@@ -583,8 +583,7 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 100
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4219679313515386028, guid: 92084eec381a369599ed9443577cbacd, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92084eec381a369599ed9443577cbacd, type: 3}
 --- !u!224 &488929745 stripped
 RectTransform:
@@ -934,12 +933,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1592109422}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1704580949 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1408912869998767710, guid: 7fe0ee718dda2a4bcb011395a2b20498,
-    type: 3}
-  m_PrefabInstance: {fileID: 771290431}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1704580951 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5971180133105629528, guid: 7fe0ee718dda2a4bcb011395a2b20498,
@@ -1029,7 +1022,7 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1704580949}
+      objectReference: {fileID: 1704580951}
     - target: {fileID: 4290748177710672476, guid: f1e0130001f5f10028dee7146404ddd9,
         type: 3}
       propertyPath: m_BackGroundColor.r
