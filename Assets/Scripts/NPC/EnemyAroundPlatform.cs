@@ -6,20 +6,26 @@ public class EnemyAroundPlatform : EnemyBase
 {
   public float speed;
   public Transform[] groundDetections;
+  public Transform horizontalDetection;
   private int layerMastk;
   protected Rigidbody2D rb2d;
 
   private float distance = 1.0f;
   private bool movingRight = true;
+  // if the enemy is locked and turn around himself
+  // no detection is more than  4 rotations (each corner)
+  private int noDectection = 0;
+  private int layerBloc;
 
   protected void OnEnable()
   {
       rb2d = GetComponent<Rigidbody2D>();
+      layerBloc = LayerMask.NameToLayer("bloc");
   }
 
   protected void Start()
   {
-    // check raycast to everything except enemy layer (espacially itself)
+    // check raycast to everything except" enemy layer (espacially itself)
     layerMastk = 1 << LayerMask.NameToLayer("enemy");
     layerMastk = ~layerMastk;
   }
@@ -30,7 +36,7 @@ public class EnemyAroundPlatform : EnemyBase
     {
       RaycastHit2D groundInfo = Physics2D.Raycast(groundDetections[i].position, -transform.up, distance, layerMastk);
       //Debug.DrawLine(groundDetections[i].position, groundDetections[i].position - (transform.up * distance), Color.red,100);
-      if (groundInfo.collider && (groundInfo.collider.tag == "Bloc" || groundInfo.collider.tag == "BreakableBloc") )
+      if (groundInfo.collider && groundInfo.collider.gameObject.layer == layerBloc )
       {
         return true;
       }
@@ -45,27 +51,44 @@ public class EnemyAroundPlatform : EnemyBase
       return;
     }
 
-    Vector3 direction = movingRight ? transform.right : - transform.right;
-    rb2d.position = rb2d.position + (new Vector2(direction.x, direction.y) * speed * Time.deltaTime);
+    RaycastHit2D groundInfof = Physics2D.Raycast(horizontalDetection.position, Vector2.right, 0.05f);
+    if(groundInfof.collider && groundInfof.collider.gameObject.layer == layerBloc)
+    {
+        if(movingRight)
+        {
+            transform.eulerAngles = new Vector3(0.0f, -180f, 0.0f);
+            movingRight = false;
+        } else
+        {
+            transform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
+            movingRight = true;
+        }
+        return;
+    }
+
+    //Vector2 direction = movingRight ? transform.right : - transform.right;
+    //rb2d.position = rb2d.position + direction * speed * Time.deltaTime;
+    transform.Translate(Vector2.right * speed * Time.deltaTime);
     if(!onPlatform())
     {
-        //Debug.Break();
-        transform.eulerAngles += new Vector3(0.0f, 0.0f, -90f);
-        for(int i = 0; i < groundDetections.Length; ++i)
-        {
-          RaycastHit2D groundInfo = Physics2D.Raycast(groundDetections[i].position, -transform.up, distance, layerMastk);
-          Debug.DrawLine(groundDetections[i].position, groundDetections[i].position - (transform.up * distance), Color.red,100);
-          if (groundInfo.collider && (groundInfo.collider.tag == "Bloc" || groundInfo.collider.tag == "BreakableBloc") )
+        noDectection++;
+        if(noDectection < 4) {
+          transform.eulerAngles += new Vector3(0.0f, 0.0f, -90f);
+          // ajust position to collide with the platform
+          for(int i = 0; i < groundDetections.Length; ++i)
           {
-            //return true;
-            transform.position += -groundInfo.distance * transform.up;
-            break;
+            RaycastHit2D groundInfo = Physics2D.Raycast(groundDetections[i].position, -transform.up, distance, layerMastk);
+            Debug.DrawLine(groundDetections[i].position, groundDetections[i].position - (transform.up * distance), Color.red, 5);
+            if (groundInfo.collider && groundInfo.collider.gameObject.layer == layerBloc )
+            {
+              //return trmais j'ai pas decidé d'etre forcéue;
+              transform.position += -groundInfo.distance * transform.up;
+              break;
+            }
           }
         }
-        //Debug.DrawLine(transform.position, transform.position - (transform.up * distance), Color.red,100);
-        //Debug.Break();
     } else {
-      // adjust position due to rotation overlap
+      noDectection = 0;
     }
   }
 

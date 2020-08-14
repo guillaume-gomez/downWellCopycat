@@ -64,17 +64,14 @@ public class EnemyFloating: EnemyBase
         {
             return;
         }
-
         if(Vector2.Distance(rb2d.position, target.position) > maxDistanceVision)
         {
             return;
         }
-
         if(hasLimitY && rb2d.position.y <= target.position.y)
         {
             return;
         }
-
         if(currentWaypoint >= path.vectorPath.Count) //react end of path
         {
             return;

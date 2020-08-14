@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8702954935275471677}
   - component: {fileID: -8593863551264881491}
   - component: {fileID: 1976561081631421076}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bloc7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,6 +59,7 @@ MonoBehaviour:
   - {fileID: 5815458887183426506, guid: bb6a83010a7f74f048305b895a4e013c, type: 3}
   - {fileID: 6892612120836584776, guid: 90a1238fc322e50479ffbc9e3ba25195, type: 3}
   - {fileID: 785508040387150609, guid: de9e388174ae174d5a0575e15d2695ae, type: 3}
+  autoEnable: 1
 --- !u!61 &1976561081631421076
 BoxCollider2D:
   m_ObjectHideFlags: 0

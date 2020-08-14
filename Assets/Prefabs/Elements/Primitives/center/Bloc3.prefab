@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5453188944800300741}
   - component: {fileID: 8547440718996881995}
   - component: {fileID: -3934012191457540105}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bloc3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,6 +79,7 @@ MonoBehaviour:
   - {fileID: 5815458887183426506, guid: bb6a83010a7f74f048305b895a4e013c, type: 3}
   - {fileID: 6892612120836584776, guid: 90a1238fc322e50479ffbc9e3ba25195, type: 3}
   - {fileID: 785508040387150609, guid: de9e388174ae174d5a0575e15d2695ae, type: 3}
+  autoEnable: 1
 --- !u!1001 &2761944195899246985
 PrefabInstance:
   m_ObjectHideFlags: 0

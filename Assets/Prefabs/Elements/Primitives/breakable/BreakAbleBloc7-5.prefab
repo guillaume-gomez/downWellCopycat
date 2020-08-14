@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7311452218609751255}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 5324088576736276115}
   - component: {fileID: 1377809275259106335}
   - component: {fileID: -3713043751170846627}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BreakAbleBloc7-5
   m_TagString: BreakableBloc
   m_Icon: {fileID: 0}
@@ -118,6 +118,7 @@ MonoBehaviour:
   - {fileID: 5815458887183426506, guid: bb6a83010a7f74f048305b895a4e013c, type: 3}
   - {fileID: 6892612120836584776, guid: 90a1238fc322e50479ffbc9e3ba25195, type: 3}
   - {fileID: 785508040387150609, guid: de9e388174ae174d5a0575e15d2695ae, type: 3}
+  autoEnable: 1
 --- !u!1 &5826226312312138286
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,7 +128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7237054394734948878}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Line (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,7 +165,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5892824279237915726}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Line (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,7 +202,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3665708849285336695}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Line (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -238,7 +239,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4856143776696358562}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Line (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -10,6 +10,9 @@ public class TimeManager : MonoBehaviour {
 
   void Update()
   {
+    if(PauseMenu.GameIsPaused || LevelManager.PauseGame) {
+      return;
+    }
     Time.timeScale += (1.0f/ slowdownLength)  *  Time.unscaledDeltaTime;
     Time.timeScale = Mathf.Clamp(Time.timeScale, 0.0f, 1.0f);
     if (Time.timeScale == 1.0f) {
@@ -17,6 +20,7 @@ public class TimeManager : MonoBehaviour {
     }
 
   }
+
 
   public void DoSlowMotion()
   {

@@ -4937,7 +4937,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.05}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -4948,7 +4948,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9, y: 1}
+  m_Size: {x: 1, y: 1.1}
   m_EdgeRadius: 0
 --- !u!114 &844974434235913908
 MonoBehaviour:
@@ -5152,6 +5152,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6098599733823826344, guid: 95fe5959f396d486da8db4f1adf27b9d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7691761357189701268, guid: 95fe5959f396d486da8db4f1adf27b9d,
         type: 3}
       propertyPath: shootPressedTimerRemember
@@ -5159,15 +5164,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95fe5959f396d486da8db4f1adf27b9d, type: 3}
---- !u!1 &2865268177763380828 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2776749320067694118, guid: 95fe5959f396d486da8db4f1adf27b9d,
-    type: 3}
-  m_PrefabInstance: {fileID: 93314389609812090}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5133213238017081897 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5077618155463332435, guid: 95fe5959f396d486da8db4f1adf27b9d,
+    type: 3}
+  m_PrefabInstance: {fileID: 93314389609812090}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2865268177763380828 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2776749320067694118, guid: 95fe5959f396d486da8db4f1adf27b9d,
     type: 3}
   m_PrefabInstance: {fileID: 93314389609812090}
   m_PrefabAsset: {fileID: 0}
