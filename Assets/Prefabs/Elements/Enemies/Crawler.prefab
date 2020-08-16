@@ -17,6 +17,12 @@ PrefabInstance:
       propertyPath: canBeJumped
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5815458887183426485, guid: bb6a83010a7f74f048305b895a4e013c,
+        type: 3}
+      propertyPath: damageParticle
+      value: 
+      objectReference: {fileID: 4354213638307553630, guid: b9abc807bbe076d4fa3002fe1d8d90d3,
+        type: 3}
     - target: {fileID: 5815458887183426504, guid: bb6a83010a7f74f048305b895a4e013c,
         type: 3}
       propertyPath: m_LocalPosition.x
