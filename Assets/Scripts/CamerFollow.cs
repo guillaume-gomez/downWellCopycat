@@ -44,7 +44,10 @@ public class CamerFollow : MonoBehaviour
 
     void OnPlayerHurt(object sender, OnLifeChangedEventArgs e)
     {
-        StartCoroutine(Shake(0.05f, 0.4f));
+        if((int) e.life > 0)
+        {
+            StartCoroutine(Shake(0.05f, 0.4f));
+        }
     }
 
     IEnumerator Shake(float duration, float magnitude)
