@@ -10,9 +10,9 @@ public class EnemyOnPlatform : EnemyBase
   private float distance = 1.0f;
   private bool movingRight = true;
 
-  protected void Awake()
+  protected void Start()
   {
-    base.Awake();
+    base.Start();
     distance = transform.localScale.y;
   }
 

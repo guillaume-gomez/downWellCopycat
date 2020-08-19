@@ -16,14 +16,10 @@ public class Introduction : MonoBehaviour
     private float borderSizeY = 50.0f;
     private int nbBonusAvailable = 4;
 
-    void Awake()
-    {
-        levelScript.CreateBorders();
-        //Invoke("MovePlayer", 0.75f);
-    }
 
     void Start()
     {
+        levelScript.CreateBorders();
         bordersObj = GameObject.Find("Borders");
 
         Transform itemsParent = GameObject.Find("BonusPanel").transform;
