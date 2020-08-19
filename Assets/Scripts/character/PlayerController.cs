@@ -79,14 +79,14 @@ public class PlayerController : PhysicsObject {
         jumpTakeOffSpeed += GameManager.instance.CharacterStats.jumpTakeOffSpeed.Value;
         maxSpeed += GameManager.instance.CharacterStats.maxSpeed.Value;
 
-        shoot = false;
-        spriteRenderer = GetComponent<SpriteRenderer> ();
-        inventory = GetComponent<Inventory>();
-        //animator = GetComponent<Animator> ();
     }
 
     protected new void Start()
     {
+        shoot = false;
+        spriteRenderer = GetComponent<SpriteRenderer> ();
+        inventory = GetComponent<Inventory>();
+        //animator = GetComponent<Animator> ();
         base.Start();
     }
 
@@ -187,7 +187,7 @@ public class PlayerController : PhysicsObject {
         if(!unvisible) {
             if(life >= 1) {
                 // todo add armor
-                Life = life - (int)enemy.Damage;
+                Life = life - enemy.Damage;
             }
 
             if(life <= 0)
@@ -195,7 +195,7 @@ public class PlayerController : PhysicsObject {
                 LevelManager.instance.GameOver();
                 return;
             }
-            StartCoroutine(FlashSprite(GetComponent<SpriteRenderer>(), 0.0f, 1.0f, 1.0f/unvisibleTimer, unvisibleTimer));
+            StartCoroutine(FlashSprite(GetComponent<SpriteRenderer>(), 0.0f, 1.0f, 0.1f, unvisibleTimer));
             StartCoroutine(GetUnvisible(unvisibleTimer, enemy));
             timeManager.DoSlowMotion();
         }

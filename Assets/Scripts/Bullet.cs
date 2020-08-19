@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float damage = 1.0f;
+    public int damage = 1;
 
     void Start()
-    {   
+    {
         transform.Rotate(new Vector3(0,0,90));
     }
 

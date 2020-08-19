@@ -70,7 +70,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public float GetDamage()
+    public int GetDamage()
     {
         if(activeWeapon)
         {

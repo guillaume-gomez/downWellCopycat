@@ -39,7 +39,7 @@ public class SpawnEnemy : MonoBehaviour
         GameObject choosedEnemy = enemies[rand];
         GameObject instance = (GameObject) Instantiate(choosedEnemy, new Vector3(0.0f, 0.0f, 0.0f), transform.rotation);
 
-        float lifeAnDamage =  Random.Range(1, 3);
+        int lifeAnDamage =  Random.Range(1, 3);
         instance.GetComponent<EnemyBase>().Life = lifeAnDamage;
         instance.GetComponent<EnemyBase>().Damage = lifeAnDamage;
 

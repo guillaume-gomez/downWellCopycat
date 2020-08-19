@@ -16,10 +16,10 @@ static class EnemyConstants
         new Vector3( 2.5f, 2.5f, 2.5f ),
     };
 
-    public static readonly float[] Damage = {
-        0.5f,
-        1.0f,
-        2.0f,
+    public static readonly int[] Damage = {
+        1,
+        1,
+        2,
     };
 }
 
@@ -28,9 +28,9 @@ public class EnemyBase : MonoBehaviour
 {
     public Transform target;
     public int enemyScore = 0;
-    public float damage = 0.0f;
+    public int damage = 0;
     [Range(1, 4)]
-    public float life = 1;
+    public int life = 1;
     public Coin coin;
     [Range(1, 20)]
     public int coinValue;
@@ -38,8 +38,10 @@ public class EnemyBase : MonoBehaviour
     protected Vector3 slotPosition;
     private SpriteRenderer sprite;
     public bool canBeJumped = true;
+    public GameObject damageParticle;
+    public Vector3 offsetPositionSpawn;
 
-    public float Life {
+    public int Life {
         get => life;
         set {
             life = value;
@@ -47,7 +49,7 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
-    public float Damage {
+    public int Damage {
         get => damage;
         set {
             damage = value;
@@ -55,11 +57,11 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
-
     protected void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();
     }
+
 
     protected void Start()
     {
@@ -70,7 +72,7 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
-    public void Hurt(float loss)
+    public void Hurt(int loss)
     {
         life = life - loss;
         computeColor();
@@ -83,7 +85,11 @@ public class EnemyBase : MonoBehaviour
             LevelManager.instance.IncCombo();
             Coin coinInstance = Instantiate(coin, transform.position, transform.rotation) as Coin;
             coinInstance.CoinValue = coinValue;
+        } else {
+            invertColor();
+            Invoke("BackToNormalColor", 0.1f);
         }
+        Instantiate(damageParticle, transform.position, transform.rotation);
     }
 
     protected bool CannotMove()
@@ -103,13 +109,13 @@ public class EnemyBase : MonoBehaviour
 
     public virtual float Height()
     {
+        offsetPositionSpawn = offsetPositionSpawn * transform.localScale.y;
         return transform.localScale.y;
     }
 
-    void insertColor()
+    void invertColor()
     {
-        Color revertColor = new Color(1.0f, 1.0f, 1.0f, 1.0f) - sprite.color;
-        revertColor.a = 1.0f;
+        Color revertColor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
         sprite.color = revertColor;
     }
 
@@ -150,6 +156,11 @@ public class EnemyBase : MonoBehaviour
                 transform.localScale = EnemyConstants.Size[2];
             break;
         }
+    }
+
+    void BackToNormalColor()
+    {
+        computeColor();
     }
 
 }

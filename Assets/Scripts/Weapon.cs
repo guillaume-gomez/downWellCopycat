@@ -16,7 +16,7 @@ public class Weapon : MonoBehaviour
     public GameObject bullet;
     public float thrustBulletToPlayer = 10.0f;
     public float shootPressedTimerRemember = 0.3f;
-    public float damage = 1.0f;
+    public int damage = 1;
 
     public event EventHandler<WeaponEventArgs> OnShootHandler;
 
@@ -90,7 +90,7 @@ public class Weapon : MonoBehaviour
         return shootPressedTimer >= shootPressedTimerRemember && currentBullet > 0;
     }
 
-    public float GetDamage()
+    public int GetDamage()
     {
         return damage;
     }
