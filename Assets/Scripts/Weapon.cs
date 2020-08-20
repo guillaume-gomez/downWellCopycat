@@ -48,6 +48,7 @@ public class Weapon : MonoBehaviour
         GameObject bulletObj =  Instantiate(bullet, transform.position, transform.rotation) as GameObject;
         bulletObj.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(- transform.up * bulletSpeed);
         bulletObj.GetComponent<Bullet>().damage = damage;
+        bulletObj.transform.parent = transform;
 
         currentBullet = currentBullet - 1;
         OnShoot(currentBullet);
@@ -62,15 +63,18 @@ public class Weapon : MonoBehaviour
         bulletObj1.transform.Rotate(0.0f, 0.0f, -45.0f, Space.Self);
         bulletObj1.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(- new Vector3(1.0f, 1.0f, 0.0f) * bulletSpeed);
         bulletObj1.GetComponent<Bullet>().damage = damage;
+        bulletObj1.transform.parent = transform;
 
         GameObject bulletObj2 = Instantiate(bullet, transform.position, transform.rotation) as GameObject;
         bulletObj2.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(- transform.up * bulletSpeed);
         bulletObj2.GetComponent<Bullet>().damage = damage;
+        bulletObj2.transform.parent = transform;
 
         GameObject bulletObj3 = Instantiate(bullet, transform.position, transform.rotation) as GameObject;
         bulletObj3.transform.Rotate(0.0f, 0.0f, 45.0f, Space.Self);
         bulletObj3.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(- new Vector3(-1.0f, 1.0f, 0.0f) * bulletSpeed);
         bulletObj3.GetComponent<Bullet>().damage = damage;
+        bulletObj3.transform.parent = transform;
 
 
         currentBullet = currentBullet - 1;

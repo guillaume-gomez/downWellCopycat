@@ -239,10 +239,15 @@ public class PlayerController : PhysicsObject {
         {
             velocity.y = jumpTakeOffSpeed * 0.75f;
             enemy.Hurt(inventory.GetDamage());
+            if(enemy.Life == 0)
+            {
+                inventory.Reload();
+            }
         }
         else if(hurtEnemyDuringJump)
         {
             enemy.Hurt(inventory.GetDamage());
+            inventory.Reload();
         }
         else
         {
