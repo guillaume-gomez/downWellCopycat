@@ -902,7 +902,7 @@ PrefabInstance:
     - target: {fileID: 1408912869998767710, guid: 7fe0ee718dda2a4bcb011395a2b20498,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1408912869998767710, guid: 7fe0ee718dda2a4bcb011395a2b20498,
         type: 3}
@@ -949,6 +949,11 @@ PrefabInstance:
       propertyPath: timeManager
       value: 
       objectReference: {fileID: 1294861413}
+    - target: {fileID: 5971180133105629528, guid: 7fe0ee718dda2a4bcb011395a2b20498,
+        type: 3}
+      propertyPath: unvisibleTimer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6458622433490657454, guid: 7fe0ee718dda2a4bcb011395a2b20498,
         type: 3}
       propertyPath: m_IsActive
@@ -1221,7 +1226,7 @@ Transform:
   - {fileID: 665118499}
   - {fileID: 803917952}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1555411770
 PrefabInstance:
