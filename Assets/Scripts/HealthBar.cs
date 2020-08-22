@@ -12,7 +12,7 @@ public class HealthBar : MonoBehaviour
     public Image fill;
     public PlayerController playerController;
 
-    private void Awake()
+    private void Start()
     {
         playerController.OnLifeChanged += OnPlayerHurt;
         SetMaxHealth(playerController.Life);
