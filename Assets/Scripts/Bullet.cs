@@ -14,7 +14,7 @@ public class Bullet : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Destroy(gameObject);
+       Destroy(gameObject);
         BreakableBloc bloc = collision.collider.GetComponent<BreakableBloc>();
         if(bloc) {
             bloc.DamageBloc(damage);
