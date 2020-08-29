@@ -51,6 +51,11 @@ public class EnemyAroundPlatform : EnemyBase
       return;
     }
 
+    if(!isVisibleOnCamera)
+    {
+      return;
+    }
+
     RaycastHit2D groundInfof = Physics2D.Raycast(horizontalDetection.position, Vector2.right, 0.05f);
     if(groundInfof.collider && groundInfof.collider.gameObject.layer == layerBloc)
     {

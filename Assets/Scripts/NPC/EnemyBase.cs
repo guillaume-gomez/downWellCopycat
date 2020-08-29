@@ -36,6 +36,7 @@ public class EnemyBase : MonoBehaviour
     public int coinValue;
     protected Vector3 slotSize;
     protected Vector3 slotPosition;
+    protected bool isVisibleOnCamera;
     private SpriteRenderer sprite;
     public bool canBeJumped = true;
     public GameObject damageParticle;
@@ -70,6 +71,17 @@ public class EnemyBase : MonoBehaviour
         {
             target = GameObject.FindGameObjectWithTag("Player").transform;
         }
+        isVisibleOnCamera = true;
+    }
+
+    protected void OnBecameVisible()
+    {
+        isVisibleOnCamera = true;
+    }
+
+    protected void OnBecameInvisible()
+    {
+        isVisibleOnCamera = false;
     }
 
     public void Hurt(int loss)

@@ -26,7 +26,17 @@ public class FrogEnemy : EnemyBase
 
     void Update()
     {
-        if(Vector2.Distance(transform.position, target.position) >= maxDistanceVision) {
+        if(CannotMove())
+        {
+            return;
+        }
+
+        if(!isVisibleOnCamera)
+        {
+            return;
+        }
+
+       if(Vector2.Distance(transform.position, target.position) >= maxDistanceVision) {
             return;
         }
 

@@ -24,6 +24,10 @@ public class EnemyAroundPlatformSlots : EnemyBase
     {
       return;
     }
+
+    if(!isVisibleOnCamera) {
+      return;
+    }
     
     enemyObject.transform.position = Vector2.MoveTowards(enemyObject.transform.position, spots[indexSpot].position, speed * Time.deltaTime);
     if(Vector2.Distance(enemyObject.transform.position, spots[indexSpot].position) < 0.1f)

@@ -9,17 +9,25 @@ public class EnemyOnPlatform : EnemyBase
 
   private float distance = 1.0f;
   private bool movingRight = true;
+  private bool isVisibleOnCamera = false;
 
   protected void Start()
   {
+    isVisibleOnCamera = true;
     base.Start();
     distance = transform.localScale.y;
   }
+
+
 
   protected void Update()
   {
     if(CannotMove())
     {
+      return;
+    }
+
+    if(!isVisibleOnCamera) {
       return;
     }
 

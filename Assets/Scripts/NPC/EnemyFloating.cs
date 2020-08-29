@@ -46,6 +46,19 @@ public class EnemyFloating: EnemyBase
 
     void UpdatePath()
     {
+        if(CannotMove())
+        {
+            return;
+        }
+        if(Vector2.Distance(rb2d.position, target.position) > maxDistanceVision)
+        {
+            return;
+        }
+        if(hasLimitY && rb2d.position.y <= target.position.y)
+        {
+            return;
+        }
+
         if(seeker.IsDone())
         {
             seeker.StartPath(rb2d.position, target.position, OnPathComplete);
