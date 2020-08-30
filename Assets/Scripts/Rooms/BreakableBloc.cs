@@ -26,7 +26,8 @@ public class BreakableBloc : MonoBehaviour
         hp = hp - loss;
         if(hp <= 0)
         {
-            gameObject.SetActive(false);
+            Destroy(gameObject);
+            //gameObject.SetActive(false);
         }
     }
 }
