@@ -71,18 +71,12 @@ public class PlayerController : PhysicsObject {
         }
     }
 
-    // Use this for initialization
-    void Awake ()
+    protected new void Start()
     {
-        // set up improvments
         Life = (int) GameManager.instance.CharacterStats.life.Value;
         jumpTakeOffSpeed += GameManager.instance.CharacterStats.jumpTakeOffSpeed.Value;
         maxSpeed += GameManager.instance.CharacterStats.maxSpeed.Value;
-
-    }
-
-    protected new void Start()
-    {
+        
         shoot = false;
         spriteRenderer = GetComponent<SpriteRenderer> ();
         inventory = GetComponent<Inventory>();
