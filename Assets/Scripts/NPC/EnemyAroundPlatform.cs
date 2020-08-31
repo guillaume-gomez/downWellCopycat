@@ -71,9 +71,7 @@ public class EnemyAroundPlatform : EnemyBase
         return;
     }
 
-    //Vector2 direction = movingRight ? transform.right : - transform.right;
-    //rb2d.position = rb2d.position + direction * speed * Time.deltaTime;
-    transform.Translate(Vector2.right * speed * Time.deltaTime);
+    rb2d.position = rb2d.position + (Vector2) transform.right * speed * Time.deltaTime;
     if(!onPlatform())
     {
         noDectection++;
