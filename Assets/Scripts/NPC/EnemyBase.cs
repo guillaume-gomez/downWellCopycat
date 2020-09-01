@@ -95,8 +95,11 @@ public class EnemyBase : MonoBehaviour
             LevelManager.instance.AddScore(enemyScore);
             LevelManager.instance.IncEnemyKill();
             LevelManager.instance.IncCombo();
-            Coin coinInstance = Instantiate(coin, transform.position, transform.rotation) as Coin;
-            coinInstance.CoinValue = coinValue;
+            if(coinValue > 0)
+            {
+                Coin coinInstance = Instantiate(coin, transform.position, transform.rotation) as Coin;
+                coinInstance.CoinValue = coinValue;
+            }
         } else {
             invertColor();
             Invoke("BackToNormalColor", 0.1f);
