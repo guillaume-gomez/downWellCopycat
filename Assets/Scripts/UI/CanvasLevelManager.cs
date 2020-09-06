@@ -7,7 +7,7 @@ public class CanvasLevelManager : MonoBehaviour
     public GameObject endLevelPanel;
     public GameObject gameOverPanel;
 
-    void Awake()
+    void Start()
     {
         if(LevelManager.instance)
         {
