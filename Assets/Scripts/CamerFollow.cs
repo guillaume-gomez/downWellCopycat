@@ -17,7 +17,6 @@ public class CamerFollow : MonoBehaviour
             LevelManager.instance.OnWin += OnUnFollow;
         }
         player.OnLifeChanged += OnPlayerHurt;
-
     }
 
     void Update()
@@ -44,9 +43,9 @@ public class CamerFollow : MonoBehaviour
 
     void OnPlayerHurt(object sender, OnLifeChangedEventArgs e)
     {
-        if((int) e.life > 0)
+        if((int) e.life > 0 && (int) e.diff < 0)
         {
-            StartCoroutine(Shake(0.05f, 0.4f));
+            StartCoroutine(Shake(1f, 0.2f));
         }
     }
 
@@ -66,6 +65,7 @@ public class CamerFollow : MonoBehaviour
         }
         transform.localPosition = originalPos;
     }
+
 
 
 }

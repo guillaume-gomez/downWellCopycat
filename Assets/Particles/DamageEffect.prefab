@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8324818816700972518}
   - component: {fileID: 458682091917364402}
   m_Layer: 11
-  m_Name: Particle System
+  m_Name: DamageEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -284,7 +284,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.15
+      scalar: 0.5
       minScalar: 1
       maxCurve:
         serializedVersion: 2

@@ -69,14 +69,20 @@ public class LevelManager : MonoBehaviour
         Debug.Log("GameOver");
         Time.timeScale = 0.0f;
         PauseGame = true;
-        OnLose(this, EventArgs.Empty);
+        if(OnLose != null)
+        {
+            OnLose(this, EventArgs.Empty);
+        }
         StartCoroutine(GoBackMenu());
     }
 
     public void WinLevel()
     {
         Debug.Log("WinLevel");
-        OnWin(this, EventArgs.Empty);
+        if(OnWin != null)
+        {
+            OnWin(this, EventArgs.Empty);
+        }
         GameManager.instance.LevelSystem.level += 1;
         GameManager.instance.Save();
         Invoke("LoadIntroScene", 2.0f);
