@@ -6,6 +6,7 @@ using UnityEngine;
 public class OnLifeChangedEventArgs : EventArgs
 {
     public int life { get; set; }
+    public int diff { get; set;}
 }
 
 public class PlayerController : PhysicsObject {
@@ -60,14 +61,14 @@ public class PlayerController : PhysicsObject {
     public int Life {
         get => life;
         set {
-            life = value;
-
             OnLifeChangedEventArgs args = new OnLifeChangedEventArgs();
             args.life = value;
+            args.diff = value - life;
             if(OnLifeChanged != null)
             {
                 OnLifeChanged(this, args);
             }
+            life = value;
         }
     }
 
@@ -181,7 +182,7 @@ public class PlayerController : PhysicsObject {
         if(!unvisible) {
             if(life >= 1) {
                 // todo add armor
-                Life = life - enemy.Damage;
+                Life = Math.Max(life - enemy.Damage, 0);
             }
 
             if(life <= 0)
