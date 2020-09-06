@@ -100,11 +100,11 @@ public class EnemyBase : MonoBehaviour
                 Coin coinInstance = Instantiate(coin, transform.position, transform.rotation) as Coin;
                 coinInstance.CoinValue = coinValue;
             }
+            Instantiate(damageParticle, transform.position, transform.rotation);
         } else {
             invertColor();
             Invoke("BackToNormalColor", 0.1f);
         }
-        Instantiate(damageParticle, transform.position, transform.rotation);
     }
 
     protected bool CannotMove()
