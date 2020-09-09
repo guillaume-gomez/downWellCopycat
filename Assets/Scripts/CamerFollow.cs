@@ -51,19 +51,19 @@ public class CamerFollow : MonoBehaviour
 
     IEnumerator Shake(float duration, float magnitude)
     {
-        Vector3 originalPos = transform.localPosition;
+        float offset = 2.5f;
         float elapsed = 0.0f;
 
         while(elapsed < duration)
         {
-            float x = Random.Range(-1.0f, 1.0f) * magnitude;
-            float y = Random.Range(-1.0f, 1.0f) * magnitude;
+            float x = Random.Range(-offset, offset) * magnitude;
+            float y = Random.Range(-offset, offset) * magnitude;
 
-            transform.localPosition = new Vector3(originalPos.x + x, originalPos.y + y, originalPos.z);
+            transform.localPosition = new Vector3(transform.position.x + x, transform.position.y + y, transform.position.z);
             elapsed += Time.deltaTime;
             yield return null;
         }
-        transform.localPosition = originalPos;
+        transform.localPosition = transform.position;
     }
 
 
