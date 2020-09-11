@@ -64,7 +64,6 @@ public class Introduction : MonoBehaviour
 
     IEnumerator LoadAsynchronously (int sceneIndex)
     {
-        Debug.Log("routine");
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
         return null;
     }
