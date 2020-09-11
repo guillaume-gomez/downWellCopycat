@@ -174,6 +174,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.8396226, g: 0.06732824, b: 0.06732824, a: 0}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -195,6 +196,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 181873972}
   m_CullTransparentMesh: 0
+--- !u!1 &823460704 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7804285520829444741, guid: fa6460a48ca7b11f3a172cd2cc9d4acb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1983434417}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1032407707
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -275,7 +282,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1983434417}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 823460704}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc0083d9e84c7bb0fa5bbe3f5bf6f153, type: 3}
@@ -470,6 +477,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -750,12 +758,12 @@ PrefabInstance:
     - target: {fileID: 4290748177710672547, guid: f1e0130001f5f10028dee7146404ddd9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 4290748177710672547, guid: f1e0130001f5f10028dee7146404ddd9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 4290748177710672547, guid: f1e0130001f5f10028dee7146404ddd9,
         type: 3}
@@ -829,12 +837,12 @@ PrefabInstance:
     - target: {fileID: 5713276984163739319, guid: fa6460a48ca7b11f3a172cd2cc9d4acb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 5713276984163739319, guid: fa6460a48ca7b11f3a172cd2cc9d4acb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -10
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 5713276984163739319, guid: fa6460a48ca7b11f3a172cd2cc9d4acb,
         type: 3}
@@ -880,6 +888,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6684702972938687202, guid: fa6460a48ca7b11f3a172cd2cc9d4acb,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7414638653958023334, guid: fa6460a48ca7b11f3a172cd2cc9d4acb,
         type: 3}
@@ -952,6 +965,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.35141778, g: 1, b: 0, a: 0}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1063,12 +1077,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bloc: {fileID: 8257940167194319867, guid: 6ff5d654ed63baa24a33ee875ea7a0dd, type: 3}
-  rooms:
-  - {fileID: 6672203148154926776, guid: a9be71a95f6ef7f58b01fbefa194d4c7, type: 3}
+  rooms: []
   endRoom: {fileID: 0}
   caveRoom: {fileID: 0}
   spawnObject: {fileID: 0}
-  xSize: 40
-  ySize: 200
-  xOrigin: -20
+  player: {fileID: 823460704}
+  roomWidth: 36
+  depthLevel: 100
+  xOrigin: 0
   yOrigin: 0

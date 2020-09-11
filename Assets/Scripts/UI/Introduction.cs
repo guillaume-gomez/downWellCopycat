@@ -20,6 +20,7 @@ public class Introduction : MonoBehaviour
     void Start()
     {
         levelScript.CreateBorders();
+        levelScript.SetPlayerInCenter();
         bordersObj = GameObject.Find("Borders");
 
         Transform itemsParent = GameObject.Find("BonusPanel").transform;

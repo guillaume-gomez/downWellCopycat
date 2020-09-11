@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -589,6 +589,26 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4219679313515386028, guid: 92084eec381a369599ed9443577cbacd,
+        type: 3}
+      propertyPath: roomWidth
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 4219679313515386028, guid: 92084eec381a369599ed9443577cbacd,
+        type: 3}
+      propertyPath: depthLevel
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 4219679313515386028, guid: 92084eec381a369599ed9443577cbacd,
+        type: 3}
+      propertyPath: yOrigin
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4219679313515386028, guid: 92084eec381a369599ed9443577cbacd,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 771290432}
     - target: {fileID: 5935771211012150401, guid: 92084eec381a369599ed9443577cbacd,
         type: 3}
       propertyPath: m_Material
@@ -1039,7 +1059,7 @@ PrefabInstance:
     - target: {fileID: 1408912869998767710, guid: 7fe0ee718dda2a4bcb011395a2b20498,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 1408912869998767710, guid: 7fe0ee718dda2a4bcb011395a2b20498,
         type: 3}
@@ -1158,6 +1178,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fe0ee718dda2a4bcb011395a2b20498, type: 3}
+--- !u!1 &771290432 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3497803476610415212, guid: 7fe0ee718dda2a4bcb011395a2b20498,
+    type: 3}
+  m_PrefabInstance: {fileID: 771290431}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &803917952 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7044284798602877023, guid: 73be102c8dc364f67a39827e7342fd6e,
@@ -1421,7 +1447,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 771290431}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 771290432}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f80869b27c633d7d8b37bb9ed52578e, type: 3}
@@ -1647,7 +1673,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 771290431}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 771290432}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc0083d9e84c7bb0fa5bbe3f5bf6f153, type: 3}
