@@ -15,7 +15,7 @@ public class Pickup : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            inventory.SetWeapon(gameObject);
+            inventory.ReplaceWeapon(gameObject);
         }
     }
 }
