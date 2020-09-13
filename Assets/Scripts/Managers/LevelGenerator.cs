@@ -10,7 +10,6 @@ public class LevelGenerator : MonoBehaviour
     public GameObject[] rooms;
     public GameObject endRoom;
     public GameObject caveRoom;
-    public GameObject spawnObject;
     public GameObject player;
 
     // size of the level
@@ -28,7 +27,7 @@ public class LevelGenerator : MonoBehaviour
        roomHeight = 20;
        SetPlayerInCenter();
        CreateBorders();
-       SpawnObjects();
+       SpawnRooms();
     }
 
     public void SetPlayerInCenter()
@@ -62,12 +61,12 @@ public class LevelGenerator : MonoBehaviour
         // }
     }
 
-    private void SpawnObjects() {
+    private void SpawnRooms() {
         // cave gen
         float nbCaves = Random.Range(0.0f, 2.0f);
         int nbElapsedcave = (int) nbCaves;
 
-        Transform spwawnHolder = new GameObject("SpawnObjects").transform;
+        Transform spwawnHolder = new GameObject("Rooms").transform;
         spwawnHolder.transform.SetParent(transform);
         Vector3 position = new Vector3(0f, 0f, 0f);
 
