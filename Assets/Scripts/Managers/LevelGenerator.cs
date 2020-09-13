@@ -76,7 +76,7 @@ public class LevelGenerator : MonoBehaviour
             float percent = y / totalOfThelevel;
 
             GameObject obj = null;
-            position.Set(xOrigin + roomWidth/2 , -(y + roomHeight/2), 0.0f);
+            position.Set(xOrigin, -(y + yOrigin), 0.0f);
 
             if(nbElapsedcave > 0 && percent >= 0.4 && percent <= 0.8 && Random.Range(0.0f,1.0f) >= 0.5f ) // cave room
             {
@@ -89,7 +89,7 @@ public class LevelGenerator : MonoBehaviour
             obj.transform.SetParent(spwawnHolder);
         }
         //end room
-        position.Set(xOrigin + roomWidth/2 , -(totalOfThelevel + roomHeight/2), 0.0f);
+        position.Set(xOrigin, -(totalOfThelevel + yOrigin), 0.0f);
         GameObject endRoomObj = Instantiate(endRoom, position, transform.rotation);
         endRoomObj.transform.SetParent(spwawnHolder);
     }
