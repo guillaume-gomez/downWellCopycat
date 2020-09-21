@@ -185,7 +185,7 @@ MonoBehaviour:
   - {fileID: 263025891014417192, guid: 4989cc2130623cb4eaf6d421b14ac7cb, type: 3}
   - {fileID: 4356527139320456182, guid: b3877ed4e16b6b04390c249187055461, type: 3}
   - {fileID: 6965209218920680520, guid: 0eb7b35882cc22d41a9e71d42d90a322, type: 3}
-  percentageCenter: 1
+  percentageCenter: 0.8
   percentageSide: 0.42
 --- !u!1 &7454608486704330001
 GameObject:
