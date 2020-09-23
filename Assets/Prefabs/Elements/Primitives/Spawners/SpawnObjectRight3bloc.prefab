@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 825384268426082244, guid: 0917842f9978f0eee8c60ffa085fa507,
+        type: 3}
+      propertyPath: objects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 825384268426082245, guid: 0917842f9978f0eee8c60ffa085fa507,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -65,7 +70,7 @@ PrefabInstance:
     - target: {fileID: 825384268426082247, guid: 0917842f9978f0eee8c60ffa085fa507,
         type: 3}
       propertyPath: m_Name
-      value: SpawnObjectRight
+      value: SpawnObjectRight3bloc
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0917842f9978f0eee8c60ffa085fa507, type: 3}

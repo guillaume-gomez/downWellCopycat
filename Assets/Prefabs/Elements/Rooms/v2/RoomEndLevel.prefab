@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ddbdb76f8a5e364d9c73996709aadd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lefts: []
   leftsEnemy: []
-  rights: []
   rightsEnemy: []
-  spawnerCenters: []
+  spawnersCenter: []
+  spawnersLeft: []
+  spawnersRight: []
   percentageCenter: 1
   percentageSide: 1
   centers:
@@ -112,7 +112,7 @@ PrefabInstance:
     - target: {fileID: 3768702371771825511, guid: a9be71a95f6ef7f58b01fbefa194d4c7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.5
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 3768702371771825511, guid: a9be71a95f6ef7f58b01fbefa194d4c7,
         type: 3}
