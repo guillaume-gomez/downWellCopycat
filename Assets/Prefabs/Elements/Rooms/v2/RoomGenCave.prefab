@@ -58,7 +58,7 @@ PrefabInstance:
     - target: {fileID: 1252152942740877898, guid: a9be71a95f6ef7f58b01fbefa194d4c7,
         type: 3}
       propertyPath: percentageSide
-      value: 0.263
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1313001317186485930, guid: a9be71a95f6ef7f58b01fbefa194d4c7,
         type: 3}

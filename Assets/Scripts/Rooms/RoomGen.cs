@@ -76,6 +76,34 @@ public class RoomGen : MonoBehaviour
         }
     }
 
+    protected void SplitInChunkXY(int xLength, int yLength, GameObject[]typeOfSpawn)
+    {
+        int x = 0;
+        int y = 0;
+        while(x < xLength &&  y < yLength)
+        {
+            //while()
+                int newChunkX = PopSpwaner();
+                int newChunkY = PopSpwaner();
+                if(x + newChunkX > xLength) {
+                    // spawner has the max length possible
+                    newChunkX = xLength - x;
+                    x = 0;
+                }
+
+                if(y + newChunkY > yLength) {
+                    // spawner has the max length possible
+                    newChunkY = yLength - y;
+                }
+
+                x += newChunkX;
+                y += newChunkY;
+                float xPosition = offsetLeftAndRight + (x * widthSubRoom) + (newChunkX * widthSubRoom) / 2.0f;
+                float yPosition = (y * heightSubRoom) + (newChunkY * heightSubRoom) / 2.0f;
+                CreateSpwaner(xPosition, yPosition, typeOfSpawn, x + y * yLength);
+        }
+    }
+
     protected void CreateSpwaner(float x, float y, GameObject[] typeOfSpawn, int index)
     {
         Vector3 position = new Vector3(x, -y, transform.position.z);
