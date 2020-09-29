@@ -32,10 +32,11 @@ public class RoomGen : MonoBehaviour
         SplitInChunkY(4, 0, spawnersLeft);
         SplitInChunkY(4, 36, spawnersRight);
 
-        for(float y = heightSubRoom/2.0f; y < height; y += heightSubRoom)
+/*        for(float y = heightSubRoom/2.0f; y < height; y += heightSubRoom)
         {
             SplitInChunkX(4, y);
-        }
+        }*/
+       SplitInChunkXY(4, 4);
     }
 
     protected void SplitInChunkX(int length, float y)
@@ -43,7 +44,7 @@ public class RoomGen : MonoBehaviour
         int i = 0;
         while(i < length)
         {
-            int newChunk = PopSpwaner();
+            int newChunk = PopSpwanerX();
             if(i + newChunk > length) {
                 // spawner has the max length possible
                 newChunk = length - i;
@@ -62,7 +63,7 @@ public class RoomGen : MonoBehaviour
         int i = 0;
         while(i < length)
         {
-            int newChunk = PopSpwaner();
+            int newChunk = PopSpwanerX();
             if(i + newChunk > length) {
                 // spawner has the max length possible
                 newChunk = length - i;
@@ -76,31 +77,31 @@ public class RoomGen : MonoBehaviour
         }
     }
 
-    protected void SplitInChunkXY(int xLength, int yLength, GameObject[]typeOfSpawn)
+    protected void SplitInChunkXY(int xLength, int yLength)
     {
-        int x = 0;
         int y = 0;
-        while(x < xLength &&  y < yLength)
+        while(y < yLength)
         {
-            //while()
-                int newChunkX = PopSpwaner();
-                int newChunkY = PopSpwaner();
+            int x = 0;
+            int newChunkY = PopSpwanerY();
+            if(y + newChunkY > yLength) {
+                // spawner has the max length possible
+                newChunkY = yLength - y;
+            }
+
+            while(x < xLength)
+            {
+                int newChunkX = PopSpwanerX();
                 if(x + newChunkX > xLength) {
                     // spawner has the max length possible
                     newChunkX = xLength - x;
-                    x = 0;
                 }
-
-                if(y + newChunkY > yLength) {
-                    // spawner has the max length possible
-                    newChunkY = yLength - y;
-                }
-
-                x += newChunkX;
-                y += newChunkY;
                 float xPosition = offsetLeftAndRight + (x * widthSubRoom) + (newChunkX * widthSubRoom) / 2.0f;
                 float yPosition = (y * heightSubRoom) + (newChunkY * heightSubRoom) / 2.0f;
-                CreateSpwaner(xPosition, yPosition, typeOfSpawn, x + y * yLength);
+                CreateSpwaner(xPosition, yPosition, spawnersCenter, convertSpawnerToIndex(x, y));
+                x += newChunkX;
+            }
+            y += newChunkY;
         }
     }
 
@@ -113,7 +114,7 @@ public class RoomGen : MonoBehaviour
         obj.GetComponent<SpawnObject>().Init();
     }
 
-    protected int PopSpwaner()
+    protected int PopSpwanerX()
     {
         float spwanerSizePercentage = Random.Range(0.0f, 1.0f);
         if(spwanerSizePercentage <= 0.70f)
@@ -128,6 +129,64 @@ public class RoomGen : MonoBehaviour
         } else
         {
             return 4;
+        }
+    }
+
+    protected int PopSpwanerY()
+    {
+        float spwanerSizePercentage = Random.Range(0.0f, 1.0f);
+        if(spwanerSizePercentage <= 0.40f)
+        {
+            return 1;
+        } else if(spwanerSizePercentage <= 0.90f)
+        {
+            return 2;
+        } else if(spwanerSizePercentage <= 0.10f)
+        {
+            return 3;
+        } else {
+            return 1;
+        }
+    }
+
+    protected int convertSpawnerToIndex(int x, int y)
+    {
+        if(x == 1 && y == 1)
+        {
+            return 0;
+        } else if(x == 2 && y == 1)
+        {
+            return 1;
+        } else if(x == 3 && y == 1)
+        {
+            return 2;
+        }else if(x == 4 && y == 1)
+        {
+            return 3;
+        }else if(x == 1 && y == 2)
+        {
+            return 4;
+        }else if(x == 2 && y == 2)
+        {
+            return 5;
+        } else if(x == 3 && y == 2)
+        {
+            return 6;
+        }else if(x == 4 && y == 2)
+        {
+            return 7;
+        }else if(x == 1 && y == 3)
+        {
+            return 8;
+        }else if(x == 2 && y == 3)
+        {
+            return 9;
+        }else if(x == 3 && y == 3)
+        {
+            return 10;
+        } else
+        {
+            return 0;
         }
     }
 }
