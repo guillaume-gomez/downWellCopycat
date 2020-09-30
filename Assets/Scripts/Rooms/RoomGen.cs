@@ -82,13 +82,13 @@ public class RoomGen : MonoBehaviour
         int y = 0;
         while(y < yLength)
         {
-            int x = 0;
             int newChunkY = PopSpwanerY();
             if(y + newChunkY > yLength) {
                 // spawner has the max length possible
                 newChunkY = yLength - y;
             }
 
+            int x = 0;
             while(x < xLength)
             {
                 int newChunkX = PopSpwanerX();
@@ -98,7 +98,10 @@ public class RoomGen : MonoBehaviour
                 }
                 float xPosition = offsetLeftAndRight + (x * widthSubRoom) + (newChunkX * widthSubRoom) / 2.0f;
                 float yPosition = (y * heightSubRoom) + (newChunkY * heightSubRoom) / 2.0f;
-                CreateSpwaner(xPosition, yPosition, spawnersCenter, convertSpawnerToIndex(x, y));
+                if(Random.Range(0.0f, 1.0f) <= percentageCenter)
+                {
+                    CreateSpwaner(xPosition, yPosition, spawnersCenter, convertSpawnerToIndex(newChunkX, newChunkY));
+                }
                 x += newChunkX;
             }
             y += newChunkY;

@@ -12,6 +12,12 @@ PrefabInstance:
       propertyPath: objects.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 825384268426082244, guid: 0917842f9978f0eee8c60ffa085fa507,
+        type: 3}
+      propertyPath: objects.Array.data[0]
+      value: 
+      objectReference: {fileID: 2029547071805389843, guid: 51fc5388e121215c8a611efe26244c5f,
+        type: 3}
     - target: {fileID: 825384268426082245, guid: 0917842f9978f0eee8c60ffa085fa507,
         type: 3}
       propertyPath: m_LocalPosition.x
