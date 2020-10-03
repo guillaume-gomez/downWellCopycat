@@ -178,16 +178,11 @@ MonoBehaviour:
   - {fileID: 3709194631672851069, guid: 791571afb7838a941b4fbdb9262a8eec, type: 3}
   - {fileID: 1485192249525272430, guid: fbafffc233a677a49868a2cae8a2dfd2, type: 3}
   - {fileID: 4384253436530534548, guid: 3e45979d8c49096469c084c24d12478e, type: 3}
-  spawnersLeft:
+  spawnersSide:
   - {fileID: 2630195219748707742, guid: 6b0b6983c1bbdfc3696de285a566f1a2, type: 3}
   - {fileID: 8764212621411657449, guid: f6d28473bbd4e82489316600d1d8d6de, type: 3}
   - {fileID: 7970974965886189521, guid: 897159189584c834b92c31202d54531c, type: 3}
   - {fileID: 4694317957348758930, guid: c57e8d960f311aa46b5cce2d1bd82f29, type: 3}
-  spawnersRight:
-  - {fileID: 825384268426082247, guid: 0917842f9978f0eee8c60ffa085fa507, type: 3}
-  - {fileID: 5021290123736464032, guid: 085d60915b33cf1458774cd5762ae6d4, type: 3}
-  - {fileID: 5984490456841115863, guid: b6efb74c819304a44b2d4887a21cf81a, type: 3}
-  - {fileID: 7580701876827272444, guid: 4a91592fa0d73f749b2ebc15a6719e07, type: 3}
   percentageCenter: 1
   percentageSide: 1
 --- !u!1 &7454608486704330001

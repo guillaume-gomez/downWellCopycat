@@ -7,8 +7,7 @@ public class RoomGen : MonoBehaviour
     public SpawnEnemy[] leftsEnemy;
     public SpawnEnemy[] rightsEnemy;
     public GameObject[] spawnersCenter;
-    public GameObject[] spawnersLeft;
-    public GameObject[] spawnersRight;
+    public GameObject[] spawnersSide;
     [Range(0,1.0f)]
     public float percentageCenter = 1.0f;
     [Range(0,1.0f)]
@@ -29,36 +28,17 @@ public class RoomGen : MonoBehaviour
         width = 36;
         height = 20;
 
-        SplitInChunkY(4, 0, spawnersLeft);
-        SplitInChunkY(4, 36, spawnersRight);
+        SplitInChunkY(4, 0, spawnersSide, true);
+        SplitInChunkY(4, 36, spawnersSide, false);
 
-/*        for(float y = heightSubRoom/2.0f; y < height; y += heightSubRoom)
+        /*for(float y = heightSubRoom/2.0f; y < height; y += heightSubRoom)
         {
             SplitInChunkX(4, y);
         }*/
        SplitInChunkXY(4, 4);
     }
 
-    protected void SplitInChunkX(int length, float y)
-    {
-        int i = 0;
-        while(i < length)
-        {
-            int newChunk = PopSpwanerX();
-            if(i + newChunk > length) {
-                // spawner has the max length possible
-                newChunk = length - i;
-            }
-            if(Random.Range(0.0f, 1.0f) <= percentageCenter)
-            {
-                float x = offsetLeftAndRight + (i * widthSubRoom) + (newChunk * widthSubRoom) / 2.0f;
-                CreateSpwaner(x, y, spawnersCenter, newChunk - 1);
-            }
-            i = i + newChunk;
-        }
-    }
-
-    protected void SplitInChunkY(int length, float x, GameObject[] typeOfSpawn)
+    protected void SplitInChunkY(int length, float x, GameObject[] typeOfSpawn, bool isLeft)
     {
         int i = 0;
         while(i < length)
@@ -71,7 +51,9 @@ public class RoomGen : MonoBehaviour
             if(Random.Range(0.0f, 1.0f) <= percentageSide)
             {
                 float y = (i * heightSubRoom) + (newChunk * heightSubRoom) / 2.0f;
-                CreateSpwaner(x, y, typeOfSpawn, newChunk - 1);
+                GameObject obj = CreateSpwaner(x, y, typeOfSpawn, newChunk - 1);
+                obj.GetComponent<SpawnObject>().isLeft = isLeft;
+                obj.GetComponent<SpawnObject>().Init();
             }
             i = i + newChunk;
         }
@@ -100,7 +82,8 @@ public class RoomGen : MonoBehaviour
                 float yPosition = (y * heightSubRoom) + (newChunkY * heightSubRoom) / 2.0f;
                 if(Random.Range(0.0f, 1.0f) <= percentageCenter)
                 {
-                    CreateSpwaner(xPosition, yPosition, spawnersCenter, convertSpawnerToIndex(newChunkX, newChunkY));
+                    GameObject obj = CreateSpwaner(xPosition, yPosition, spawnersCenter, convertSpawnerToIndex(newChunkX, newChunkY));
+                    obj.GetComponent<SpawnObject>().Init();
                 }
                 x += newChunkX;
             }
@@ -108,13 +91,13 @@ public class RoomGen : MonoBehaviour
         }
     }
 
-    protected void CreateSpwaner(float x, float y, GameObject[] typeOfSpawn, int index)
+    protected GameObject CreateSpwaner(float x, float y, GameObject[] typeOfSpawn, int index)
     {
         Vector3 position = new Vector3(x, -y, transform.position.z);
         GameObject obj = Instantiate(typeOfSpawn[index], new Vector3(0,0,0), transform.rotation);
         obj.transform.parent = transform;
         obj.transform.localPosition = position;
-        obj.GetComponent<SpawnObject>().Init();
+        return obj;
     }
 
     protected int PopSpwanerX()
@@ -190,6 +173,27 @@ public class RoomGen : MonoBehaviour
         } else
         {
             return 0;
+        }
+    }
+
+    // unused
+    protected void SplitInChunkX(int length, float y)
+    {
+        int i = 0;
+        while(i < length)
+        {
+            int newChunk = PopSpwanerX();
+            if(i + newChunk > length) {
+                // spawner has the max length possible
+                newChunk = length - i;
+            }
+            if(Random.Range(0.0f, 1.0f) <= percentageCenter)
+            {
+                float x = offsetLeftAndRight + (i * widthSubRoom) + (newChunk * widthSubRoom) / 2.0f;
+                GameObject obj = CreateSpwaner(x, y, spawnersCenter, newChunk - 1);
+                obj.GetComponent<SpawnObject>().Init();
+            }
+            i = i + newChunk;
         }
     }
 }

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &5340921584211206735
+--- !u!1001 &6710618996144733047
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -65,30 +65,53 @@ PrefabInstance:
     - target: {fileID: 2630195219748707741, guid: 6b0b6983c1bbdfc3696de285a566f1a2,
         type: 3}
       propertyPath: objects.Array.size
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2630195219748707741, guid: 6b0b6983c1bbdfc3696de285a566f1a2,
         type: 3}
       propertyPath: objects.Array.data[0]
       value: 
-      objectReference: {fileID: 4769549121931352647, guid: aea9e0c33d72d55609e52f2135f27b69,
+      objectReference: {fileID: 8339190253927060812, guid: 385da0c782a4314a5be0cb906e80e009,
         type: 3}
     - target: {fileID: 2630195219748707741, guid: 6b0b6983c1bbdfc3696de285a566f1a2,
         type: 3}
       propertyPath: objects.Array.data[1]
       value: 
-      objectReference: {fileID: 7166870141059496255, guid: 96b073becf9edaaacafca324ee0d8402,
+      objectReference: {fileID: 8517026766425562637, guid: 5aa1b857fca84a898a31bc017d33191a,
         type: 3}
     - target: {fileID: 2630195219748707741, guid: 6b0b6983c1bbdfc3696de285a566f1a2,
         type: 3}
       propertyPath: objects.Array.data[2]
       value: 
-      objectReference: {fileID: 1228967598094297789, guid: 07d8bdb203887bb4bbd7dd121c698b17,
+      objectReference: {fileID: 1324953959927084995, guid: 4b4d6307255dfab308033f49c86c9cea,
         type: 3}
+    - target: {fileID: 2630195219748707741, guid: 6b0b6983c1bbdfc3696de285a566f1a2,
+        type: 3}
+      propertyPath: objects.Array.data[3]
+      value: 
+      objectReference: {fileID: 4979507878196493097, guid: 1aaa7545f8a524995bacfe1880a747ea,
+        type: 3}
+    - target: {fileID: 2630195219748707741, guid: 6b0b6983c1bbdfc3696de285a566f1a2,
+        type: 3}
+      propertyPath: objects.Array.data[4]
+      value: 
+      objectReference: {fileID: 2256019328340463388, guid: e6443bbf4b555d381b9ab59919d5409d,
+        type: 3}
+    - target: {fileID: 2630195219748707741, guid: 6b0b6983c1bbdfc3696de285a566f1a2,
+        type: 3}
+      propertyPath: objects.Array.data[5]
+      value: 
+      objectReference: {fileID: 1087592198854485536, guid: 6981711d15eac986dbec781d3a8dc692,
+        type: 3}
+    - target: {fileID: 2630195219748707741, guid: 6b0b6983c1bbdfc3696de285a566f1a2,
+        type: 3}
+      propertyPath: isLeft
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2630195219748707742, guid: 6b0b6983c1bbdfc3696de285a566f1a2,
         type: 3}
       propertyPath: m_Name
-      value: SpawnObjectLeft3bloc
+      value: SpawnObjectSide2bloc
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b0b6983c1bbdfc3696de285a566f1a2, type: 3}
