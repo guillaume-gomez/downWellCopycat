@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2177483132435648640}
   - component: {fileID: 8827672243066870407}
   m_Layer: 8
-  m_Name: BreakAbleBloc3-2
+  m_Name: 3-2
   m_TagString: BreakableBloc
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
