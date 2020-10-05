@@ -4,21 +4,30 @@ using UnityEngine;
 
 public class SpawnerTest : MonoBehaviour
 {
-    public GameObject spawner;
-    public string[] foldersToInspect;
+    public SpawnObject spawner;
+    public GameObject[] items;
+
+    private int xOffsetMax = 30;
+    private int yOffsetMax =  20;
+    private int nbItems = 10;
 
     void Start()
     {
-      int i = 0;
+      int x = 0;
       int y = 0;
-      foreach(string folder in foldersToInspect)
+      foreach(GameObject item in items)
       {
-        Object[] blocs = Resources.LoadAll("" , typeof(GameObject));
-        Debug.Log(blocs.Length);
-        foreach(Object bloc in blocs)
-        {
-          Debug.Log(bloc.name);
+        SpawnObject instance = (SpawnObject) Instantiate(spawner, new Vector3(x * xOffsetMax, -y, 0), transform.rotation);
+        instance.objects =  new GameObject[1];
+        instance.name = item.name;
+        instance.objects[0] = item;
+        instance.Init();
 
+        x = x + 1;
+
+        if(x > nbItems) {
+          y += xOffsetMax;
+          x = 0;
         }
       }
     }
