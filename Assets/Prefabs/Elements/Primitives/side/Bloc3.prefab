@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5906595907603200761}
   m_Layer: 8
-  m_Name: Bloc3Left
+  m_Name: Bloc3
   m_TagString: Bloc
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
