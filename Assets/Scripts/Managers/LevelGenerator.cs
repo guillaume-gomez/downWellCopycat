@@ -41,7 +41,7 @@ public class LevelGenerator : MonoBehaviour
         boardHolder.transform.SetParent(transform);
          //borders
         Vector3 position = new Vector3(0f, 0f, 0f);
-        for(int y = yOrigin; y < (yOrigin + depthLevel); ++y)
+        for(int y = yOrigin - (int)player.transform.position.y; y < (yOrigin + depthLevel); ++y)
         {
             position.Set(xOrigin - 0.5f , -y, 0.0f);
             GameObject obj = Instantiate(bloc, position, transform.rotation); // left
