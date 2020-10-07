@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -24,13 +25,13 @@ public class CameraDebug : MonoBehaviour
     if(Input.GetKey(KeyCode.E))
     {
       camera.orthographicSize += 0.1f;
-      zoomFactor = 1.0f + camera.orthographicSize / originalOrthographicSize;
+      zoomFactor = Math.Abs(1.0f + camera.orthographicSize / originalOrthographicSize);
     }
 
     if(Input.GetKey(KeyCode.Z))
     {
       camera.orthographicSize -= 0.1f;
-      zoomFactor = 1.0f - camera.orthographicSize / originalOrthographicSize;
+      zoomFactor = Math.Abs(1.0f - camera.orthographicSize / originalOrthographicSize);
     }
 
     if(Input.GetKey(KeyCode.R))
