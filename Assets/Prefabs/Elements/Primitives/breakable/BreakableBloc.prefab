@@ -48,6 +48,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -123,5 +124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chopSound1: {fileID: 0}
   chopSound2: {fileID: 0}
+  explosionParticle: {fileID: 222673557075781299, guid: 0c6f2fc87161575418210d0be1c0c6da,
+    type: 3}
   dmgSprite: {fileID: 21300000, guid: d5c716c8368feb427aa34ebe40e9a9cd, type: 3}
   hp: 1

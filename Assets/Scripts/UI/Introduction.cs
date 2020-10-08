@@ -20,6 +20,7 @@ public class Introduction : MonoBehaviour
     void Start()
     {
         levelScript.CreateBorders();
+        levelScript.SetPlayerInCenter();
         bordersObj = GameObject.Find("Borders");
 
         Transform itemsParent = GameObject.Find("BonusPanel").transform;
@@ -64,7 +65,6 @@ public class Introduction : MonoBehaviour
 
     IEnumerator LoadAsynchronously (int sceneIndex)
     {
-        Debug.Log("routine");
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
         return null;
     }

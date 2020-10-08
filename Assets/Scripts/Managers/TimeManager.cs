@@ -11,9 +11,9 @@ public class TimeManager : MonoBehaviour {
 
   public void DoSlowMotion()
   {
-    Time.timeScale = slowdownFactor;
-    Time.fixedDeltaTime = Time.timeScale * frameTime;
-    StartCoroutine("GetBack");
+    // Time.timeScale = slowdownFactor;
+    // Time.fixedDeltaTime = Time.timeScale * frameTime;
+    // StartCoroutine("GetBack");
   }
 
   IEnumerator GetBack()
@@ -23,7 +23,7 @@ public class TimeManager : MonoBehaviour {
       if(PauseMenu.GameIsPaused || LevelManager.PauseGame) {
         yield return null;
       }
-      Time.timeScale += (1.0f/ slowdownLength)  *  Time.unscaledDeltaTime;
+      Time.timeScale += Time.unscaledDeltaTime;
       Time.timeScale = Mathf.Clamp(Time.timeScale, 0.0f, 1.0f);
       yield return null;
     }

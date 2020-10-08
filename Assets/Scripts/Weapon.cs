@@ -28,7 +28,10 @@ public class Weapon : MonoBehaviour
 
     public void Start()
     {
-        nbBullet = (int) GameManager.instance.CharacterStats.weaponAbilities.Value;
+        if(GameManager.instance)
+        {
+            nbBullet = (int) GameManager.instance.CharacterStats.weaponAbilities.Value;
+        }
         OnShoot(nbBullet);
     }
 

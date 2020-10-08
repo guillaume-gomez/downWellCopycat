@@ -11,8 +11,10 @@ public class CaveBlocs : MonoBehaviour
     {
         if(col.gameObject.name == "Player")
         {
+            LevelManager.PauseGame = true;
             cave.SetActive(true);
         }
+
     }
 
     void OnTriggerExit2D(Collider2D col)
@@ -25,7 +27,8 @@ public class CaveBlocs : MonoBehaviour
            (absPositionX < positionAbs ||
             absPositionX > positionAbs + size.x))
          {
-             cave.SetActive(false);
+            cave.SetActive(false);
+            LevelManager.PauseGame = false;
          }
     }
 

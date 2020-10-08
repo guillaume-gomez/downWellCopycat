@@ -74,10 +74,11 @@ public class PlayerController : PhysicsObject {
 
     protected new void Start()
     {
-        Life = (int) GameManager.instance.CharacterStats.life.Value;
-        jumpTakeOffSpeed += GameManager.instance.CharacterStats.jumpTakeOffSpeed.Value;
-        maxSpeed += GameManager.instance.CharacterStats.maxSpeed.Value;
-        
+        if(GameManager.instance) {
+            Life = (int) GameManager.instance.CharacterStats.life.Value;
+            jumpTakeOffSpeed += GameManager.instance.CharacterStats.jumpTakeOffSpeed.Value;
+            maxSpeed += GameManager.instance.CharacterStats.maxSpeed.Value;
+        }
         shoot = false;
         spriteRenderer = GetComponent<SpriteRenderer> ();
         inventory = GetComponent<Inventory>();
@@ -205,7 +206,10 @@ public class PlayerController : PhysicsObject {
         if(!enemy) {
             //Debug.Log(collision.collider.name);
             // otherwise it must be floor
-            LevelManager.instance.ResetCombo();
+            if(LevelManager.instance != null)
+            {
+                LevelManager.instance.ResetCombo();
+            }
             return;
         }
         bool hasJumpedOnEnemy = false;

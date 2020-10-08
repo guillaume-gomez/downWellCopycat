@@ -26,7 +26,6 @@ public class LevelManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         levelScript = GetComponent<LevelGenerator>();
-        Debug.Log("Awake");
         // for debugging only InitGame();
     }
 
