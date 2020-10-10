@@ -13,14 +13,13 @@ public class WeaponEventArgs : EventArgs
 public class Weapon : MonoBehaviour
 {
     public string weaponName ="weapon";
-    public GameObject bullet;
+    public Bullet bullet;
     public float thrustBulletToPlayer = 10.0f;
     public float shootPressedTimerRemember = 0.3f;
     public int damage = 1;
 
     public event EventHandler<WeaponEventArgs> OnShootHandler;
 
-    protected float bulletSpeed = 50.0f;
     protected float shootPressedTimer = 0.0f;
 
     private int nbBullet = 12;
@@ -48,9 +47,9 @@ public class Weapon : MonoBehaviour
     private float RegularShoot()
     {
         shootPressedTimer = 0.0f;
-        GameObject bulletObj =  Instantiate(bullet, transform.position, transform.rotation) as GameObject;
-        bulletObj.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(- transform.up * bulletSpeed);
-        bulletObj.GetComponent<Bullet>().damage = damage;
+        Bullet bulletObj =  Instantiate(bullet, transform.position, transform.rotation) as Bullet;
+        bulletObj.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(- transform.up * bulletObj.speed);
+        bulletObj.damage = damage;
         bulletObj.transform.parent = transform;
 
         currentBullet = currentBullet - 1;
@@ -62,21 +61,21 @@ public class Weapon : MonoBehaviour
     private float ShotGunShoot()
     {
         shootPressedTimer = 0.0f;
-        GameObject bulletObj1 = Instantiate(bullet, transform.position, transform.rotation) as GameObject;
+        Bullet bulletObj1 = Instantiate(bullet, transform.position, transform.rotation) as Bullet;
         bulletObj1.transform.Rotate(0.0f, 0.0f, -45.0f, Space.Self);
-        bulletObj1.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(- new Vector3(1.0f, 1.0f, 0.0f) * bulletSpeed);
-        bulletObj1.GetComponent<Bullet>().damage = damage;
+        bulletObj1.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(- new Vector3(1.0f, 1.0f, 0.0f) * bulletObj1.speed);
+        bulletObj1.damage = damage;
         bulletObj1.transform.parent = transform;
 
-        GameObject bulletObj2 = Instantiate(bullet, transform.position, transform.rotation) as GameObject;
-        bulletObj2.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(- transform.up * bulletSpeed);
-        bulletObj2.GetComponent<Bullet>().damage = damage;
+        Bullet bulletObj2 = Instantiate(bullet, transform.position, transform.rotation) as Bullet;
+        bulletObj2.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(- transform.up * bulletObj2.speed);
+        bulletObj2.damage = damage;
         bulletObj2.transform.parent = transform;
 
-        GameObject bulletObj3 = Instantiate(bullet, transform.position, transform.rotation) as GameObject;
+        Bullet bulletObj3 = Instantiate(bullet, transform.position, transform.rotation) as Bullet;
         bulletObj3.transform.Rotate(0.0f, 0.0f, 45.0f, Space.Self);
-        bulletObj3.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(- new Vector3(-1.0f, 1.0f, 0.0f) * bulletSpeed);
-        bulletObj3.GetComponent<Bullet>().damage = damage;
+        bulletObj3.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(- new Vector3(-1.0f, 1.0f, 0.0f) * bulletObj3.speed);
+        bulletObj3.damage = damage;
         bulletObj3.transform.parent = transform;
 
 
