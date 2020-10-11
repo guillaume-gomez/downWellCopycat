@@ -3,14 +3,19 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
+
+public class OnComboChangedEventArgs : EventArgs
+{
+    public int combo { get; set; }
+}
+
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance = null;
     public event EventHandler OnWin;
     public event EventHandler OnLose;
-    public event EventHandler OnUpdateCombo;
+    public event EventHandler<OnComboChangedEventArgs> OnUpdateCombo;
 
-    private ComboText comboText;
     private LevelGenerator levelScript;
     public static bool PauseGame = false;
 
@@ -29,14 +34,6 @@ public class LevelManager : MonoBehaviour
         // for debugging only InitGame();
     }
 
-    void Start()
-    {
-        GameObject comboTextObj = GameObject.Find("ComboText");
-        if(comboTextObj)
-        {
-            comboText = comboTextObj.GetComponent<ComboText>();
-        }
-    }
 
      void OnEnable()
      {
@@ -82,8 +79,7 @@ public class LevelManager : MonoBehaviour
         {
             OnWin(this, EventArgs.Empty);
         }
-        GameManager.instance.LevelSystem.level += 1;
-        GameManager.instance.Save();
+        GameManager.instance.LevelSystemRun.level += 1;
         Invoke("LoadIntroScene", 2.0f);
     }
 
@@ -103,32 +99,35 @@ public class LevelManager : MonoBehaviour
 
     public void AddScore(int point)
     {
-        GameManager.instance.LevelSystem.score += point;
+        GameManager.instance.LevelSystemRun.score += point;
     }
 
     public void IncEnemyKill()
     {
-        GameManager.instance.LevelSystem.nbKilled += 1;
+        GameManager.instance.LevelSystemRun.nbKilled += 1;
     }
 
     public void TakeMoney(int _money)
     {
-        GameManager.instance.LevelSystem.money += _money;
+        GameManager.instance.LevelSystemRun.money += _money;
     }
 
     public void IncCombo()
     {
-        GameManager.instance.LevelSystem.currentCombo += 1;
-        if(GameManager.instance.LevelSystem.currentCombo > GameManager.instance.LevelSystem.maxCombo) {
-            GameManager.instance.LevelSystem.maxCombo = GameManager.instance.LevelSystem.currentCombo;
-        }
-        OnUpdateCombo(this, EventArgs.Empty);
+        GameManager.instance.LevelSystemRun.currentCombo += 1;
+
+        OnComboChangedEventArgs eventArgs = new OnComboChangedEventArgs();
+        eventArgs.combo = GameManager.instance.LevelSystemRun.currentCombo;
+        OnUpdateCombo(this, eventArgs);
     }
 
     public void ResetCombo()
     {
-        GameManager.instance.LevelSystem.currentCombo = 0;
-        OnUpdateCombo(this, EventArgs.Empty);
+        GameManager.instance.LevelSystemRun.currentCombo = 0;
+
+        OnComboChangedEventArgs eventArgs = new OnComboChangedEventArgs();
+        eventArgs.combo = GameManager.instance.LevelSystemRun.currentCombo;
+        OnUpdateCombo(this, eventArgs);
     }
 
 }

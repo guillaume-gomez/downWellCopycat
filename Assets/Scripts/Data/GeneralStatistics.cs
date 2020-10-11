@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// maybe deprecated
 [System.Serializable]
 public class GeneralStatistics
 {
@@ -23,8 +25,15 @@ public class GeneralStatistics
 
     public void AddDataFromPreviousRun(LevelSystem ls)
     {
+        Debug.Log("jjkj");
         money += ls.money * saveMoneyPercentage;
         experience += ls.experience;
+
+        score += ls.score;
+        if(maxCombo < ls.maxCombo)
+        {
+            maxCombo = ls.maxCombo;
+        }
     }
 
     public string valueFromString(string key)

@@ -18,9 +18,9 @@ public class GameOverPanel : MonoBehaviour
         stats.Add("max combo", GameManager.instance.LevelSystem.maxCombo.ToString());
         stats.Add("nb killed", GameManager.instance.LevelSystem.nbKilled.ToString());
         stats.Add("money",
-            GameManager.instance.GeneralStatistics.money + " + " +
-            GameManager.instance.LevelSystem.money + " * " +
-            GameManager.instance.GeneralStatistics.saveMoneyPercentage.ToString("#.00") );
+            GameManager.instance.LevelSystem.money.ToString("#.00") + " + " +
+            GameManager.instance.LevelSystem.money.ToString("#.00") + " * " +
+            GameManager.instance.LevelSystem.saveMoneyPercentage.ToString("#.00") );
     }
 
     void Start()

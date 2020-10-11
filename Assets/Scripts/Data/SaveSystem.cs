@@ -4,36 +4,6 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem
 {
-    public static void SaveGame()
-    {
-        BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/generalStatistics.dat";
-        FileStream stream = new FileStream(path, FileMode.Create);
-
-        formatter.Serialize(stream, GameManager.instance.GeneralStatistics);
-        stream.Close();
-    }
-
-    public static GeneralStatistics LoadGame()
-    {
-        string path = Application.persistentDataPath + "/generalStatistics.dat";
-        Debug.Log(path);
-        if(File.Exists(path))
-        {
-            BinaryFormatter formatter = new BinaryFormatter();
-            FileStream stream = new FileStream(path, FileMode.Open);
-
-            GeneralStatistics data = formatter.Deserialize(stream) as GeneralStatistics;
-            stream.Close();
-
-            return data;
-        } else
-        {
-            Debug.LogWarning("Save file not found in " + path);
-            return new GeneralStatistics();
-        }
-    }
-
     public static void SaveCharacterStat()
     {
         BinaryFormatter formatter = new BinaryFormatter();
@@ -68,7 +38,6 @@ public static class SaveSystem
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/levelSystem.dat";
         FileStream stream = new FileStream(path, FileMode.Create);
-
         formatter.Serialize(stream, GameManager.instance.LevelSystem);
         stream.Close();
     }
