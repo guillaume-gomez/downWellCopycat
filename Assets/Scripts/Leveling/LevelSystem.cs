@@ -29,6 +29,7 @@ public class LevelSystem
         maxCombo = 0;
         nbKilled = 0;
         score = 0;
+        saveMoneyPercentage = 0.1f;
     }
 
     public void AddExperience(int amount)
@@ -51,7 +52,7 @@ public class LevelSystem
 
     public void MergeLevelSystem(LevelSystem ls)
     {
-        money += ls.money * saveMoneyPercentage;
+        money += ls.money * ls.saveMoneyPercentage;
         experience += ls.experience;
 
         score += ls.score;
