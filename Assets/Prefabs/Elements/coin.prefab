@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 389635513512034661}
   - component: {fileID: 2352783782316002203}
   - component: {fileID: -9087340583689344853}
+  - component: {fileID: 3958924669757254198}
   m_Layer: 14
   m_Name: coin
   m_TagString: Untagged
@@ -48,6 +49,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -121,3 +123,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2ea10aad8a01966cba671b2ef10de47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3958924669757254198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7196461070395765437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02817545700328b439eeb153155a4731, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  magnetStrength: 0.05
+  magnetRange: 3
