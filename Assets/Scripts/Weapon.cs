@@ -17,6 +17,7 @@ public class Weapon : MonoBehaviour
     public float thrustBulletToPlayer = 10.0f;
     public float shootPressedTimerRemember = 0.3f;
     public int damage = 1;
+    public AudioClip shotSound;
 
     public event EventHandler<WeaponEventArgs> OnShootHandler;
 
