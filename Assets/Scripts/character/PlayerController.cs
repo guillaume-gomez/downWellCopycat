@@ -36,6 +36,8 @@ public class PlayerController : PhysicsObject {
     public float lowJumpMultiplier = 1f;
     public float vYmax = 9999f;
 
+    public AudioClip jumpSound;
+
     public ParticleSystem dust;
 
     public TimeManager timeManager;
@@ -123,6 +125,7 @@ public class PlayerController : PhysicsObject {
 
         if(Input.GetButtonUp("Jump"))
         {
+            SoundManager.instance.PlaySingleOneShot(jumpSound);
             if (velocity.y > 0) {
                 velocity.y = velocity.y * ( lowJumpMultiplier - 1.0f );
             }

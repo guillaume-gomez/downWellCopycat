@@ -15,8 +15,6 @@ public class SoundManager : MonoBehaviour
 
     void Awake ()
     {
-        Debug.Log("coucou");
-        Debug.Log(this.GetInstanceID());
         //Check if there is already an instance of SoundManager
         if (instance == null)
             //if not, set it to this.
@@ -36,12 +34,11 @@ public class SoundManager : MonoBehaviour
     {
         //Set the clip of our vfxSource audio source to the clip passed in as a parameter.
         vfxSource.clip = clip;
-        Debug.Log(vfxSource.volume);
         //Play the clip.
         vfxSource.Play ();
     }
 
-    public void PlaySingleOneShot(AudioClip clip, float volume = 0.75f)
+    public void PlaySingleOneShot(AudioClip clip, float volume = 1.0f)
     {
         vfxSource.clip = clip;
         vfxSource.PlayOneShot(clip, volume);

@@ -31,6 +31,7 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("martin");
         GameObject comboTextObj = GameObject.Find("ComboText");
         if(comboTextObj)
         {
