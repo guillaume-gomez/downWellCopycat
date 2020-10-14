@@ -37,6 +37,7 @@ public class Weapon : MonoBehaviour
 
     public virtual float Shoot()
     {
+        PlaySound();
         if(weaponName == "shotgun")
         {
             return ShotGunShoot();
@@ -79,7 +80,6 @@ public class Weapon : MonoBehaviour
         bulletObj3.damage = damage;
         bulletObj3.transform.parent = transform;
 
-
         currentBullet = currentBullet - 1;
         OnShoot(currentBullet);
 
@@ -100,6 +100,14 @@ public class Weapon : MonoBehaviour
     public int GetDamage()
     {
         return damage;
+    }
+
+    private void PlaySound()
+    {
+        if(SoundManager.instance)
+        {
+            SoundManager.instance.PlaySingleOneShot(shotSound);
+        }
     }
 
     void FixedUpdate()
