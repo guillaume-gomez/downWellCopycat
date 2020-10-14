@@ -1,9 +1,12 @@
 using UnityEngine;
+using UnityEngine.Audio;
 using System.Collections;
 
 public class SoundManager : MonoBehaviour
 {
-    public AudioSource efxSource;                    //Drag a reference to the audio source which will play the sound effects.
+    public AudioMixer vfxMixer;
+    public AudioMixer musicMixer;
+    public AudioSource vfxSource;                    //Drag a reference to the audio source which will play the sound effects.
     public AudioSource musicSource;                    //Drag a reference to the audio source which will play the music.
     public static SoundManager instance = null;        //Allows other scripts to call functions from SoundManager.
     public float lowPitchRange = .95f;                //The lowest a sound effect will be randomly pitched.
@@ -12,6 +15,8 @@ public class SoundManager : MonoBehaviour
 
     void Awake ()
     {
+        Debug.Log("coucou");
+        Debug.Log(this.GetInstanceID());
         //Check if there is already an instance of SoundManager
         if (instance == null)
             //if not, set it to this.
@@ -29,17 +34,17 @@ public class SoundManager : MonoBehaviour
     //Used to play single sound clips.
     public void PlaySingle(AudioClip clip)
     {
-        //Set the clip of our efxSource audio source to the clip passed in as a parameter.
-        efxSource.clip = clip;
-
+        //Set the clip of our vfxSource audio source to the clip passed in as a parameter.
+        vfxSource.clip = clip;
+        Debug.Log(vfxSource.volume);
         //Play the clip.
-        efxSource.Play ();
+        vfxSource.Play ();
     }
 
     public void PlaySingleOneShot(AudioClip clip, float volume = 0.75f)
     {
-        efxSource.clip = clip;
-        efxSource.PlayOneShot(clip, volume);
+        vfxSource.clip = clip;
+        vfxSource.PlayOneShot(clip, volume);
     }
 
 
@@ -53,26 +58,26 @@ public class SoundManager : MonoBehaviour
         float randomPitch = Random.Range(lowPitchRange, highPitchRange);
 
         //Set the pitch of the audio source to the randomly chosen pitch.
-        efxSource.pitch = randomPitch;
+        vfxSource.pitch = randomPitch;
 
         //Set the clip to the clip at our randomly chosen index.
-        efxSource.clip = clips[randomIndex];
+        vfxSource.clip = clips[randomIndex];
 
         //Play the clip.
-        efxSource.Play();
+        vfxSource.Play();
     }
 
     public void SetMusicVolume(float volume)
     {
         Debug.Log("volume " + volume);
-        musicSource.volume = Mathf.Log(10, volume) * 20.0f;
+        musicMixer.SetFloat("Music_volume", Mathf.Log10(volume) * 20);
     }
 
 
     public void SetVFXVolume(float volume)
     {
-        Debug.Log("VFX " + volume);
-        efxSource.volume = Mathf.Log(10, volume) * 20.0f;
+        vfxMixer.SetFloat("VFX_volume", Mathf.Log10(volume) * 20);
+        Debug.Log("VFX " + Mathf.Log(10, volume));
     }
 
 }

@@ -106,7 +106,7 @@ public class Weapon : MonoBehaviour
     {
         if(SoundManager.instance)
         {
-            SoundManager.instance.PlaySingleOneShot(shotSound);
+            SoundManager.instance.PlaySingle(shotSound);
         }
     }
 

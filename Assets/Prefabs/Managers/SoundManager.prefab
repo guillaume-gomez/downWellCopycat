@@ -42,7 +42,8 @@ AudioSource:
   m_GameObject: {fileID: 5164240038236166004}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 5e5681488b916b64ea258e5051025bc1,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -138,7 +139,8 @@ AudioSource:
   m_GameObject: {fileID: 5164240038236166004}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 6234531377a23ac4096126d2b346c580,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -237,7 +239,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8b8117cd18fbf8adbb61ed2e0c77e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  efxSource: {fileID: 5164240038236166003}
+  vfxMixer: {fileID: 24100000, guid: 5e5681488b916b64ea258e5051025bc1, type: 2}
+  musicMixer: {fileID: 24100000, guid: 6234531377a23ac4096126d2b346c580, type: 2}
+  vfxSource: {fileID: 5164240038236166003}
   musicSource: {fileID: 5164240038236166002}
   lowPitchRange: 0.95
   highPitchRange: 1.05
