@@ -10,6 +10,9 @@ public class LevelManager : MonoBehaviour
     public event EventHandler OnLose;
     public event EventHandler OnUpdateCombo;
 
+    public AudioClip winSound;
+    public AudioClip loseSound;
+
     private ComboText comboText;
     private LevelGenerator levelScript;
     public static bool PauseGame = false;
@@ -73,6 +76,7 @@ public class LevelManager : MonoBehaviour
         {
             OnLose(this, EventArgs.Empty);
         }
+        SoundManager.instance.PlayAndMuteMusic(loseSound);
         StartCoroutine(GoBackMenu());
     }
 
@@ -85,6 +89,7 @@ public class LevelManager : MonoBehaviour
         }
         GameManager.instance.LevelSystem.level += 1;
         GameManager.instance.Save();
+        SoundManager.instance.PlayAndMuteMusic(winSound);
         Invoke("LoadIntroScene", 2.0f);
     }
 

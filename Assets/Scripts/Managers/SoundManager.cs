@@ -11,7 +11,8 @@ public class SoundManager : MonoBehaviour
     public static SoundManager instance = null;        //Allows other scripts to call functions from SoundManager.
     public float lowPitchRange = .95f;                //The lowest a sound effect will be randomly pitched.
     public float highPitchRange = 1.05f;            //The highest a sound effect will be randomly pitched.
-
+    private float musicMixerVolume = 1.0f;
+    private float vfxMixerVolume = 1.0f;
 
     void Awake ()
     {
@@ -30,20 +31,13 @@ public class SoundManager : MonoBehaviour
 
 
     //Used to play single sound clips.
-    public void PlaySingle(AudioClip clip)
+    public void PlaySingle(AudioClip clip, float volume = 1.0f)
     {
         //Set the clip of our vfxSource audio source to the clip passed in as a parameter.
         vfxSource.clip = clip;
         //Play the clip.
-        vfxSource.Play ();
-    }
-
-    public void PlaySingleOneShot(AudioClip clip, float volume = 1.0f)
-    {
-        vfxSource.clip = clip;
         vfxSource.PlayOneShot(clip, volume);
     }
-
 
     //RandomizeSfx chooses randomly between various audio clips and slightly changes their pitch.
     public void RandomizeSfx (params AudioClip[] clips)
@@ -64,17 +58,34 @@ public class SoundManager : MonoBehaviour
         vfxSource.Play();
     }
 
+    public void PlayAndMuteMusic(AudioClip clip)
+    {
+        vfxMixer.GetFloat("VFX_volume", out float currentMusicVolume);
+        SetMusicVolume(0.001f);
+        PlaySingle(clip);
+        StartCoroutine(unMuteMusic(currentMusicVolume, clip.length + 1.0f));
+
+    }
+
+    private IEnumerator unMuteMusic(float oldVolume, float length)
+    {
+        yield return new WaitForSeconds(length);
+        SetMusicVolume(oldVolume);
+    }
+
     public void SetMusicVolume(float volume)
     {
         Debug.Log("volume " + volume);
         musicMixer.SetFloat("Music_volume", Mathf.Log10(volume) * 20);
+        musicMixerVolume = volume;
     }
 
 
     public void SetVFXVolume(float volume)
     {
+        Debug.Log("VFX " + volume);
         vfxMixer.SetFloat("VFX_volume", Mathf.Log10(volume) * 20);
-        Debug.Log("VFX " + Mathf.Log(10, volume));
+        vfxMixerVolume = volume;
     }
 
 }

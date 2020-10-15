@@ -37,6 +37,7 @@ public class PlayerController : PhysicsObject {
     public float vYmax = 9999f;
 
     public AudioClip jumpSound;
+    public AudioClip hurtSound;
 
     public ParticleSystem dust;
 
@@ -125,7 +126,7 @@ public class PlayerController : PhysicsObject {
 
         if(Input.GetButtonUp("Jump"))
         {
-            SoundManager.instance.PlaySingleOneShot(jumpSound);
+            SoundManager.instance.PlaySingle(jumpSound);
             if (velocity.y > 0) {
                 velocity.y = velocity.y * ( lowJumpMultiplier - 1.0f );
             }
@@ -187,6 +188,7 @@ public class PlayerController : PhysicsObject {
             if(life >= 1) {
                 // todo add armor
                 Life = Math.Max(life - enemy.Damage, 0);
+                SoundManager.instance.PlaySingle(hurtSound);
             }
 
             if(life <= 0)
@@ -196,7 +198,7 @@ public class PlayerController : PhysicsObject {
             }
             StartCoroutine(FlashSprite(GetComponent<SpriteRenderer>(), 0.0f, 1.0f, 0.1f, unvisibleTimer));
             StartCoroutine(GetUnvisible(unvisibleTimer, enemy));
-            timeManager.DoSlowMotion();
+            //timeManager.DoSlowMotion();
         }
     }
 

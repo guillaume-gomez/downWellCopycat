@@ -6,6 +6,13 @@ using UnityEngine;
 public class CaveBlocs : MonoBehaviour
 {
     public GameObject cave;
+    public AudioClip discoverCaveSound;
+    private bool discovered;
+
+    void Start()
+    {
+        discovered = false;
+    }
 
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -13,6 +20,10 @@ public class CaveBlocs : MonoBehaviour
         {
             LevelManager.PauseGame = true;
             cave.SetActive(true);
+            if(!discovered)
+            {
+                SoundManager.instance.PlayAndMuteMusic(discoverCaveSound);
+            }
         }
 
     }
