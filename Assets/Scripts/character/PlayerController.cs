@@ -103,7 +103,7 @@ public class PlayerController : PhysicsObject {
 
 
         groundedRemember = groundedRemember - Time.deltaTime;
-        if(grounded)
+        if(grounded && groundedName != "Enemy")
         {
             groundedRemember = groundedRememberTime;
         }
