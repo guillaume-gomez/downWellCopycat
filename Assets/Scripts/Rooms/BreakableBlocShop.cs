@@ -18,11 +18,11 @@ public class BreakableBlocShop : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(priceToBeDestroyed > 10) {
-            if(collision.collider.CompareTag("Bullet"))
-            {
-                Destroy(gameObject);
-            }
+      if(priceToBeDestroyed < GameManager.instance.LevelSystemRun.money) {
+        if(collision.collider.CompareTag("Bullet"))
+        {
+            Destroy(gameObject);
         }
+      }
     }
 }

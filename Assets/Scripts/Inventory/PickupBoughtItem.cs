@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class PickupBoughtItem : PickupBase
 {
-    public float price = 0.0f;
+  public float price = 0.0f;
 
-    void OnTriggerEnter2D(Collider2D other)
+  void OnTriggerEnter2D(Collider2D other)
+  {
+    if(price < GameManager.instance.LevelSystemRun.money)
     {
         if(other.CompareTag("Player"))
         {
             inventory.BuyItem(gameObject, price);
         }
     }
+  }
 }
