@@ -9,9 +9,11 @@ public class EnemyOnPlatform : EnemyBase
 
   private float distance = 1.0f;
   private bool movingRight = true;
+  private bool collisionWithPlayer;
 
   protected void Start()
   {
+    collisionWithPlayer = false;
     isVisibleOnCamera = true;
     base.Start();
     distance = transform.localScale.y;
@@ -30,7 +32,10 @@ public class EnemyOnPlatform : EnemyBase
       return;
     }
 
-    transform.Translate(Vector2.right * speed * Time.deltaTime);
+    if(!collisionWithPlayer)
+    {
+      transform.Translate(Vector2.right * speed * Time.deltaTime);
+    }
 
     RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, distance);
     if(!groundInfo.collider)
@@ -44,6 +49,23 @@ public class EnemyOnPlatform : EnemyBase
             transform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
             movingRight = true;
         }
+    }
+  }
+
+  // theses 2 methods avoid colission glitch between a moving player and a moving enemy :)
+  void OnCollisionEnter2D(Collision2D collision)
+  {
+    if(collision.collider.tag == "Player")
+    {
+      collisionWithPlayer = true;
+    }
+  }
+
+  void OnCollisionExit2D(Collision2D collision)
+  {
+    if(collision.collider.tag == "Player")
+    {
+      collisionWithPlayer = false;
     }
   }
 

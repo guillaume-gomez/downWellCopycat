@@ -16,6 +16,7 @@ public class EnemyAroundPlatform : EnemyBase
   // no detection is more than  4 rotations (each corner)
   private int noDectection = 0;
   private int layerBloc;
+  private bool collisionWithPlayer;
 
   protected void OnEnable()
   {
@@ -25,6 +26,7 @@ public class EnemyAroundPlatform : EnemyBase
 
   protected void Start()
   {
+    collisionWithPlayer = false;
     // check raycast to everything except" enemy layer (espacially itself)
     layerMastk = 1 << LayerMask.NameToLayer("enemy");
     layerMastk = ~layerMastk;
@@ -71,10 +73,16 @@ public class EnemyAroundPlatform : EnemyBase
         return;
     }
 
-    rb2d.position = rb2d.position + (Vector2) transform.right * speed * Time.deltaTime;
+    // move
+    if(!collisionWithPlayer)
+    {
+      rb2d.position = rb2d.position + (Vector2) transform.right * speed * Time.deltaTime;
+    }
+
     if(!onPlatform())
     {
         noDectection++;
+        // if too many rotation, leave the platform
         if(noDectection < 4) {
           transform.eulerAngles += new Vector3(0.0f, 0.0f, -90f);
           // ajust position to collide with the platform
@@ -84,7 +92,6 @@ public class EnemyAroundPlatform : EnemyBase
             Debug.DrawLine(groundDetections[i].position, groundDetections[i].position - (transform.up * distance), Color.red, 5);
             if (groundInfo.collider && groundInfo.collider.gameObject.layer == layerBloc )
             {
-              //return trmais j'ai pas decidé d'etre forcéue;
               transform.position += -groundInfo.distance * transform.up;
               break;
             }
@@ -92,6 +99,23 @@ public class EnemyAroundPlatform : EnemyBase
         }
     } else {
       noDectection = 0;
+    }
+  }
+
+  // theses 2 methods avoid colission glitch between a moving player and a moving enemy :)
+  void OnCollisionEnter2D(Collision2D collision)
+  {
+    if(collision.collider.tag == "Player")
+    {
+      collisionWithPlayer = true;
+    }
+  }
+
+  void OnCollisionExit2D(Collision2D collision)
+  {
+    if(collision.collider.tag == "Player")
+    {
+      collisionWithPlayer = false;
     }
   }
 

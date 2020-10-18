@@ -3493,6 +3493,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5971180133105629528, guid: 7fe0ee718dda2a4bcb011395a2b20498,
+        type: 3}
+      propertyPath: godMode
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fe0ee718dda2a4bcb011395a2b20498, type: 3}
 --- !u!1001 &778996980
@@ -6424,6 +6429,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Horizontale40
+      objectReference: {fileID: 0}
+    - target: {fileID: 955109581946753749, guid: 7e983976c751c591f9f2513a441a399c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2699827734193066273, guid: 7e983976c751c591f9f2513a441a399c,
         type: 3}
