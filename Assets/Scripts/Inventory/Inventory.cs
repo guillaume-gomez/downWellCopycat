@@ -106,4 +106,11 @@ public class Inventory : MonoBehaviour
             OnShootHandlerActiveWeapon(this, args);
         }
     }
+
+    public void BuyItem(GameObject item, float price)
+    {
+        Debug.Log("bonjour");
+        // To do add modifier, weapon, or anything else
+        Destroy(item);
+    }
 }

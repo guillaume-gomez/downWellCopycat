@@ -6,6 +6,15 @@ public class SpawnObject : MonoBehaviour
 {
     public GameObject[] objects;
     public bool isLeft = true;
+    public bool autoLoad = false;
+
+    void Start()
+    {
+        if(autoLoad)
+        {
+            Init();
+        }
+    }
 
     public void Init()
     {
