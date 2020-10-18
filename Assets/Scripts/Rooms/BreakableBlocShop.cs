@@ -11,9 +11,7 @@ public class BreakableBlocShop : MonoBehaviour
         spawner.Init();
         // We assume spawner has script PickupBoughtItem
         PickupBoughtItem script = spawner.gameObject.transform.GetChild(0).GetComponent<PickupBoughtItem>();
-        Debug.Log(priceToBeDestroyed);
         priceToBeDestroyed = script.price;
-        Debug.Log(priceToBeDestroyed);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
