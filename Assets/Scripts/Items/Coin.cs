@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
-    private int coinValue = 10;
+    private float coinValue = 10;
     private float alpha = 1.0f;
     private float angle = 0.0f;
     private SpriteRenderer sprite;
 
-    public int CoinValue {
+    public float CoinValue {
         get => coinValue;
         set => coinValue = value;
     }
@@ -38,7 +38,7 @@ public class Coin : MonoBehaviour
         {
             if(LevelManager.instance)
             {
-                LevelManager.instance.TakeMoney(coinValue);
+                LevelManager.instance.UpdateMoney(coinValue);
             }
             Destroy(gameObject);
         }
