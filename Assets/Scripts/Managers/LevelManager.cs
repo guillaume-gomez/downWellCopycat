@@ -32,7 +32,6 @@ public class LevelManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         levelScript = GetComponent<LevelGenerator>();
-        // for debugging only InitGame();
     }
 
     void Start()
