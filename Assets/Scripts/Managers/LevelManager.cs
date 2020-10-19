@@ -3,10 +3,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
-
 public class OnComboChangedEventArgs : EventArgs
 {
     public int combo { get; set; }
+}
+
+public class OnMoneyChangedEventArgs : EventArgs
+{
+    public float money { get; set; }
 }
 
 public class LevelManager : MonoBehaviour
@@ -15,6 +19,7 @@ public class LevelManager : MonoBehaviour
     public event EventHandler OnWin;
     public event EventHandler OnLose;
     public event EventHandler<OnComboChangedEventArgs> OnUpdateCombo;
+    public event EventHandler<OnMoneyChangedEventArgs> OnMoneyChange;
 
     private LevelGenerator levelScript;
     public static bool PauseGame = false;
@@ -110,6 +115,10 @@ public class LevelManager : MonoBehaviour
     public void TakeMoney(int _money)
     {
         GameManager.instance.LevelSystemRun.money += _money;
+
+        OnMoneyChangedEventArgs eventArgs = new OnMoneyChangedEventArgs();
+        eventArgs.money = GameManager.instance.LevelSystemRun.money;
+        OnMoneyChange(this, eventArgs);
     }
 
     public void IncCombo()
