@@ -156,7 +156,6 @@ public class EnemyBase : MonoBehaviour
 
     private void computeSize()
     {
-        Vector3 size = new Vector3();
         switch(damage) {
             case 1:
                 transform.localScale = EnemyConstants.Size[0];
