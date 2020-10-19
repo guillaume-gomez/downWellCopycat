@@ -5,6 +5,7 @@ public class BreakableBloc : MonoBehaviour
 {
     public AudioClip chopSound1;
     public AudioClip chopSound2;
+    public GameObject explosionParticle;
     public Sprite dmgSprite;
     public float hp = 3.0f;
 
@@ -27,6 +28,7 @@ public class BreakableBloc : MonoBehaviour
         if(hp <= 0)
         {
             Destroy(gameObject);
+            Instantiate(explosionParticle, transform.position, transform.rotation);
             //gameObject.SetActive(false);
         }
     }

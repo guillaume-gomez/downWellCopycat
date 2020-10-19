@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public int damage = 1;
+    public int speed = 50;
 
     void Start()
     {
@@ -14,11 +15,9 @@ public class Bullet : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-       Destroy(gameObject);
         BreakableBloc bloc = collision.collider.GetComponent<BreakableBloc>();
         if(bloc) {
-            bloc.DamageBloc(damage);
-            return;
+          bloc.DamageBloc(damage);
         }
 
         EnemyBase enemy = collision.collider.GetComponent<EnemyBase>();
@@ -30,8 +29,8 @@ public class Bullet : MonoBehaviour
                 Weapon weaponScript = transform.parent.GetComponent<Weapon>();
                 weaponScript.Reload();
             }
-            return;
         }
+        Destroy(gameObject);
     }
 
     void OnBecameInvisible()

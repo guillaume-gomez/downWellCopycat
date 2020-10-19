@@ -13,7 +13,7 @@ public class SpawnObject : MonoBehaviour
         GameObject choosedObject = objects[rand];
         Vector3 rotationVector = new Vector3(0f, 0f, 0f);
         if(!isLeft) {
-          rotationVector = new Vector3(0f, 0f, 180f);
+          rotationVector = new Vector3(0f, 180f, 0.0f);
         }
         GameObject instance = (GameObject) Instantiate(choosedObject, transform.position + choosedObject.transform.position, Quaternion.Euler(rotationVector));
         instance.transform.parent = transform;
