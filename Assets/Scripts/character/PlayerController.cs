@@ -297,4 +297,9 @@ public class PlayerController : PhysicsObject {
         dust.Play();
     }
 
+    public void SetToZero()
+    {
+        velocity = new Vector2(0.0f, 0.0f);
+    }
+
 }
