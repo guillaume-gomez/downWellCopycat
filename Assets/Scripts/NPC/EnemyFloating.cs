@@ -38,7 +38,7 @@ public class EnemyFloating: EnemyBase
 
 
     // Start is called before the first frame update
-    void Start()
+    protected new void Start()
     {
         base.Start();
         InvokeRepeating("UpdatePath", 0f, 0.5f);

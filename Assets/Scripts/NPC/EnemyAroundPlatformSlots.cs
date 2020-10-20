@@ -12,8 +12,9 @@ public class EnemyAroundPlatformSlots : EnemyBase
   public float startWaitTime = 0.0f;
   private int indexSpot = 0;
 
-  void Start()
+  protected new void Start()
   {
+    base.Start();
     waitTime = startWaitTime;
     SetSlotsFromPlatform();
   }

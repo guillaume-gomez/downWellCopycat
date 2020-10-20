@@ -6,14 +6,13 @@ using System.Collections.Generic;
 public class CameraDebug : MonoBehaviour
 {
   public float speed = 10;
-  private Camera camera;
   private float originalOrthographicSize;
   private float zoomFactor;
 
   void Start()
   {
-    camera = GetComponent<Camera>();
-    originalOrthographicSize = camera.orthographicSize;
+
+    originalOrthographicSize = GetComponent<Camera>().orthographicSize;
     zoomFactor = 1.0f;
   }
 
@@ -24,19 +23,19 @@ public class CameraDebug : MonoBehaviour
 
     if(Input.GetKey(KeyCode.E))
     {
-      camera.orthographicSize += 0.1f;
-      zoomFactor = Math.Abs(1.0f + camera.orthographicSize / originalOrthographicSize);
+      GetComponent<Camera>().orthographicSize += 0.1f;
+      zoomFactor = Math.Abs(1.0f + GetComponent<Camera>().orthographicSize / originalOrthographicSize);
     }
 
     if(Input.GetKey(KeyCode.Z))
     {
-      camera.orthographicSize -= 0.1f;
-      zoomFactor = Math.Abs(1.0f - camera.orthographicSize / originalOrthographicSize);
+      GetComponent<Camera>().orthographicSize -= 0.1f;
+      zoomFactor = Math.Abs(1.0f - GetComponent<Camera>().orthographicSize / originalOrthographicSize);
     }
 
     if(Input.GetKey(KeyCode.R))
     {
-      camera.orthographicSize = originalOrthographicSize;
+      GetComponent<Camera>().orthographicSize = originalOrthographicSize;
       zoomFactor = 1.0f;
     }
 

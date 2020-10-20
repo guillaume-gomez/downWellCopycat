@@ -43,7 +43,7 @@ public class RoomGen : MonoBehaviour
         int i = 0;
         while(i < length)
         {
-            int newChunk = PopSpwanerX();
+            int newChunk = PopSpwanerY();
             if(i + newChunk > length) {
                 // spawner has the max length possible
                 newChunk = length - i;
@@ -121,13 +121,13 @@ public class RoomGen : MonoBehaviour
     protected int PopSpwanerY()
     {
         float spwanerSizePercentage = Random.Range(0.0f, 1.0f);
-        if(spwanerSizePercentage <= 0.40f)
+        if(spwanerSizePercentage <= 0.10f)
         {
             return 1;
-        } else if(spwanerSizePercentage <= 0.90f)
+        } else if(spwanerSizePercentage <= 0.80f)
         {
             return 2;
-        } else if(spwanerSizePercentage <= 0.10f)
+        } else if(spwanerSizePercentage <= 0.99f)
         {
             return 3;
         } else {
