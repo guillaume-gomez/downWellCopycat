@@ -17,7 +17,7 @@ public class FrogEnemy : EnemyBase
         rb2d = GetComponent<Rigidbody2D>();
     }
 
-    void Start()
+    protected new void Start()
     {
         base.Start();
         isJumping = false;
