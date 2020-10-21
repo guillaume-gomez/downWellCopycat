@@ -205,7 +205,14 @@ public class PlayerController : PhysicsObject {
             // otherwise it must be floor
             if(LevelManager.instance != null)
             {
-                LevelManager.instance.ResetCombo();
+                foreach(ContactPoint2D point in collision.contacts)
+                {
+                    if(point.normal.y >= 0.9f)
+                    {
+                        LevelManager.instance.ResetCombo();
+                        return;
+                    }
+                }
             }
             return;
         }
