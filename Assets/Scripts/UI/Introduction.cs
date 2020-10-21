@@ -8,7 +8,6 @@ public class Introduction : MonoBehaviour
 {
     public LevelGenerator levelScript;
     public PlayerController playerScript;
-    public CamerFollow cameraScript;
     public GameObject canvas;
     public GameObject[] bonusItems;
 
@@ -22,6 +21,7 @@ public class Introduction : MonoBehaviour
         levelScript.CreateBorders();
         levelScript.SetPlayerInCenter();
         bordersObj = GameObject.Find("Borders");
+        MovePlayer();
 
         Transform itemsParent = GameObject.Find("BonusPanel").transform;
 
@@ -53,9 +53,7 @@ public class Introduction : MonoBehaviour
 
     void MovePlayer()
     {
-        cameraScript.Unfollow();
         playerScript.gravityModifier = 3.0f;
-        Invoke("GoToLevel", 1.0f);
     }
 
     void GoToLevel()
@@ -73,5 +71,12 @@ public class Introduction : MonoBehaviour
     {
         MovePlayer();
         canvas.SetActive(false);
+        Invoke("GoToLevel", 1.5f);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        playerScript.gravityModifier = 0.0f;
+        playerScript.SetToZero();
     }
 }
