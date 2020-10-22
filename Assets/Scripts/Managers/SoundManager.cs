@@ -29,6 +29,15 @@ public class SoundManager : MonoBehaviour
         DontDestroyOnLoad (gameObject);
     }
 
+    void Start()
+    {
+        
+        // UNCOMMENT TO ENABLE SOUND
+        musicMixer.SetFloat("Music_volume", -80.0f);
+        vfxMixer.SetFloat("VFX_volume", -80.0f);
+        // UNCOMMENT TO ENABLE SOUND
+
+    }
 
     //Used to play single sound clips.
     public void PlaySingle(AudioClip clip, float volume = 1.0f)
@@ -75,17 +84,15 @@ public class SoundManager : MonoBehaviour
 
     public void SetMusicVolume(float volume)
     {
-        Debug.Log("volume " + volume);
+        Debug.Log("volume " + Mathf.Log10(volume) * 20);
         musicMixer.SetFloat("Music_volume", Mathf.Log10(volume) * 20);
-        musicMixerVolume = volume;
     }
 
 
     public void SetVFXVolume(float volume)
     {
-        Debug.Log("VFX " + volume);
+        Debug.Log("VFX " + Mathf.Log10(volume) * 20);
         vfxMixer.SetFloat("VFX_volume", Mathf.Log10(volume) * 20);
-        vfxMixerVolume = volume;
     }
 
 }
