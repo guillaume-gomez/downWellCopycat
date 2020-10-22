@@ -370,6 +370,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5da9e6996d35f3b58fc471dcb867c79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  winSound: {fileID: 8300000, guid: 74c2526c58e425ed88115261f84366ee, type: 3}
+  loseSound: {fileID: 8300000, guid: ac9ced29427d00dc28ed4244d03658c1, type: 3}
 --- !u!1 &8573133971520216075
 GameObject:
   m_ObjectHideFlags: 0

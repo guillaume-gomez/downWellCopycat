@@ -5050,6 +5050,8 @@ MonoBehaviour:
   fallMultiplier: 2.25
   lowJumpMultiplier: 0.9
   vYmax: 45
+  jumpSound: {fileID: 8300000, guid: a4b8ecd1f26513a4a8dbf6c6577c5712, type: 3}
+  hurtSound: {fileID: 8300000, guid: dacb44ed5cfba52bc9209df687411718, type: 3}
   dust: {fileID: 347871757}
   timeManager: {fileID: 0}
   unvisibleTimer: 0.5

@@ -8,6 +8,7 @@ public class Coin : MonoBehaviour
     private float alpha = 1.0f;
     private float angle = 0.0f;
     private SpriteRenderer sprite;
+    public AudioClip pickUpSound;
 
     public float CoinValue {
         get => coinValue;
@@ -39,6 +40,10 @@ public class Coin : MonoBehaviour
             if(LevelManager.instance)
             {
                 LevelManager.instance.TakeMoney(coinValue);
+            }
+            if(SoundManager.instance)
+            {
+                SoundManager.instance.PlaySingle(pickUpSound);
             }
             Destroy(gameObject);
         }

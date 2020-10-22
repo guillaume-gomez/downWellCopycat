@@ -22,6 +22,10 @@ public class LevelManager : MonoBehaviour
     public event EventHandler<OnComboChangedEventArgs> OnUpdateCombo;
     public event EventHandler<OnMoneyChangedEventArgs> OnMoneyChange;
 
+    public AudioClip winSound;
+    public AudioClip loseSound;
+
+    private ComboText comboText;
     private LevelGenerator levelScript;
     public static bool PauseGame = false;
 
@@ -37,6 +41,14 @@ public class LevelManager : MonoBehaviour
         levelScript = GetComponent<LevelGenerator>();
     }
 
+    void Start()
+    {
+        GameObject comboTextObj = GameObject.Find("ComboText");
+        if(comboTextObj)
+        {
+            comboText = comboTextObj.GetComponent<ComboText>();
+        }
+    }
 
      void OnEnable()
      {
@@ -72,6 +84,7 @@ public class LevelManager : MonoBehaviour
         {
             OnLose(this, EventArgs.Empty);
         }
+        SoundManager.instance.PlayAndMuteMusic(loseSound);
         StartCoroutine(GoBackMenu());
     }
 
@@ -83,6 +96,9 @@ public class LevelManager : MonoBehaviour
             OnWin(this, EventArgs.Empty);
         }
         GameManager.instance.LevelSystemRun.level += 1;
+        GameManager.instance.Save();
+
+        SoundManager.instance.PlayAndMuteMusic(winSound);
         Invoke("LoadIntroScene", 2.0f);
     }
 
