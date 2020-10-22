@@ -6,19 +6,21 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
     private CharacterStats characterStats;
-    private GeneralStatistics generalStatistics;
+    // private GeneralStatistics generalStatistics;
     private LevelSystem levelSystem;
+    private LevelSystem levelSystemRun;
 
-    public GeneralStatistics GeneralStatistics
-    {
-        get => generalStatistics;
-        set => generalStatistics = value;
-    }
 
     public CharacterStats CharacterStats
     {
         get => characterStats;
         set => characterStats = value;
+    }
+
+    public LevelSystem LevelSystemRun
+    {
+        get => levelSystemRun;
+        set => levelSystemRun = value;
     }
 
     public LevelSystem LevelSystem
@@ -41,13 +43,17 @@ public class GameManager : MonoBehaviour
         Load();
     }
 
+
+
     public void Load()
     {
         CharacterStats = new CharacterStats();
 
-        generalStatistics = SaveSystem.LoadGame();
+        //generalStatistics = SaveSystem.LoadGame();
 
         levelSystem = SaveSystem.LoadLevelSystem();
+
+        LevelSystemRun = new LevelSystem();
     }
 
     public void EndRun()
@@ -57,13 +63,14 @@ public class GameManager : MonoBehaviour
 
     public void StartRun()
     {
-        LevelSystem.InitGame();
+        LevelSystemRun = new LevelSystem();
     }
 
     public void Save()
     {
-        generalStatistics.AddDataFromPreviousRun(levelSystem);
-        SaveSystem.SaveGame();
+        levelSystem.MergeLevelSystem(levelSystemRun);
+        SaveSystem.SaveLevelSystem();
+        SaveSystem.SaveCharacterStat();
     }
 
 }
