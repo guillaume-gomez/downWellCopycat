@@ -40,16 +40,14 @@ public class PlayerController : PhysicsObject {
     public AudioClip hurtSound;
 
     public ParticleSystem dust;
-
     public TimeManager timeManager;
-
+    public bool godMode;
 
     public event EventHandler<OnLifeChangedEventArgs> OnLifeChanged;
 
 
     private int life = 4;
     private HealthBar healthBar;
-
     private SpriteRenderer spriteRenderer;
     // allows to jump few frames before to be grounded
     private float jumpPressedRemember = 0.0f;
@@ -184,7 +182,7 @@ public class PlayerController : PhysicsObject {
 
     public void Hurt(EnemyBase enemy)
     {
-        if(!unvisible) {
+        if(!unvisible && !godMode) {
             if(life >= 1) {
                 // todo add armor
                 Life = Math.Max(life - enemy.Damage, 0);
@@ -213,7 +211,14 @@ public class PlayerController : PhysicsObject {
             // otherwise it must be floor
             if(LevelManager.instance != null)
             {
-                LevelManager.instance.ResetCombo();
+                foreach(ContactPoint2D point in collision.contacts)
+                {
+                    if(point.normal.y >= 0.9f)
+                    {
+                        LevelManager.instance.ResetCombo();
+                        return;
+                    }
+                }
             }
             return;
         }
@@ -225,7 +230,7 @@ public class PlayerController : PhysicsObject {
             foreach(ContactPoint2D point in collision.contacts)
             {
                 //Debug.DrawLine(point.point, point.point + point.normal, Color.red,100);
-                //Debug.Log(point.normal);
+                // Debug.Log(point.normal);
                 // if fall into enemy
                 if( point.normal.y >= 0.9f)
                 {
@@ -303,6 +308,11 @@ public class PlayerController : PhysicsObject {
     void CreateDust()
     {
         dust.Play();
+    }
+
+    public void SetToZero()
+    {
+        velocity = new Vector2(0.0f, 0.0f);
     }
 
 }

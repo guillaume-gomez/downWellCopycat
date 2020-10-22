@@ -30,13 +30,7 @@ public class CaveBlocs : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D col)
     {
-        Vector3 size = GetComponent<BoxCollider2D>().bounds.size;
-        float absPositionX = Mathf.Abs(col.gameObject.transform.position.x);
-        float positionAbs = Mathf.Abs(gameObject.transform.position.x);
-
-        if( col.gameObject.name == "Player" &&
-           (absPositionX < positionAbs ||
-            absPositionX > positionAbs + size.x))
+        if(col.gameObject.name == "Player")
          {
             cave.SetActive(false);
             LevelManager.PauseGame = false;

@@ -8,7 +8,6 @@ public class SpawnerTest : MonoBehaviour
     public GameObject[] items;
 
     private int xOffsetMax = 30;
-    private int yOffsetMax =  20;
     private int nbItems = 10;
 
     void Start()
