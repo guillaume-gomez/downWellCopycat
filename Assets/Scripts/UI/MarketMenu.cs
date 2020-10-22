@@ -13,8 +13,8 @@ public class MarketMenu : MonoBehaviour
   {
     if(GameManager.instance != null && GameManager.instance.LevelSystem != null)
     {
-      score.text = "Score: " + GameManager.instance.LevelSystem.score.ToString("#.00");
-      money.text = "Money: " + GameManager.instance.LevelSystem.money.ToString("#.00");
+      score.text = "Score: " + GameManager.instance.LevelSystem.score.ToString("F2");
+      money.text = "Money: " + GameManager.instance.LevelSystem.money.ToString("F2");
     }
   }
 

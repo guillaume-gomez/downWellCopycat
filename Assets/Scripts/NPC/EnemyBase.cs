@@ -41,6 +41,7 @@ public class EnemyBase : MonoBehaviour
     public bool canBeJumped = true;
     public GameObject damageParticle;
     public Vector3 offsetPositionSpawn;
+    public AudioClip[] dieSounds;
 
     public int Life {
         get => life;
@@ -92,6 +93,7 @@ public class EnemyBase : MonoBehaviour
         if (life <= 0.0f)
         {
             Destroy(this.gameObject);
+            SoundManager.instance.RandomizeSfx(dieSounds);
             LevelManager.instance.AddScore(enemyScore);
             LevelManager.instance.IncEnemyKill();
             LevelManager.instance.IncCombo();
@@ -156,7 +158,6 @@ public class EnemyBase : MonoBehaviour
 
     private void computeSize()
     {
-        Vector3 size = new Vector3();
         switch(damage) {
             case 1:
                 transform.localScale = EnemyConstants.Size[0];

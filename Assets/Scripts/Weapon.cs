@@ -17,6 +17,7 @@ public class Weapon : MonoBehaviour
     public float thrustBulletToPlayer = 10.0f;
     public float shootPressedTimerRemember = 0.3f;
     public int damage = 1;
+    public AudioClip shotSound;
 
     public event EventHandler<WeaponEventArgs> OnShootHandler;
 
@@ -36,6 +37,7 @@ public class Weapon : MonoBehaviour
 
     public virtual float Shoot()
     {
+        PlaySound();
         if(weaponName == "shotgun")
         {
             return ShotGunShoot();
@@ -78,7 +80,6 @@ public class Weapon : MonoBehaviour
         bulletObj3.damage = damage;
         bulletObj3.transform.parent = transform;
 
-
         currentBullet = currentBullet - 1;
         OnShoot(currentBullet);
 
@@ -99,6 +100,14 @@ public class Weapon : MonoBehaviour
     public int GetDamage()
     {
         return damage;
+    }
+
+    private void PlaySound()
+    {
+        if(SoundManager.instance)
+        {
+            SoundManager.instance.PlaySingle(shotSound);
+        }
     }
 
     void FixedUpdate()

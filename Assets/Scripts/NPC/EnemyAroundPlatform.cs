@@ -24,8 +24,9 @@ public class EnemyAroundPlatform : EnemyBase
       layerBloc = LayerMask.NameToLayer("bloc");
   }
 
-  protected void Start()
+  protected new void Start()
   {
+    base.Start();
     collisionWithPlayer = false;
     // check raycast to everything except" enemy layer (espacially itself)
     layerMastk = 1 << LayerMask.NameToLayer("enemy");

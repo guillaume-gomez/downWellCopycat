@@ -9,6 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3638551397553188706, guid: 4a577bacd92a79c0496e0965d8afe92b,
         type: 3}
+      propertyPath: dieSounds.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3638551397553188706, guid: 4a577bacd92a79c0496e0965d8afe92b,
+        type: 3}
       propertyPath: coinValue
       value: 12
       objectReference: {fileID: 0}
@@ -28,6 +33,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4354213638307553630, guid: b9abc807bbe076d4fa3002fe1d8d90d3,
         type: 3}
+    - target: {fileID: 3638551397553188706, guid: 4a577bacd92a79c0496e0965d8afe92b,
+        type: 3}
+      propertyPath: dieSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 0258634ff0fb48b43bf2a110f8bc77bb, type: 3}
+    - target: {fileID: 3638551397553188706, guid: 4a577bacd92a79c0496e0965d8afe92b,
+        type: 3}
+      propertyPath: dieSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: b9fe20c78b15c554d8f9980de541871a, type: 3}
+    - target: {fileID: 3638551397553188706, guid: 4a577bacd92a79c0496e0965d8afe92b,
+        type: 3}
+      propertyPath: dieSounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 076e177a65f943b479dadcefcbc56498, type: 3}
+    - target: {fileID: 3638551397553188706, guid: 4a577bacd92a79c0496e0965d8afe92b,
+        type: 3}
+      propertyPath: dieSounds.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: a9fbe952d9962454183f398f356a7239, type: 3}
     - target: {fileID: 3638551397553188709, guid: 4a577bacd92a79c0496e0965d8afe92b,
         type: 3}
       propertyPath: m_LocalPosition.x

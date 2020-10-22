@@ -12,18 +12,24 @@ public class BreakableBlocShop : MonoBehaviour
     void Start()
     {
         LevelManager.instance.OnMoneyChange += OnMoneyChange;
-
         spawner.Init();
         // We assume spawner has script PickupBoughtItem
         PickupBoughtItem script = spawner.gameObject.transform.GetChild(0).GetComponent<PickupBoughtItem>();
         priceToBeDestroyed = script.price;
 
         text.text = priceToBeDestroyed.ToString();
+
+        CheckColor(GameManager.instance.LevelSystemRun.money);
     }
 
     void OnMoneyChange(object sender, OnMoneyChangedEventArgs e)
     {
-        if(priceToBeDestroyed <= e.money)
+        CheckColor(e.money);
+    }
+
+    private void CheckColor(float money)
+    {
+        if(priceToBeDestroyed <= money)
         {
             canBeBought = true;
             text.color = new Color32(255, 255, 255, 255);

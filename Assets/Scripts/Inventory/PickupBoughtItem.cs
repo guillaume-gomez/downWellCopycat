@@ -11,6 +11,7 @@ public class PickupBoughtItem : PickupBase
   {
     base.Start();
     LevelManager.instance.OnMoneyChange += OnMoneyChange;
+    canBeBought = (GameManager.instance.LevelSystemRun.money <= price);
   }
 
   void OnMoneyChange(object sender, OnMoneyChangedEventArgs e)

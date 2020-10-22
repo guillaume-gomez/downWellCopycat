@@ -35,6 +35,10 @@ public class PlayerController : PhysicsObject {
     [Range(0, 10)]
     public float lowJumpMultiplier = 1f;
     public float vYmax = 9999f;
+
+    public AudioClip jumpSound;
+    public AudioClip hurtSound;
+
     public ParticleSystem dust;
     public TimeManager timeManager;
     public bool godMode;
@@ -120,6 +124,7 @@ public class PlayerController : PhysicsObject {
 
         if(Input.GetButtonUp("Jump"))
         {
+            SoundManager.instance.PlaySingle(jumpSound);
             if (velocity.y > 0) {
                 velocity.y = velocity.y * ( lowJumpMultiplier - 1.0f );
             }
@@ -181,6 +186,7 @@ public class PlayerController : PhysicsObject {
             if(life >= 1) {
                 // todo add armor
                 Life = Math.Max(life - enemy.Damage, 0);
+                SoundManager.instance.PlaySingle(hurtSound);
             }
 
             if(life <= 0)
@@ -190,7 +196,7 @@ public class PlayerController : PhysicsObject {
             }
             StartCoroutine(FlashSprite(GetComponent<SpriteRenderer>(), 0.0f, 1.0f, 0.1f, unvisibleTimer));
             StartCoroutine(GetUnvisible(unvisibleTimer, enemy));
-            timeManager.DoSlowMotion();
+            //timeManager.DoSlowMotion();
         }
     }
 
@@ -205,7 +211,14 @@ public class PlayerController : PhysicsObject {
             // otherwise it must be floor
             if(LevelManager.instance != null)
             {
-                LevelManager.instance.ResetCombo();
+                foreach(ContactPoint2D point in collision.contacts)
+                {
+                    if(point.normal.y >= 0.9f)
+                    {
+                        LevelManager.instance.ResetCombo();
+                        return;
+                    }
+                }
             }
             return;
         }
@@ -295,6 +308,11 @@ public class PlayerController : PhysicsObject {
     void CreateDust()
     {
         dust.Play();
+    }
+
+    public void SetToZero()
+    {
+        velocity = new Vector2(0.0f, 0.0f);
     }
 
 }

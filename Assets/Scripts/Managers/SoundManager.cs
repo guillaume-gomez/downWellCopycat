@@ -1,14 +1,18 @@
 using UnityEngine;
+using UnityEngine.Audio;
 using System.Collections;
 
-public class SoundManager : MonoBehaviour 
+public class SoundManager : MonoBehaviour
 {
-    public AudioSource efxSource;                    //Drag a reference to the audio source which will play the sound effects.
+    public AudioMixer vfxMixer;
+    public AudioMixer musicMixer;
+    public AudioSource vfxSource;                    //Drag a reference to the audio source which will play the sound effects.
     public AudioSource musicSource;                    //Drag a reference to the audio source which will play the music.
-    public static SoundManager instance = null;        //Allows other scripts to call functions from SoundManager.                
+    public static SoundManager instance = null;        //Allows other scripts to call functions from SoundManager.
     public float lowPitchRange = .95f;                //The lowest a sound effect will be randomly pitched.
     public float highPitchRange = 1.05f;            //The highest a sound effect will be randomly pitched.
-
+    private float musicMixerVolume = 1.0f;
+    private float vfxMixerVolume = 1.0f;
 
     void Awake ()
     {
@@ -25,17 +29,24 @@ public class SoundManager : MonoBehaviour
         DontDestroyOnLoad (gameObject);
     }
 
-
-    //Used to play single sound clips.
-    public void PlaySingle(AudioClip clip)
+    void Start()
     {
-        //Set the clip of our efxSource audio source to the clip passed in as a parameter.
-        efxSource.clip = clip;
+        
+        // UNCOMMENT TO ENABLE SOUND
+        musicMixer.SetFloat("Music_volume", -80.0f);
+        vfxMixer.SetFloat("VFX_volume", -80.0f);
+        // UNCOMMENT TO ENABLE SOUND
 
-        //Play the clip.
-        efxSource.Play ();
     }
 
+    //Used to play single sound clips.
+    public void PlaySingle(AudioClip clip, float volume = 1.0f)
+    {
+        //Set the clip of our vfxSource audio source to the clip passed in as a parameter.
+        vfxSource.clip = clip;
+        //Play the clip.
+        vfxSource.PlayOneShot(clip, volume);
+    }
 
     //RandomizeSfx chooses randomly between various audio clips and slightly changes their pitch.
     public void RandomizeSfx (params AudioClip[] clips)
@@ -47,26 +58,41 @@ public class SoundManager : MonoBehaviour
         float randomPitch = Random.Range(lowPitchRange, highPitchRange);
 
         //Set the pitch of the audio source to the randomly chosen pitch.
-        efxSource.pitch = randomPitch;
+        vfxSource.pitch = randomPitch;
 
         //Set the clip to the clip at our randomly chosen index.
-        efxSource.clip = clips[randomIndex];
+        vfxSource.clip = clips[randomIndex];
 
         //Play the clip.
-        efxSource.Play();
+        vfxSource.Play();
+    }
+
+    public void PlayAndMuteMusic(AudioClip clip)
+    {
+        vfxMixer.GetFloat("VFX_volume", out float currentMusicVolume);
+        SetMusicVolume(0.001f);
+        PlaySingle(clip);
+        StartCoroutine(unMuteMusic(currentMusicVolume, clip.length + 1.0f));
+
+    }
+
+    private IEnumerator unMuteMusic(float oldVolume, float length)
+    {
+        yield return new WaitForSeconds(length);
+        SetMusicVolume(oldVolume);
     }
 
     public void SetMusicVolume(float volume)
     {
-        Debug.Log("volume " + volume);
-        musicSource.volume = Mathf.Log(10, volume) * 20.0f;
+        Debug.Log("volume " + Mathf.Log10(volume) * 20);
+        musicMixer.SetFloat("Music_volume", Mathf.Log10(volume) * 20);
     }
 
 
     public void SetVFXVolume(float volume)
     {
-        Debug.Log("VFX " + volume);
-        efxSource.volume = Mathf.Log(10, volume) * 20.0f;
+        Debug.Log("VFX " + Mathf.Log10(volume) * 20);
+        vfxMixer.SetFloat("VFX_volume", Mathf.Log10(volume) * 20);
     }
 
 }
