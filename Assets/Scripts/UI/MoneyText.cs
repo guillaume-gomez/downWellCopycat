@@ -9,7 +9,7 @@ public class MoneyText : MonoBehaviour
     {
         text = GetComponent<TextMeshProUGUI>();
         LevelManager.instance.OnMoneyChange += OnMoneyChange;
-        UpdateMoney(GameManager.instance.LevelSystem.money);
+        UpdateMoney(GameManager.instance.LevelSystemRun.money);
     }
 
     private void OnMoneyChange(object sender, OnMoneyChangedEventArgs e)

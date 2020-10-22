@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-[Serializable]
+[System.Serializable]
 public class LevelSystem
 {
 
@@ -11,11 +11,13 @@ public class LevelSystem
     public int level;
     public int experience;
     public int experienceToNextLevel;
-    public int money;
+    public float money;
     public int currentCombo;
     public int maxCombo;
     public int nbKilled;
     public int score;
+    public float saveMoneyPercentage;
+
 
     public LevelSystem()
     {
@@ -27,16 +29,7 @@ public class LevelSystem
         maxCombo = 0;
         nbKilled = 0;
         score = 0;
-    }
-
-    public void InitGame()
-    {
-        money = 0;
-        level = 1;
-        currentCombo = 0;
-        maxCombo = 0;
-        nbKilled = 0;
-        score = 0;
+        saveMoneyPercentage = 0.1f;
     }
 
     public void AddExperience(int amount)
@@ -55,6 +48,19 @@ public class LevelSystem
         {
             OnExperienceChanged(this, EventArgs.Empty);
         }
+    }
+
+    public void MergeLevelSystem(LevelSystem ls)
+    {
+        money += ls.money * ls.saveMoneyPercentage;
+        experience += ls.experience;
+
+        score += ls.score;
+        if(maxCombo < ls.maxCombo)
+        {
+            maxCombo = ls.maxCombo;
+        }
+        nbKilled += ls.nbKilled;
     }
 
 }
