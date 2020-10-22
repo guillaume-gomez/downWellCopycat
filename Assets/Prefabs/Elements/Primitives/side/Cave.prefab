@@ -177,6 +177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cave: {fileID: 6766981206290302563}
+  discoverCaveSound: {fileID: 8300000, guid: ec9617873182303bfb627b1dfcaad16e, type: 3}
 --- !u!1001 &558828951593770171
 PrefabInstance:
   m_ObjectHideFlags: 0

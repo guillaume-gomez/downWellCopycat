@@ -164,5 +164,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 237929489599410623, guid: e50228acb7be8b5debed99a14e9fea67,
         type: 3}
+    - target: {fileID: 8852556650836462881, guid: 31ff3fe6847f42501b3f9d8a587db044,
+        type: 3}
+      propertyPath: shotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: f717dacddc702544cb902739b1da3a07, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31ff3fe6847f42501b3f9d8a587db044, type: 3}

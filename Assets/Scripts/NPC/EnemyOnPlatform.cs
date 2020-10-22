@@ -11,7 +11,7 @@ public class EnemyOnPlatform : EnemyBase
   private bool movingRight = true;
   private bool collisionWithPlayer;
 
-  protected void Start()
+  protected new void Start()
   {
     collisionWithPlayer = false;
     isVisibleOnCamera = true;

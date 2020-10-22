@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour
         Load();
     }
 
+
+
     public void Load()
     {
         CharacterStats = new CharacterStats();
