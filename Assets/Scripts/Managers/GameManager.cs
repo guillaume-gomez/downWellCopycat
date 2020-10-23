@@ -47,13 +47,13 @@ public class GameManager : MonoBehaviour
 
     public void Load()
     {
-        CharacterStats = new CharacterStats();
+        characterStats = new CharacterStats();
 
         //generalStatistics = SaveSystem.LoadGame();
 
         levelSystem = SaveSystem.LoadLevelSystem();
 
-        LevelSystemRun = new LevelSystem();
+        levelSystemRun = new LevelSystem();
     }
 
     public void EndRun()
