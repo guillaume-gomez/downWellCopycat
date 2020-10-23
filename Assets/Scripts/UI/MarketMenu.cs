@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,19 +12,23 @@ public class MarketMenu : MonoBehaviour
 
   void Start()
   {
-    if(GameManager.instance != null && GameManager.instance.LevelSystem != null)
-    {
-      score.text = "Score: " + GameManager.instance.LevelSystem.score.ToString("F2");
-      money.text = "Money: " + GameManager.instance.LevelSystem.money.ToString("F2");
-    }
+    MarketManager.instance.OnMoneyChange += OnMoneyChange;
+    score.text = "Score: " + MarketManager.instance.Score.ToString("F2");
+    money.text = "Money: " + MarketManager.instance.Money.ToString("F2");
   }
 
    void Update()
    {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
+            MarketManager.instance.Save();
             GoBackMainMenu();
         }
+   }
+
+   private void OnMoneyChange(object sender, OnMoneyChangedEventArgs e)
+   {
+      money.text = "Money: " + e.money.ToString("F2");
    }
 
    public void Save()
