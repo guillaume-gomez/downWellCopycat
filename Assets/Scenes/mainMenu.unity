@@ -515,7 +515,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Option
+  m_text: 'Options
 
 '
   m_isRightToLeft: 0
@@ -1877,6 +1877,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: VolumeOptionMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 5565691017353078741, guid: faaa1d62acf02554ab61c2d8ff1e460b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5565691017353078742, guid: faaa1d62acf02554ab61c2d8ff1e460b,
         type: 3}
