@@ -40,19 +40,38 @@ public class MarketManager : MonoBehaviour
         levelSystem = SaveSystem.LoadLevelSystem();
     }
 
-    public void TakeMoney(float _money)
+   void Update()
+   {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Save();
+            GoBackMainMenu();
+        }
+   }
+
+    void GoBack()
+   {
+      GoBackMainMenu();
+   }
+
+    void GoBackMainMenu()
+   {
+      SceneManager.LoadScene(0);
+   }
+
+    public void Buy(float itemPrice)
     {
-        levelSystem.money += _money;
+        levelSystem.money -= itemPrice;
         OnMoneyChangedEventArgs eventArgs = new OnMoneyChangedEventArgs();
         eventArgs.money = levelSystem.money;
         OnMoneyChange(this, eventArgs);
     }
 
 
-    public void Save()
+    void Save()
     {
-        // SaveSystem.SaveLevelSystem();
-        // SaveSystem.SaveCharacterStat();
+        SaveSystem.SaveLevelSystem(levelSystem);
+        SaveSystem.SaveCharacterStat();
     }
 
 

@@ -1,16 +1,21 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class BuyableItem : MonoBehaviour
 {
     private Button button;
+    private Image image;
     public float price;
+    public TextMeshProUGUI score;
 
     void Start()
     {
-        price = 10.0f;
         button = GetComponent<Button>();
+        image = GetComponent<Image>();
+        score.text = price.ToString();
+
 
         MarketManager.instance.OnMoneyChange += OnMoneyChange;
         CanBeBought(MarketManager.instance.Money);
@@ -26,11 +31,18 @@ public class BuyableItem : MonoBehaviour
         if(totalMoney >= price)
         {
             button.interactable = true;
+            image.color = Color.white;
         }
         else
         {
             button.interactable = false;
+            image.color = Color.red;
         }
+    }
+
+    public void Buy()
+    {
+        MarketManager.instance.Buy(price);
     }
 
 }

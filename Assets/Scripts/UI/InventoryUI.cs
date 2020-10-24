@@ -12,7 +12,6 @@ public class InventoryUI : MonoBehaviour
         {
             Vector3 position = new Vector3(0f, 0f, 0f);
             GameObject obj = Instantiate(bonusItems[i], position, transform.rotation);
-            obj.AddComponent<BuyableItem>();
             obj.transform.SetParent(itemsParent);
         }
     }
