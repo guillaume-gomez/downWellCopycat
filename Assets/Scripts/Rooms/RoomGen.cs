@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class RoomGen : MonoBehaviour
 {
-    public SpawnEnemy[] leftsEnemy;
-    public SpawnEnemy[] rightsEnemy;
+    public GameObject[] spawnEnemies;
     public GameObject[] spawnersCenter;
     public GameObject[] spawnersSide;
     [Range(0,1.0f)]
@@ -48,13 +47,19 @@ public class RoomGen : MonoBehaviour
                 // spawner has the max length possible
                 newChunk = length - i;
             }
+            
+            float y = (i * heightSubRoom) + (newChunk * heightSubRoom) / 2.0f;
             if(Random.Range(0.0f, 1.0f) <= percentageSide)
             {
-                float y = (i * heightSubRoom) + (newChunk * heightSubRoom) / 2.0f;
                 GameObject obj = CreateSpwaner(x, y, typeOfSpawn, newChunk - 1);
                 obj.GetComponent<SpawnObject>().isLeft = isLeft;
                 obj.GetComponent<SpawnObject>().Init();
+            } else {
+                int randomIndex = Random.Range(0, spawnEnemies.Length);
+                GameObject obj = CreateSpwaner(x, y, spawnEnemies, randomIndex);
+                obj.GetComponent<SpawnEnemy>().Init();
             }
+            
             i = i + newChunk;
         }
     }
