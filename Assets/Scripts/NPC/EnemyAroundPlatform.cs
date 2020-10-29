@@ -38,11 +38,12 @@ public class EnemyAroundPlatform : EnemyBase
     for(int i = 0; i < groundDetections.Length; ++i)
     {
       RaycastHit2D groundInfo = Physics2D.Raycast(groundDetections[i].position, -transform.up, distance, layerMastk);
-      //Debug.DrawLine(groundDetections[i].position, groundDetections[i].position - (transform.up * distance), Color.red,100);
+      //Debug.Log(transform.TransformDirection( transform.up ));
       if (groundInfo.collider && groundInfo.collider.gameObject.layer == layerBloc )
       {
         return true;
       }
+      //Debug.DrawLine(groundDetections[i].position, groundDetections[i].position - (transform.up * distance), Color.green, 2);
     }
     return false;
   }
@@ -62,15 +63,7 @@ public class EnemyAroundPlatform : EnemyBase
     RaycastHit2D groundInfof = Physics2D.Raycast(horizontalDetection.position, Vector2.right, 0.05f);
     if(groundInfof.collider && groundInfof.collider.gameObject.layer == layerBloc)
     {
-        if(movingRight)
-        {
-            transform.eulerAngles = new Vector3(0.0f, -180f, 0.0f);
-            movingRight = false;
-        } else
-        {
-            transform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
-            movingRight = true;
-        }
+        Flip();
         return;
     }
 
@@ -79,7 +72,6 @@ public class EnemyAroundPlatform : EnemyBase
     {
       rb2d.position = rb2d.position + (Vector2) transform.right * speed * Time.deltaTime;
     }
-
     if(!onPlatform())
     {
         noDectection++;
@@ -90,7 +82,7 @@ public class EnemyAroundPlatform : EnemyBase
           for(int i = 0; i < groundDetections.Length; ++i)
           {
             RaycastHit2D groundInfo = Physics2D.Raycast(groundDetections[i].position, -transform.up, distance, layerMastk);
-            Debug.DrawLine(groundDetections[i].position, groundDetections[i].position - (transform.up * distance), Color.red, 5);
+            //Debug.DrawLine(groundDetections[i].position, groundDetections[i].position - (transform.up * distance), Color.red, 5);
             if (groundInfo.collider && groundInfo.collider.gameObject.layer == layerBloc )
             {
               transform.position += -groundInfo.distance * transform.up;
@@ -100,6 +92,19 @@ public class EnemyAroundPlatform : EnemyBase
         }
     } else {
       noDectection = 0;
+    }
+  }
+
+  private void Flip()
+  {
+    if(movingRight)
+    {
+        transform.eulerAngles = new Vector3(0.0f, -180f, 0.0f);
+        movingRight = false;
+    } else
+    {
+        transform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
+        movingRight = true;
     }
   }
 
