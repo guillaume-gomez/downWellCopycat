@@ -115,6 +115,10 @@ public class EnemyAroundPlatform : EnemyBase
     {
       collisionWithPlayer = true;
     }
+    if(collision.collider.tag == "Enemy")
+    {
+      Flip();
+    }
   }
 
   void OnCollisionExit2D(Collision2D collision)
