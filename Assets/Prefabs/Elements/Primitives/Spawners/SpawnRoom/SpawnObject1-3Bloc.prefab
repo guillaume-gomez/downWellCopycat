@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 263025891014417192, guid: 4989cc2130623cb4eaf6d421b14ac7cb,
         type: 3}
       propertyPath: m_Name
-      value: SpawnObject1-1Bloc
+      value: SpawnObject1-3Bloc
       objectReference: {fileID: 0}
     - target: {fileID: 263025891014417194, guid: 4989cc2130623cb4eaf6d421b14ac7cb,
         type: 3}
@@ -67,5 +67,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 263025891014417195, guid: 4989cc2130623cb4eaf6d421b14ac7cb,
+        type: 3}
+      propertyPath: objects.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 263025891014417195, guid: 4989cc2130623cb4eaf6d421b14ac7cb,
+        type: 3}
+      propertyPath: objects.Array.data[0]
+      value: 
+      objectReference: {fileID: 3669965454452813480, guid: 4a5eec8665ab9df4ab89dca3b2d69a5f,
+        type: 3}
+    - target: {fileID: 263025891014417195, guid: 4989cc2130623cb4eaf6d421b14ac7cb,
+        type: 3}
+      propertyPath: objects.Array.data[1]
+      value: 
+      objectReference: {fileID: 3669965454452813480, guid: 16791bcae0c9099d7bb2184fb8be8746,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4989cc2130623cb4eaf6d421b14ac7cb, type: 3}
