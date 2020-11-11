@@ -121,13 +121,13 @@ public class RoomGen : MonoBehaviour
     protected int PopSpwanerY()
     {
         float spwanerSizePercentage = Random.Range(0.0f, 1.0f);
-        if(spwanerSizePercentage <= 0.10f)
+        if(spwanerSizePercentage <= 0.40f)
         {
             return 1;
-        } else if(spwanerSizePercentage <= 0.80f)
+        } else if(spwanerSizePercentage <= 0.90f)
         {
             return 2;
-        } else if(spwanerSizePercentage <= 0.99f)
+        } else if(spwanerSizePercentage <= 0.95f)
         {
             return 3;
         } else {

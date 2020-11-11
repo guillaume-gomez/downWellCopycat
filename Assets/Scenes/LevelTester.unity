@@ -953,6 +953,11 @@ PrefabInstance:
       propertyPath: unvisibleTimer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5971180133105629528, guid: 7fe0ee718dda2a4bcb011395a2b20498,
+        type: 3}
+      propertyPath: godMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6458622433490657454, guid: 7fe0ee718dda2a4bcb011395a2b20498,
         type: 3}
       propertyPath: m_IsActive
