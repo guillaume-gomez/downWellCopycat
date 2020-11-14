@@ -21,7 +21,7 @@ PrefabInstance:
     - target: {fileID: 8000934017337026542, guid: f21ca753ebe68824ba7a71bfec000968,
         type: 3}
       propertyPath: objects.Array.size
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8000934017337026542, guid: f21ca753ebe68824ba7a71bfec000968,
         type: 3}
@@ -39,31 +39,31 @@ PrefabInstance:
         type: 3}
       propertyPath: objects.Array.data[3]
       value: 
-      objectReference: {fileID: 2025038079519731507, guid: 5dbf93f326573ef6498565d500cdfbc0,
+      objectReference: {fileID: 4416475920086982265, guid: 1d4609b7fb3cf38c79edc311e901d537,
         type: 3}
     - target: {fileID: 8000934017337026542, guid: f21ca753ebe68824ba7a71bfec000968,
         type: 3}
       propertyPath: objects.Array.data[4]
       value: 
-      objectReference: {fileID: 8110692108519347332, guid: 129d3a04ad2351e69a09e80951f5fb14,
+      objectReference: {fileID: 6750605411913046074, guid: c7f702d27a001d4a8b65f630eedbc6a7,
         type: 3}
     - target: {fileID: 8000934017337026542, guid: f21ca753ebe68824ba7a71bfec000968,
         type: 3}
       propertyPath: objects.Array.data[5]
       value: 
-      objectReference: {fileID: 6750605411913046074, guid: c7f702d27a001d4a8b65f630eedbc6a7,
+      objectReference: {fileID: 2025038079519731507, guid: 5dbf93f326573ef6498565d500cdfbc0,
         type: 3}
     - target: {fileID: 8000934017337026542, guid: f21ca753ebe68824ba7a71bfec000968,
         type: 3}
       propertyPath: objects.Array.data[6]
       value: 
-      objectReference: {fileID: 8339190253927060812, guid: 385da0c782a4314a5be0cb906e80e009,
+      objectReference: {fileID: 8110692108519347332, guid: 129d3a04ad2351e69a09e80951f5fb14,
         type: 3}
     - target: {fileID: 8000934017337026542, guid: f21ca753ebe68824ba7a71bfec000968,
         type: 3}
       propertyPath: objects.Array.data[7]
       value: 
-      objectReference: {fileID: 8339190253927060812, guid: 385da0c782a4314a5be0cb906e80e009,
+      objectReference: {fileID: 4979507878196493097, guid: 1aaa7545f8a524995bacfe1880a747ea,
         type: 3}
     - target: {fileID: 8000934017337026542, guid: f21ca753ebe68824ba7a71bfec000968,
         type: 3}
@@ -81,7 +81,7 @@ PrefabInstance:
         type: 3}
       propertyPath: objects.Array.data[0]
       value: 
-      objectReference: {fileID: 8339190253927060812, guid: 385da0c782a4314a5be0cb906e80e009,
+      objectReference: {fileID: 1237171327007728639, guid: c3396e9f46f2c3af4bf95f69452b15ca,
         type: 3}
     - target: {fileID: 8000934017337026542, guid: f21ca753ebe68824ba7a71bfec000968,
         type: 3}
