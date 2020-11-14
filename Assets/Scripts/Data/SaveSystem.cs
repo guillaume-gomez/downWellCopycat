@@ -33,12 +33,12 @@ public static class SaveSystem
         }
     }
 
-    public static void SaveLevelSystem()
+    public static void SaveLevelSystem(LevelSystem ls)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/levelSystem.dat";
         FileStream stream = new FileStream(path, FileMode.Create);
-        formatter.Serialize(stream, GameManager.instance.LevelSystem);
+        formatter.Serialize(stream, ls);
         stream.Close();
     }
 
