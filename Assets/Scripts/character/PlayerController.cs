@@ -107,7 +107,7 @@ public class PlayerController : PhysicsObject {
 
 
         groundedRemember = groundedRemember - Time.deltaTime;
-        if(grounded)
+        if(grounded && groundedName != "Enemy") // do not taking account grounded when the enemy is the collider
         {
             groundedRemember = groundedRememberTime;
         }

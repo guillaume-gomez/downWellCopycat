@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
     public void Save()
     {
         levelSystem.MergeLevelSystem(levelSystemRun);
-        SaveSystem.SaveLevelSystem();
+        SaveSystem.SaveLevelSystem(levelSystem);
         SaveSystem.SaveCharacterStat();
     }
 

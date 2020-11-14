@@ -2,8 +2,13 @@ using UnityEngine;
 using UnityEngine.Audio;
 using System.Collections;
 
+
+
 public class SoundManager : MonoBehaviour
 {
+    private const string VFXVolume = "VFX_volume";
+    private const string MusicVolume = "Music_volume";
+
     public AudioMixer vfxMixer;
     public AudioMixer musicMixer;
     public AudioSource vfxSource;                    //Drag a reference to the audio source which will play the sound effects.
@@ -69,7 +74,7 @@ public class SoundManager : MonoBehaviour
 
     public void PlayAndMuteMusic(AudioClip clip)
     {
-        vfxMixer.GetFloat("VFX_volume", out float currentMusicVolume);
+        vfxMixer.GetFloat(VFXVolume, out float currentMusicVolume);
         SetMusicVolume(0.001f);
         PlaySingle(clip);
         StartCoroutine(unMuteMusic(currentMusicVolume, clip.length + 1.0f));
@@ -79,20 +84,20 @@ public class SoundManager : MonoBehaviour
     private IEnumerator unMuteMusic(float oldVolume, float length)
     {
         yield return new WaitForSeconds(length);
-        SetMusicVolume(oldVolume);
+        musicMixer.SetFloat(MusicVolume, oldVolume);
     }
 
     public void SetMusicVolume(float volume)
     {
-        Debug.Log("volume " + Mathf.Log10(volume) * 20);
-        musicMixer.SetFloat("Music_volume", Mathf.Log10(volume) * 20);
+        // Debug.Log("volume " + Mathf.Log10(volume) * 20);
+        musicMixer.SetFloat(MusicVolume, Mathf.Log10(volume) * 20);
     }
 
 
     public void SetVFXVolume(float volume)
     {
-        Debug.Log("VFX " + Mathf.Log10(volume) * 20);
-        vfxMixer.SetFloat("VFX_volume", Mathf.Log10(volume) * 20);
+        // Debug.Log("VFX " + Mathf.Log10(volume) * 20);
+        vfxMixer.SetFloat(VFXVolume, Mathf.Log10(volume) * 20);
     }
 
 }
