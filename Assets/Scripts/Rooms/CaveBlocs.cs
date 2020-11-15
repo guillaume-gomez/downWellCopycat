@@ -7,34 +7,43 @@ public class CaveBlocs : MonoBehaviour
 {
     public GameObject cave;
     public AudioClip discoverCaveSound;
+    private Transform player;
     private bool discovered;
+    private CompositeCollider2D collider;
+
 
     void Start()
     {
         discovered = false;
+        collider = GetComponent<CompositeCollider2D>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    void OnTriggerEnter2D(Collider2D col)
+    void Update()
     {
-        if(col.gameObject.name == "Player")
-        {
-            LevelManager.PauseGame = true;
-            cave.SetActive(true);
-            if(!discovered)
-            {
-                SoundManager.instance.PlayAndMuteMusic(discoverCaveSound);
-            }
+        if(Mathf.Abs(transform.position.y - player.position.y) > 2* 20.0f) { // 2* roomHeight. TODO USE CONSTANTS
+            Debug.Log("coucou");
+            return;
         }
 
-    }
-
-    void OnTriggerExit2D(Collider2D col)
-    {
-        if(col.gameObject.name == "Player")
+        if(collider.bounds.Contains(player.position))
          {
-            cave.SetActive(false);
-            LevelManager.PauseGame = false;
+            if(!cave.activeSelf) {
+                LevelManager.PauseGame = true;
+                cave.SetActive(true);
+                if(!discovered)
+                {
+                    SoundManager.instance.PlayAndMuteMusic(discoverCaveSound);
+                }
+            }
+
+         }
+         else {
+            if(cave.activeSelf) {
+                cave.SetActive(false);
+                LevelManager.PauseGame = false;
+                
+            }
          }
     }
-
 }
