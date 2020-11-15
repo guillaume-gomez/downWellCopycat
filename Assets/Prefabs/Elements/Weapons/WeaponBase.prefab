@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4955838965633727005}
   - component: {fileID: 7200974616576338402}
   - component: {fileID: 8852556650836462881}
-  - component: {fileID: 4240246868071271554}
+  - component: {fileID: 2680727740545336086}
   m_Layer: 13
   m_Name: WeaponBase
   m_TagString: Weapon
@@ -123,11 +123,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: weapon
-  bullet: {fileID: 461870415339726162, guid: 644b6dc8f327236bf9f7563d1e1f4faf, type: 3}
+  bullet: {fileID: 0}
   thrustBulletToPlayer: 2
   shootPressedTimerRemember: 0.25
   damage: 1
---- !u!114 &4240246868071271554
+  shotSound: {fileID: 0}
+--- !u!114 &2680727740545336086
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -136,6 +137,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 3957757689061076371}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f618fd0a1a70e5929abb2b3cb39afc6, type: 3}
+  m_Script: {fileID: 11500000, guid: 82ee2a38148813f49a31bb05fa853847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
