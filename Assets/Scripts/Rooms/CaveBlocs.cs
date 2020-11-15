@@ -22,7 +22,6 @@ public class CaveBlocs : MonoBehaviour
     void Update()
     {
         if(Mathf.Abs(transform.position.y - player.position.y) > 2* 20.0f) { // 2* roomHeight. TODO USE CONSTANTS
-            Debug.Log("coucou");
             return;
         }
 
