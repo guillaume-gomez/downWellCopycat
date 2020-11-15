@@ -71,6 +71,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25a96e68ddcf6febfb19b0e93e6fb82c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  whiteListTag:
+  - Bloc
 --- !u!50 &3677593547188692722
 Rigidbody2D:
   serializedVersion: 4

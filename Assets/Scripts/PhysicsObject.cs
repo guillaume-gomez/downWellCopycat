@@ -9,6 +9,7 @@ public class PhysicsObject : MonoBehaviour {
 
     protected Vector2 targetVelocity;
     protected bool grounded;
+    protected string groundedName;
     protected Vector2 groundNormal;
     protected Rigidbody2D rb2d;
     protected Vector2 velocity;
@@ -50,6 +51,7 @@ public class PhysicsObject : MonoBehaviour {
 
 
         grounded = false;
+        groundedName = "";
 
         Vector2 deltaPosition = velocity * Time.deltaTime;
 
@@ -83,6 +85,7 @@ public class PhysicsObject : MonoBehaviour {
                 if (currentNormal.y > minGroundNormalY)
                 {
                     grounded = true;
+                    groundedName = hitBufferList[i].transform.tag;
                     if (yMovement)
                     {
                         groundNormal = currentNormal;
