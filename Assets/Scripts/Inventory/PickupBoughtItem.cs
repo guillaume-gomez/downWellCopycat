@@ -6,7 +6,7 @@ public class PickupBoughtItem : PickupBase
 {
   public float price = 0.0f;
 
-  void OnTriggerEnter2D(Collider2D other)
+  protected override void OnTriggerEnter2D(Collider2D other)
   {
     if(price < GameManager.instance.LevelSystemRun.money)
     {

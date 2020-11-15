@@ -10,4 +10,12 @@ public class PickupBase : MonoBehaviour
     {
         inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
     }
+
+    protected virtual void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            inventory.AddItem(gameObject);
+        }
+    }
 }
