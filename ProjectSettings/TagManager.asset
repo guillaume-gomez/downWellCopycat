@@ -9,6 +9,7 @@ TagManager:
   - Weapon
   - Bloc
   - BreakableBloc
+  - Trigger
   layers:
   - Default
   - TransparentFX
