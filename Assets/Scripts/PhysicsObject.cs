@@ -63,7 +63,10 @@ public class PhysicsObject : MonoBehaviour {
 
         move = Vector2.up * deltaPosition.y;
 
+
         Movement (move, true);
+        
+        rb2d.velocity = velocity;
     }
 
     void Movement(Vector2 move, bool yMovement)
@@ -106,7 +109,7 @@ public class PhysicsObject : MonoBehaviour {
 
         }
 
-        rb2d.position = rb2d.position + move.normalized * distance;
+        //rb2d.position = rb2d.position + move.normalized * distance;
     }
 
 }

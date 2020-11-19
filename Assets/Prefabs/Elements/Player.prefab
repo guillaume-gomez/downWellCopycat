@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1408912869998767710}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &347871757
 ParticleSystem:
@@ -2125,62 +2125,6 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-  LifetimeByEmitterSpeedModule:
-    enabled: 0
-    m_Curve:
-      serializedVersion: 2
-      minMaxState: 1
-      scalar: 1
-      minScalar: 1
-      maxCurve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 1
-          inSlope: 0
-          outSlope: -0.8
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
-        - serializedVersion: 3
-          time: 1
-          value: 0.2
-          inSlope: -0.8
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      minCurve:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
-        - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-    m_Range: {x: 0, y: 1}
   ForceModule:
     enabled: 0
     x:
@@ -4762,7 +4706,6 @@ ParticleSystemRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4805,8 +4748,6 @@ ParticleSystemRenderer:
   m_EnableGPUInstancing: 1
   m_ApplyActiveColorSpace: 1
   m_AllowRoll: 1
-  m_FreeformStretching: 0
-  m_RotateWithStretchDirection: 1
   m_VertexStreams: 00010304
   m_Mesh: {fileID: 0}
   m_Mesh1: {fileID: 0}
@@ -4843,7 +4784,7 @@ Transform:
   m_Children:
   - {fileID: 5133213238017081897}
   m_Father: {fileID: 1408912869998767710}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &9025354500066294518
 SpriteRenderer:
@@ -4860,7 +4801,6 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4896,6 +4836,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2409869514674091889
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8736982694003521285}
+  m_Layer: 9
+  m_Name: floorDetector
+  m_TagString: Untagged
+  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8736982694003521285
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2409869514674091889}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.751, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1408912869998767710}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3497803476610415212
 GameObject:
   m_ObjectHideFlags: 0
@@ -4928,6 +4898,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 8736982694003521285}
   - {fileID: 5645122937951487213}
   - {fileID: 634193731019845848}
   - {fileID: 347871755}
@@ -4949,7 +4920,6 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5038,8 +5008,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc0083d9e84c7bb0fa5bbe3f5bf6f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minGroundNormalY: 0.65
-  gravityModifier: 4
   maxSpeed: 15
   jumpTakeOffSpeed: 20
   jumpPressedRememberTime: 0.2
@@ -5053,7 +5021,8 @@ MonoBehaviour:
   jumpSound: {fileID: 8300000, guid: a4b8ecd1f26513a4a8dbf6c6577c5712, type: 3}
   hurtSound: {fileID: 8300000, guid: dacb44ed5cfba52bc9209df687411718, type: 3}
   dust: {fileID: 347871757}
-  timeManager: {fileID: 0}
+  godMode: 0
+  groundCheck: {fileID: 8736982694003521285}
   unvisibleTimer: 0.5
 --- !u!50 &1240762958806285134
 Rigidbody2D:
@@ -5067,10 +5036,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 100
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 75537ce48f47a4c26ba0679e745ee428, type: 2}
   m_Interpolate: 1
   m_SleepingMode: 0
@@ -5105,7 +5074,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1408912869998767710}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8241592253527399311
 MonoBehaviour:
@@ -5227,15 +5196,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95fe5959f396d486da8db4f1adf27b9d, type: 3}
---- !u!1 &2865268177763380828 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2776749320067694118, guid: 95fe5959f396d486da8db4f1adf27b9d,
-    type: 3}
-  m_PrefabInstance: {fileID: 93314389609812090}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5133213238017081897 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5077618155463332435, guid: 95fe5959f396d486da8db4f1adf27b9d,
+    type: 3}
+  m_PrefabInstance: {fileID: 93314389609812090}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2865268177763380828 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2776749320067694118, guid: 95fe5959f396d486da8db4f1adf27b9d,
     type: 3}
   m_PrefabInstance: {fileID: 93314389609812090}
   m_PrefabAsset: {fileID: 0}

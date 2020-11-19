@@ -3,13 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// https://www.youtube.com/watch?v=44djqUTg2Sg
+// https://github.com/Brackeys/2D-Character-Controller/blob/master/CharacterController2D.cs
+
 public class OnLifeChangedEventArgs : EventArgs
 {
     public int life { get; set; }
     public int diff { get; set;}
 }
 
-public class PlayerController : PhysicsObject {
+public class PlayerController : MonoBehaviour {
 
     [SerializeField]
     public float maxSpeed = 7;
@@ -40,7 +43,6 @@ public class PlayerController : PhysicsObject {
     public AudioClip hurtSound;
 
     public ParticleSystem dust;
-    public TimeManager timeManager;
     public bool godMode;
 
     public event EventHandler<OnLifeChangedEventArgs> OnLifeChanged;
@@ -48,7 +50,13 @@ public class PlayerController : PhysicsObject {
 
     private int life = 4;
     private HealthBar healthBar;
+    private Vector2 velocity;
+    protected Vector2 targetVelocity;
+    private Rigidbody2D rb2d;
     private SpriteRenderer spriteRenderer;
+    protected string groundedName;
+    protected bool grounded;
+    public Transform groundCheck;
     // allows to jump few frames before to be grounded
     private float jumpPressedRemember = 0.0f;
     // allow jump few frame after leaving the floor
@@ -83,13 +91,30 @@ public class PlayerController : PhysicsObject {
         shoot = false;
         spriteRenderer = GetComponent<SpriteRenderer> ();
         inventory = GetComponent<Inventory>();
+        rb2d = GetComponent<Rigidbody2D> ();
         //animator = GetComponent<Animator> ();
-        base.Start();
     }
 
-    protected override void ComputeVelocity()
+    private void FixedUpdate()
     {
+        velocity = new Vector2(0,rb2d.velocity.y);
+        targetVelocity = Vector2.zero;
+
+        Debug.Log(rb2d.velocity.y);
+        
         Vector2 move = Vector2.zero;
+
+        if(Physics2D.Linecast(transform.position, groundCheck.position, 1<< LayerMask.NameToLayer("bloc")))
+        {
+            Debug.Log("grounded");
+            grounded = true;
+            groundedName = "Bloc";
+        }
+        else {
+            Debug.Log("not grounded");
+            grounded = false;
+            groundedName = "";
+        }
 
         move.x = Input.GetAxis ("Horizontal");
         if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) < 0.01f)
@@ -104,6 +129,7 @@ public class PlayerController : PhysicsObject {
         {
             move.x *= Mathf.Pow(1f - horizontalDampingBasic, Time.deltaTime * 10f);
         }
+
 
 
         groundedRemember = groundedRemember - Time.deltaTime;
@@ -168,6 +194,7 @@ public class PlayerController : PhysicsObject {
         //animator.SetBool ("grounded", grounded);
         //animator.SetFloat ("velocityX", Mathf.Abs (velocity.x) / maxSpeed);
         targetVelocity = move * maxSpeed;
+        rb2d.velocity = targetVelocity + velocity;
     }
 
     bool CanJump()
@@ -196,7 +223,6 @@ public class PlayerController : PhysicsObject {
             }
             StartCoroutine(FlashSprite(GetComponent<SpriteRenderer>(), 0.0f, 1.0f, 0.1f, unvisibleTimer));
             StartCoroutine(GetUnvisible(unvisibleTimer, enemy));
-            //timeManager.DoSlowMotion();
         }
     }
 
@@ -229,7 +255,7 @@ public class PlayerController : PhysicsObject {
         {
             foreach(ContactPoint2D point in collision.contacts)
             {
-                //Debug.DrawLine(point.point, point.point + point.normal, Color.red,100);
+                Debug.DrawLine(point.point, point.point + point.normal, Color.red,100);
                 // Debug.Log(point.normal);
                 // if fall into enemy
                 if( point.normal.y >= 0.9f)

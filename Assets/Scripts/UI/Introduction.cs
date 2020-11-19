@@ -53,7 +53,7 @@ public class Introduction : MonoBehaviour
 
     void MovePlayer()
     {
-        playerScript.gravityModifier = 3.0f;
+        //playerScript.gravityModifier = 3.0f;
     }
 
     void GoToLevel()
@@ -76,7 +76,7 @@ public class Introduction : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        playerScript.gravityModifier = 0.0f;
-        playerScript.SetToZero();
+        //playerScript.gravityModifier = 0.0f;
+        //playerScript.SetToZero();
     }
 }
