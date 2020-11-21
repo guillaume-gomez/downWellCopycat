@@ -44,7 +44,9 @@ public class PlayerController : PhysicsObject {
     public bool godMode;
     public float unvisibleTimer = 0.5f;
     public float wallSliddingSpeed;
-    public Transform frontCheck;
+    public Transform wallCheck;
+    public float wallForceX;
+    public float wallForceY;
     public event EventHandler<OnLifeChangedEventArgs> OnLifeChanged;
 
 
@@ -53,6 +55,7 @@ public class PlayerController : PhysicsObject {
     private SpriteRenderer spriteRenderer;
     // allows to jump few frames before to be grounded
     private float jumpPressedRemember = 0.0f;
+    private bool jumpedPressed;
     // allow jump few frame after leaving the floor
     private float groundedRemember = 0.0f;
     //private Animator animator;
@@ -61,6 +64,7 @@ public class PlayerController : PhysicsObject {
     private bool unvisible = false;
     private bool wallSlidding;
     private float checkRadius = 1.0f;
+    private Vector2 move;
 
 
     public int Life {
@@ -91,37 +95,22 @@ public class PlayerController : PhysicsObject {
         base.Start();
     }
 
-    protected override void ComputeVelocity()
+    protected override void Update()
     {
-        Vector2 move = Vector2.zero;
+        base.Update();
+        CheckInput();
+        CheckMovementDirection();
+        CheckIfIwallSliding();
+    }
 
-        move.x = Input.GetAxis ("Horizontal");
-        if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) < 0.01f)
-        {
-            move.x *= Mathf.Pow(1f - horizontalDampingWhenStopping, Time.deltaTime * 10f);
-        }
-        else if (Mathf.Sign(Input.GetAxisRaw("Horizontal")) != Mathf.Sign(move.x))
-        {
-            move.x *= Mathf.Pow(1f - horizontalDampingWhenTurning, Time.deltaTime * 10f);
-        }
-        else
-        {
-            move.x *= Mathf.Pow(1f - horizontalDampingBasic, Time.deltaTime * 10f);
-        }
-
-
-        groundedRemember = groundedRemember - Time.deltaTime;
-        if(grounded && groundedName != "Enemy") // do not taking account grounded when the enemy is the collider
-        {
-            groundedRemember = groundedRememberTime;
-        }
-
-        jumpPressedRemember = jumpPressedRemember - Time.deltaTime;
-
+    private void CheckInput()
+    {
+        move = Vector2.zero;
+        move.x = Input.GetAxis("Horizontal");
 
         if(Input.GetButtonDown("Jump")) {
             jumpPressedRemember = jumpPressedRememberTime;
-            if(!IsGrounded()) {
+            if(!IsGrounded() && !wallSlidding) {
                 shoot = true;
             }
         }
@@ -136,10 +125,58 @@ public class PlayerController : PhysicsObject {
             shoot = false;
         }
 
-        if (velocity.y < 0) {
-            velocity.y = velocity.y * ( fallMultiplier - 1.0f);
+
+        if (inventory.CanShoot() && shoot)
+        {
+            velocity.y = inventory.Shoot();
         }
 
+        if(IsGrounded())
+        {
+            inventory.Reload();
+        }
+    }
+
+    private void CheckMovementDirection()
+    {
+        if ((spriteRenderer.flipX && move.x > 0.1f) || (!spriteRenderer.flipX && move.x < -0.1f))
+        {
+            spriteRenderer.flipX = !spriteRenderer.flipX;
+            CreateDust();
+
+        }
+    }
+
+    private void CheckSurroundings()
+    {
+        groundedRemember = groundedRemember - Time.deltaTime;
+        if(grounded && groundedName != "Enemy") // do not taking account grounded when the enemy is the collider
+        {
+            groundedRemember = groundedRememberTime;
+        }
+
+        jumpPressedRemember = jumpPressedRemember - Time.deltaTime;
+    }
+
+
+    protected override void ComputeVelocity()
+    {
+        // X avis
+        if (Mathf.Abs(move.x) < 0.01f)
+        {
+            move.x *= Mathf.Pow(1f - horizontalDampingWhenStopping, Time.deltaTime * 10f);
+        }
+        else if (Mathf.Sign(move.x) != Mathf.Sign(move.x))
+        {
+            move.x *= Mathf.Pow(1f - horizontalDampingWhenTurning, Time.deltaTime * 10f);
+        }
+        else
+        {
+            move.x *= Mathf.Pow(1f - horizontalDampingBasic, Time.deltaTime * 10f);
+        }
+
+        // y axis
+        CheckSurroundings();
         if (CanJump() && IsGrounded())
         {
             CreateDust();
@@ -148,60 +185,51 @@ public class PlayerController : PhysicsObject {
             velocity.y = jumpTakeOffSpeed;
         }
 
+        if (velocity.y < 0)
+        {
+            velocity.y = velocity.y * ( fallMultiplier - 1.0f);
+        }
+
         // limit the fall velocity
-        if(velocity.y < -vYmax) {
+        if(velocity.y < -vYmax)
+        {
             velocity.y = -vYmax;
-        }
-
-        if (inventory.CanShoot() && shoot) {
-            velocity.y = inventory.Shoot();
-        }
-
-        if(IsGrounded())
-        {
-            inventory.Reload();
-        }
-
-        bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < 0.01f));
-        if (flipSprite)
-        {
-            CreateDust();
-            spriteRenderer.flipX = !spriteRenderer.flipX;
-
-        }
-
-        Vector3 originRay = spriteRenderer.flipX ? -transform.right : transform.right;
-        Debug.Log(originRay);
-
-        RaycastHit2D isTouchingFront = Physics2D.Raycast(frontCheck.position, originRay, checkRadius, LayerMask.GetMask("bloc"));
-        Debug.DrawLine(frontCheck.position, frontCheck.position + (originRay * checkRadius), Color.green, 2);
-
-        if(isTouchingFront.collider && !IsGrounded())
-        {
-            wallSlidding = true;
-        }
-        else
-        {
-            wallSlidding = false;
         }
 
         if(wallSlidding)
         {
             velocity.y = Mathf.Clamp(velocity.y, -wallSliddingSpeed, float.MaxValue);
         }
+
+         if(wallSlidding && CanJump())
+         {
+            jumpPressedRemember = 0.0f;
+            move.x = wallForceX * -move.x;
+            velocity.y = wallForceY;
+         }
         //animator.SetBool ("grounded", grounded);
         //animator.SetFloat ("velocityX", Mathf.Abs (velocity.x) / maxSpeed);
         targetVelocity = move * maxSpeed;
     }
 
-    bool CanJump()
+    private bool CanJump()
     {
         return jumpPressedRemember > 0.0f;
     }
 
-    bool IsGrounded()
+    private bool IsGrounded()
     {
         return groundedRemember > 0.0f;
+    }
+
+    private void CheckIfIwallSliding()
+    {
+        Vector3 originRay = spriteRenderer.flipX ? -transform.right : transform.right;
+
+        RaycastHit2D isTouchingFront = Physics2D.Raycast(wallCheck.position, originRay, checkRadius, LayerMask.GetMask("bloc"));
+        Debug.DrawLine(wallCheck.position, wallCheck.position + (originRay * checkRadius), Color.green, 2);
+
+        wallSlidding = isTouchingFront.collider && !IsGrounded() && velocity.y < 0.0f;
     }
 
     public void Hurt(EnemyBase enemy)
@@ -338,5 +366,4 @@ public class PlayerController : PhysicsObject {
     {
         velocity = new Vector2(0.0f, 0.0f);
     }
-
 }
