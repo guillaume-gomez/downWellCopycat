@@ -315,4 +315,8 @@ public class PlayerController : PhysicsObject {
         velocity = new Vector2(0.0f, 0.0f);
     }
 
+    void OnDrawGizmo()
+    {
+    }
+
 }
