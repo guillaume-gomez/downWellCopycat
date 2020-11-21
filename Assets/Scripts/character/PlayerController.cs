@@ -42,7 +42,9 @@ public class PlayerController : PhysicsObject {
     public ParticleSystem dust;
     public TimeManager timeManager;
     public bool godMode;
-
+    public float unvisibleTimer = 0.5f;
+    public float wallSliddingSpeed;
+    public Transform frontCheck;
     public event EventHandler<OnLifeChangedEventArgs> OnLifeChanged;
 
 
@@ -57,7 +59,9 @@ public class PlayerController : PhysicsObject {
     private Inventory inventory;
     private bool shoot;
     private bool unvisible = false;
-    public float unvisibleTimer = 0.5f;
+    private bool wallSlidding;
+    private float checkRadius = 1.0f;
+
 
     public int Life {
         get => life;
@@ -163,8 +167,28 @@ public class PlayerController : PhysicsObject {
         {
             CreateDust();
             spriteRenderer.flipX = !spriteRenderer.flipX;
+
         }
 
+        Vector3 originRay = spriteRenderer.flipX ? -transform.right : transform.right;
+        Debug.Log(originRay);
+
+        RaycastHit2D isTouchingFront = Physics2D.Raycast(frontCheck.position, originRay, checkRadius, LayerMask.GetMask("bloc"));
+        Debug.DrawLine(frontCheck.position, frontCheck.position + (originRay * checkRadius), Color.green, 2);
+
+        if(isTouchingFront.collider && !IsGrounded())
+        {
+            wallSlidding = true;
+        }
+        else
+        {
+            wallSlidding = false;
+        }
+
+        if(wallSlidding)
+        {
+            velocity.y = Mathf.Clamp(velocity.y, -wallSliddingSpeed, float.MaxValue);
+        }
         //animator.SetBool ("grounded", grounded);
         //animator.SetFloat ("velocityX", Mathf.Abs (velocity.x) / maxSpeed);
         targetVelocity = move * maxSpeed;
