@@ -9,6 +9,7 @@ public class LevelSystem
     public event EventHandler OnLevelChanged;
 
     public int level;
+    public int levelPlayer;
     public int experience;
     public int experienceToNextLevel;
     public float money;
@@ -23,6 +24,7 @@ public class LevelSystem
     {
         money = 0;
         level = 1;
+        levelPlayer = 1;
         experience = 0;
         experienceToNextLevel = 100;
         currentCombo = 0;
@@ -37,7 +39,7 @@ public class LevelSystem
         experience += amount;
         if(experience >= experienceToNextLevel)
         {
-            level++;
+            levelPlayer++;
             experience -= experienceToNextLevel;
             if(OnLevelChanged != null)
             {
