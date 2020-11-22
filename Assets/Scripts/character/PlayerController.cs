@@ -89,7 +89,7 @@ public class PlayerController : PhysicsObject {
             maxSpeed += GameManager.instance.CharacterStats.maxSpeed.Value;
         }
         shoot = false;
-        spriteRenderer = GetComponent<SpriteRenderer> ();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         inventory = GetComponent<Inventory>();
         //animator = GetComponent<Animator> ();
         base.Start();
