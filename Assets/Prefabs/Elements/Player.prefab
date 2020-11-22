@@ -4764,7 +4764,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1540406372}
   m_Layer: 0
-  m_Name: FrontCheck
+  m_Name: WallCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5026,8 +5026,10 @@ MonoBehaviour:
   timeManager: {fileID: 0}
   godMode: 0
   unvisibleTimer: 0.5
-  wallSliddingSpeed: 2.5
-  frontCheck: {fileID: 1540406372}
+  wallSliddingSpeed: 10
+  wallCheck: {fileID: 1540406372}
+  wallForceX: 4
+  wallForceY: 15
 --- !u!50 &1240762958806285134
 Rigidbody2D:
   serializedVersion: 4
