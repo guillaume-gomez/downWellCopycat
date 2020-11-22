@@ -72,7 +72,7 @@ public class LevelManager : MonoBehaviour
     void InitGame()
     {
         gameObject.SetActive(true);
-        levelScript.SetupScene(GameManager.instance.LevelSystem.level);
+        levelScript.SetupScene(GameManager.instance.LevelSystemRun.level);
     }
 
     public void GameOver()
