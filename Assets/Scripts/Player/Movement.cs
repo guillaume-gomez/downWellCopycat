@@ -23,6 +23,8 @@ public class Movement : MonoBehaviour
     public float gravityScale = 3;
     [SerializeField]
     public float jumpPressedRememberTime = 0.2f;
+    [SerializeField]
+    public float groundedRememberTime = 0.25f;
 
     [Space]
     [Header("Booleans")]
@@ -33,12 +35,15 @@ public class Movement : MonoBehaviour
     public bool isDashing;
 
     [Space]
+    public int side = 1;
+    
     // allows to jump few frames before to be grounded
     private float jumpPressedRemember = 0.0f;
+    // allow jump few frame after leaving the floor
+    private float groundedRemember = 0.0f;
     private bool groundTouch;
     private bool hasDashed;
 
-    public int side = 1;
 
     //[Space]
     //[Header("Polish")]
@@ -66,6 +71,12 @@ public class Movement : MonoBehaviour
 
         Walk(dir);
         //anim.SetHorizontalMovement(x, y, rb2d.velocity.y);
+        
+        groundedRemember = groundedRemember - Time.deltaTime;
+        if(coll.onGround)
+        {
+            groundedRemember = groundedRememberTime;
+        }
 
         if (coll.onWall && Input.GetButton("Fire3") && canMove)
         {
@@ -114,7 +125,9 @@ public class Movement : MonoBehaviour
         }
 
         if (!coll.onWall || coll.onGround)
+        {
             wallSlide = false;
+        }
 
 
         jumpPressedRemember = jumpPressedRemember - Time.deltaTime;
@@ -123,7 +136,7 @@ public class Movement : MonoBehaviour
             jumpPressedRemember = jumpPressedRememberTime;
             //anim.SetTrigger("jump");
 
-            if (/*coll.onGround &&*/ CanJump())
+            if ( IsGrounded() && CanJump())
             {
                 Debug.Log("jump");
                 Jump(Vector2.up, false);
@@ -174,6 +187,12 @@ public class Movement : MonoBehaviour
     {
         return jumpPressedRemember > 0.0f;
     }
+
+    bool IsGrounded()
+    {
+        return groundedRemember > 0.0f;
+    }
+
 
     void GroundTouch()
     {

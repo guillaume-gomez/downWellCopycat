@@ -311,12 +311,12 @@ PrefabInstance:
     - target: {fileID: 6880233422570672439, guid: f79e1a294fad7e44aa4ab4f60df897b8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.62
+      value: 17.05
       objectReference: {fileID: 0}
     - target: {fileID: 6880233422570672439, guid: f79e1a294fad7e44aa4ab4f60df897b8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2
+      value: -2.05
       objectReference: {fileID: 0}
     - target: {fileID: 6880233422570672439, guid: f79e1a294fad7e44aa4ab4f60df897b8,
         type: 3}
@@ -543,12 +543,12 @@ PrefabInstance:
     - target: {fileID: 6880233422570672439, guid: f79e1a294fad7e44aa4ab4f60df897b8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.03
+      value: 23.46
       objectReference: {fileID: 0}
     - target: {fileID: 6880233422570672439, guid: f79e1a294fad7e44aa4ab4f60df897b8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2
+      value: -2.05
       objectReference: {fileID: 0}
     - target: {fileID: 6880233422570672439, guid: f79e1a294fad7e44aa4ab4f60df897b8,
         type: 3}
@@ -610,6 +610,7 @@ GameObject:
   - component: {fileID: 1206123141}
   - component: {fileID: 1206123144}
   - component: {fileID: 1206123145}
+  - component: {fileID: 1206123146}
   m_Layer: 0
   m_Name: PlayerV2
   m_TagString: Untagged
@@ -691,12 +692,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e153e80f1d2b5876b98cd24adee7e1fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  speed: 10
-  jumpForce: 50
-  slideSpeed: 5
+  rb2d: {fileID: 0}
+  speed: 15
+  jumpForce: 20
+  wallSlideSpeed: 5
   wallJumpLerp: 10
   dashSpeed: 20
+  gravityScale: 3
+  jumpPressedRememberTime: 0.2
   canMove: 1
   wallGrab: 0
   wallJumped: 0
@@ -727,6 +730,20 @@ MonoBehaviour:
   bottomOffset: {x: 0, y: -0.5}
   rightOffset: {x: -0.5, y: 0}
   leftOffset: {x: 0.5, y: 0}
+--- !u!114 &1206123146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206123140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63554005096f9db9bb5453c233bd2dfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fallMultiplier: 9.45
+  lowJumpMultiplier: 5.2
 --- !u!1001 &1254304066
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -752,12 +769,12 @@ PrefabInstance:
     - target: {fileID: 6880233422570672439, guid: f79e1a294fad7e44aa4ab4f60df897b8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.44
+      value: 11.869999
       objectReference: {fileID: 0}
     - target: {fileID: 6880233422570672439, guid: f79e1a294fad7e44aa4ab4f60df897b8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2
+      value: -2.05
       objectReference: {fileID: 0}
     - target: {fileID: 6880233422570672439, guid: f79e1a294fad7e44aa4ab4f60df897b8,
         type: 3}
@@ -827,12 +844,12 @@ PrefabInstance:
     - target: {fileID: 6426027885966147888, guid: 8657bdfa64be1b53b8a8720c2fac3669,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.64
+      value: -3.69
       objectReference: {fileID: 0}
     - target: {fileID: 6426027885966147888, guid: 8657bdfa64be1b53b8a8720c2fac3669,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.83
+      value: -6.34
       objectReference: {fileID: 0}
     - target: {fileID: 6426027885966147888, guid: 8657bdfa64be1b53b8a8720c2fac3669,
         type: 3}
@@ -1185,12 +1202,12 @@ PrefabInstance:
     - target: {fileID: 6880233422570672439, guid: f79e1a294fad7e44aa4ab4f60df897b8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.66
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 6880233422570672439, guid: f79e1a294fad7e44aa4ab4f60df897b8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2
+      value: -1.95
       objectReference: {fileID: 0}
     - target: {fileID: 6880233422570672439, guid: f79e1a294fad7e44aa4ab4f60df897b8,
         type: 3}
