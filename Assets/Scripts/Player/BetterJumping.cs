@@ -12,6 +12,7 @@ public class BetterJumping : MonoBehaviour
     [SerializeField]
     [Range(0, 20)]
     public float lowJumpMultiplier = 2f;
+    public float vYmax = 45f;
 
     void Start()
     {
@@ -30,6 +31,12 @@ public class BetterJumping : MonoBehaviour
         {
             rb2d.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
+
+        // limit the fall velocity
+        if(rb2d.velocity.y < -vYmax) {
+            rb2d.velocity = new Vector2(rb2d.velocity.x, -vYmax);
+        }
+
     }
 
 }
