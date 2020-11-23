@@ -15,9 +15,14 @@ public class Movement : MonoBehaviour
     [Header("Stats")]
     public float speed = 10;
     public float jumpForce = 50;
-    public float slideSpeed = 5;
+    public float wallSlideSpeed = 5;
     public float wallJumpLerp = 10;
     public float dashSpeed = 20;
+    [SerializeField]
+    [Range(0,10)]
+    public float gravityScale = 3;
+    [SerializeField]
+    public float jumpPressedRememberTime = 0.2f;
 
     [Space]
     [Header("Booleans")]
@@ -28,7 +33,8 @@ public class Movement : MonoBehaviour
     public bool isDashing;
 
     [Space]
-
+    // allows to jump few frames before to be grounded
+    private float jumpPressedRemember = 0.0f;
     private bool groundTouch;
     private bool hasDashed;
 
@@ -110,11 +116,14 @@ public class Movement : MonoBehaviour
         if (!coll.onWall || coll.onGround)
             wallSlide = false;
 
+
+        jumpPressedRemember = jumpPressedRemember - Time.deltaTime;
         if (Input.GetButtonDown("Jump"))
         {
+            jumpPressedRemember = jumpPressedRememberTime;
             //anim.SetTrigger("jump");
 
-            if (coll.onGround)
+            if (/*coll.onGround &&*/ CanJump())
             {
                 Debug.Log("jump");
                 Jump(Vector2.up, false);
@@ -161,6 +170,11 @@ public class Movement : MonoBehaviour
 
     }
 
+    bool CanJump()
+    {
+        return jumpPressedRemember > 0.0f;
+    }
+
     void GroundTouch()
     {
         hasDashed = false;
@@ -204,7 +218,7 @@ public class Movement : MonoBehaviour
         yield return new WaitForSeconds(.3f);
 
         //dashParticle.Stop();
-        rb2d.gravityScale = 3;
+        rb2d.gravityScale = gravityScale;
         GetComponent<BetterJumping>().enabled = true;
         wallJumped = false;
         isDashing = false;
@@ -254,7 +268,7 @@ public class Movement : MonoBehaviour
         }
         float push = pushingWall ? 0 : rb2d.velocity.x;
 
-        rb2d.velocity = new Vector2(push, -slideSpeed);
+        rb2d.velocity = new Vector2(push, -wallSlideSpeed);
     }
 
     private void Walk(Vector2 dir)
@@ -281,6 +295,7 @@ public class Movement : MonoBehaviour
 
     private void Jump(Vector2 dir, bool wall)
     {
+        jumpPressedRemember = 0.0f;
         //slideParticle.transform.parent.localScale = new Vector3(ParticleSide(), 1, 1);
         //ParticleSystem particle = wall ? wallJumpParticle : jumpParticle;
 
