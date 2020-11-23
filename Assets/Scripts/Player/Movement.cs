@@ -9,6 +9,7 @@ public class Movement : MonoBehaviour
     private Collision coll;
     [HideInInspector]
     public Rigidbody2D rb2d;
+    public Inventory inventory;
     //private AnimationScript anim;
 
     [Space]
@@ -21,10 +22,25 @@ public class Movement : MonoBehaviour
     [SerializeField]
     [Range(0,10)]
     public float gravityScale = 3;
+
+    [Space]
+    [Header("Vertical Optimization")]
     [SerializeField]
     public float jumpPressedRememberTime = 0.2f;
     [SerializeField]
     public float groundedRememberTime = 0.25f;
+
+    [Space]
+    [Header("Horizontal Optimisation")]
+    [SerializeField]
+    [Range(0, 1)]
+    public float horizontalDampingBasic = 0.4f;
+    [SerializeField]
+    [Range(0, 1)]
+    public float horizontalDampingWhenStopping = 0.35f;
+    [SerializeField]
+    [Range(0, 1)]
+    public float horizontalDampingWhenTurning = 0.40f;
 
     [Space]
     [Header("Booleans")]
@@ -43,7 +59,7 @@ public class Movement : MonoBehaviour
     private float groundedRemember = 0.0f;
     private bool groundTouch;
     private bool hasDashed;
-
+    private bool shoot;
 
     //[Space]
     //[Header("Polish")]
@@ -57,6 +73,7 @@ public class Movement : MonoBehaviour
     {
         coll = GetComponent<Collision>();
         rb2d = GetComponent<Rigidbody2D>();
+        shoot = false;
         //anim = GetComponentInChildren<AnimationScript>();
     }
 
@@ -69,13 +86,17 @@ public class Movement : MonoBehaviour
         float yRaw = Input.GetAxisRaw("Vertical");
         Vector2 dir = new Vector2(x, y);
 
-        Walk(dir);
+        Walk(dir, xRaw);
         //anim.SetHorizontalMovement(x, y, rb2d.velocity.y);
         
         groundedRemember = groundedRemember - Time.deltaTime;
         if(coll.onGround)
         {
             groundedRemember = groundedRememberTime;
+        }
+        if(IsGrounded())
+        {
+            inventory.Reload();
         }
 
         if (coll.onWall && Input.GetButton("Fire3") && canMove)
@@ -135,17 +156,26 @@ public class Movement : MonoBehaviour
         {
             jumpPressedRemember = jumpPressedRememberTime;
             //anim.SetTrigger("jump");
-
-            if ( IsGrounded() && CanJump())
+            if(!IsGrounded())
             {
-                Debug.Log("jump");
-                Jump(Vector2.up, false);
+                shoot = true;
             }
+            else if( IsGrounded() && CanJump()) // avoid double jump :p
+            {
+                Jump(Vector2.up, jumpForce, false);
+            }
+
             if (coll.onWall && !coll.onGround)
             {
                 WallJump();
             }
         }
+
+        if(Input.GetButtonUp("Jump"))
+        {
+            shoot = false;
+        }
+
 
         if (Input.GetButtonDown("Fire1") && !hasDashed)
         {
@@ -178,6 +208,11 @@ public class Movement : MonoBehaviour
         {
             side = -1;
             //anim.Flip(side);
+        }
+
+        if(shoot)
+        {
+            Shoot();
         }
 
 
@@ -263,7 +298,7 @@ public class Movement : MonoBehaviour
 
         Vector2 wallDir = coll.onRightWall ? Vector2.left : Vector2.right;
 
-        Jump((Vector2.up / 1.5f + wallDir / 1.5f), true);
+        Jump((Vector2.up / 1.5f + wallDir / 1.5f), jumpForce, true);
 
         wallJumped = true;
     }
@@ -290,7 +325,7 @@ public class Movement : MonoBehaviour
         rb2d.velocity = new Vector2(push, -wallSlideSpeed);
     }
 
-    private void Walk(Vector2 dir)
+    private void Walk(Vector2 dir, float xRay)
     {
         if (!canMove)
         {
@@ -304,7 +339,21 @@ public class Movement : MonoBehaviour
 
         if (!wallJumped)
         {
-            rb2d.velocity = new Vector2(dir.x * speed, rb2d.velocity.y);
+            float x = dir.x;
+            if (Mathf.Abs(xRay) < 0.01f)
+            {
+                x *= Mathf.Pow(1f - horizontalDampingWhenStopping, Time.deltaTime * 10f);
+            }
+            else if (Mathf.Sign(xRay) != Mathf.Sign(x))
+            {
+                x *= Mathf.Pow(1f - horizontalDampingWhenTurning, Time.deltaTime * 10f);
+            }
+            else
+            {
+                x *= Mathf.Pow(1f - horizontalDampingBasic, Time.deltaTime * 10f);
+            }
+            rb2d.velocity = new Vector2(x * speed, rb2d.velocity.y);
+
         }
         else
         {
@@ -312,16 +361,24 @@ public class Movement : MonoBehaviour
         }
     }
 
-    private void Jump(Vector2 dir, bool wall)
+    private void Jump(Vector2 dir, float jumpTakeOffSpeed, bool wall)
     {
         jumpPressedRemember = 0.0f;
         //slideParticle.transform.parent.localScale = new Vector3(ParticleSide(), 1, 1);
         //ParticleSystem particle = wall ? wallJumpParticle : jumpParticle;
 
         rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
-        rb2d.velocity += dir * jumpForce;
+        rb2d.velocity += dir * jumpTakeOffSpeed;
 
         //particle.Play();
+    }
+
+    private void Shoot()
+    {
+        if (inventory.CanShoot())
+        {
+            Jump(Vector2.up, inventory.Shoot(), false);
+        }
     }
 
     IEnumerator DisableMovement(float time)
