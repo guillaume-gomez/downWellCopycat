@@ -7,6 +7,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     private Collision coll;
+    private LifeScript lifeScript;
     [HideInInspector]
     public Rigidbody2D rb2d;
     public Inventory inventory;
@@ -45,11 +46,8 @@ public class Movement : MonoBehaviour
     [Space]
     [Header("Booleans")]
     public bool canMove;
-    public bool wallGrab;
     public bool wallJumped;
     public bool wallSlide;
-    public bool isDashing;
-
     [Space]
     public int side = 1;
     
@@ -58,12 +56,10 @@ public class Movement : MonoBehaviour
     // allow jump few frame after leaving the floor
     private float groundedRemember = 0.0f;
     private bool groundTouch;
-    private bool hasDashed;
     private bool shoot;
 
     //[Space]
     //[Header("Polish")]
-    // public ParticleSystem dashParticle;
     // public ParticleSystem jumpParticle;
     // public ParticleSystem wallJumpParticle;
     // public ParticleSystem slideParticle;
@@ -73,6 +69,10 @@ public class Movement : MonoBehaviour
     {
         coll = GetComponent<Collision>();
         rb2d = GetComponent<Rigidbody2D>();
+        lifeScript = GetComponent<LifeScript>();
+        rb2d.gravityScale = gravityScale;
+
+        
         shoot = false;
         //anim = GetComponentInChildren<AnimationScript>();
     }
@@ -93,52 +93,18 @@ public class Movement : MonoBehaviour
         if(coll.onGround)
         {
             groundedRemember = groundedRememberTime;
+            wallJumped = false;
+            GetComponent<BetterJumping>().enabled = true;
         }
+
         if(IsGrounded())
         {
             inventory.Reload();
         }
 
-        if (coll.onWall && Input.GetButton("Fire3") && canMove)
-        {
-            if(side != coll.wallSide)
-            {
-                //anim.Flip(side*-1);
-            }
-            wallGrab = true;
-            wallSlide = false;
-        }
-
-        if (Input.GetButtonUp("Fire3") || !coll.onWall || !canMove)
-        {
-            wallGrab = false;
-            wallSlide = false;
-        }
-
-        if (coll.onGround && !isDashing)
-        {
-            wallJumped = false;
-            GetComponent<BetterJumping>().enabled = true;
-        }
-        
-        if (wallGrab && !isDashing)
-        {
-            rb2d.gravityScale = 0;
-            if(x > .2f || x < -.2f)
-            rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
-
-            float speedModifier = y > 0 ? .5f : 1;
-
-            rb2d.velocity = new Vector2(rb2d.velocity.x, y * (speed * speedModifier));
-        }
-        else
-        {
-            rb2d.gravityScale = 3;
-        }
-
         if(coll.onWall && !coll.onGround)
         {
-            if (x != 0 && !wallGrab)
+            if (x != 0)
             {
                 wallSlide = true;
                 WallSlide();
@@ -176,13 +142,6 @@ public class Movement : MonoBehaviour
             shoot = false;
         }
 
-
-        if (Input.GetButtonDown("Fire1") && !hasDashed)
-        {
-            if(xRaw != 0 || yRaw != 0)
-                Dash(xRaw, yRaw);
-        }
-
         if (coll.onGround && !groundTouch)
         {
             GroundTouch();
@@ -196,8 +155,10 @@ public class Movement : MonoBehaviour
 
         WallParticle(y);
 
-        if (wallGrab || wallSlide || !canMove)
+        if (wallSlide || !canMove)
+        {
             return;
+        }
 
         if(x > 0)
         {
@@ -231,58 +192,10 @@ public class Movement : MonoBehaviour
 
     void GroundTouch()
     {
-        hasDashed = false;
-        isDashing = false;
-
         //TODO
         //side = anim.sr.flipX ? -1 : 1;
 
         //jumpParticle.Play();
-    }
-
-    private void Dash(float x, float y)
-    {
-        //Camera.main.transform.DOComplete();
-        //Camera.main.transform.DOShakePosition(.2f, .5f, 14, 90, false, true);
-        //FindObjectOfType<RippleEffect>().Emit(Camera.main.WorldToViewportPoint(transform.position));
-
-        hasDashed = true;
-
-        //anim.SetTrigger("dash");
-
-        rb2d.velocity = Vector2.zero;
-        Vector2 dir = new Vector2(x, y);
-
-        rb2d.velocity += dir.normalized * dashSpeed;
-        StartCoroutine(DashWait());
-    }
-
-    IEnumerator DashWait()
-    {
-        //FindObjectOfType<GhostTrail>().ShowGhost();
-        StartCoroutine(GroundDash());
-        //DOVirtual.Float(14, 0, .8f, RigidbodyDrag);
-
-        //dashParticle.Play();
-        rb2d.gravityScale = 0;
-        GetComponent<BetterJumping>().enabled = false;
-        wallJumped = true;
-        isDashing = true;
-
-        yield return new WaitForSeconds(.3f);
-
-        //dashParticle.Stop();
-        rb2d.gravityScale = gravityScale;
-        GetComponent<BetterJumping>().enabled = true;
-        wallJumped = false;
-        isDashing = false;
-    }
-
-    IEnumerator GroundDash()
-    {
-        yield return new WaitForSeconds(.15f);
-        if (coll.onGround)
-            hasDashed = false;
     }
 
     private void WallJump()
@@ -332,11 +245,6 @@ public class Movement : MonoBehaviour
             return;
         }
 
-        if (wallGrab)
-        {
-            return;
-        }
-
         if (!wallJumped)
         {
             float x = dir.x;
@@ -381,6 +289,70 @@ public class Movement : MonoBehaviour
         }
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(lifeScript.Unvisible) {
+            return;
+        }
+        EnemyBase enemy = collision.collider.GetComponent<EnemyBase>();
+        if(!enemy) {
+            //Debug.Log(collision.collider.name);
+            // otherwise it must be floor
+            if(LevelManager.instance != null)
+            {
+                foreach(ContactPoint2D point in collision.contacts)
+                {
+                    if(point.normal.y >= 0.9f)
+                    {
+                        LevelManager.instance.ResetCombo();
+                        return;
+                    }
+                }
+            }
+            return;
+        }
+        bool hasJumpedOnEnemy = false;
+        bool hurtEnemyDuringJump = false;
+
+        if(enemy.canBeJumped) // else you can jump on it so player will be hurt
+        {
+            foreach(ContactPoint2D point in collision.contacts)
+            {
+                Debug.DrawLine(point.point, point.point + point.normal, Color.red,100);
+                // Debug.Log(point.normal);
+                // if fall into enemy
+                if( point.normal.y >= 0.9f)
+                {
+                  hasJumpedOnEnemy = true;
+                }
+
+                // contact with an enemy after the ascendant phase
+                if(rb2d.velocity.y > 0 && Math.Abs(point.normal.x) == 1.0f)
+                {
+                    hurtEnemyDuringJump = true;
+                }
+            }
+        }
+        if(hasJumpedOnEnemy)
+        {
+            Jump(Vector2.up, jumpForce * 0.75f, false);
+            enemy.Hurt(inventory.GetDamage());
+            if(enemy.Life == 0)
+            {
+                inventory.Reload();
+            }
+        }
+        else if(hurtEnemyDuringJump)
+        {
+            enemy.Hurt(inventory.GetDamage());
+            inventory.Reload();
+        }
+        else
+        {
+            lifeScript.Hurt(enemy);
+        }
+    }
+
     IEnumerator DisableMovement(float time)
     {
         canMove = false;
@@ -388,16 +360,11 @@ public class Movement : MonoBehaviour
         canMove = true;
     }
 
-    void RigidbodyDrag(float x)
-    {
-        rb2d.drag = x;
-    }
-
     void WallParticle(float vertical)
     {
         // var main = slideParticle.main;
 
-        // if (wallSlide || (wallGrab && vertical < 0))
+        // if (wallSlide)
         // {
         //     //slideParticle.transform.parent.localScale = new Vector3(ParticleSide(), 1, 1);
         //     main.startColor = Color.white;
