@@ -35,7 +35,7 @@ public class Coin : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.gameObject.name == "Player")
+        if(col.gameObject.tag == "Player")
         {
             if(LevelManager.instance)
             {
