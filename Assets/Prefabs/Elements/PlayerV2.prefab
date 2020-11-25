@@ -5032,7 +5032,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 5082514407111174496}
-  godMode: 1
+  godMode: 0
   unvisibleTimer: 0.5
 --- !u!1 &5082514406455619223
 GameObject:

@@ -10,13 +10,13 @@ public class HealthBar : MonoBehaviour
     public Gradient gradient;
     public TextMeshProUGUI text;
     public Image fill;
-    public PlayerController playerController;
+    public LifeScript player;
 
     private void Start()
     {
-        playerController.OnLifeChanged += OnPlayerHurt;
-        SetMaxHealth(playerController.Life);
-        SetHealth(playerController.Life);
+        player.OnLifeChanged += OnPlayerHurt;
+        SetMaxHealth(player.Life);
+        SetHealth(player.Life);
     }
 
     private void OnPlayerHurt(object sender, OnLifeChangedEventArgs e)
