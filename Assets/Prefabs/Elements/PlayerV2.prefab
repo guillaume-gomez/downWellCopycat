@@ -136,8 +136,8 @@ MonoBehaviour:
   wallSide: 0
   collisionRadius: 0.25
   bottomOffset: {x: 0, y: -0.55}
-  rightOffset: {x: -0.55, y: 0}
-  leftOffset: {x: 0.55, y: 0}
+  rightOffset: {x: 0.5, y: 0}
+  leftOffset: {x: -0.5, y: 0}
 --- !u!114 &5082514406271902635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 5082514407111174496}
-  godMode: 0
+  godMode: 1
   unvisibleTimer: 0.5
 --- !u!1 &5082514406455619223
 GameObject:

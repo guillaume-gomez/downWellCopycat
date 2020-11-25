@@ -56,13 +56,14 @@ public class Movement : MonoBehaviour
     // allow jump few frame after leaving the floor
     private float groundedRemember = 0.0f;
     private bool groundTouch;
-    private bool shoot;
+    private bool shooting;
 
-    //[Space]
-    //[Header("Polish")]
-    // public ParticleSystem jumpParticle;
-    // public ParticleSystem wallJumpParticle;
-    // public ParticleSystem slideParticle;
+    [Space]
+    [Header("Polish")]
+    public ParticleSystem jumpParticle;
+    public ParticleSystem wallJumpParticle;
+    public ParticleSystem slideParticle;
+    public ParticleSystem dust;
 
     // Start is called before the first frame update
     void Start()
@@ -73,7 +74,7 @@ public class Movement : MonoBehaviour
         rb2d.gravityScale = gravityScale;
 
         
-        shoot = false;
+        shooting = false;
         //anim = GetComponentInChildren<AnimationScript>();
     }
 
@@ -124,7 +125,7 @@ public class Movement : MonoBehaviour
             //anim.SetTrigger("jump");
             if(!IsGrounded())
             {
-                shoot = true;
+                shooting = true;
             }
             else if( IsGrounded() && CanJump()) // avoid double jump :p
             {
@@ -133,13 +134,13 @@ public class Movement : MonoBehaviour
 
             if (coll.onWall && !coll.onGround)
             {
-                WallJump();
+                WallJump(x);
             }
         }
 
         if(Input.GetButtonUp("Jump"))
         {
-            shoot = false;
+            shooting = false;
         }
 
         if (coll.onGround && !groundTouch)
@@ -160,6 +161,12 @@ public class Movement : MonoBehaviour
             return;
         }
 
+        // flip size
+        if(side == -1 && x > 0 || side == 1 && x < 0)
+        {
+            dust.Play();
+        }
+
         if(x > 0)
         {
             side = 1;
@@ -171,7 +178,7 @@ public class Movement : MonoBehaviour
             //anim.Flip(side);
         }
 
-        if(shoot)
+        if(shooting)
         {
             Shoot();
         }
@@ -195,10 +202,10 @@ public class Movement : MonoBehaviour
         //TODO
         //side = anim.sr.flipX ? -1 : 1;
 
-        //jumpParticle.Play();
+        jumpParticle.Play();
     }
 
-    private void WallJump()
+    private void WallJump(float x)
     {
         if ((side == 1 && coll.onRightWall) || side == -1 && !coll.onRightWall)
         {
@@ -209,9 +216,32 @@ public class Movement : MonoBehaviour
         StopCoroutine(DisableMovement(0));
         StartCoroutine(DisableMovement(.1f));
 
-        Vector2 wallDir = coll.onRightWall ? Vector2.left : Vector2.right;
+        Vector2 wallDir;
+        if(coll.onRightWall)
+        {
+            if(x >= 0)
+            {
+                wallDir = Vector2.left / 1.5f;
+            }
+            else
+            {
+                wallDir  = Vector2.left * (1.0f + Mathf.Abs(x));
+            }
+        }
+        else
+        {
+            if(x <= 0)
+            {
+                wallDir = Vector2.right / 1.5f;
+            }
+            else
+            {
+                wallDir  = Vector2.right * (1.0f + Mathf.Abs(x));
+            }
+        }
 
-        Jump((Vector2.up / 1.5f + wallDir / 1.5f), jumpForce, true);
+
+        Jump((Vector2.up + wallDir), jumpForce, true);
 
         wallJumped = true;
     }
@@ -272,13 +302,13 @@ public class Movement : MonoBehaviour
     private void Jump(Vector2 dir, float jumpTakeOffSpeed, bool wall)
     {
         jumpPressedRemember = 0.0f;
-        //slideParticle.transform.parent.localScale = new Vector3(ParticleSide(), 1, 1);
-        //ParticleSystem particle = wall ? wallJumpParticle : jumpParticle;
+        slideParticle.transform.parent.localScale = new Vector3(ParticleSide(), 1, 1);
+        ParticleSystem particle = wall ? wallJumpParticle : jumpParticle;
 
         rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
         rb2d.velocity += dir * jumpTakeOffSpeed;
 
-        //particle.Play();
+        particle.Play();
     }
 
     private void Shoot()
@@ -362,17 +392,17 @@ public class Movement : MonoBehaviour
 
     void WallParticle(float vertical)
     {
-        // var main = slideParticle.main;
+        var main = slideParticle.main;
 
-        // if (wallSlide)
-        // {
-        //     //slideParticle.transform.parent.localScale = new Vector3(ParticleSide(), 1, 1);
-        //     main.startColor = Color.white;
-        // }
-        // else
-        // {
-        //     main.startColor = Color.clear;
-        // }
+        if (wallSlide)
+        {
+            slideParticle.transform.parent.localScale = new Vector3(ParticleSide(), 1, 1);
+            main.startColor = Color.white;
+        }
+        else
+        {
+            main.startColor = Color.clear;
+        }
     }
 
     int ParticleSide()
