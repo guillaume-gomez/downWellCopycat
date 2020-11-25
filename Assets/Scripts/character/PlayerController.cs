@@ -6,11 +6,11 @@ using UnityEngine;
 // https://www.youtube.com/watch?v=44djqUTg2Sg
 // https://github.com/Brackeys/2D-Character-Controller/blob/master/CharacterController2D.cs
 
-public class OnLifeChangedEventArgs : EventArgs
-{
-    public int life { get; set; }
-    public int diff { get; set;}
-}
+// public class OnLifeChangedEventArgs : EventArgs
+// {
+//     public int life { get; set; }
+//     public int diff { get; set;}
+// }
 
 public class PlayerController : MonoBehaviour {
 
