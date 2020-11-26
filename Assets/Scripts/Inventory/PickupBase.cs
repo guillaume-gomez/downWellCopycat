@@ -8,6 +8,7 @@ public class PickupBase : MonoBehaviour
 
     protected void Start()
     {
-        inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        inventory = player.transform.Find("WeaponPosition").GetComponent<Inventory>();
     }
 }
