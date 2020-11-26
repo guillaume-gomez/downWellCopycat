@@ -126,7 +126,7 @@ public class LevelManager : MonoBehaviour
         GameManager.instance.LevelSystemRun.nbKilled += 1;
     }
 
-    public void TakeMoney(float _money)
+    public void UpdateMoney(float _money)
     {
         GameManager.instance.LevelSystemRun.money += _money;
 
