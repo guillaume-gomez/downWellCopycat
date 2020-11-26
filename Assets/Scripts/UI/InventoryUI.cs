@@ -12,7 +12,7 @@ public class InventoryUI : MonoBehaviour
         {
             Vector3 position = new Vector3(0f, 0f, 0f);
             GameObject obj = Instantiate(bonusItems[i], position, transform.rotation);
-            obj.transform.SetParent(itemsParent);
+            obj.transform.SetParent(itemsParent, false);
         }
     }
 }

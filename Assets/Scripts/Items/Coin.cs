@@ -39,7 +39,7 @@ public class Coin : MonoBehaviour
         {
             if(LevelManager.instance)
             {
-                LevelManager.instance.TakeMoney(coinValue);
+                LevelManager.instance.UpdateMoney(coinValue);
             }
             if(SoundManager.instance)
             {

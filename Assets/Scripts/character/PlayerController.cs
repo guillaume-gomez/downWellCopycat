@@ -341,4 +341,8 @@ public class PlayerController : MonoBehaviour {
         velocity = new Vector2(0.0f, 0.0f);
     }
 
+    void OnDrawGizmo()
+    {
+    }
+
 }
