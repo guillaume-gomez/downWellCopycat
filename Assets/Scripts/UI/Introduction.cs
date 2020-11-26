@@ -35,7 +35,7 @@ public class Introduction : MonoBehaviour
             Button button = obj.GetComponent<Button>();
             button.onClick.AddListener(delegate { PickABonus(); });
 
-            obj.transform.SetParent(itemsParent);
+            obj.transform.SetParent(itemsParent, false);
         }
 
     }

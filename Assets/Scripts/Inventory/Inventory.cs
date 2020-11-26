@@ -109,12 +109,8 @@ public class Inventory : MonoBehaviour
 
     public void BuyItem(GameObject item, float price)
     {
-        AddItem(item);
-        GameManager.instance.LevelSystemRun.money -= price;
-    }
-
-    public void AddItem(GameObject item) {
-        item.GetComponent<ItemBase>().Equip();
+        // To do add modifier, weapon, or anything else
+        LevelManager.instance.UpdateMoney(-price);
         Destroy(item);
     }
 }
