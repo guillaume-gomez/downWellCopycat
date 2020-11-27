@@ -5000,7 +5000,7 @@ MonoBehaviour:
   onRightWall: 0
   onLeftWall: 0
   wallSide: 0
-  collisionRadius: 0.25
+  collisionRadius: 0.375
   bottomOffset: {x: 0, y: -0.55}
   rightOffset: {x: 0.5, y: 0}
   leftOffset: {x: -0.5, y: 0}
