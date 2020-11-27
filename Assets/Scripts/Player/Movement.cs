@@ -241,7 +241,7 @@ public class Movement : MonoBehaviour
         }
 
 
-        Jump((Vector2.up + wallDir), jumpForce, true);
+        Jump((Vector2.up + wallDir), jumpForce * 1.5f, true);
 
         wallJumped = true;
     }
