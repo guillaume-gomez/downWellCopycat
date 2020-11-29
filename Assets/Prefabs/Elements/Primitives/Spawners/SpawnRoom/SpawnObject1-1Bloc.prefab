@@ -1,5 +1,25 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &2363161133736400071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263025891014417192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efa8cab6c3974581498d796a2f9af19c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilemap: {fileID: 0}
+  tile: {fileID: 11400000, guid: 0dbfd47e27392fadaac4773104299972, type: 2}
+  offset: {x: 0, y: 0, z: 0}
+  platformPosition: 0
+  xRangeMin: 6
+  xRangeMax: 6
+  yRangeMin: 5
+  yRangeMax: 5
 --- !u!1001 &7831605539419421893
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1010,3 +1030,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f21ca753ebe68824ba7a71bfec000968, type: 3}
+--- !u!1 &263025891014417192 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8000934017337026541, guid: f21ca753ebe68824ba7a71bfec000968,
+    type: 3}
+  m_PrefabInstance: {fileID: 7831605539419421893}
+  m_PrefabAsset: {fileID: 0}

@@ -22,13 +22,13 @@ public class RoomGen : MonoBehaviour
     void Start()
     {
         widthSubRoom = 6;
-        heightSubRoom = 5;
+        heightSubRoom = 6;
         offsetLeftAndRight = 6;
         width = 36;
         height = 20;
 
         SplitInChunkY(4, 0, spawnersSide, true);
-        SplitInChunkY(4, 36, spawnersSide, false);
+        SplitInChunkY(4, width, spawnersSide, false);
 
         /*for(float y = heightSubRoom/2.0f; y < height; y += heightSubRoom)
         {
@@ -52,12 +52,14 @@ public class RoomGen : MonoBehaviour
             if(Random.Range(0.0f, 1.0f) <= percentageSide)
             {
                 GameObject obj = CreateSpwaner(x, y, typeOfSpawn, newChunk - 1);
-                obj.GetComponent<SpawnObject>().isLeft = isLeft;
-                obj.GetComponent<SpawnObject>().Init();
+                Debug.Log(isLeft);
+                obj.GetComponent<GeneratePlatform>().platformPosition = isLeft ? PlatformPosition.Left :  PlatformPosition.Right;
+                //obj.GetComponent<SpawnObject>().isLeft = isLeft;
+                //obj.GetComponent<SpawnObject>().Init();
             } else {
                 int randomIndex = Random.Range(0, spawnEnemies.Length);
                 GameObject obj = CreateSpwaner(x, y, spawnEnemies, randomIndex);
-                obj.GetComponent<SpawnEnemy>().Init();
+                //obj.GetComponent<SpawnEnemy>().Init();
             }
             
             i = i + newChunk;
@@ -88,7 +90,8 @@ public class RoomGen : MonoBehaviour
                 if(Random.Range(0.0f, 1.0f) <= percentageCenter)
                 {
                     GameObject obj = CreateSpwaner(xPosition, yPosition, spawnersCenter, convertSpawnerToIndex(newChunkX, newChunkY));
-                    obj.GetComponent<SpawnObject>().Init();
+                    obj.GetComponent<GeneratePlatform>().platformPosition = PlatformPosition.Center;
+                    //obj.GetComponent<SpawnObject>().Init();
                 }
                 x += newChunkX;
             }
@@ -107,78 +110,81 @@ public class RoomGen : MonoBehaviour
 
     protected int PopSpwanerX()
     {
-        float spwanerSizePercentage = Random.Range(0.0f, 1.0f);
-        if(spwanerSizePercentage <= 0.70f)
-        {
-            return 1;
-        } else if(spwanerSizePercentage <= 0.80f)
-        {
-            return 2;
-        } else if(spwanerSizePercentage <= 0.95f)
-        {
-            return 3;
-        } else
-        {
-            return 4;
-        }
+        // float spwanerSizePercentage = Random.Range(0.0f, 1.0f);
+        // if(spwanerSizePercentage <= 0.70f)
+        // {
+        //     return 1;
+        // } else if(spwanerSizePercentage <= 0.80f)
+        // {
+        //     return 2;
+        // } else if(spwanerSizePercentage <= 0.95f)
+        // {
+        //     return 3;
+        // } else
+        // {
+        //     return 4;
+        // }
+        return 1;
     }
 
     protected int PopSpwanerY()
     {
-        float spwanerSizePercentage = Random.Range(0.0f, 1.0f);
-        if(spwanerSizePercentage <= 0.40f)
-        {
-            return 1;
-        } else if(spwanerSizePercentage <= 0.90f)
-        {
-            return 2;
-        } else if(spwanerSizePercentage <= 0.95f)
-        {
-            return 3;
-        } else {
-            return 1;
-        }
+        // float spwanerSizePercentage = Random.Range(0.0f, 1.0f);
+        // if(spwanerSizePercentage <= 0.40f)
+        // {
+        //     return 1;
+        // } else if(spwanerSizePercentage <= 0.90f)
+        // {
+        //     return 2;
+        // } else if(spwanerSizePercentage <= 0.95f)
+        // {
+        //     return 3;
+        // } else {
+        //     return 1;
+        // }
+        return 1;
     }
 
     protected int convertSpawnerToIndex(int x, int y)
     {
-        if(x == 1 && y == 1)
-        {
-            return 0;
-        } else if(x == 2 && y == 1)
-        {
-            return 1;
-        } else if(x == 3 && y == 1)
-        {
-            return 2;
-        }else if(x == 4 && y == 1)
-        {
-            return 3;
-        }else if(x == 1 && y == 2)
-        {
-            return 4;
-        }else if(x == 2 && y == 2)
-        {
-            return 5;
-        } else if(x == 3 && y == 2)
-        {
-            return 6;
-        }else if(x == 4 && y == 2)
-        {
-            return 7;
-        }else if(x == 1 && y == 3)
-        {
-            return 8;
-        }else if(x == 2 && y == 3)
-        {
-            return 9;
-        }else if(x == 3 && y == 3)
-        {
-            return 10;
-        } else
-        {
-            return 0;
-        }
+        // if(x == 1 && y == 1)
+        // {
+        //     return 0;
+        // } else if(x == 2 && y == 1)
+        // {
+        //     return 1;
+        // } else if(x == 3 && y == 1)
+        // {
+        //     return 2;
+        // }else if(x == 4 && y == 1)
+        // {
+        //     return 3;
+        // }else if(x == 1 && y == 2)
+        // {
+        //     return 4;
+        // }else if(x == 2 && y == 2)
+        // {
+        //     return 5;
+        // } else if(x == 3 && y == 2)
+        // {
+        //     return 6;
+        // }else if(x == 4 && y == 2)
+        // {
+        //     return 7;
+        // }else if(x == 1 && y == 3)
+        // {
+        //     return 8;
+        // }else if(x == 2 && y == 3)
+        // {
+        //     return 9;
+        // }else if(x == 3 && y == 3)
+        // {
+        //     return 10;
+        // } else
+        // {
+        //     return 0;
+        // }
+        return 0;
     }
 
     // unused
@@ -196,7 +202,7 @@ public class RoomGen : MonoBehaviour
             {
                 float x = offsetLeftAndRight + (i * widthSubRoom) + (newChunk * widthSubRoom) / 2.0f;
                 GameObject obj = CreateSpwaner(x, y, spawnersCenter, newChunk - 1);
-                obj.GetComponent<SpawnObject>().Init();
+                //obj.GetComponent<SpawnObject>().Init();
             }
             i = i + newChunk;
         }
