@@ -9,12 +9,15 @@ public class GeneratePlatform : MonoBehaviour
 {
     public Tilemap tilemap;
     public TileBase tile;
+    private SpawnEnemy spawnEnemy;
     public PlatformPosition platformPosition;
+    public int width;
+    public int height;
     [Space]
     [Header("X values")]
-    [Range(1, 24)]
+    [Range(2, 24)]
     public int xRangeMin;
-    [Range(1, 24)]
+    [Range(2, 24)]
     public int xRangeMax;
 
     [Space]
@@ -27,9 +30,14 @@ public class GeneratePlatform : MonoBehaviour
     void Start()
     {
 
+        spawnEnemy = GetComponent<SpawnEnemy>();
+
         tilemap =  GameObject.Find("Platforms").GetComponent<Tilemap>();
         int xChoosed = Random.Range(xRangeMin, xRangeMax);
         int yChoosed = Random.Range(yRangeMin, yRangeMax);
+
+        width = xChoosed;
+        height = yChoosed;
 
         for(int x = 0; x < xChoosed; x++)
         {
@@ -55,6 +63,8 @@ public class GeneratePlatform : MonoBehaviour
                 tilemap.SetTile(cellPosition + tilePosition, tile);
             }
         }
+
+    spawnEnemy.Init(width, height);
     }
 
 
