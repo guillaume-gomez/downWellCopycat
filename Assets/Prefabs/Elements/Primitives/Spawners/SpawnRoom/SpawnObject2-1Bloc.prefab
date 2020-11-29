@@ -17,8 +17,8 @@ MonoBehaviour:
   offset: {x: 0, y: 0, z: 0}
   platformPosition: 0
   xRangeMin: 6
-  xRangeMax: 6
-  yRangeMin: 5
+  xRangeMax: 12
+  yRangeMin: 1
   yRangeMax: 5
 --- !u!1001 &6015816521924543515
 PrefabInstance:

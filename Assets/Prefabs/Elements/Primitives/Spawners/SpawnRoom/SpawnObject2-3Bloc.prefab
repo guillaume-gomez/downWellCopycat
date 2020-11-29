@@ -98,6 +98,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnObject2-3Bloc
       objectReference: {fileID: 0}
+    - target: {fileID: 7431619953444036770, guid: b3877ed4e16b6b04390c249187055461,
+        type: 3}
+      propertyPath: xRangeMax
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7431619953444036770, guid: b3877ed4e16b6b04390c249187055461,
+        type: 3}
+      propertyPath: yRangeMin
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7431619953444036770, guid: b3877ed4e16b6b04390c249187055461,
+        type: 3}
+      propertyPath: yRangeMax
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3877ed4e16b6b04390c249187055461, type: 3}
 --- !u!1 &1485192249525272430 stripped

@@ -20,21 +20,17 @@ public class GeneratePlatform : MonoBehaviour
 
     [Space]
     [Header("Y values")]
-    [Range(1, 20)]
+    [Range(1, 18)]
     public int yRangeMin;
-    [Range(1, 20)]
+    [Range(1, 18)]
     public int yRangeMax;
 
     void Start()
     {
 
         tilemap =  GameObject.Find("Platforms").GetComponent<Tilemap>();
-
-        //int xChoosed = Random.Range(xRangeMin, xRangeMax);
-        //int yChoosed = Random.Range(yRangeMin, yRangeMax);
-
-        int xChoosed = 3;
-        int yChoosed = 3;
+        int xChoosed = Random.Range(xRangeMin, xRangeMax);
+        int yChoosed = Random.Range(yRangeMin, yRangeMax);
 
         for(int x = 0; x < xChoosed; x++)
         {

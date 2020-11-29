@@ -168,8 +168,8 @@ MonoBehaviour:
   - {fileID: 8764212621411657449, guid: f6d28473bbd4e82489316600d1d8d6de, type: 3}
   - {fileID: 7970974965886189521, guid: 897159189584c834b92c31202d54531c, type: 3}
   - {fileID: 4694317957348758930, guid: c57e8d960f311aa46b5cce2d1bd82f29, type: 3}
-  percentageCenter: 1
-  percentageSide: 1
+  percentageCenter: 0.734
+  percentageSide: 0.992
 --- !u!1 &7454608486704330001
 GameObject:
   m_ObjectHideFlags: 0

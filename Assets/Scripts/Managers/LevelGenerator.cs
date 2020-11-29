@@ -26,7 +26,7 @@ public class LevelGenerator : MonoBehaviour
 
     public void SetupScene(int level)
     {
-       roomHeight = 20;
+       roomHeight = 24;
        SetPlayerInCenter();
        CreateBorders();
        SpawnRooms();

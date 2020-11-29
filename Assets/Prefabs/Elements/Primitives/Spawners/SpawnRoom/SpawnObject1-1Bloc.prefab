@@ -16,9 +16,9 @@ MonoBehaviour:
   tile: {fileID: 11400000, guid: 0dbfd47e27392fadaac4773104299972, type: 2}
   offset: {x: 0, y: 0, z: 0}
   platformPosition: 0
-  xRangeMin: 6
-  xRangeMax: 6
-  yRangeMin: 5
+  xRangeMin: 1
+  xRangeMax: 5
+  yRangeMin: 1
   yRangeMax: 5
 --- !u!1001 &7831605539419421893
 PrefabInstance:

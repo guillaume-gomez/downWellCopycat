@@ -27,6 +27,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1466807727275768592, guid: 73eda400ce9bcd247ac9d17c309ca87c,
+        type: 3}
+      propertyPath: xRangeMin
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: -1466807727275768592, guid: 73eda400ce9bcd247ac9d17c309ca87c,
+        type: 3}
+      propertyPath: xRangeMax
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: -1466807727275768592, guid: 73eda400ce9bcd247ac9d17c309ca87c,
+        type: 3}
+      propertyPath: yRangeMin
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -1466807727275768592, guid: 73eda400ce9bcd247ac9d17c309ca87c,
+        type: 3}
+      propertyPath: yRangeMax
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 7033959065729873033, guid: 73eda400ce9bcd247ac9d17c309ca87c,
         type: 3}
       propertyPath: m_Name
