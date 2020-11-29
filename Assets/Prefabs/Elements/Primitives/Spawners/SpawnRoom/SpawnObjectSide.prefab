@@ -16,10 +16,24 @@ MonoBehaviour:
   tile: {fileID: 11400000, guid: 0dbfd47e27392fadaac4773104299972, type: 2}
   offset: {x: 0, y: 0, z: 0}
   platformPosition: 0
-  xRangeMin: 1
+  xRangeMin: 2
   xRangeMax: 5
   yRangeMin: 1
   yRangeMax: 5
+--- !u!114 &-3199210910813127898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2630195219748707742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1481584d6d0485c448d96eb5138832d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies: []
+  autoEnable: 0
 --- !u!1001 &5442973454908996211
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -193,7 +207,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8000934017337026542, guid: f21ca753ebe68824ba7a71bfec000968, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f21ca753ebe68824ba7a71bfec000968, type: 3}
 --- !u!1 &2630195219748707742 stripped
 GameObject:

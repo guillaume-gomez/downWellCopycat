@@ -9,7 +9,6 @@ public class GeneratePlatform : MonoBehaviour
 {
     public Tilemap tilemap;
     public TileBase tile;
-    public Vector3Int offset; 
     public PlatformPosition platformPosition;
     [Space]
     [Header("X values")]

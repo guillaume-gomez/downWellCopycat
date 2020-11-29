@@ -1,25 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-3881445345435501101
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7970974965886189521}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efa8cab6c3974581498d796a2f9af19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tilemap: {fileID: 0}
-  tile: {fileID: 0}
-  offset: {x: 0, y: 0, z: 0}
-  platformPosition: 0
-  xRangeMin: 0
-  xRangeMax: 0
-  yRangeMin: 0
-  yRangeMax: 0
 --- !u!1001 &5340921584211206735
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -82,52 +62,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2630195219748707741, guid: 6b0b6983c1bbdfc3696de285a566f1a2,
-        type: 3}
-      propertyPath: objects.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2630195219748707741, guid: 6b0b6983c1bbdfc3696de285a566f1a2,
-        type: 3}
-      propertyPath: objects.Array.data[0]
-      value: 
-      objectReference: {fileID: 1228967598094297789, guid: 07d8bdb203887bb4bbd7dd121c698b17,
-        type: 3}
-    - target: {fileID: 2630195219748707741, guid: 6b0b6983c1bbdfc3696de285a566f1a2,
-        type: 3}
-      propertyPath: objects.Array.data[1]
-      value: 
-      objectReference: {fileID: 1228967598094297789, guid: 847e1241901b6447c8f17336e79ee26e,
-        type: 3}
-    - target: {fileID: 2630195219748707741, guid: 6b0b6983c1bbdfc3696de285a566f1a2,
-        type: 3}
-      propertyPath: objects.Array.data[2]
-      value: 
-      objectReference: {fileID: 1228967598094297789, guid: 07d8bdb203887bb4bbd7dd121c698b17,
-        type: 3}
-    - target: {fileID: 2630195219748707741, guid: 6b0b6983c1bbdfc3696de285a566f1a2,
-        type: 3}
-      propertyPath: isLeft
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2630195219748707741, guid: 6b0b6983c1bbdfc3696de285a566f1a2,
-        type: 3}
-      propertyPath: objects.Array.data[3]
-      value: 
-      objectReference: {fileID: 1228967598094297789, guid: 7f53ebeefadbc63c7aa4243cc7e8d31e,
-        type: 3}
-    - target: {fileID: 2630195219748707741, guid: 6b0b6983c1bbdfc3696de285a566f1a2,
-        type: 3}
-      propertyPath: objects.Array.data[4]
-      value: 
-      objectReference: {fileID: 2994541899075502665, guid: e92dd579c51cf9992b38e4a02785ac37,
-        type: 3}
-    - target: {fileID: 2630195219748707741, guid: 6b0b6983c1bbdfc3696de285a566f1a2,
-        type: 3}
-      propertyPath: objects.Array.data[5]
-      value: 
-      objectReference: {fileID: 7166870141059496255, guid: 96b073becf9edaaacafca324ee0d8402,
-        type: 3}
     - target: {fileID: 2630195219748707742, guid: 6b0b6983c1bbdfc3696de285a566f1a2,
         type: 3}
       propertyPath: m_Name
@@ -143,11 +77,6 @@ PrefabInstance:
       propertyPath: yRangeMax
       value: 18
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 6b0b6983c1bbdfc3696de285a566f1a2, type: 3}
---- !u!1 &7970974965886189521 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2630195219748707742, guid: 6b0b6983c1bbdfc3696de285a566f1a2,
-    type: 3}
-  m_PrefabInstance: {fileID: 5340921584211206735}
-  m_PrefabAsset: {fileID: 0}

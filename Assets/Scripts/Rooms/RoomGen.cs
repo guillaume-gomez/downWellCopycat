@@ -52,7 +52,6 @@ public class RoomGen : MonoBehaviour
             if(Random.Range(0.0f, 1.0f) <= percentageSide)
             {
                 GameObject obj = CreateSpwaner(x, y, typeOfSpawn, newChunk - 1);
-                Debug.Log(isLeft);
                 obj.GetComponent<GeneratePlatform>().platformPosition = isLeft ? PlatformPosition.Left :  PlatformPosition.Right;
             } else {
                 int randomIndex = Random.Range(0, spawnEnemies.Length);
