@@ -64,7 +64,7 @@ public class GeneratePlatform : MonoBehaviour
             }
         }
 
-    spawnEnemy.Init(width, height);
+        spawnEnemy.Init(width, height);
     }
 
 

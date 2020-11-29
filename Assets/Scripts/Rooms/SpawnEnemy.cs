@@ -19,9 +19,9 @@ public class SpawnEnemy : MonoBehaviour
     public void Init(int platformWidth, int platformHeight)
     {
         float shouldDisplayRandom = Random.Range(0.0f, 1.0f);
-        // if(shouldDisplayRandom >= 0.75f) {
-        //     return;
-        // }
+        if(shouldDisplayRandom >= 0.75f) {
+            return;
+        }
         int rand = Random.Range(0, enemies.Length);
         GameObject choosedEnemy = enemies[rand];
         GameObject instance = (GameObject) Instantiate(choosedEnemy, new Vector3(0.0f, 0.0f, 0.0f), transform.rotation);
