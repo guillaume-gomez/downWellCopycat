@@ -17,7 +17,7 @@ public class LevelGenerator : MonoBehaviour
     // size of the level
     public int roomWidth;
     private int roomHeight;
-
+    [Range(24, 24*20)]
     public int depthLevel = 100;
     // position of x or y
     public int xOrigin = 20;

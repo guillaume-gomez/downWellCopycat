@@ -540,8 +540,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilemap: {fileID: 0}
   tile: {fileID: 11400000, guid: b716de11bdd55462da00579744418363, type: 2}
-  offset: {x: 10, y: 0, z: 0}
   platformPosition: 0
+  width: 0
+  height: 0
   xRangeMin: 1
   xRangeMax: 9
   yRangeMin: 2
@@ -1369,7 +1370,7 @@ MonoBehaviour:
     type: 3}
   player: {fileID: 771290432}
   roomWidth: 36
-  depthLevel: 200
+  depthLevel: 400
   xOrigin: 0
   yOrigin: 0
 --- !u!1001 &4290748177422537251
