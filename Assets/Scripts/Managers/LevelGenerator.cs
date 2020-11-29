@@ -16,7 +16,9 @@ public class LevelGenerator : MonoBehaviour
     public int roomWidth;
     private int roomHeight;
 
-    public int depthLevel = 100;
+    [Range(0,20)]
+    public int nbRooms = 1;
+    private int depthLevel;
     // position of x or y
     public int xOrigin = 20;
     public int yOrigin = 0;
@@ -25,6 +27,7 @@ public class LevelGenerator : MonoBehaviour
     public void SetupScene(int level)
     {
        roomHeight = 20;
+       depthLevel = roomHeight * nbRooms;
        SetPlayerInCenter();
        CreateBorders();
        SpawnRooms();
