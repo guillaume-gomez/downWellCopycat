@@ -24,11 +24,15 @@ public class LevelGenerator : MonoBehaviour
     public int xOrigin = 20;
     public int yOrigin = 0;
 
+    public void DepthLevel()
+    {
+        roomHeight = 24;
+        depthLevel = roomHeight * nbRooms;
+    }
 
     public void SetupScene(int level)
     {
-       roomHeight = 24;
-       depthLevel = roomHeight * nbRooms;
+    DepthLevel();
        SetPlayerInCenter();
        CreateBorders();
        SpawnRooms();
@@ -113,6 +117,8 @@ public class LevelGenerator : MonoBehaviour
         gridGraph.center.y = yOrigin + (depthLevel * nodeSize) / 2;
         gridGraph.center = new Vector3(gridGraph.center.x, -gridGraph.center.y, gridGraph.center.z);
 
+        Debug.Log(depthLevel);
+        Debug.Log(roomWidth);
         // Updates internal size from the above values
         gridGraph.SetDimensions(roomWidth, depthLevel, nodeSize);
 

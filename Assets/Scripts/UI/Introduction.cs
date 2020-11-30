@@ -18,6 +18,7 @@ public class Introduction : MonoBehaviour
 
     void Start()
     {
+        levelScript.DepthLevel();
         levelScript.CreateBorders();
         levelScript.SetPlayerInCenter();
         bordersObj = GameObject.Find("Borders");

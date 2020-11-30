@@ -1219,9 +1219,9 @@ MonoBehaviour:
   caveRoom: {fileID: 0}
   player: {fileID: 823460704}
   roomWidth: 36
-  nbRooms: 1
+  nbRooms: 4
   xOrigin: 0
-  yOrigin: 0
+  yOrigin: 20
 --- !u!61 &2057040326
 BoxCollider2D:
   m_ObjectHideFlags: 0
