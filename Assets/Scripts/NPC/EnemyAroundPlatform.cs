@@ -10,7 +10,7 @@ public class EnemyAroundPlatform : EnemyBase
   private int layerMastk;
   protected Rigidbody2D rb2d;
 
-  private float distance = 1.0f;
+  private float distance = 0.51f;
   private bool movingRight = true;
   // if the enemy is locked and turn around himself
   // no detection is more than  4 rotations (each corner)
@@ -28,24 +28,12 @@ public class EnemyAroundPlatform : EnemyBase
   {
     base.Start();
     collisionWithPlayer = false;
-    // check raycast to everything except" enemy layer (espacially itself)
-    layerMastk = 1 << LayerMask.NameToLayer("enemy");
-    layerMastk = ~layerMastk;
+    layerMastk =  LayerMask.GetMask("bloc");
   }
 
   protected bool onPlatform()
   {
-    for(int i = 0; i < groundDetections.Length; ++i)
-    {
-      RaycastHit2D groundInfo = Physics2D.Raycast(groundDetections[i].position, -transform.up, distance, layerMastk);
-      //Debug.Log(transform.TransformDirection( transform.up ));
-      if (groundInfo.collider && groundInfo.collider.gameObject.layer == layerBloc )
-      {
-        return true;
-      }
-      //Debug.DrawLine(groundDetections[i].position, groundDetections[i].position - (transform.up * distance), Color.green, 2);
-    }
-    return false;
+    return Physics2D.OverlapCircle((Vector2)groundDetections[0].position, distance * Height(), layerMastk);
   }
 
   protected void Update()
@@ -82,7 +70,7 @@ public class EnemyAroundPlatform : EnemyBase
           for(int i = 0; i < groundDetections.Length; ++i)
           {
             RaycastHit2D groundInfo = Physics2D.Raycast(groundDetections[i].position, -transform.up, distance, layerMastk);
-            //Debug.DrawLine(groundDetections[i].position, groundDetections[i].position - (transform.up * distance), Color.red, 5);
+            // Debug.DrawLine(groundDetections[i].position, groundDetections[i].position - (transform.up * distance), Color.red, 5);
             if (groundInfo.collider && groundInfo.collider.gameObject.layer == layerBloc )
             {
               transform.position += -groundInfo.distance * transform.up;
@@ -127,6 +115,12 @@ public class EnemyAroundPlatform : EnemyBase
     {
       collisionWithPlayer = false;
     }
+  }
+
+ void OnDrawGizmos()
+  {
+    Gizmos.color = Color.blue;
+    Gizmos.DrawWireSphere((Vector2)groundDetections[0].position, distance * Height());
   }
 
 }

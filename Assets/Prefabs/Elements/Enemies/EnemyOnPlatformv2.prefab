@@ -333,7 +333,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4870910044530046880}
   m_Layer: 11
-  m_Name: GroundDetection (5)
+  m_Name: HorizontalDetection
   m_TagString: Untagged
   m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
