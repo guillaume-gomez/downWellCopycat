@@ -32,9 +32,10 @@ public class SpawnEnemy : MonoBehaviour
 
         float heightEnemy = instance.GetComponent<EnemyBase>().Height();
         // Matfh.Ceil is used to avoid colission with tilemap objects (no float number), and spawner (float number)
+        float middleHeight = heightEnemy % 2 == 0 ? platformHeight/2 : Mathf.Ceil(platformHeight/2.0f);
         Vector3 position = new Vector3(
             transform.position.x,
-            transform.position.y + choosedEnemy.transform.position.y * ( Mathf.Ceil(platformHeight/2.0f) + (heightEnemy/2.0f)),
+            transform.position.y + choosedEnemy.transform.position.y * (middleHeight + (heightEnemy/2.0f)),
             transform.position.z
         );
         instance.transform.position = position;
