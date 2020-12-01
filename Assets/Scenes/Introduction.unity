@@ -1221,7 +1221,7 @@ MonoBehaviour:
   roomWidth: 36
   nbRooms: 4
   xOrigin: 0
-  yOrigin: 20
+  yOrigin: 0
 --- !u!61 &2057040326
 BoxCollider2D:
   m_ObjectHideFlags: 0
