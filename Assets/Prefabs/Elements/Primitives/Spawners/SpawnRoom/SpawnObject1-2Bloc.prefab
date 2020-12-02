@@ -138,6 +138,11 @@ PrefabInstance:
       propertyPath: yRangeMax
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 2363161133736400071, guid: 4989cc2130623cb4eaf6d421b14ac7cb,
+        type: 3}
+      propertyPath: TileSprite
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 4989cc2130623cb4eaf6d421b14ac7cb, type: 3}

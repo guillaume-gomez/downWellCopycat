@@ -30,7 +30,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap: {fileID: 0}
-  tile: {fileID: 11400000, guid: 0dbfd47e27392fadaac4773104299972, type: 2}
+  tile: {fileID: 11400000, guid: 8fb9cd880ae696d938abf962ec233695, type: 2}
   platformPosition: 0
   width: 0
   height: 0
