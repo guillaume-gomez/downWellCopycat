@@ -30,7 +30,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap: {fileID: 0}
-  tile: {fileID: 11400000, guid: cee4accd2e982fd6d93994d488229fbe, type: 2}
+  tile: {fileID: 0}
   platformPosition: 0
   width: 0
   height: 0
@@ -38,6 +38,22 @@ MonoBehaviour:
   xRangeMax: 5
   yRangeMin: 1
   yRangeMax: 5
+--- !u!114 &2394470461755004696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263025891014417192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82fe4dece1c7a9803983a1dc9fcfad14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  percentageBreakableBloc: 0.697
+  tiles:
+  - {fileID: 11400000, guid: cee4accd2e982fd6d93994d488229fbe, type: 2}
+  - {fileID: 11400000, guid: 0dbfd47e27392fadaac4773104299972, type: 2}
 --- !u!1001 &7831605539419421893
 PrefabInstance:
   m_ObjectHideFlags: 0
