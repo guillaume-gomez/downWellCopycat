@@ -10,6 +10,9 @@ public class SpawnObject : MonoBehaviour
     public void Init()
     {
         int rand = Random.Range(0, objects.Length);
+        if(objects.Length == 0) {
+            return;
+        }
         GameObject choosedObject = objects[rand];
         Vector3 rotationVector = new Vector3(0f, 0f, 0f);
         if(!isLeft) {

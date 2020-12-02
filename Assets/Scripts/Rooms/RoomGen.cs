@@ -22,13 +22,13 @@ public class RoomGen : MonoBehaviour
     void Start()
     {
         widthSubRoom = 6;
-        heightSubRoom = 5;
+        heightSubRoom = 6;
         offsetLeftAndRight = 6;
         width = 36;
         height = 20;
 
         SplitInChunkY(4, 0, spawnersSide, true);
-        SplitInChunkY(4, 36, spawnersSide, false);
+        SplitInChunkY(4, width, spawnersSide, false);
 
         /*for(float y = heightSubRoom/2.0f; y < height; y += heightSubRoom)
         {
@@ -52,12 +52,11 @@ public class RoomGen : MonoBehaviour
             if(Random.Range(0.0f, 1.0f) <= percentageSide)
             {
                 GameObject obj = CreateSpwaner(x, y, typeOfSpawn, newChunk - 1);
-                obj.GetComponent<SpawnObject>().isLeft = isLeft;
-                obj.GetComponent<SpawnObject>().Init();
+                obj.GetComponent<GeneratePlatform>().platformPosition = isLeft ? PlatformPosition.Left :  PlatformPosition.Right;
             } else {
                 int randomIndex = Random.Range(0, spawnEnemies.Length);
                 GameObject obj = CreateSpwaner(x, y, spawnEnemies, randomIndex);
-                obj.GetComponent<SpawnEnemy>().Init();
+                //obj.GetComponent<SpawnEnemy>().Init();
             }
             
             i = i + newChunk;
@@ -88,7 +87,7 @@ public class RoomGen : MonoBehaviour
                 if(Random.Range(0.0f, 1.0f) <= percentageCenter)
                 {
                     GameObject obj = CreateSpwaner(xPosition, yPosition, spawnersCenter, convertSpawnerToIndex(newChunkX, newChunkY));
-                    obj.GetComponent<SpawnObject>().Init();
+                    obj.GetComponent<GeneratePlatform>().platformPosition = PlatformPosition.Center;
                 }
                 x += newChunkX;
             }
@@ -196,7 +195,6 @@ public class RoomGen : MonoBehaviour
             {
                 float x = offsetLeftAndRight + (i * widthSubRoom) + (newChunk * widthSubRoom) / 2.0f;
                 GameObject obj = CreateSpwaner(x, y, spawnersCenter, newChunk - 1);
-                obj.GetComponent<SpawnObject>().Init();
             }
             i = i + newChunk;
         }
