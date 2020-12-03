@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class Introduction : MonoBehaviour
 {
     public LevelGenerator levelScript;
-    public PlayerController playerScript;
+    public GameObject player;
     public GameObject canvas;
     public GameObject[] bonusItems;
 
@@ -53,7 +53,7 @@ public class Introduction : MonoBehaviour
 
     void MovePlayer()
     {
-        playerScript.gravityModifier = 3.0f;
+        player.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
     }
 
     void GoToLevel()
@@ -69,6 +69,7 @@ public class Introduction : MonoBehaviour
 
     public void PickABonus()
     {
+        Debug.Log("martin");
         MovePlayer();
         canvas.SetActive(false);
         Invoke("GoToLevel", 1.5f);
@@ -76,7 +77,6 @@ public class Introduction : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        playerScript.gravityModifier = 0.0f;
-        playerScript.SetToZero();
+        player.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY;
     }
 }
