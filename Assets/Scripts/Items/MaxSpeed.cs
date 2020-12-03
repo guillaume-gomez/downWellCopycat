@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class MaxSpeed : MonoBehaviour
+public class MaxSpeed : ItemBase
 {
-    public void Equip()
+    public override void Equip()
     {
         GameManager.instance.CharacterStats.maxSpeed.AddModifier(new StatModifier(0.1f, StatModType.Flat, this));
     }
 
-    public void Unequip()
+    public override void Unequip()
     {
         GameManager.instance.CharacterStats.maxSpeed.RemoveAllModifiersFromSource(this);
     }
