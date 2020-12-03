@@ -122,32 +122,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   discoverCaveSound: {fileID: 8300000, guid: ec9617873182303bfb627b1dfcaad16e, type: 3}
---- !u!61 &2907130731032312592
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1728939874471410645}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 1
-  m_Offset: {x: 2.5, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 5, y: 1}
-  m_EdgeRadius: 0
 --- !u!50 &6565149297144329285
 Rigidbody2D:
   serializedVersion: 4
@@ -255,6 +229,32 @@ CompositeCollider2D:
       - {x: 0.000058600002, y: -0.5}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
+--- !u!61 &2907130731032312592
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728939874471410645}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 1
+  m_Offset: {x: 2.5, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 5, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &4647217217112923367
 GameObject:
   m_ObjectHideFlags: 0
@@ -504,6 +504,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnObjectRandom
       objectReference: {fileID: 0}
+    - target: {fileID: 7044284798602877021, guid: 73be102c8dc364f67a39827e7342fd6e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7044284798602877023, guid: 73be102c8dc364f67a39827e7342fd6e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -562,7 +567,7 @@ PrefabInstance:
     - target: {fileID: 8001786108721253485, guid: 73be102c8dc364f67a39827e7342fd6e,
         type: 3}
       propertyPath: objects.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8001786108721253485, guid: 73be102c8dc364f67a39827e7342fd6e,
         type: 3}
@@ -587,6 +592,12 @@ PrefabInstance:
       propertyPath: percent
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8001786108721253485, guid: 73be102c8dc364f67a39827e7342fd6e,
+        type: 3}
+      propertyPath: objects.Array.data[3]
+      value: 
+      objectReference: {fileID: 5332835836176547404, guid: 0e081b37af931ad46b9dc72751cc6ee5,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73be102c8dc364f67a39827e7342fd6e, type: 3}
 --- !u!4 &7991624959129984605 stripped
