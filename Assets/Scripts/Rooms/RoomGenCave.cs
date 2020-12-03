@@ -12,5 +12,4 @@ public class RoomGenCave : MonoBehaviour
         SpawnObject choosedObjectScript = choosedObject.GetComponent<SpawnObject>();
         choosedObjectScript.Init();
     }
-
 }
