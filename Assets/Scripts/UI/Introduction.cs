@@ -18,6 +18,7 @@ public class Introduction : MonoBehaviour
 
     void Start()
     {
+        levelScript.DepthLevel();
         levelScript.CreateBorders();
         levelScript.SetPlayerInCenter();
         bordersObj = GameObject.Find("Borders");
@@ -69,7 +70,6 @@ public class Introduction : MonoBehaviour
 
     public void PickABonus()
     {
-        Debug.Log("martin");
         MovePlayer();
         canvas.SetActive(false);
         Invoke("GoToLevel", 1.5f);

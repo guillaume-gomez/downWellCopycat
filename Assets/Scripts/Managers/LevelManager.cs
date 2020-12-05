@@ -139,18 +139,24 @@ public class LevelManager : MonoBehaviour
     {
         GameManager.instance.LevelSystemRun.currentCombo += 1;
 
-        OnComboChangedEventArgs eventArgs = new OnComboChangedEventArgs();
-        eventArgs.combo = GameManager.instance.LevelSystemRun.currentCombo;
-        OnUpdateCombo(this, eventArgs);
+        if(OnUpdateCombo != null)
+        {
+            OnComboChangedEventArgs eventArgs = new OnComboChangedEventArgs();
+            eventArgs.combo = GameManager.instance.LevelSystemRun.currentCombo;
+            OnUpdateCombo(this, eventArgs);
+        }
     }
 
     public void ResetCombo()
     {
         GameManager.instance.LevelSystemRun.currentCombo = 0;
 
-        OnComboChangedEventArgs eventArgs = new OnComboChangedEventArgs();
-        eventArgs.combo = GameManager.instance.LevelSystemRun.currentCombo;
-        OnUpdateCombo(this, eventArgs);
+        if(OnUpdateCombo != null)
+        {
+            OnComboChangedEventArgs eventArgs = new OnComboChangedEventArgs();
+            eventArgs.combo = GameManager.instance.LevelSystemRun.currentCombo;
+            OnUpdateCombo(this, eventArgs);
+        }
     }
 
 }
