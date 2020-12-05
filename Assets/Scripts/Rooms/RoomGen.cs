@@ -17,16 +17,20 @@ public class RoomGen : MonoBehaviour
     protected int width;
     protected int height;
 
-
-    // Start is called before the first frame update
-    void Start()
+    protected void Init()
     {
         widthSubRoom = 6;
         heightSubRoom = 6;
         offsetLeftAndRight = 6;
         width = 36;
         height = 20;
+    }
 
+
+    // Start is called before the first frame update
+    protected virtual void Start()
+    {
+        Init();
         SplitInChunkY(4, 0, spawnersSide, true);
         SplitInChunkY(4, width, spawnersSide, false);
 
@@ -51,8 +55,7 @@ public class RoomGen : MonoBehaviour
             float y = (i * heightSubRoom) + (newChunk * heightSubRoom) / 2.0f;
             if(Random.Range(0.0f, 1.0f) <= percentageSide)
             {
-                GameObject obj = CreateSpwaner(x, y, typeOfSpawn, newChunk - 1);
-                obj.GetComponent<GeneratePlatform>().platformPosition = isLeft ? PlatformPosition.Left :  PlatformPosition.Right;
+                CreateGenericBloc(x, y, typeOfSpawn, newChunk - 1, isLeft ? PlatformPosition.Left :  PlatformPosition.Right);
             } else {
                 int randomIndex = Random.Range(0, spawnEnemies.Length);
                 GameObject obj = CreateSpwaner(x, y, spawnEnemies, randomIndex);
@@ -86,8 +89,7 @@ public class RoomGen : MonoBehaviour
                 float yPosition = (y * heightSubRoom) + (newChunkY * heightSubRoom) / 2.0f;
                 if(Random.Range(0.0f, 1.0f) <= percentageCenter)
                 {
-                    GameObject obj = CreateSpwaner(xPosition, yPosition, spawnersCenter, convertSpawnerToIndex(newChunkX, newChunkY));
-                    obj.GetComponent<GeneratePlatform>().platformPosition = PlatformPosition.Center;
+                    CreateGenericBloc(xPosition, yPosition, spawnersCenter, convertSpawnerToIndex(newChunkX, newChunkY), PlatformPosition.Center);
                 }
                 x += newChunkX;
             }
@@ -95,7 +97,13 @@ public class RoomGen : MonoBehaviour
         }
     }
 
-    protected GameObject CreateSpwaner(float x, float y, GameObject[] typeOfSpawn, int index)
+    protected virtual void CreateGenericBloc(float xPosition, float yPosition, GameObject[] spawners, int index, PlatformPosition platformPosition)
+    {
+        GameObject obj = CreateSpwaner(xPosition, yPosition, spawners, index);
+        obj.GetComponent<GeneratePlatform>().platformPosition = platformPosition;
+    }
+
+    protected virtual GameObject CreateSpwaner(float x, float y, GameObject[] typeOfSpawn, int index)
     {
         Vector3 position = new Vector3(x, -y, transform.position.z);
         GameObject obj = Instantiate(typeOfSpawn[index], new Vector3(0,0,0), transform.rotation);

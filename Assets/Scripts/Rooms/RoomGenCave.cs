@@ -10,6 +10,7 @@ public class RoomGenCave : MonoBehaviour
         int rand = Random.Range(0, possibleCavePosition.Length);
         GameObject choosedObject = possibleCavePosition[rand];
         SpawnObject choosedObjectScript = choosedObject.GetComponent<SpawnObject>();
+        Debug.Log(rand);
         choosedObjectScript.Init();
     }
 }
