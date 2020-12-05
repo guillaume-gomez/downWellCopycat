@@ -65,6 +65,8 @@ public class Movement : MonoBehaviour
     public ParticleSystem slideParticle;
     public ParticleSystem dust;
 
+    public event EventHandler OnJump;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -182,8 +184,6 @@ public class Movement : MonoBehaviour
         {
             Shoot();
         }
-
-
     }
 
     bool CanJump()
@@ -201,7 +201,6 @@ public class Movement : MonoBehaviour
     {
         //TODO
         //side = anim.sr.flipX ? -1 : 1;
-
         jumpParticle.Play();
     }
 
@@ -307,6 +306,11 @@ public class Movement : MonoBehaviour
 
         rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
         rb2d.velocity += dir * jumpTakeOffSpeed;
+
+        if(OnJump != null)
+        {
+            OnJump(this, EventArgs.Empty);
+        }
 
         particle.Play();
     }
