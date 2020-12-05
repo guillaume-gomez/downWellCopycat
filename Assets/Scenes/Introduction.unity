@@ -196,25 +196,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 181873972}
   m_CullTransparentMesh: 0
---- !u!1 &335995726 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5082514406271902629, guid: c2515910bdda68ad6ba4586ce7857434,
-    type: 3}
-  m_PrefabInstance: {fileID: 1406513442}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &335995730 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5082514406271902633, guid: c2515910bdda68ad6ba4586ce7857434,
-    type: 3}
-  m_PrefabInstance: {fileID: 1406513442}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 335995726}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e153e80f1d2b5876b98cd24adee7e1fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1001 &928682714
+--- !u!1001 &387696030
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -283,6 +265,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c17f8b5bd54edc13c899110adb0bd8b9, type: 3}
+--- !u!1839735485 &931309563 stripped
+Tilemap:
+  m_CorrespondingSourceObject: {fileID: 648794557274278230, guid: c17f8b5bd54edc13c899110adb0bd8b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 387696030}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1032407707
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -394,12 +382,24 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!1839735485 &1204104906 stripped
-Tilemap:
-  m_CorrespondingSourceObject: {fileID: 648794557274278230, guid: c17f8b5bd54edc13c899110adb0bd8b9,
+--- !u!1 &1367582973 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5082514406271902629, guid: c2515910bdda68ad6ba4586ce7857434,
     type: 3}
-  m_PrefabInstance: {fileID: 928682714}
+  m_PrefabInstance: {fileID: 1406513442}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1367582977 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5082514406271902633, guid: c2515910bdda68ad6ba4586ce7857434,
+    type: 3}
+  m_PrefabInstance: {fileID: 1406513442}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367582973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e153e80f1d2b5876b98cd24adee7e1fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1406513442
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -466,6 +466,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5082514406271902631, guid: c2515910bdda68ad6ba4586ce7857434,
+        type: 3}
+      propertyPath: m_GravityScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5082514406271902633, guid: c2515910bdda68ad6ba4586ce7857434,
+        type: 3}
+      propertyPath: gravityScale
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2515910bdda68ad6ba4586ce7857434, type: 3}
@@ -853,11 +863,16 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 335995730}
+      objectReference: {fileID: 1367582977}
     - target: {fileID: 2580680675649638333, guid: f1e0130001f5f10028dee7146404ddd9,
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2580680675649638333, guid: f1e0130001f5f10028dee7146404ddd9,
+        type: 3}
+      propertyPath: offset.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4290748177710672476, guid: f1e0130001f5f10028dee7146404ddd9,
         type: 3}
@@ -1172,7 +1187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelScript: {fileID: 2057040325}
-  player: {fileID: 335995726}
+  player: {fileID: 1367582973}
   canvas: {fileID: 1415547154}
   bonusItems:
   - {fileID: 8951051847779064660, guid: 5704072d7783d6ab8a98307be4982bda, type: 3}
@@ -1205,12 +1220,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09a0d61ab3177c871a5fb8d00421287a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileMap: {fileID: 1204104906}
+  tileMap: {fileID: 931309563}
   tileBloc: {fileID: 11400000, guid: 789af5dc836fc9a3b89c285ee530749e, type: 2}
   rooms: []
   endRoom: {fileID: 0}
   caveRoom: {fileID: 0}
-  player: {fileID: 335995726}
+  player: {fileID: 1367582973}
   roomWidth: 36
   nbRooms: 4
   xOrigin: 0
@@ -1228,7 +1243,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 18, y: -19}
+  m_Offset: {x: 18, y: -5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
