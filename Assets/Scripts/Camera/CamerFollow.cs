@@ -36,6 +36,12 @@ public class CamerFollow : MonoBehaviour
         shouldFollow = false;
     }
 
+    public void Follow()
+    {
+        //Debug.Log("Unfollow");
+        shouldFollow = true;
+    }
+
     private void OnUnFollow(object sender, System.EventArgs e)
     {
         Unfollow();

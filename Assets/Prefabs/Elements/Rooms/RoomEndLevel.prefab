@@ -12,13 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ddbdb76f8a5e364d9c73996709aadd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftsEnemy: []
-  rightsEnemy: []
+  spawnEnemies: []
   spawnersCenter: []
-  spawnersLeft: []
-  spawnersRight: []
+  spawnersSide: []
   percentageCenter: 1
-  percentageSide: 1
+  percentageSide: 0
   centers:
   - {fileID: 5498899626715957557}
 --- !u!1001 &8655103494640858195
