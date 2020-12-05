@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PlatformPosition{ Left, Right, Center }
+
 public class RoomGen : MonoBehaviour
 {
     public GameObject[] spawnEnemies;

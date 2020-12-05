@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine.Tilemaps;
 using UnityEngine;
 
-public enum PlatformPosition{ Left, Right, Center }
-
 public class GeneratePlatform : MonoBehaviour
 {
     public Tilemap tilemap;
