@@ -55,6 +55,8 @@ public class Introduction : MonoBehaviour
     void MovePlayer()
     {
         player.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+        player.gameObject.GetComponent<Rigidbody2D>().gravityScale += 0.1f;
+        GameObject.Find("MyCamera").GetComponent<CamerFollow>().Unfollow();
     }
 
     void GoToLevel()
@@ -78,5 +80,6 @@ public class Introduction : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         player.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY;
+        GameObject.Find("MyCamera").GetComponent<CamerFollow>().Follow();
     }
 }
