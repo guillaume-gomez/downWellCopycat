@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -202,6 +202,75 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1983434417}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &928682714
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 648794556071184084, guid: c17f8b5bd54edc13c899110adb0bd8b9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 648794556071184084, guid: c17f8b5bd54edc13c899110adb0bd8b9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 648794556071184084, guid: c17f8b5bd54edc13c899110adb0bd8b9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 648794556071184084, guid: c17f8b5bd54edc13c899110adb0bd8b9,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 648794556071184084, guid: c17f8b5bd54edc13c899110adb0bd8b9,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 648794556071184084, guid: c17f8b5bd54edc13c899110adb0bd8b9,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 648794556071184084, guid: c17f8b5bd54edc13c899110adb0bd8b9,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 648794556071184084, guid: c17f8b5bd54edc13c899110adb0bd8b9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 648794556071184084, guid: c17f8b5bd54edc13c899110adb0bd8b9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 648794556071184084, guid: c17f8b5bd54edc13c899110adb0bd8b9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 648794556071184084, guid: c17f8b5bd54edc13c899110adb0bd8b9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 648794556071184086, guid: c17f8b5bd54edc13c899110adb0bd8b9,
+        type: 3}
+      propertyPath: m_Name
+      value: Tilemaps
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c17f8b5bd54edc13c899110adb0bd8b9, type: 3}
 --- !u!1001 &1032407707
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1051,13 +1120,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09a0d61ab3177c871a5fb8d00421287a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bloc: {fileID: 8257940167194319867, guid: 6ff5d654ed63baa24a33ee875ea7a0dd, type: 3}
+  tileMap: {fileID: 0}
+  tileBloc: {fileID: 11400000, guid: 789af5dc836fc9a3b89c285ee530749e, type: 2}
   rooms: []
   endRoom: {fileID: 0}
   caveRoom: {fileID: 0}
   player: {fileID: 823460704}
   roomWidth: 36
-  depthLevel: 100
+  nbRooms: 4
   xOrigin: 0
   yOrigin: 0
 --- !u!61 &2057040326
