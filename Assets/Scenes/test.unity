@@ -1411,6 +1411,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1594432239665938176, guid: 5c6faaab667615641af8aee5ca8d9ba0,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1594432239665938176, guid: 5c6faaab667615641af8aee5ca8d9ba0,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1594432239665938177, guid: 5c6faaab667615641af8aee5ca8d9ba0,
+        type: 3}
+      propertyPath: speed
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1594432239665938179, guid: 5c6faaab667615641af8aee5ca8d9ba0,
         type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[0].Array.data[0].X
