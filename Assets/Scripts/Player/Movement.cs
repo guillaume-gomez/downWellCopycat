@@ -201,7 +201,6 @@ public class Movement : MonoBehaviour
     {
         //TODO
         //side = anim.sr.flipX ? -1 : 1;
-
         jumpParticle.Play();
     }
 
@@ -307,7 +306,6 @@ public class Movement : MonoBehaviour
 
         rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
         rb2d.velocity += dir * jumpTakeOffSpeed;
-
         particle.Play();
     }
 
