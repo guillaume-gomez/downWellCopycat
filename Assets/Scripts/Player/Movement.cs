@@ -311,7 +311,6 @@ public class Movement : MonoBehaviour
         {
             OnJump(this, EventArgs.Empty);
         }
-
         particle.Play();
     }
 

@@ -57,7 +57,6 @@ public class MovingPlatform : MonoBehaviour
 
   void OnCharacterJump(object sender, System.EventArgs e)
   {
-      Debug.Log("fjd");
       Movement gg  = (Movement) sender;
       gg.transform.SetParent(null);
       gg.OnJump -= OnCharacterJump;
