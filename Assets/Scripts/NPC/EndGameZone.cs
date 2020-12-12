@@ -7,7 +7,7 @@ public class EndGameZone : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.gameObject.name == "Player")
+        if(col.gameObject.CompareTag("Player"))
         {
             LevelManager.instance.WinLevel();
         }

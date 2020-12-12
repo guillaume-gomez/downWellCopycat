@@ -7,17 +7,15 @@ public class Inventory : MonoBehaviour
 {
     public bool[] isFull;
     public GameObject[] slots;
-    private Transform weaponPosition;
     private Weapon activeWeapon; // slot 0 for the moment
     public event EventHandler<WeaponEventArgs> OnShootHandlerActiveWeapon;
 
     void Start()
     {
-        weaponPosition = transform.Find("WeaponPosition");
         // if a weapon is already here
         if(slots.Length > 0)
         {
-            SetWeapon(slots[0]);
+            SetWeapon(Instantiate(slots[0]));
         }
     }
 
@@ -30,7 +28,7 @@ public class Inventory : MonoBehaviour
             {
                 isFull[i] = true;
                 slots[i] = _weapon;
-                _weapon.transform.SetParent(weaponPosition);
+                _weapon.transform.SetParent(transform);
                 _weapon.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
                 //remove handler from old activeWeapon
                 if(activeWeapon)
@@ -73,7 +71,6 @@ public class Inventory : MonoBehaviour
     {
         if(activeWeapon)
         {
-
             return activeWeapon.Shoot();
         }
         return 0.0f;

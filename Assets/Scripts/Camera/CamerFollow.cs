@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class CamerFollow : MonoBehaviour
 {
-    public PlayerController player;
+    public Movement player;
     public float dampTime = 0.1f;
     public Vector3 offset;
     private Vector3 velocity = Vector3.zero;
@@ -16,7 +16,7 @@ public class CamerFollow : MonoBehaviour
         {
             LevelManager.instance.OnWin += OnUnFollow;
         }
-        player.OnLifeChanged += OnPlayerHurt;
+        //player.OnLifeChanged += OnPlayerHurt;
     }
 
     void Update()
@@ -34,6 +34,12 @@ public class CamerFollow : MonoBehaviour
     {
         //Debug.Log("Unfollow");
         shouldFollow = false;
+    }
+
+    public void Follow()
+    {
+        //Debug.Log("Unfollow");
+        shouldFollow = true;
     }
 
     private void OnUnFollow(object sender, System.EventArgs e)

@@ -59,9 +59,9 @@ GameObject:
   - component: {fileID: 648794557274279595}
   - component: {fileID: 648794557274278228}
   - component: {fileID: 648794557274278229}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Borders
-  m_TagString: Untagged
+  m_TagString: Bloc
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -240,9 +240,9 @@ GameObject:
   - component: {fileID: 648794557667517155}
   - component: {fileID: 648794557667517164}
   - component: {fileID: 648794557667517165}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Platforms
-  m_TagString: Untagged
+  m_TagString: Bloc
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
