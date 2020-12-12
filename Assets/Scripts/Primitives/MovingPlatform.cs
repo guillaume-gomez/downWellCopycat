@@ -57,9 +57,9 @@ public class MovingPlatform : MonoBehaviour
 
   void OnCharacterJump(object sender, System.EventArgs e)
   {
-      Movement gg  = (Movement) sender;
-      gg.transform.SetParent(null);
-      gg.OnJump -= OnCharacterJump;
+      Movement playerMovement  = (Movement) sender;
+      playerMovement.transform.SetParent(null);
+      playerMovement.OnJump -= OnCharacterJump;
   }
 
 
