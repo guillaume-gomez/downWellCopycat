@@ -18,7 +18,7 @@ public class Extruder : MonoBehaviour
             //Debug.Log(cellPosition);
             Debug.Log(tilemap.GetTile(cellPosition));
             tilemap.SetTile(cellPosition, null);
-            //Destroy(gameObject);
+            Destroy(gameObject);
         }
     }
 }
