@@ -73,6 +73,9 @@ public class EnemyBase : MonoBehaviour
             target = GameObject.FindGameObjectWithTag("Player").transform;
         }
         isVisibleOnCamera = true;
+        Rigidbody2D rb2d = GetComponent<Rigidbody2D>();
+        // make sure enemies are heavier than player (to avoid collision issues)
+        rb2d.mass = 100;
     }
 
     protected void OnBecameVisible()

@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class ExtraAmmo : MonoBehaviour
+public class ExtraAmmo : ItemBase
 {
-    public void Equip()
+    public override void Equip()
     {
         GameManager.instance.CharacterStats.weaponAbilities.AddModifier(new StatModifier(1, StatModType.Flat, this));
     }
 
-    public void Unequip()
+    public override void Unequip()
     {
         GameManager.instance.CharacterStats.weaponAbilities.RemoveAllModifiersFromSource(this);
     }

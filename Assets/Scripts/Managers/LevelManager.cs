@@ -72,7 +72,7 @@ public class LevelManager : MonoBehaviour
     void InitGame()
     {
         gameObject.SetActive(true);
-        levelScript.SetupScene(GameManager.instance.LevelSystem.level);
+        levelScript.SetupScene(GameManager.instance.LevelSystemRun.level);
     }
 
     public void GameOver()
@@ -126,7 +126,7 @@ public class LevelManager : MonoBehaviour
         GameManager.instance.LevelSystemRun.nbKilled += 1;
     }
 
-    public void TakeMoney(float _money)
+    public void UpdateMoney(float _money)
     {
         GameManager.instance.LevelSystemRun.money += _money;
 
@@ -139,18 +139,24 @@ public class LevelManager : MonoBehaviour
     {
         GameManager.instance.LevelSystemRun.currentCombo += 1;
 
-        OnComboChangedEventArgs eventArgs = new OnComboChangedEventArgs();
-        eventArgs.combo = GameManager.instance.LevelSystemRun.currentCombo;
-        OnUpdateCombo(this, eventArgs);
+        if(OnUpdateCombo != null)
+        {
+            OnComboChangedEventArgs eventArgs = new OnComboChangedEventArgs();
+            eventArgs.combo = GameManager.instance.LevelSystemRun.currentCombo;
+            OnUpdateCombo(this, eventArgs);
+        }
     }
 
     public void ResetCombo()
     {
         GameManager.instance.LevelSystemRun.currentCombo = 0;
 
-        OnComboChangedEventArgs eventArgs = new OnComboChangedEventArgs();
-        eventArgs.combo = GameManager.instance.LevelSystemRun.currentCombo;
-        OnUpdateCombo(this, eventArgs);
+        if(OnUpdateCombo != null)
+        {
+            OnComboChangedEventArgs eventArgs = new OnComboChangedEventArgs();
+            eventArgs.combo = GameManager.instance.LevelSystemRun.currentCombo;
+            OnUpdateCombo(this, eventArgs);
+        }
     }
 
 }

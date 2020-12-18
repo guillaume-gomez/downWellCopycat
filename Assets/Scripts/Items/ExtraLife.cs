@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class ExtraLife : MonoBehaviour
+public class ExtraLife : ItemBase
 {
-    public void Equip()
+    public override void Equip()
     {
         GameManager.instance.CharacterStats.life.AddModifier(new StatModifier(1, StatModType.Flat, this));
     }
 
-    public void Unequip()
+    public override void Unequip()
     {
         GameManager.instance.CharacterStats.life.RemoveAllModifiersFromSource(this);
     }

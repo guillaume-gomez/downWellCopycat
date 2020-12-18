@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class CoinPerf : MonoBehaviour
+public class CoinPerf : ItemBase
 {
-    public void Equip()
+    public override void Equip()
     {
         GameManager.instance.CharacterStats.coinPerf.AddModifier(new StatModifier(0.1f, StatModType.Flat, this));
     }
 
-    public void Unequip()
+    public override void Unequip()
     {
         GameManager.instance.CharacterStats.coinPerf.RemoveAllModifiersFromSource(this);
     }

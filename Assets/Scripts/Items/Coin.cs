@@ -35,11 +35,11 @@ public class Coin : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.gameObject.name == "Player")
+        if(col.gameObject.CompareTag("Player"))
         {
             if(LevelManager.instance)
             {
-                LevelManager.instance.TakeMoney(coinValue);
+                LevelManager.instance.UpdateMoney(coinValue);
             }
             if(SoundManager.instance)
             {

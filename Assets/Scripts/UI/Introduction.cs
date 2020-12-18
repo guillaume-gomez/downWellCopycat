@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class Introduction : MonoBehaviour
 {
     public LevelGenerator levelScript;
-    public PlayerController playerScript;
+    public GameObject player;
     public GameObject canvas;
     public GameObject[] bonusItems;
 
@@ -18,6 +18,7 @@ public class Introduction : MonoBehaviour
 
     void Start()
     {
+        levelScript.DepthLevel();
         levelScript.CreateBorders();
         levelScript.SetPlayerInCenter();
         bordersObj = GameObject.Find("Borders");
@@ -35,7 +36,7 @@ public class Introduction : MonoBehaviour
             Button button = obj.GetComponent<Button>();
             button.onClick.AddListener(delegate { PickABonus(); });
 
-            obj.transform.SetParent(itemsParent);
+            obj.transform.SetParent(itemsParent, false);
         }
 
     }
@@ -53,7 +54,9 @@ public class Introduction : MonoBehaviour
 
     void MovePlayer()
     {
-        playerScript.gravityModifier = 3.0f;
+        player.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+        player.gameObject.GetComponent<Rigidbody2D>().gravityScale += 0.1f;
+        GameObject.Find("MyCamera").GetComponent<CamerFollow>().Unfollow();
     }
 
     void GoToLevel()
@@ -76,7 +79,7 @@ public class Introduction : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        playerScript.gravityModifier = 0.0f;
-        playerScript.SetToZero();
+        player.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY;
+        GameObject.Find("MyCamera").GetComponent<CamerFollow>().Follow();
     }
 }
