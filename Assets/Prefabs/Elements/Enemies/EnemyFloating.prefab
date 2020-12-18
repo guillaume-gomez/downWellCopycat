@@ -149,7 +149,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 6844951920497846240}
   m_BodyType: 0
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 1.5
@@ -187,8 +187,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b9fe20c78b15c554d8f9980de541871a, type: 3}
   - {fileID: 8300000, guid: 076e177a65f943b479dadcefcbc56498, type: 3}
   - {fileID: 8300000, guid: a9fbe952d9962454183f398f356a7239, type: 3}
-  speed: 200
+  speed: 5
   nextWaypointDistance: 3
-  maxDistanceVision: 10
+  maxDistanceVision: 50
   hasLimitY: 0
   rememberTime: 0.5

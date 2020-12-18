@@ -97,7 +97,7 @@ public class EnemyFloating: EnemyBase
         Vector2 force = direction * speed; //* Time.deltaTime;
         if(remember >= rememberTime)
         {
-            rb2d.AddForce(force);
+            rb2d.velocity = force;
             remember = 0.0f;
         }
 
