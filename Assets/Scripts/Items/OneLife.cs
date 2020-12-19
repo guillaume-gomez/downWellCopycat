@@ -4,6 +4,6 @@ public class OneLife : ItemBase
 {
     public override void Equip()
     {
-        GameManager.instance.LevelSystemRun.currentLife++;
+        GameManager.instance.LevelSystemRun.currentLife += 1;
     }
 }

@@ -41,6 +41,8 @@ public class LifeScript : MonoBehaviour
         if(GameManager.instance)
         {
             life = (int) GameManager.instance.LevelSystemRun.currentLife;
+            // notify others by calling the setter
+            Life = life;
         }
     }
 
