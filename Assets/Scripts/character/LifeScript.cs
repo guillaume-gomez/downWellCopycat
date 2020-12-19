@@ -40,7 +40,7 @@ public class LifeScript : MonoBehaviour
     {
         if(GameManager.instance)
         {
-            Life = (int) GameManager.instance.CharacterStats.life.Value;
+            life = (int) GameManager.instance.LevelSystemRun.currentLife;
         }
     }
 
@@ -58,6 +58,7 @@ public class LifeScript : MonoBehaviour
                 LevelManager.instance.GameOver();
                 return;
             }
+            LevelManager.instance.UpdateLife(life);
             StartCoroutine(FlashSprite(spriteRenderer, 0.0f, 1.0f, 0.1f, unvisibleTimer));
             StartCoroutine(GetUnvisible(unvisibleTimer, enemy));
         }

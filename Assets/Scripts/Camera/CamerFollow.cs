@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class CamerFollow : MonoBehaviour
 {
-    public Movement player;
+    public LifeScript player;
     public float dampTime = 0.1f;
     public Vector3 offset;
     private Vector3 velocity = Vector3.zero;
@@ -16,7 +16,7 @@ public class CamerFollow : MonoBehaviour
         {
             LevelManager.instance.OnWin += OnUnFollow;
         }
-        //player.OnLifeChanged += OnPlayerHurt;
+        player.OnLifeChanged += OnPlayerHurt;
     }
 
     void Update()
@@ -47,8 +47,9 @@ public class CamerFollow : MonoBehaviour
         Unfollow();
     }
 
-    void OnPlayerHurt(object sender, OnLifeChangedEventArgs e)
+    private void OnPlayerHurt(object sender, OnLifeChangedEventArgs e)
     {
+        Debug.Log("OnPlayerHurt");
         if((int) e.life > 0 && (int) e.diff < 0)
         {
             StartCoroutine(Shake(1f, 0.2f));

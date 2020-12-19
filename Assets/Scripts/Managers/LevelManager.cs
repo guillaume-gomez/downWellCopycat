@@ -126,6 +126,11 @@ public class LevelManager : MonoBehaviour
         GameManager.instance.LevelSystemRun.nbKilled += 1;
     }
 
+    public void UpdateLife(int newLifeValue)
+    {
+        GameManager.instance.LevelSystemRun.currentLife = newLifeValue;
+    }
+
     public void UpdateMoney(float _money)
     {
         GameManager.instance.LevelSystemRun.money += _money;

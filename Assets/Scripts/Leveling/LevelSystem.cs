@@ -9,6 +9,7 @@ public class LevelSystem
     public event EventHandler OnLevelChanged;
 
     public int level;
+    public int currentLife;
     public int experience;
     public int experienceToNextLevel;
     public float money;
@@ -22,6 +23,7 @@ public class LevelSystem
     public LevelSystem()
     {
         money = 0;
+        currentLife = 4;
         level = 1;
         experience = 0;
         experienceToNextLevel = 100;
