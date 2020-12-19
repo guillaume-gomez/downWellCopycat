@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 828099054738361854}
   - component: {fileID: 5424638870829250240}
   - component: {fileID: 828099054738361855}
-  - component: {fileID: 828099054738361852}
+  - component: {fileID: -6969715159987423415}
   m_Layer: 0
   m_Name: LifeUp
   m_TagString: Untagged
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bed5541b450e519bcb3aa62086a318a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &828099054738361852
+--- !u!114 &-6969715159987423415
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,6 +131,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 828099054738361853}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 711437b4ccb3c43e58d001a36cab07a0, type: 3}
+  m_Script: {fileID: 11500000, guid: 98896bb0d9e4bee9ea65169a22dcd5fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
