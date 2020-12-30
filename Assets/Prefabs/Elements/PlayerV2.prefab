@@ -4873,6 +4873,7 @@ GameObject:
   - component: {fileID: 5082514406271902632}
   - component: {fileID: 5082514406271902635}
   - component: {fileID: 5082514406271902634}
+  - component: {fileID: 293383091}
   m_Layer: 9
   m_Name: PlayerV2
   m_TagString: Player
@@ -4928,7 +4929,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5082514406271902629}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -5034,6 +5035,22 @@ MonoBehaviour:
   spriteRenderer: {fileID: 5082514407111174496}
   godMode: 0
   unvisibleTimer: 0.5
+--- !u!70 &293383091
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5082514406271902629}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.2}
+  m_Size: {x: 0.9, y: 1.3}
+  m_Direction: 0
 --- !u!1 &5082514406455619223
 GameObject:
   m_ObjectHideFlags: 0
