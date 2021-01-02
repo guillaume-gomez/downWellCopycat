@@ -8,6 +8,7 @@ public class Movement : MonoBehaviour
 {
     private Collision coll;
     private LifeScript lifeScript;
+    private int amountOfJumpsLeft;
     [HideInInspector]
     public Rigidbody2D rb2d;
     public Inventory inventory;
@@ -23,6 +24,7 @@ public class Movement : MonoBehaviour
     [SerializeField]
     [Range(0,10)]
     public float gravityScale = 3;
+    public int amountOfJumps = 1;
 
     [Space]
     [Header("Vertical Optimization")]
@@ -51,6 +53,8 @@ public class Movement : MonoBehaviour
     [Space]
     public int side = 1;
     
+    private Vector2 movement;
+    private float xRaw;
     // allows to jump few frames before to be grounded
     private float jumpPressedRemember = 0.0f;
     // allow jump few frame after leaving the floor
@@ -72,8 +76,8 @@ public class Movement : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         lifeScript = GetComponent<LifeScript>();
         rb2d.gravityScale = gravityScale;
-
-        
+        amountOfJumpsLeft = amountOfJumps;
+        movement = new Vector2(0,0);
         shooting = false;
         //anim = GetComponentInChildren<AnimationScript>();
     }
@@ -81,109 +85,15 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float x = Input.GetAxis("Horizontal");
-        float y = Input.GetAxis("Vertical");
-        float xRaw = Input.GetAxisRaw("Horizontal");
-        float yRaw = Input.GetAxisRaw("Vertical");
-        Vector2 dir = new Vector2(x, y);
+        int oldSide = side;
+        CheckInput();
+        CheckMovementDirection();
+        PlayParticles(oldSide);
+    }
 
-        Walk(dir, xRaw);
-        //anim.SetHorizontalMovement(x, y, rb2d.velocity.y);
-        
-        groundedRemember = groundedRemember - Time.deltaTime;
-        if(coll.onGround)
-        {
-            groundedRemember = groundedRememberTime;
-            wallJumped = false;
-            GetComponent<BetterJumping>().enabled = true;
-        }
-
-        if(IsGrounded())
-        {
-            inventory.Reload();
-        }
-
-        if(coll.onWall && !coll.onGround)
-        {
-            if (x != 0)
-            {
-                wallSlide = true;
-                WallSlide();
-            }
-        }
-
-        if (!coll.onWall || coll.onGround)
-        {
-            wallSlide = false;
-        }
-
-
-        jumpPressedRemember = jumpPressedRemember - Time.deltaTime;
-        if (Input.GetButtonDown("Jump"))
-        {
-            jumpPressedRemember = jumpPressedRememberTime;
-            //anim.SetTrigger("jump");
-            if(!IsGrounded())
-            {
-                shooting = true;
-            }
-            else if( IsGrounded() && CanJump()) // avoid double jump :p
-            {
-                Jump(Vector2.up, jumpForce, false);
-            }
-
-            if (coll.onWall && !coll.onGround)
-            {
-                WallJump(x);
-            }
-        }
-
-        if(Input.GetButtonUp("Jump"))
-        {
-            shooting = false;
-        }
-
-        if (coll.onGround && !groundTouch)
-        {
-            GroundTouch();
-            groundTouch = true;
-        }
-
-        if(!coll.onGround && groundTouch)
-        {
-            groundTouch = false;
-        }
-
-        WallParticle(y);
-
-        if (wallSlide || !canMove)
-        {
-            return;
-        }
-
-        // flip size
-        if(side == -1 && x > 0 || side == 1 && x < 0)
-        {
-            dust.Play();
-        }
-
-        if(x > 0)
-        {
-            side = 1;
-            //anim.Flip(side);
-        }
-        if (x < 0)
-        {
-            side = -1;
-            //anim.Flip(side);
-        }
-
-        if(shooting)
-        {
-            Shoot();
-        }
-
-
+    void FixedUpdate()
+    {
+        ApplyMovement();
     }
 
     bool CanJump()
@@ -196,14 +106,6 @@ public class Movement : MonoBehaviour
         return groundedRemember > 0.0f;
     }
 
-
-    void GroundTouch()
-    {
-        //TODO
-        //side = anim.sr.flipX ? -1 : 1;
-        jumpParticle.Play();
-    }
-
     private void WallJump(float x)
     {
         if ((side == 1 && coll.onRightWall) || side == -1 && !coll.onRightWall)
@@ -211,36 +113,34 @@ public class Movement : MonoBehaviour
             side *= -1;
             //anim.Flip(side);
         }
-
-        StopCoroutine(DisableMovement(0));
-        StartCoroutine(DisableMovement(.1f));
+        // StopCoroutine(DisableMovement(0));
+        // StartCoroutine(DisableMovement(.1f));
 
         Vector2 wallDir;
         if(coll.onRightWall)
         {
-            if(x >= 0)
+            if(x >= 0.0f)
             {
-                wallDir = Vector2.left / 1.5f;
+                wallDir = Vector2.zero;
             }
             else
             {
-                wallDir  = Vector2.left * (1.0f + Mathf.Abs(x));
+                wallDir = Vector2.left;
             }
         }
         else
         {
-            if(x <= 0)
+            if(x <= 0.0f)
             {
-                wallDir = Vector2.right / 1.5f;
+                wallDir = Vector2.zero;
             }
             else
             {
-                wallDir  = Vector2.right * (1.0f + Mathf.Abs(x));
+                wallDir  = Vector2.right;
             }
         }
 
-
-        Jump((Vector2.up + wallDir), jumpForce, true);
+        Jump(wallDir, jumpForce * 2.0f, true);
 
         wallJumped = true;
     }
@@ -267,7 +167,7 @@ public class Movement : MonoBehaviour
         rb2d.velocity = new Vector2(push, -wallSlideSpeed);
     }
 
-    private void Walk(Vector2 dir, float xRay)
+    private void Walk(Vector2 dir)
     {
         if (!canMove)
         {
@@ -277,11 +177,11 @@ public class Movement : MonoBehaviour
         if (!wallJumped)
         {
             float x = dir.x;
-            if (Mathf.Abs(xRay) < 0.01f)
+            if (Mathf.Abs(xRaw) < 0.01f)
             {
                 x *= Mathf.Pow(1f - horizontalDampingWhenStopping, Time.deltaTime * 10f);
             }
-            else if (Mathf.Sign(xRay) != Mathf.Sign(x))
+            else if (Mathf.Sign(xRaw) != Mathf.Sign(x))
             {
                 x *= Mathf.Pow(1f - horizontalDampingWhenTurning, Time.deltaTime * 10f);
             }
@@ -304,7 +204,7 @@ public class Movement : MonoBehaviour
         slideParticle.transform.parent.localScale = new Vector3(ParticleSide(), 1, 1);
         ParticleSystem particle = wall ? wallJumpParticle : jumpParticle;
 
-        rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
+        rb2d.velocity = new Vector2(rb2d.velocity.x, rb2d.velocity.y);
         rb2d.velocity += dir * jumpTakeOffSpeed;
         particle.Play();
     }
@@ -314,6 +214,118 @@ public class Movement : MonoBehaviour
         if (inventory.CanShoot())
         {
             Jump(Vector2.up, inventory.Shoot(), false);
+        }
+    }
+
+    private void CheckInput()
+    {
+        float x = Input.GetAxis("Horizontal");
+        float y = Input.GetAxis("Vertical");
+        xRaw = Input.GetAxisRaw("Horizontal");
+        movement = new Vector2(x, y);
+        //anim.SetHorizontalMovement(x, y, rb2d.velocity.y);
+        
+        groundedRemember = groundedRemember - Time.deltaTime;
+        if(coll.onGround)
+        {
+            groundedRemember = groundedRememberTime;
+            wallJumped = false;
+            GetComponent<BetterJumping>().enabled = true;
+        }
+
+        jumpPressedRemember = jumpPressedRemember - Time.deltaTime;
+        if (Input.GetButtonDown("Jump"))
+        {
+            jumpPressedRemember = jumpPressedRememberTime;
+            //anim.SetTrigger("jump");
+            if(!IsGrounded())
+            {
+                shooting = true;
+            }
+            else if( IsGrounded() && CanJump()) // avoid double jump :p
+            {
+                Jump(Vector2.up, jumpForce, false);
+            }
+
+            if (coll.onWall && !coll.onGround)
+            {
+                WallJump(xRaw);
+            }
+        }
+
+        if(Input.GetButtonUp("Jump"))
+        {
+            shooting = false;
+        }
+    }
+
+    void CheckMovementDirection()
+    {
+        if (!canMove)
+        {
+            return;
+        }
+
+        if(movement.x > 0)
+        {
+            side = 1;
+            //anim.Flip(side);
+        }
+        if (movement.x < 0)
+        {
+            side = -1;
+            //anim.Flip(side);
+        }
+
+        if(coll.onWall && !coll.onGround && movement.x != 0)
+        {
+            wallSlide = true;
+        }
+
+        if (!coll.onWall || coll.onGround)
+        {
+            wallSlide = false;
+        }
+    }
+
+
+    void ApplyMovement()
+    {
+        Walk(movement);
+        if(IsGrounded())
+        {
+            inventory.Reload();
+        }
+
+        if(wallSlide)
+        {
+            WallSlide();
+        }
+
+        if(shooting)
+        {
+            Shoot();
+        }
+    }
+
+    void PlayParticles(int oldSide)
+    {
+        if(side == -1 && oldSide == 1 || side == 1 && oldSide == -1)
+        {
+            dust.Play();
+        }
+
+        WallParticle(movement.y);
+
+        if (coll.onGround && !groundTouch)
+        {
+            jumpParticle.Play();
+            groundTouch = true;
+        }
+
+        if(!coll.onGround && groundTouch)
+        {
+            groundTouch = false;
         }
     }
 
