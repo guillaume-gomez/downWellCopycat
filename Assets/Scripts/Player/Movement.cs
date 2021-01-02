@@ -4,6 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 //using DG.Tweening;
 
+
+// TODOOOOOO
+//fixer le slide particle 
+//fixer les jumps trop fort
+
 public class Movement : MonoBehaviour
 {
     private Collision coll;
@@ -75,6 +80,7 @@ public class Movement : MonoBehaviour
         coll = GetComponent<Collision>();
         rb2d = GetComponent<Rigidbody2D>();
         lifeScript = GetComponent<LifeScript>();
+        GetComponent<BetterJumping>().enabled = true;
         rb2d.gravityScale = gravityScale;
         amountOfJumpsLeft = amountOfJumps;
         movement = new Vector2(0,0);
@@ -113,34 +119,31 @@ public class Movement : MonoBehaviour
             side *= -1;
             //anim.Flip(side);
         }
-        // StopCoroutine(DisableMovement(0));
-        // StartCoroutine(DisableMovement(.1f));
 
-        Vector2 wallDir;
         if(coll.onRightWall)
         {
             if(x >= 0.0f)
             {
-                wallDir = Vector2.zero;
+                Jump(Vector2.up, jumpForce * 0.75f, true);
             }
             else
             {
-                wallDir = Vector2.left;
+                Jump(Vector2.left, jumpForce * 5.0f, true);
             }
         }
         else
         {
             if(x <= 0.0f)
             {
-                wallDir = Vector2.zero;
+                Jump(Vector2.up, jumpForce * 0.75f, true);
             }
             else
             {
-                wallDir  = Vector2.right;
+                Jump(Vector2.right, jumpForce * 5.0f, true);
             }
         }
 
-        Jump(wallDir, jumpForce * 2.0f, true);
+        //Debug.Log(wallDir);
 
         wallJumped = true;
     }
@@ -163,8 +166,10 @@ public class Movement : MonoBehaviour
             pushingWall = true;
         }
         float push = pushingWall ? 0 : rb2d.velocity.x;
-
-        rb2d.velocity = new Vector2(push, -wallSlideSpeed);
+        if(rb2d.velocity.y < -wallSlideSpeed)
+        {
+            rb2d.velocity = new Vector2(push, -wallSlideSpeed);
+        }
     }
 
     private void Walk(Vector2 dir)
@@ -204,7 +209,7 @@ public class Movement : MonoBehaviour
         slideParticle.transform.parent.localScale = new Vector3(ParticleSide(), 1, 1);
         ParticleSystem particle = wall ? wallJumpParticle : jumpParticle;
 
-        rb2d.velocity = new Vector2(rb2d.velocity.x, rb2d.velocity.y);
+        rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
         rb2d.velocity += dir * jumpTakeOffSpeed;
         particle.Play();
     }
@@ -230,7 +235,6 @@ public class Movement : MonoBehaviour
         {
             groundedRemember = groundedRememberTime;
             wallJumped = false;
-            GetComponent<BetterJumping>().enabled = true;
         }
 
         jumpPressedRemember = jumpPressedRemember - Time.deltaTime;
@@ -238,7 +242,11 @@ public class Movement : MonoBehaviour
         {
             jumpPressedRemember = jumpPressedRememberTime;
             //anim.SetTrigger("jump");
-            if(!IsGrounded())
+            if(coll.onWall && !IsGrounded())
+            {
+                WallJump(xRaw);
+            }
+            else if(!IsGrounded())
             {
                 shooting = true;
             }
@@ -247,10 +255,6 @@ public class Movement : MonoBehaviour
                 Jump(Vector2.up, jumpForce, false);
             }
 
-            if (coll.onWall && !coll.onGround)
-            {
-                WallJump(xRaw);
-            }
         }
 
         if(Input.GetButtonUp("Jump"))
@@ -277,7 +281,7 @@ public class Movement : MonoBehaviour
             //anim.Flip(side);
         }
 
-        if(coll.onWall && !coll.onGround && movement.x != 0)
+        if(coll.onWall && !coll.onGround)
         {
             wallSlide = true;
         }
@@ -391,13 +395,6 @@ public class Movement : MonoBehaviour
         {
             lifeScript.Hurt(enemy);
         }
-    }
-
-    IEnumerator DisableMovement(float time)
-    {
-        canMove = false;
-        yield return new WaitForSeconds(time);
-        canMove = true;
     }
 
     void WallParticle(float vertical)
