@@ -2,12 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using DG.Tweening;
-
-
-// TODOOOOOO
-//fixer le slide particle 
-//fixer les jumps trop fort
 
 public class Movement : MonoBehaviour
 {
