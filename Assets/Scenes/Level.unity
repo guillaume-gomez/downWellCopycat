@@ -1151,18 +1151,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 916197534}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &916197536 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5082514406271902633, guid: c2515910bdda68ad6ba4586ce7857434,
-    type: 3}
-  m_PrefabInstance: {fileID: 916197534}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 916197535}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e153e80f1d2b5876b98cd24adee7e1fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &916197537 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5082514406271902634, guid: c2515910bdda68ad6ba4586ce7857434,
@@ -1465,7 +1453,7 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 916197536}
+      objectReference: {fileID: 916197537}
     - target: {fileID: 4290748177710672476, guid: f1e0130001f5f10028dee7146404ddd9,
         type: 3}
       propertyPath: m_BackGroundColor.r
