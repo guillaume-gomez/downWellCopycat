@@ -139,25 +139,25 @@ public class Movement : MonoBehaviour
 
         if(coll.onRightWall)
         {
-            if(x >= 0.0f)
-            {
+            //if(x >= 0.0f)
+            //{
                 Jump(Vector2.up, hopJump, true);
-            }
-            else
-            {
-                Jump(Vector2.left, wallJumpForce, true);
-            }
+            //}
+            // else
+            // {
+            //     Jump(Vector2.left, wallJumpForce, true);
+            // }
         }
         else
         {
-            if(x <= 0.0f)
-            {
+            //if(x <= 0.0f)
+            //{
                 Jump(Vector2.up, hopJump, true);
-            }
-            else
-            {
-                Jump(Vector2.right, wallJumpForce, true);
-            }
+            //}
+            // else
+            // {
+            //     Jump(Vector2.right, wallJumpForce, true);
+            // }
         }
         wallJumped = true;
     }
