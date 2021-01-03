@@ -68,6 +68,7 @@ public class Movement : MonoBehaviour
     private float groundedRemember = 0.0f;
     private bool groundTouch;
     private bool shooting;
+    private bool canJump;
 
     [Space]
     [Header("Polish")]
@@ -87,6 +88,7 @@ public class Movement : MonoBehaviour
         amountOfJumpsLeft = amountOfJumps;
         movement = new Vector2(0,0);
         shooting = false;
+        canJump = true;
         //anim = GetComponentInChildren<AnimationScript>();
     }
 
@@ -96,6 +98,7 @@ public class Movement : MonoBehaviour
         int oldSide = side;
         CheckInput();
         CheckMovementDirection();
+        CheckIfCanJump();
         PlayParticles(oldSide);
     }
 
@@ -104,7 +107,24 @@ public class Movement : MonoBehaviour
         ApplyMovement();
     }
 
-    bool CanJump()
+    void CheckIfCanJump()
+    {
+        if((IsGrounded() && rb2d.velocity.y <= 0) || wallSlide)
+        {
+            amountOfJumpsLeft = amountOfJumps;
+        }
+
+        if(amountOfJumpsLeft <= 0)
+        {
+            canJump = false;
+        }
+        else
+        {
+            canJump = true;
+        }
+    }
+
+    bool CanJumpRemenber()
     {
         return jumpPressedRemember > 0.0f;
     }
@@ -249,7 +269,7 @@ public class Movement : MonoBehaviour
             {
                 shooting = true;
             }
-            else if( IsGrounded() && CanJump()) // avoid double jump :p
+            else if(canJump)
             {
                 Jump(Vector2.up, jumpForce, false);
             }
