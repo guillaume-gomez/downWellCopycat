@@ -4964,10 +4964,13 @@ MonoBehaviour:
   inventory: {fileID: 5082514406455619225}
   speed: 15
   jumpForce: 20
+  hopJump: 15
+  wallJumpForce: 75
   wallSlideSpeed: 5
   wallJumpLerp: 10
   dashSpeed: 20
   gravityScale: 3
+  amountOfJumps: 1
   jumpPressedRememberTime: 0.2
   groundedRememberTime: 0.2
   horizontalDampingBasic: 0.4
@@ -5236,6 +5239,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2115919456}
     m_Modifications:
+    - target: {fileID: 6642718125614656747, guid: 1174c9170148f2a46bbfcf6c88c5a426,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6642718125614656749, guid: 1174c9170148f2a46bbfcf6c88c5a426,
         type: 3}
       propertyPath: m_LocalPosition.x
