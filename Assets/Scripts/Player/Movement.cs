@@ -23,6 +23,8 @@ public class Movement : MonoBehaviour
     [Header("Stats")]
     public float speed = 10;
     public float jumpForce = 50;
+    public float hopJump = 30;
+    public float wallJumpForce = 100;
     public float wallSlideSpeed = 5;
     public float wallJumpLerp = 10;
     public float dashSpeed = 20;
@@ -124,27 +126,24 @@ public class Movement : MonoBehaviour
         {
             if(x >= 0.0f)
             {
-                Jump(Vector2.up, jumpForce * 0.75f, true);
+                Jump(Vector2.up, hopJump, true);
             }
             else
             {
-                Jump(Vector2.left, jumpForce * 5.0f, true);
+                Jump(Vector2.left, wallJumpForce, true);
             }
         }
         else
         {
             if(x <= 0.0f)
             {
-                Jump(Vector2.up, jumpForce * 0.75f, true);
+                Jump(Vector2.up, hopJump, true);
             }
             else
             {
-                Jump(Vector2.right, jumpForce * 5.0f, true);
+                Jump(Vector2.right, wallJumpForce, true);
             }
         }
-
-        //Debug.Log(wallDir);
-
         wallJumped = true;
     }
 
