@@ -18,6 +18,7 @@ public class InventoryUI : MonoBehaviour
             // select the first item in event
             if(i == 0)
             {
+                obj.GetComponent<Selectable>().OnSelect(null);
                 EventSystem.current.SetSelectedGameObject(obj);
             }
         }
