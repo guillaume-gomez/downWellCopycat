@@ -1627,6 +1627,11 @@ PrefabInstance:
       propertyPath: m_UpdateMode
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7408195098556936912, guid: 94375eab90f6ee0a195576a3373aaffe,
+        type: 3}
+      propertyPath: goBackButton
+      value: 
+      objectReference: {fileID: 8964980819930018919}
     - target: {fileID: 7408195098556936914, guid: 94375eab90f6ee0a195576a3373aaffe,
         type: 3}
       propertyPath: m_IsActive
@@ -1769,3 +1774,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94375eab90f6ee0a195576a3373aaffe, type: 3}
+--- !u!1 &8964980819930018919 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8964980819303785892, guid: 94375eab90f6ee0a195576a3373aaffe,
+    type: 3}
+  m_PrefabInstance: {fileID: 8964980819930018918}
+  m_PrefabAsset: {fileID: 0}
