@@ -72,8 +72,6 @@ public class Movement : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         lifeScript = GetComponent<LifeScript>();
         rb2d.gravityScale = gravityScale;
-
-        
         shooting = false;
         //anim = GetComponentInChildren<AnimationScript>();
     }
@@ -182,8 +180,6 @@ public class Movement : MonoBehaviour
         {
             Shoot();
         }
-
-
     }
 
     bool CanJump()

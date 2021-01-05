@@ -70,12 +70,6 @@ public class Introduction : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    IEnumerator LoadAsynchronously (int sceneIndex)
-    {
-        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
-        return null;
-    }
-
     public void PickABonus()
     {
         MovePlayer();

@@ -32,10 +32,10 @@ public class LevelGenerator : MonoBehaviour
 
     public void SetupScene(int level)
     {
-    DepthLevel();
-       SetPlayerInCenter();
-       CreateBorders();
-       SpawnRooms();
+        DepthLevel();
+        SetPlayerInCenter();
+        CreateBorders();
+        SpawnRooms();
     }
 
     public void SetPlayerInCenter()
