@@ -212,6 +212,7 @@ MonoBehaviour:
   canBeJumped: 1
   damageParticle: {fileID: 0}
   offsetPositionSpawn: {x: 0, y: 0, z: 0}
+  dieSounds: []
 --- !u!1 &6041848028372833288
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,6 +253,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6041848028478411529}
   - component: {fileID: 4942913857672052880}
+  - component: {fileID: -2651115756500754291}
   m_Layer: 11
   m_Name: EnemyArondPlatform
   m_TagString: Enemy
@@ -297,6 +299,7 @@ MonoBehaviour:
   damageParticle: {fileID: 4354213638307553630, guid: b9abc807bbe076d4fa3002fe1d8d90d3,
     type: 3}
   offsetPositionSpawn: {x: 0, y: 0, z: 0}
+  dieSounds: []
   speed: 2
   waitTime: 2
   spots:
@@ -306,6 +309,19 @@ MonoBehaviour:
   - {fileID: 6041848028498817836}
   enemyObject: {fileID: 6041848028224567946}
   startWaitTime: 0
+--- !u!114 &-2651115756500754291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6041848028478411528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78815cb4ce06e469d9cdeb0725e1588d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorType: 2
 --- !u!1 &6041848028498817835
 GameObject:
   m_ObjectHideFlags: 0

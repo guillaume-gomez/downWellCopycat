@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 376166311114880371}
   - component: {fileID: 376166311114880370}
   - component: {fileID: 376166311114880369}
+  - component: {fileID: -6156240319579747177}
   m_Layer: 11
   m_Name: Corpse
   m_TagString: Enemy
@@ -49,7 +50,6 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -158,3 +158,16 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b9fe20c78b15c554d8f9980de541871a, type: 3}
   - {fileID: 8300000, guid: 076e177a65f943b479dadcefcbc56498, type: 3}
   - {fileID: 8300000, guid: a9fbe952d9962454183f398f356a7239, type: 3}
+--- !u!114 &-6156240319579747177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376166311114880368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78815cb4ce06e469d9cdeb0725e1588d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorType: 2
