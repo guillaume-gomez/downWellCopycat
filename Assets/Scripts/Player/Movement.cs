@@ -76,9 +76,9 @@ public class Movement : MonoBehaviour
     {
         coll = GetComponent<Collision>();
         rb2d = GetComponent<Rigidbody2D>();
+        rb2d.gravityScale = gravityScale;
         lifeScript = GetComponent<LifeScript>();
         GetComponent<BetterJumping>().enabled = true;
-        rb2d.gravityScale = gravityScale;
         amountOfJumpsLeft = amountOfJumps;
         movement = new Vector2(0,0);
         shooting = false;

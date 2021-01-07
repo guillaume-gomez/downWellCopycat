@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 4117598062167604539}
   - component: {fileID: 4638672273359486728}
   - component: {fileID: 1701417151558381415}
+  - component: {fileID: 981261467638097025}
   m_Layer: 11
   m_Name: EnemyUpAndDown
   m_TagString: Enemy
@@ -79,7 +80,6 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -163,5 +163,19 @@ MonoBehaviour:
   damageParticle: {fileID: 4354213638307553630, guid: b9abc807bbe076d4fa3002fe1d8d90d3,
     type: 3}
   offsetPositionSpawn: {x: 0, y: 0, z: 0}
+  dieSounds: []
   speed: 1
   blocDetection: {fileID: 2830770992701718273}
+--- !u!114 &981261467638097025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4117598062167604538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78815cb4ce06e469d9cdeb0725e1588d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorType: 2
