@@ -15,8 +15,6 @@ public class Extruder : MonoBehaviour
         if(tilemap)
         {
             Vector3Int cellPosition = tilemap.WorldToCell(transform.position);
-            //Debug.Log(cellPosition);
-            Debug.Log(tilemap.GetTile(cellPosition));
             tilemap.SetTile(cellPosition, null);
             Destroy(gameObject);
         }

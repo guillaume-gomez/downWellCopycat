@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class Introduction : MonoBehaviour
 {
@@ -25,20 +26,25 @@ public class Introduction : MonoBehaviour
         MovePlayer();
 
         Transform itemsParent = GameObject.Find("BonusPanel").transform;
+        EventSystem.current.SetSelectedGameObject(null);
 
         for(int i = 0; i < nbBonusAvailable; ++i)
         {
             Vector3 position = new Vector3(0f, 0f, 0f);
             int bonusItemsIndex = Random.Range(0, bonusItems.Length);
             GameObject obj = Instantiate(bonusItems[bonusItemsIndex], position, transform.rotation);
-
             // get callback function
             Button button = obj.GetComponent<Button>();
             button.onClick.AddListener(delegate { PickABonus(); });
 
             obj.transform.SetParent(itemsParent, false);
-        }
+            // set selected the first item
+            if(i == 0)
+            {
 
+                EventSystem.current.SetSelectedGameObject(obj);
+            }
+        }
     }
 
     void Update()
@@ -62,12 +68,6 @@ public class Introduction : MonoBehaviour
     void GoToLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
-
-    IEnumerator LoadAsynchronously (int sceneIndex)
-    {
-        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
-        return null;
     }
 
     public void PickABonus()

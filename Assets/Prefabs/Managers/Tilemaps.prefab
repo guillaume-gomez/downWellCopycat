@@ -59,6 +59,7 @@ GameObject:
   - component: {fileID: 648794557274279595}
   - component: {fileID: 648794557274278228}
   - component: {fileID: 648794557274278229}
+  - component: {fileID: 5584310214371197200}
   m_Layer: 8
   m_Name: Borders
   m_TagString: Bloc
@@ -96,7 +97,7 @@ Tilemap:
   m_TileColorArray: []
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 0.1981132, g: 0.09061871, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: 0, y: 0, z: 0}
   m_Size: {x: 0, y: 0, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -226,6 +227,19 @@ CompositeCollider2D:
     m_Paths: []
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
+--- !u!114 &5584310214371197200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648794557274278225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 910e1e08ecb0f06269198ee6db854542, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorType: 4
 --- !u!1 &648794557667517161
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,6 +254,7 @@ GameObject:
   - component: {fileID: 648794557667517155}
   - component: {fileID: 648794557667517164}
   - component: {fileID: 648794557667517165}
+  - component: {fileID: 333221104002069689}
   m_Layer: 8
   m_Name: Platforms
   m_TagString: Bloc
@@ -301,7 +316,7 @@ Tilemap:
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 0.4811321, g: 0.26595208, b: 0.077162705, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: 0, y: -22, z: 0}
   m_Size: {x: 16, y: 22, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -431,3 +446,16 @@ CompositeCollider2D:
     m_Paths: []
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
+--- !u!114 &333221104002069689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648794557667517161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 910e1e08ecb0f06269198ee6db854542, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorType: 4
