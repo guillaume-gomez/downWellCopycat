@@ -4831,10 +4831,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LightType: 3
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.5
+  m_FalloffIntensity: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_LightVolumeOpacity: 0
+  m_LightVolumeOpacity: 0.025
   m_ApplyToSortingLayers: 000000002d7a3cb1aba54caa53e3efef01e0de25
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
