@@ -14,6 +14,8 @@ BackgroundGui,
 ButtonGui,
 SliderBackgroundGui,
 TextColor,
+BonusItemGuiBorder,
+BonusItemGuiBackground,
 }
 
 public class ThemeManager : MonoBehaviour {
@@ -29,6 +31,8 @@ public class ThemeManager : MonoBehaviour {
     public Color buttonGui;
     public Color textColor;
     public Color sliderBackgroundGui;
+    public Color bonusItemGuiBorder;
+    public Color bonusItemGuiBackground;
 
     public static ThemeManager instance = null;
 
@@ -65,6 +69,10 @@ public class ThemeManager : MonoBehaviour {
                 return textColor;
             case ColorTypeTheme.SliderBackgroundGui:
                 return sliderBackgroundGui;
+            case ColorTypeTheme.BonusItemGuiBorder:
+                return bonusItemGuiBorder;
+            case ColorTypeTheme.BonusItemGuiBackground:
+                return bonusItemGuiBackground;
             default:
                 return background;
         }

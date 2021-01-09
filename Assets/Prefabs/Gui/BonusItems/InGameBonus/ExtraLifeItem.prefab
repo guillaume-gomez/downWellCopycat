@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 7336739800555289915}
   - component: {fileID: 7336739800555289917}
   - component: {fileID: 6799752902213197936}
+  - component: {fileID: 1414251807005403394}
   m_Layer: 5
   m_Name: ExtraLifeItem
   m_TagString: Untagged
@@ -279,6 +280,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98896bb0d9e4bee9ea65169a22dcd5fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1414251807005403394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7336739800555289913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7651c345215d987b8899bff8fa1d8085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorType: 9
 --- !u!1 &7336739802334123350
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,6 +304,7 @@ GameObject:
   - component: {fileID: 7336739802334123353}
   - component: {fileID: 7336739802334123355}
   - component: {fileID: 7336739802334123352}
+  - component: {fileID: 3767373758214786501}
   m_Layer: 5
   m_Name: Icon
   m_TagString: Untagged
@@ -353,3 +368,16 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3767373758214786501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7336739802334123350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7651c345215d987b8899bff8fa1d8085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorType: 10

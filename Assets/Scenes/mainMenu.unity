@@ -372,6 +372,11 @@ PrefabInstance:
       propertyPath: sliderBackgroundGui.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6431385192802674795, guid: 8fe0655d0afeab23e91f8117f0bbabd9,
+        type: 3}
+      propertyPath: backgroundGui.a
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fe0655d0afeab23e91f8117f0bbabd9, type: 3}
 --- !u!1 &588202637
@@ -729,6 +734,9 @@ GameObject:
   - component: {fileID: 1275746044}
   - component: {fileID: 1275746043}
   - component: {fileID: 1275746042}
+  - component: {fileID: 1275746047}
+  - component: {fileID: 1275746046}
+  - component: {fileID: 1275746045}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -818,6 +826,56 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1275746045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275746040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7651c345215d987b8899bff8fa1d8085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorType: 5
+--- !u!114 &1275746046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275746040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1275746047
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275746040}
+  m_CullTransparentMesh: 0
 --- !u!224 &1352030232 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6232648311741016529, guid: b1e8b747276144129a7c53040b4111bc,
@@ -1050,7 +1108,6 @@ GameObject:
   - component: {fileID: 1917594117}
   - component: {fileID: 1917594116}
   - component: {fileID: 1917594119}
-  - component: {fileID: 1917594120}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1154,19 +1211,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!114 &1917594120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1917594115}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad3cd5b7f1b12090fa068b6654269a6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colorType: 5
 --- !u!1 &2077434136
 GameObject:
   m_ObjectHideFlags: 0
