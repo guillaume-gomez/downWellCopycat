@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Tilemaps;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,14 +10,25 @@ Player,
 Enemy,
 Items,
 Blocs,
+BackgroundGui,
+ButtonGui,
+SliderBackgroundGui,
+TextColor,
 }
 
 public class ThemeManager : MonoBehaviour {
+    [Header("Game")]
     public Color background;
     public Color player;
     public Color enemy;
     public Color items;
     public Color blocs;
+    [Space]
+    [Header("Gui")]
+    public Color backgroundGui;
+    public Color buttonGui;
+    public Color textColor;
+    public Color sliderBackgroundGui;
 
     public static ThemeManager instance = null;
 
@@ -45,6 +57,14 @@ public class ThemeManager : MonoBehaviour {
                 return items;
             case ColorTypeTheme.Blocs:
                 return blocs;
+            case ColorTypeTheme.BackgroundGui:
+                return backgroundGui;
+            case ColorTypeTheme.ButtonGui:
+                return buttonGui;
+            case ColorTypeTheme.TextColor:
+                return textColor;
+            case ColorTypeTheme.SliderBackgroundGui:
+                return sliderBackgroundGui;
             default:
                 return background;
         }
@@ -63,5 +83,10 @@ public class ThemeManager : MonoBehaviour {
     public void SetColor(Camera camera, ColorTypeTheme typeColor)
     {
         camera.backgroundColor = ColorByName(typeColor);
+    }
+
+    public void SetColor(Image image, ColorTypeTheme typeColor)
+    {
+        image.color = ColorByName(typeColor);
     }
 }
