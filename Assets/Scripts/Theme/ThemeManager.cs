@@ -17,6 +17,10 @@ TextColor,
 BonusItemGuiBorder,
 BonusItemGuiBackground,
 MarketBackground,
+HealthBarFill,
+WeaponBarFill,
+EndLevelBackground,
+ScoreLineColor,
 }
 
 public class ThemeManager : MonoBehaviour {
@@ -35,6 +39,10 @@ public class ThemeManager : MonoBehaviour {
     public Color bonusItemGuiBorder;
     public Color bonusItemGuiBackground;
     public Color marketBackground;
+    public Color healthBarFill;
+    public Color weaponBarFill;
+    public Color endLevelBackground;
+    public Color scoreLineColor;
 
     public static ThemeManager instance = null;
 
@@ -77,6 +85,14 @@ public class ThemeManager : MonoBehaviour {
                 return bonusItemGuiBackground;
             case ColorTypeTheme.MarketBackground:
                 return marketBackground;
+            case ColorTypeTheme.HealthBarFill:
+                return healthBarFill;
+            case ColorTypeTheme.WeaponBarFill:
+                return weaponBarFill;
+            case ColorTypeTheme.EndLevelBackground:
+                return endLevelBackground;
+            case ColorTypeTheme.ScoreLineColor:
+                return scoreLineColor;
             default:
                 return background;
         }
