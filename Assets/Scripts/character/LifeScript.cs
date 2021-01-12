@@ -40,7 +40,9 @@ public class LifeScript : MonoBehaviour
     {
         if(GameManager.instance)
         {
-            Life = (int) GameManager.instance.CharacterStats.life.Value;
+            life = (int) GameManager.instance.LevelSystemRun.currentLife;
+            // notify others by calling the setter
+            Life = life;
         }
     }
 
@@ -58,6 +60,7 @@ public class LifeScript : MonoBehaviour
                 LevelManager.instance.GameOver();
                 return;
             }
+            LevelManager.instance.UpdateLife(life);
             StartCoroutine(FlashSprite(spriteRenderer, 0.0f, 1.0f, 0.1f, unvisibleTimer));
             StartCoroutine(GetUnvisible(unvisibleTimer, enemy));
         }
@@ -68,7 +71,6 @@ public class LifeScript : MonoBehaviour
         Color colorNow = renderer.color;
         Color minColor = new Color(renderer.color.r, renderer.color.g, renderer.color.b, minAlpha);
         Color maxColor = new Color(renderer.color.r, renderer.color.g, renderer.color.b, maxAlpha);
-
         float currentInterval = 0;
         while(duration > 0)
         {
@@ -86,7 +88,7 @@ public class LifeScript : MonoBehaviour
             duration -= Time.deltaTime;
             yield return null;
         }
-        renderer.color = maxColor;
+        renderer.color = new Color(renderer.color.r, renderer.color.g, renderer.color.b, maxAlpha);
     }
 
     IEnumerator GetUnvisible(float unvisibleTimer, EnemyBase enemy)

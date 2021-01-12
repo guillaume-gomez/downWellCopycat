@@ -4,12 +4,6 @@ using UnityEngine;
 
 static class EnemyConstants
 {
-    public static readonly Color[] ColorsEnemy = {
-        new Color( 0.0f, 0.0f, 1.0f , 1.0f ),
-        new Color( 0.0f, 0.0f, 0.5f, 1.0f ),
-        new Color( 0.0f, 0.0f, 0.25f, 1.0f ),
-    };
-
     public static readonly Vector3[] Size = {
         new Vector3( 1.0f, 1.0f, 1.0f ),
         new Vector3( 1.75f, 1.75f, 1.75f ),
@@ -73,6 +67,9 @@ public class EnemyBase : MonoBehaviour
             target = GameObject.FindGameObjectWithTag("Player").transform;
         }
         isVisibleOnCamera = true;
+        Rigidbody2D rb2d = GetComponent<Rigidbody2D>();
+        // make sure enemies are heavier than player (to avoid collision issues)
+        rb2d.mass = 100;
     }
 
     protected void OnBecameVisible()
@@ -141,19 +138,24 @@ public class EnemyBase : MonoBehaviour
         Color color = new Color();
         switch(life) {
             case 1:
-                color = EnemyConstants.ColorsEnemy[0];
+                color = Lighten(.33f);
             break;
             case 2:
-                color = EnemyConstants.ColorsEnemy[1];
+                color = Lighten(.66f);
             break;
             case 3:
-                color = EnemyConstants.ColorsEnemy[2];
+                color = Lighten(.99f);
             break;
             default:
-                color = EnemyConstants.ColorsEnemy[2];
+                color = Lighten(.99f);
             break;
         }
         sprite.color = color;
+    }
+
+    private Color Lighten(float percentage)
+    {
+        return Color.Lerp(sprite.color, Color.white, percentage);
     }
 
     private void computeSize()

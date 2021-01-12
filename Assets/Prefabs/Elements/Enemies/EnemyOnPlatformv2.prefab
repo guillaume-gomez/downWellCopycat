@@ -164,6 +164,7 @@ GameObject:
   - component: {fileID: 5815458887183426509}
   - component: {fileID: 5815458887183426510}
   - component: {fileID: 5815458887183426485}
+  - component: {fileID: -6439019657563795015}
   m_Layer: 11
   m_Name: EnemyOnPlatformv2
   m_TagString: Enemy
@@ -323,6 +324,19 @@ MonoBehaviour:
   - {fileID: 2657233018076216383}
   - {fileID: 1512116414423738483}
   horizontalDetection: {fileID: 4870910044530046880}
+--- !u!114 &-6439019657563795015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5815458887183426506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78815cb4ce06e469d9cdeb0725e1588d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorType: 2
 --- !u!1 &6896892692207701167
 GameObject:
   m_ObjectHideFlags: 0

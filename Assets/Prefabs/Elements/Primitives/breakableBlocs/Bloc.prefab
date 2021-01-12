@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 8257940167194319869}
   - component: {fileID: 8257940167194319868}
   - component: {fileID: 1331261452423377933}
+  - component: {fileID: -4375295773834376065}
+  - component: {fileID: 4141907352157063591}
   m_Layer: 8
   m_Name: Bloc
   m_TagString: Bloc
@@ -73,7 +75,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 6210392380450263599, guid: 25272f96dcca75faeb5f1f82ff156d50,
     type: 3}
-  m_Color: {r: 0.6320754, g: 0.28255856, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -109,3 +111,37 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &-4375295773834376065
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8257940167194319867}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &4141907352157063591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8257940167194319867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78815cb4ce06e469d9cdeb0725e1588d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorType: 4

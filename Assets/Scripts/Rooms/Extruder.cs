@@ -14,7 +14,7 @@ public class Extruder : MonoBehaviour
         tilemap = GameObject.Find("Borders").GetComponent<Tilemap>();
         if(tilemap)
         {
-            Vector3Int cellPosition = new Vector3Int(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y), 0);
+            Vector3Int cellPosition = tilemap.WorldToCell(transform.position);
             tilemap.SetTile(cellPosition, null);
             Destroy(gameObject);
         }
