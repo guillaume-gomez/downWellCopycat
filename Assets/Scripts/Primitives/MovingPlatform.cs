@@ -36,31 +36,15 @@ public class MovingPlatform : MonoBehaviour
     }
   }
 
-   // theses 2 methods avoid colission glitch between a moving player and a moving enemy :)
-  void OnCollisionEnter2D(Collision2D collision)
+  void OnDrawGizmos()
   {
-    if(collision.collider.tag == "Player")
-    {
-      collision.collider.transform.SetParent(transform);
-      collision.collider.GetComponent<Movement>().OnJump += OnCharacterJump;
-    }
+      Gizmos.color = Color.yellow;
+      for(int i = 0; i < spots.Length; i++)
+      {
+        Gizmos.DrawWireSphere((Vector2) spots[i].position, 0.5f);
+        Transform origin = spots[i];
+        Transform target = i + 1 < spots.Length ? spots[i + 1] : spots[0];
+        Gizmos.DrawLine(origin.position, target.position);
+      }
   }
-
-  void OnCollisionExit2D(Collision2D collision)
-  {
-    if(collision.collider.tag == "Player")
-    {
-      collision.collider.transform.SetParent(null);
-      collision.collider.GetComponent<Movement>().OnJump -= OnCharacterJump;
-    }
-  }
-
-  void OnCharacterJump(object sender, System.EventArgs e)
-  {
-      Movement playerMovement  = (Movement) sender;
-      playerMovement.transform.SetParent(null);
-      playerMovement.OnJump -= OnCharacterJump;
-  }
-
-
 }
