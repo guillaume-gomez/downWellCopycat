@@ -6,7 +6,7 @@ public class MovingPlatform : MonoBehaviour
 {
   public float speed;
   public float waitTime;
-  public Transform[] spots;
+  public GameObject[] spots;
   public float startWaitTime = 0.0f;
   private int indexSpot;
 
@@ -17,8 +17,8 @@ public class MovingPlatform : MonoBehaviour
   
   protected void Update()
   {
-    transform.position = Vector2.MoveTowards(transform.position, spots[indexSpot].position, speed * Time.deltaTime);
-    if(Vector2.Distance(transform.position, spots[indexSpot].position) < 0.1f)
+    transform.position = Vector2.MoveTowards(transform.position, spots[indexSpot].transform.position, speed * Time.deltaTime);
+    if(Vector2.Distance(transform.position, spots[indexSpot].transform.position) < 0.1f)
     {
       if(waitTime <= 0)
       {
@@ -41,9 +41,9 @@ public class MovingPlatform : MonoBehaviour
       Gizmos.color = Color.yellow;
       for(int i = 0; i < spots.Length; i++)
       {
-        Gizmos.DrawWireSphere((Vector2) spots[i].position, 0.5f);
-        Transform origin = spots[i];
-        Transform target = i + 1 < spots.Length ? spots[i + 1] : spots[0];
+        Gizmos.DrawWireSphere((Vector2) spots[i].transform.position, 0.5f);
+        Transform origin = spots[i].transform;
+        Transform target = i + 1 < spots.Length ? spots[i + 1].transform : spots[0].transform;
         Gizmos.DrawLine(origin.position, target.position);
       }
   }
