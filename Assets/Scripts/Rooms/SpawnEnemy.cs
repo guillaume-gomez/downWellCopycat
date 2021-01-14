@@ -30,13 +30,27 @@ public class SpawnEnemy : MonoBehaviour
         GameObject choosedEnemy = enemies[rand];
         GameObject instance = (GameObject) Instantiate(choosedEnemy, new Vector3(0.0f, 0.0f, 0.0f), transform.rotation);
 
-        int lifeAnDamage =  Random.Range(1, 3);
+        int maxSize = Mathf.Min(3, platformWidth - 1); //-1 to make sure the enemy can move around the platform
+        int lifeAnDamage = Random.Range(1, maxSize);
         instance.GetComponent<EnemyBase>().Life = lifeAnDamage;
         instance.GetComponent<EnemyBase>().Damage = lifeAnDamage;
 
         float heightEnemy = instance.GetComponent<EnemyBase>().Height();
-        // Matfh.Ceil is used to avoid colission with tilemap objects (no float number), and spawner (float number)
-        float middleHeight = heightEnemy % 2 == 0 ? platformHeight/2 : Mathf.Ceil(platformHeight/2.0f);
+        float middleHeight = 0;
+        if(heightEnemy % 2 == 0)
+        {
+            middleHeight = platformHeight/2;
+        } else
+        // Matfh.Ceil and Math.Floor is used to avoid colission with tilemap objects (no float number), and spawner (float number)
+        {
+            if(choosedEnemy.transform.position.y < 0) // the enemy is above the platform. A convention :)
+            {
+                middleHeight = Mathf.Floor(platformHeight/2.0f);
+            } else
+            {
+                middleHeight = Mathf.Ceil(platformHeight/2.0f);
+            }
+        }
         Vector3 position = new Vector3(
             transform.position.x,
             transform.position.y + choosedEnemy.transform.position.y * (middleHeight + (heightEnemy/2.0f)),

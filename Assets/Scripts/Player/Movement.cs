@@ -412,6 +412,7 @@ public class Movement : MonoBehaviour
         else
         {
             lifeScript.Hurt(enemy);
+            LevelManager.instance.ResetCombo();
         }
     }
 
