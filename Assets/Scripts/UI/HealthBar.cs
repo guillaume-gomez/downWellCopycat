@@ -7,7 +7,7 @@ using TMPro;
 public class HealthBar : MonoBehaviour
 {
     public Slider slider;
-    public Gradient gradient;
+    //public Gradient gradient;
     public TextMeshProUGUI text;
     public Image fill;
     public LifeScript player;
@@ -32,12 +32,12 @@ public class HealthBar : MonoBehaviour
         slider.value = health;
         text.text = health.ToString();
 
-        fill.color = gradient.Evaluate(1.0f);
+        //fill.color = gradient.Evaluate(1.0f);
     }
 
     public void SetHealth(int health)
     {
         slider.value = health;
-        fill.color = gradient.Evaluate(slider.normalizedValue);
+        //fill.color = gradient.Evaluate(slider.normalizedValue);
     }
 }
