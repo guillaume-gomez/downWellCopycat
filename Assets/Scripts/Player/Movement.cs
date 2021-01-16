@@ -185,10 +185,7 @@ public class Movement : MonoBehaviour
         if(rb2d.velocity.y < -wallSlideSpeed)
         {
             rb2d.velocity = new Vector2(push, -wallSlideSpeed);
-        }
-        else
-        {
-            canMove = false;
+            Debug.Log(-wallSlideSpeed);
         }
     }
 
@@ -199,7 +196,12 @@ public class Movement : MonoBehaviour
             return;
         }
 
-        if (!wallJumped)
+        // //write test to check if player has its dir in the same direction of the wall. If so, let the player wallSlide
+        if(wallSlide && ((dir.x > 0 && coll.onRightWall) || (dir.x < 0 && coll.onLeftWall))) {
+            return;
+        }
+
+        if (coll.onGround)
         {
             float x = dir.x;
             if (Mathf.Abs(xRaw) < 0.01f)
