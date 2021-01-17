@@ -509,7 +509,7 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1881069223}
     - target: {fileID: 4219679313515386028, guid: 92084eec381a369599ed9443577cbacd,
         type: 3}
       propertyPath: tileMap
@@ -1509,7 +1509,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1700150235}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1881069223}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb738d3f6c42c786ebb0fa723050be4a, type: 3}
@@ -1593,6 +1593,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1881069223 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5082514406271902629, guid: c2515910bdda68ad6ba4586ce7857434,
+    type: 3}
+  m_PrefabInstance: {fileID: 1700150235}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2028660087
 PrefabInstance:
   m_ObjectHideFlags: 0
