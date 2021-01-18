@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -328,7 +328,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilemap: {fileID: 0}
   tile: {fileID: 11400000, guid: b716de11bdd55462da00579744418363, type: 2}
-  platformPosition: 0
   width: 0
   height: 0
   xRangeMin: 1
@@ -1136,7 +1135,7 @@ MonoBehaviour:
   tileMap: {fileID: 428200957}
   tileBloc: {fileID: 11400000, guid: 789af5dc836fc9a3b89c285ee530749e, type: 2}
   rooms:
-  - {fileID: 8008416117604980676, guid: 4470bd635bd7da359abf76f84b4e0c7e, type: 3}
+  - {fileID: 6672203148154926776, guid: a9be71a95f6ef7f58b01fbefa194d4c7, type: 3}
   endRoom: {fileID: 2631641138411012843, guid: d9356279e368181679d7a086e368e95c, type: 3}
   caveRoom: {fileID: 8008416117604980676, guid: 4470bd635bd7da359abf76f84b4e0c7e,
     type: 3}

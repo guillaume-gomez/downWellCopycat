@@ -7,31 +7,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -1466807727275768592, guid: 73eda400ce9bcd247ac9d17c309ca87c,
-        type: 3}
-      propertyPath: xRangeMin
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: -1466807727275768592, guid: 73eda400ce9bcd247ac9d17c309ca87c,
-        type: 3}
-      propertyPath: xRangeMax
-      value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: -1466807727275768592, guid: 73eda400ce9bcd247ac9d17c309ca87c,
-        type: 3}
-      propertyPath: yRangeMin
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: -1466807727275768592, guid: 73eda400ce9bcd247ac9d17c309ca87c,
-        type: 3}
-      propertyPath: yRangeMax
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: 7033959065729873033, guid: 73eda400ce9bcd247ac9d17c309ca87c,
         type: 3}
       propertyPath: m_Name
       value: SpawnObject4-2Bloc
       objectReference: {fileID: 0}
+    - target: {fileID: 7033959065729873034, guid: 73eda400ce9bcd247ac9d17c309ca87c,
+        type: 3}
+      propertyPath: objects.Array.data[0]
+      value: 
+      objectReference: {fileID: 5455257782005747682, guid: 0ec8d3ce4f38889f2aabdc8ae6c10590,
+        type: 3}
     - target: {fileID: 7033959065729873035, guid: 73eda400ce9bcd247ac9d17c309ca87c,
         type: 3}
       propertyPath: m_LocalPosition.x

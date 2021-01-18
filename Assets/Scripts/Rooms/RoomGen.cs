@@ -102,7 +102,8 @@ public class RoomGen : MonoBehaviour
     protected virtual void CreateGenericBloc(float xPosition, float yPosition, GameObject[] spawners, int index, PlatformPosition platformPosition)
     {
         GameObject obj = CreateSpwaner(xPosition, yPosition, spawners, index);
-        obj.GetComponent<GeneratePlatform>().platformPosition = platformPosition;
+        obj.GetComponent<SpawnObject>().platformPosition = platformPosition;
+        obj.GetComponent<SpawnObject>().Init();
     }
 
     protected virtual GameObject CreateSpwaner(float x, float y, GameObject[] typeOfSpawn, int index)

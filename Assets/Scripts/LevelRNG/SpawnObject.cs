@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnObject : MonoBehaviour
 {
     public GameObject[] objects;
-    public bool isLeft = true;
+    public PlatformPosition platformPosition = PlatformPosition.Left;
 
     public void Init()
     {
@@ -15,7 +15,7 @@ public class SpawnObject : MonoBehaviour
         }
         GameObject choosedObject = objects[rand];
         Vector3 rotationVector = new Vector3(0f, 0f, 0f);
-        if(!isLeft) {
+        if(platformPosition == PlatformPosition.Right) {
           rotationVector = new Vector3(0f, 180f, 0.0f);
         }
         GameObject instance = (GameObject) Instantiate(choosedObject, transform.position + choosedObject.transform.position, Quaternion.Euler(rotationVector));

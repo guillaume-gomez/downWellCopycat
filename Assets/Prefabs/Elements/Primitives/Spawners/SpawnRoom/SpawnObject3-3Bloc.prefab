@@ -7,26 +7,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6480646427843179139, guid: 0eb7b35882cc22d41a9e71d42d90a322,
-        type: 3}
-      propertyPath: xRangeMin
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 6480646427843179139, guid: 0eb7b35882cc22d41a9e71d42d90a322,
-        type: 3}
-      propertyPath: xRangeMax
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 6480646427843179139, guid: 0eb7b35882cc22d41a9e71d42d90a322,
-        type: 3}
-      propertyPath: yRangeMin
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 6480646427843179139, guid: 0eb7b35882cc22d41a9e71d42d90a322,
-        type: 3}
-      propertyPath: yRangeMax
-      value: 18
-      objectReference: {fileID: 0}
     - target: {fileID: 6965209218920680520, guid: 0eb7b35882cc22d41a9e71d42d90a322,
         type: 3}
       propertyPath: m_Name
@@ -87,6 +67,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6965209218920680523, guid: 0eb7b35882cc22d41a9e71d42d90a322,
+        type: 3}
+      propertyPath: objects.Array.data[0]
+      value: 
+      objectReference: {fileID: 738819020170538614, guid: b50faabcee7a68e59bf71e380c6cc73b,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 0eb7b35882cc22d41a9e71d42d90a322, type: 3}

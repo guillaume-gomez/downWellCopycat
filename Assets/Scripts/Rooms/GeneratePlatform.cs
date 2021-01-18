@@ -8,7 +8,7 @@ public class GeneratePlatform : MonoBehaviour
     public Tilemap tilemap;
     public TileBase tile;
     private SpawnEnemy spawnEnemy;
-    public PlatformPosition platformPosition;
+    private PlatformPosition platformPosition;
     public int width;
     public int height;
     [Space]
@@ -28,6 +28,7 @@ public class GeneratePlatform : MonoBehaviour
     void Start()
     {
 
+        platformPosition = transform.parent.gameObject.GetComponent<SpawnObject>().platformPosition;
         spawnEnemy = GetComponent<SpawnEnemy>();
 
         tilemap =  GameObject.Find("Platforms").GetComponent<Tilemap>();

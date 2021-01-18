@@ -16,7 +16,7 @@ public class RoomGenSide : RoomGen
     protected override void CreateGenericBloc(float xPosition, float yPosition, GameObject[] spawners, int index, PlatformPosition platformPosition)
     {
         GameObject obj = CreateSpwaner(xPosition, yPosition, spawners, index);
-        obj.GetComponent<SpawnObject>().isLeft = platformPosition == PlatformPosition.Left;
+        obj.GetComponent<SpawnObject>().platformPosition = platformPosition;
         obj.GetComponent<SpawnObject>().Init();
 
     }
