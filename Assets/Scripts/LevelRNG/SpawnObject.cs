@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnObject : MonoBehaviour
 {
     [Header("Spawnable objects")]
+    // object must be sorted from most probable to less probable
     public GameObject[] objects;
     public float[] percentages;
     public PlatformPosition platformPosition = PlatformPosition.Left;
