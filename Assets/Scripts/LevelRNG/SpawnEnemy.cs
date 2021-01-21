@@ -13,6 +13,7 @@ public class SpawnEnemy : MonoBehaviour
         {
             //Init();
         }
+
     }
 
 
@@ -30,8 +31,14 @@ public class SpawnEnemy : MonoBehaviour
         GameObject choosedEnemy = enemies[rand];
         GameObject instance = (GameObject) Instantiate(choosedEnemy, new Vector3(0.0f, 0.0f, 0.0f), transform.rotation);
 
-        int maxSize = Mathf.Min(3, platformWidth - 1); //-1 to make sure the enemy can move around the platform
-        int lifeAnDamage = Random.Range(1, maxSize);
+        int maxSize = Mathf.Min(
+            GameManager.instance != null && GameManager.instance.LevelSystemRun != null ? GameManager.instance.LevelSystemRun.maxEnemyLife : 3,
+            platformWidth - 1
+        ); //-1 to make sure the enemy can move around the platform
+        int lifeAnDamage = Random.Range(
+            GameManager.instance != null && GameManager.instance.LevelSystemRun != null ? GameManager.instance.LevelSystemRun.minEnemyLife : 1,
+            maxSize
+        );
         instance.GetComponent<EnemyBase>().Life = lifeAnDamage;
         instance.GetComponent<EnemyBase>().Damage = lifeAnDamage;
 

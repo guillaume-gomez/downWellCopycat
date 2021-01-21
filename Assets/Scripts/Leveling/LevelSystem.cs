@@ -18,6 +18,8 @@ public class LevelSystem
     public int nbKilled;
     public int score;
     public float saveMoneyPercentage;
+    public int minEnemyLife;
+    public int maxEnemyLife;
 
 
     public LevelSystem()
@@ -32,6 +34,8 @@ public class LevelSystem
         nbKilled = 0;
         score = 0;
         saveMoneyPercentage = 0.1f;
+        minEnemyLife = 1;
+        minEnemyLife = 2;
     }
 
     public void AddExperience(int amount)
