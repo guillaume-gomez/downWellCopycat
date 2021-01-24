@@ -30,6 +30,7 @@ public class SpawnEnemy : MonoBehaviour
         int rand = Random.Range(0, enemies.Length);
         GameObject choosedEnemy = enemies[rand];
         GameObject instance = (GameObject) Instantiate(choosedEnemy, new Vector3(0.0f, 0.0f, 0.0f), transform.rotation);
+        EnemyBase enemyBaseScript = instance.GetComponent<EnemyBase>();
 
         int maxSize = Mathf.Min(
             GameManager.instance != null && GameManager.instance.LevelSystemRun != null ? GameManager.instance.LevelSystemRun.maxEnemyLife : 3,
@@ -39,8 +40,12 @@ public class SpawnEnemy : MonoBehaviour
             GameManager.instance != null && GameManager.instance.LevelSystemRun != null ? GameManager.instance.LevelSystemRun.minEnemyLife : 1,
             maxSize
         );
-        instance.GetComponent<EnemyBase>().Life = lifeAnDamage;
-        instance.GetComponent<EnemyBase>().Damage = lifeAnDamage;
+        enemyBaseScript.Life = lifeAnDamage;
+        enemyBaseScript.Damage = lifeAnDamage;
+
+        int minSpeed = GameManager.instance != null && GameManager.instance.LevelSystemRun != null ? GameManager.instance.LevelSystemRun.minEnemySpeed : 2;
+        int maxSpeed = GameManager.instance != null && GameManager.instance.LevelSystemRun != null ? GameManager.instance.LevelSystemRun.maxEnemySpeed : 5;
+        enemyBaseScript.speed = Random.Range(minSpeed, maxSpeed);
 
         float heightEnemy = instance.GetComponent<EnemyBase>().Height();
         float middleHeight = 0;
