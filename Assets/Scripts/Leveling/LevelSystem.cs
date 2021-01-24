@@ -18,9 +18,17 @@ public class LevelSystem
     public int nbKilled;
     public int score;
     public float saveMoneyPercentage;
+    [Space]
+    [Header("Enemy")]
     public int minEnemyLife;
     public int maxEnemyLife;
+    public int minEnemySpeed;
+    public int maxEnemySpeed;
+    [Space]
+    [Header("Level")]
     public int nbRooms;
+    public float percentageCenter;
+    public float percentageSide;
 
 
     public LevelSystem()
@@ -35,9 +43,15 @@ public class LevelSystem
         nbKilled = 0;
         score = 0;
         saveMoneyPercentage = 0.1f;
+
         minEnemyLife = 1;
         minEnemyLife = 2;
+        minEnemySpeed = 2;
+        maxEnemySpeed = 5;
+        
         nbRooms = 20;
+        percentageCenter = 0.60f;
+        percentageSide = 0.90f;
     }
 
     public void AddExperience(int amount)
