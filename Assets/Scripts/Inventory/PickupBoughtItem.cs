@@ -7,7 +7,7 @@ public class PickupBoughtItem : PickupBase
   public float price = 0.0f;
   private bool canBeBought;
 
-  void Start()
+  new void Start()
   {
     base.Start();
     LevelManager.instance.OnMoneyChange += OnMoneyChange;
