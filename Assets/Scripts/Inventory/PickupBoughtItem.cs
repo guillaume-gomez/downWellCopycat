@@ -24,7 +24,7 @@ public class PickupBoughtItem : PickupBase
   {
     if(canBeBought)
     {
-        if(other.CompareTag("Player"))
+        if(other.gameObject.CompareTag("Player"))
         {
             inventory.BuyItem(gameObject, price);
         }
