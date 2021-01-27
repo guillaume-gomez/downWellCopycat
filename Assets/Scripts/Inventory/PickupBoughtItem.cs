@@ -5,12 +5,26 @@ using UnityEngine;
 public class PickupBoughtItem : PickupBase
 {
   public float price = 0.0f;
+  private bool canBeBought;
 
-  void OnTriggerEnter2D(Collider2D other)
+  new void Start()
   {
-    if(price < GameManager.instance.LevelSystemRun.money)
+    base.Start();
+    LevelManager.instance.OnMoneyChange += OnMoneyChange;
+    canBeBought = (GameManager.instance.LevelSystemRun.money <= price);
+  }
+
+  void OnMoneyChange(object sender, OnMoneyChangedEventArgs e)
+  {
+    canBeBought = (e.money <= price);
+  }
+
+
+  protected override void OnTriggerEnter2D(Collider2D other)
+  {
+    if(canBeBought)
     {
-        if(other.CompareTag("Player"))
+        if(other.gameObject.CompareTag("Player"))
         {
             inventory.BuyItem(gameObject, price);
         }

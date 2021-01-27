@@ -25,7 +25,7 @@ public class Coin : MonoBehaviour
         // transform.Rotate(Vector3.forward * angle);
         angle += 0.5f * Time.deltaTime;
 
-        sprite.color = new Color(1f, 1f, 1f, alpha);
+        sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, alpha);
         alpha -= 0.25f * Time.deltaTime;
 
         if(alpha <= 0.0f) {
@@ -35,11 +35,11 @@ public class Coin : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.gameObject.name == "Player")
+        if(col.gameObject.CompareTag("Player"))
         {
             if(LevelManager.instance)
             {
-                LevelManager.instance.TakeMoney(coinValue);
+                LevelManager.instance.UpdateMoney(coinValue);
             }
             if(SoundManager.instance)
             {

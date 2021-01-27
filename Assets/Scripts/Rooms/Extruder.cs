@@ -1,19 +1,21 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Tilemaps;
 using UnityEngine;
 
 // this component is called to remove bloc generated during the level
 public class Extruder : MonoBehaviour
 {
-    [SerializeField]
-    public String[] whiteListTag;
+    private Tilemap tilemap;
 
-    void OnTriggerEnter2D(Collider2D col)
+    void Start()
     {
-        if(Array.Exists(whiteListTag, item => item == col.gameObject.tag))
+        tilemap = GameObject.Find("Borders").GetComponent<Tilemap>();
+        if(tilemap)
         {
-            Destroy(col.gameObject);
+            Vector3Int cellPosition = tilemap.WorldToCell(transform.position);
+            tilemap.SetTile(cellPosition, null);
             Destroy(gameObject);
         }
     }

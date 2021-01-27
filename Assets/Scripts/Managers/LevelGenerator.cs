@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using UnityEngine.Tilemaps;
 using UnityEngine;
 using Pathfinding;
 
 public class LevelGenerator : MonoBehaviour
 {
-    public GameObject bloc;
+    public Tilemap tileMap;
+    public Tile tileBloc;
     public GameObject[] rooms;
     public GameObject endRoom;
     public GameObject caveRoom;
@@ -15,19 +17,29 @@ public class LevelGenerator : MonoBehaviour
     // size of the level
     public int roomWidth;
     private int roomHeight;
-
-    public int depthLevel = 100;
+    [Range(0,50)]
+    public int nbRooms = 1;
+    private int depthLevel;
     // position of x or y
     public int xOrigin = 20;
     public int yOrigin = 0;
 
+    public void DepthLevel()
+    {
+        // override value
+        if(GameManager.instance != null && GameManager.instance.LevelSystemRun != null) {
+            nbRooms = GameManager.instance.LevelSystemRun.nbRooms;
+        }
+        roomHeight = 24;
+        depthLevel = roomHeight * nbRooms;
+    }
 
     public void SetupScene(int level)
     {
-       roomHeight = 20;
-       SetPlayerInCenter();
-       CreateBorders();
-       SpawnRooms();
+        DepthLevel();
+        SetPlayerInCenter();
+        CreateBorders();
+        SpawnRooms();
     }
 
     public void SetPlayerInCenter()
@@ -39,21 +51,16 @@ public class LevelGenerator : MonoBehaviour
     public void CreateBorders() {
         // avoid to see "void" a the beginning of the level
         int offsetBordersY = 10;
-        Transform boardHolder = new GameObject("Borders").transform;
-        boardHolder.transform.SetParent(transform);
          //borders
-        Vector3 position = new Vector3(0f, 0f, 0f);
+        Vector3Int position = new Vector3Int(0, 0, 0);
         for(int y = yOrigin - (int)player.transform.position.y - offsetBordersY; y < (yOrigin + depthLevel); ++y)
         {
-            position.Set(xOrigin - 0.5f , -y, 0.0f);
-            GameObject obj = Instantiate(bloc, position, transform.rotation); // left
-            obj.transform.SetParent(boardHolder);
-
-            position.Set(xOrigin + roomWidth + 0.5f, -y, 0.0f);
-            obj = Instantiate(bloc, position, transform.rotation); // right
-            obj.transform.SetParent(boardHolder);
+            position.Set(xOrigin -1, -y, 0);
+            tileMap.SetTile(position, tileBloc);
+            
+            position.Set(xOrigin + roomWidth, -y, 0);
+            tileMap.SetTile(position, tileBloc);
         }
-
         // bottom
         // for(int x = xOrigin - 1 ; x <= (xOrigin + roomWidth) + 1; ++x)
         // {

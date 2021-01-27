@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class Introduction : MonoBehaviour
 {
     public LevelGenerator levelScript;
-    public PlayerController playerScript;
+    public GameObject player;
     public GameObject canvas;
     public GameObject[] bonusItems;
 
@@ -18,26 +19,32 @@ public class Introduction : MonoBehaviour
 
     void Start()
     {
+        levelScript.DepthLevel();
         levelScript.CreateBorders();
         levelScript.SetPlayerInCenter();
         bordersObj = GameObject.Find("Borders");
         MovePlayer();
 
         Transform itemsParent = GameObject.Find("BonusPanel").transform;
+        EventSystem.current.SetSelectedGameObject(null);
 
         for(int i = 0; i < nbBonusAvailable; ++i)
         {
             Vector3 position = new Vector3(0f, 0f, 0f);
             int bonusItemsIndex = Random.Range(0, bonusItems.Length);
             GameObject obj = Instantiate(bonusItems[bonusItemsIndex], position, transform.rotation);
-
             // get callback function
             Button button = obj.GetComponent<Button>();
             button.onClick.AddListener(delegate { PickABonus(); });
 
             obj.transform.SetParent(itemsParent, false);
-        }
+            // set selected the first item
+            if(i == 0)
+            {
 
+                EventSystem.current.SetSelectedGameObject(obj);
+            }
+        }
     }
 
     void Update()
@@ -53,18 +60,14 @@ public class Introduction : MonoBehaviour
 
     void MovePlayer()
     {
-        playerScript.gravityModifier = 3.0f;
+        player.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+        player.gameObject.GetComponent<Rigidbody2D>().gravityScale += 0.1f;
+        GameObject.Find("MyCamera").GetComponent<CamerFollow>().Unfollow();
     }
 
     void GoToLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
-
-    IEnumerator LoadAsynchronously (int sceneIndex)
-    {
-        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
-        return null;
     }
 
     public void PickABonus()
@@ -76,7 +79,7 @@ public class Introduction : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        playerScript.gravityModifier = 0.0f;
-        playerScript.SetToZero();
+        player.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY;
+        GameObject.Find("MyCamera").GetComponent<CamerFollow>().Follow();
     }
 }

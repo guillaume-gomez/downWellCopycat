@@ -126,7 +126,12 @@ public class LevelManager : MonoBehaviour
         GameManager.instance.LevelSystemRun.nbKilled += 1;
     }
 
-    public void TakeMoney(float _money)
+    public void UpdateLife(int newLifeValue)
+    {
+        GameManager.instance.LevelSystemRun.currentLife = newLifeValue;
+    }
+
+    public void UpdateMoney(float _money)
     {
         GameManager.instance.LevelSystemRun.money += _money;
 
@@ -139,18 +144,24 @@ public class LevelManager : MonoBehaviour
     {
         GameManager.instance.LevelSystemRun.currentCombo += 1;
 
-        OnComboChangedEventArgs eventArgs = new OnComboChangedEventArgs();
-        eventArgs.combo = GameManager.instance.LevelSystemRun.currentCombo;
-        OnUpdateCombo(this, eventArgs);
+        if(OnUpdateCombo != null)
+        {
+            OnComboChangedEventArgs eventArgs = new OnComboChangedEventArgs();
+            eventArgs.combo = GameManager.instance.LevelSystemRun.currentCombo;
+            OnUpdateCombo(this, eventArgs);
+        }
     }
 
     public void ResetCombo()
     {
         GameManager.instance.LevelSystemRun.currentCombo = 0;
 
-        OnComboChangedEventArgs eventArgs = new OnComboChangedEventArgs();
-        eventArgs.combo = GameManager.instance.LevelSystemRun.currentCombo;
-        OnUpdateCombo(this, eventArgs);
+        if(OnUpdateCombo != null)
+        {
+            OnComboChangedEventArgs eventArgs = new OnComboChangedEventArgs();
+            eventArgs.combo = GameManager.instance.LevelSystemRun.currentCombo;
+            OnUpdateCombo(this, eventArgs);
+        }
     }
 
 }

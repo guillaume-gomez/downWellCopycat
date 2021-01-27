@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class CamerFollow : MonoBehaviour
 {
-    public PlayerController player;
+    public LifeScript player;
     public float dampTime = 0.1f;
     public Vector3 offset;
     private Vector3 velocity = Vector3.zero;
@@ -36,13 +36,20 @@ public class CamerFollow : MonoBehaviour
         shouldFollow = false;
     }
 
+    public void Follow()
+    {
+        //Debug.Log("Unfollow");
+        shouldFollow = true;
+    }
+
     private void OnUnFollow(object sender, System.EventArgs e)
     {
         Unfollow();
     }
 
-    void OnPlayerHurt(object sender, OnLifeChangedEventArgs e)
+    private void OnPlayerHurt(object sender, OnLifeChangedEventArgs e)
     {
+        Debug.Log("OnPlayerHurt");
         if((int) e.life > 0 && (int) e.diff < 0)
         {
             StartCoroutine(Shake(1f, 0.2f));

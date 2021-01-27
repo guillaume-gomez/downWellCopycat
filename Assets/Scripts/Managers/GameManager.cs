@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
     public void StartRun()
     {
         LevelSystemRun = new LevelSystem();
+        Debug.Log("StartRun");
     }
 
     public void Save()

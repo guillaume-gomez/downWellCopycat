@@ -55,7 +55,7 @@ public class EnemyOnPlatform : EnemyBase
   // theses 2 methods avoid colission glitch between a moving player and a moving enemy :)
   void OnCollisionEnter2D(Collision2D collision)
   {
-    if(collision.collider.tag == "Player")
+    if(collision.collider.CompareTag("Player"))
     {
       collisionWithPlayer = true;
     }
@@ -63,7 +63,7 @@ public class EnemyOnPlatform : EnemyBase
 
   void OnCollisionExit2D(Collision2D collision)
   {
-    if(collision.collider.tag == "Player")
+    if(collision.collider.CompareTag("Player"))
     {
       collisionWithPlayer = false;
     }

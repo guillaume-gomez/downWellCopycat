@@ -9,7 +9,7 @@ public class CaveBlocs : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.gameObject.name == "Player")
+        if(col.gameObject.CompareTag("Player"))
         {
             LevelManager.PauseGame = true;
             cave.SetActive(true);
@@ -19,7 +19,7 @@ public class CaveBlocs : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D col)
     {
-        if(col.gameObject.name == "Player")
+        if(col.gameObject.CompareTag("Player"))
          {
             cave.SetActive(false);
             LevelManager.PauseGame = false;
