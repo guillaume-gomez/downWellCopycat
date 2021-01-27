@@ -50,7 +50,7 @@ public class LevelSystem
         maxEnemySpeed = 5;
         
         nbRooms = 20;
-        percentageCenter = 0.60f;
+        percentageCenter = 0.40f;
         percentageSide = 0.90f;
     }
 
