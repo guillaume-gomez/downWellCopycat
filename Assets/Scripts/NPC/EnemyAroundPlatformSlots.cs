@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyAroundPlatformSlots : EnemyBase
 {
-  public float speed;
   public float waitTime;
   public Transform[] spots;
   public GameObject enemyObject;

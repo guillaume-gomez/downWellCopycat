@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class EnemyOnPlatform : EnemyBase
 {
-  public float speed;
   public Transform groundDetection;
-
   private float distance = 1.0f;
   private bool movingRight = true;
   private bool collisionWithPlayer;

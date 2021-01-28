@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyAroundPlatform : EnemyBase
 {
-  public float speed;
   public Transform[] groundDetections;
   public Transform horizontalDetection;
   private int layerMastk;
