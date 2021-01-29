@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class EnemyUpAndDown : EnemyBase
 {
-  public float speed = 1.0f;
   public Transform blocDetection;
   private bool movingUp = true;
-
 
   protected void Update()
   {

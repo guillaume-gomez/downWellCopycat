@@ -26,6 +26,11 @@ public class RoomGen : MonoBehaviour
         offsetLeftAndRight = 6;
         width = 36;
         height = 20;
+        // override default data
+        if(GameManager.instance != null && GameManager.instance.LevelSystemRun != null) {
+            percentageCenter = GameManager.instance.LevelSystemRun.percentageCenter;
+            percentageSide = GameManager.instance.LevelSystemRun.percentageSide;
+        }
     }
 
 
@@ -102,7 +107,8 @@ public class RoomGen : MonoBehaviour
     protected virtual void CreateGenericBloc(float xPosition, float yPosition, GameObject[] spawners, int index, PlatformPosition platformPosition)
     {
         GameObject obj = CreateSpwaner(xPosition, yPosition, spawners, index);
-        obj.GetComponent<GeneratePlatform>().platformPosition = platformPosition;
+        obj.GetComponent<SpawnObject>().platformPosition = platformPosition;
+        obj.GetComponent<SpawnObject>().Init();
     }
 
     protected virtual GameObject CreateSpwaner(float x, float y, GameObject[] typeOfSpawn, int index)

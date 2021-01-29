@@ -7,7 +7,7 @@ public class RoomEndLevel : RoomGen
     public SpawnObject[] centers;
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
         for(int i = 0; i < centers.Length; i++)
         {

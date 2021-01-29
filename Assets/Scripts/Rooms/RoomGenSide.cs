@@ -5,7 +5,7 @@ using UnityEngine;
 public class RoomGenSide : RoomGen
 {
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
         Init();
 
@@ -16,7 +16,7 @@ public class RoomGenSide : RoomGen
     protected override void CreateGenericBloc(float xPosition, float yPosition, GameObject[] spawners, int index, PlatformPosition platformPosition)
     {
         GameObject obj = CreateSpwaner(xPosition, yPosition, spawners, index);
-        obj.GetComponent<SpawnObject>().isLeft = platformPosition == PlatformPosition.Left;
+        obj.GetComponent<SpawnObject>().platformPosition = platformPosition;
         obj.GetComponent<SpawnObject>().Init();
 
     }

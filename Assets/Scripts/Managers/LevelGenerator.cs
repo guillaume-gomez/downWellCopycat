@@ -17,7 +17,7 @@ public class LevelGenerator : MonoBehaviour
     // size of the level
     public int roomWidth;
     private int roomHeight;
-    [Range(0,20)]
+    [Range(0,50)]
     public int nbRooms = 1;
     private int depthLevel;
     // position of x or y
@@ -26,6 +26,10 @@ public class LevelGenerator : MonoBehaviour
 
     public void DepthLevel()
     {
+        // override value
+        if(GameManager.instance != null && GameManager.instance.LevelSystemRun != null) {
+            nbRooms = GameManager.instance.LevelSystemRun.nbRooms;
+        }
         roomHeight = 24;
         depthLevel = roomHeight * nbRooms;
     }

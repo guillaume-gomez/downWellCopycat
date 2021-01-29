@@ -36,7 +36,7 @@ public class LifeScript : MonoBehaviour
     private bool unvisible = false;
     private int life = 4;
 
-    protected new void Start()
+    void Start()
     {
         if(GameManager.instance)
         {
