@@ -40,6 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4117598062167604536}
   - component: {fileID: 4117598062167604539}
+  - component: {fileID: 8660850871086545640}
   - component: {fileID: 4638672273359486728}
   - component: {fileID: 1701417151558381415}
   - component: {fileID: 981261467638097025}
@@ -115,6 +116,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &8660850871086545640
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4117598062167604538}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &4638672273359486728
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -156,15 +178,14 @@ MonoBehaviour:
   target: {fileID: 0}
   enemyScore: 0
   damage: 1
+  speed: 1
   life: 1
   coin: {fileID: -9087340583689344853, guid: 28426c3f44616d913a8f649cee2a5d6c, type: 3}
   coinValue: 0
   canBeJumped: 0
   damageParticle: {fileID: 4354213638307553630, guid: b9abc807bbe076d4fa3002fe1d8d90d3,
     type: 3}
-  offsetPositionSpawn: {x: 0, y: 0, z: 0}
   dieSounds: []
-  speed: 1
   blocDetection: {fileID: 2830770992701718273}
 --- !u!114 &981261467638097025
 MonoBehaviour:
