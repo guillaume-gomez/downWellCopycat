@@ -131,6 +131,11 @@ public class EnemyBase : MonoBehaviour
         return transform.localScale.y;
     }
 
+    public virtual float Width()
+    {
+        return transform.localScale.x;
+    }
+
     void invertColor()
     {
         Color revertColor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
