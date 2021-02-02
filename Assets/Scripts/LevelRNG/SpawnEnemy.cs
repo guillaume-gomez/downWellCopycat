@@ -16,11 +16,10 @@ public class SpawnEnemy : MonoBehaviour
 
     }
 
-    float computedYPosition(GameObject enemyInstance, int platformHeight)
+    float computedYPosition(GameObject enemyInstance, float heightEnemy, int platformHeight)
     {
-        float heightEnemy = enemyInstance.GetComponent<EnemyBase>().Height();
         float middleHeight = 0;
-        if(heightEnemy % 2 == 0)
+        if(platformHeight % 2 == 0)
         {
             middleHeight = platformHeight/2;
         } else
@@ -37,9 +36,8 @@ public class SpawnEnemy : MonoBehaviour
         return transform.position.y + enemyInstance.transform.position.y * (middleHeight + (heightEnemy/2.0f));
     }
 
-    float computedXPosition(GameObject enemyInstance)
+    float computedXPosition(GameObject enemyInstance, float widthEnemy)
     {
-        float widthEnemy = enemyInstance.GetComponent<EnemyBase>().Width();
         PlatformPosition platformPosition = transform.parent.gameObject.GetComponent<SpawnObject>().platformPosition;
         if(PlatformPosition.Left == platformPosition)
         {
@@ -85,8 +83,8 @@ public class SpawnEnemy : MonoBehaviour
 
         
         Vector3 position = new Vector3(
-            computedXPosition(choosedEnemy),
-            computedYPosition(choosedEnemy, platformHeight),
+            computedXPosition(choosedEnemy, enemyBaseScript.Width()),
+            computedYPosition(choosedEnemy, enemyBaseScript.Height(), platformHeight),
             transform.position.z
         );
         instance.transform.position = position;
