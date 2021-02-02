@@ -62,6 +62,11 @@ PrefabInstance:
     - target: {fileID: 1252152942740877898, guid: a9be71a95f6ef7f58b01fbefa194d4c7,
         type: 3}
       propertyPath: percentageCenter
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252152942740877898, guid: a9be71a95f6ef7f58b01fbefa194d4c7,
+        type: 3}
+      propertyPath: overrideByGameManager
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1313001317186485930, guid: a9be71a95f6ef7f58b01fbefa194d4c7,
