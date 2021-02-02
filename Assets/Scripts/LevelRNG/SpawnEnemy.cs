@@ -16,7 +16,43 @@ public class SpawnEnemy : MonoBehaviour
 
     }
 
+    float computedYPosition(GameObject enemyInstance, int platformHeight)
+    {
+        float heightEnemy = enemyInstance.GetComponent<EnemyBase>().Height();
+        float middleHeight = 0;
+        if(heightEnemy % 2 == 0)
+        {
+            middleHeight = platformHeight/2;
+        } else
+        // Matfh.Ceil and Math.Floor is used to avoid colission with tilemap objects (no float number), and spawner (float number)
+        {
+            if(enemyInstance.transform.position.y < 0) // the enemy is above the platform. A convention :)
+            {
+                middleHeight = Mathf.Floor(platformHeight/2.0f);
+            } else
+            {
+                middleHeight = Mathf.Ceil(platformHeight/2.0f);
+            }
+        }
+        return transform.position.y + enemyInstance.transform.position.y * (middleHeight + (heightEnemy/2.0f));
+    }
 
+    float computedXPosition(GameObject enemyInstance)
+    {
+        float widthEnemy = enemyInstance.GetComponent<EnemyBase>().Width();
+        PlatformPosition platformPosition = transform.parent.gameObject.GetComponent<SpawnObject>().platformPosition;
+        if(PlatformPosition.Left == platformPosition)
+        {
+            return transform.position.x + (widthEnemy / 2.0f);
+        } else if(PlatformPosition.Right == platformPosition)
+        {
+            return transform.position.x - (widthEnemy / 2.0f);
+        }
+
+        return transform.position.x;
+    }
+
+ 
     public void Init(int platformWidth, int platformHeight)
     {
         float shouldDisplayRandom = Random.Range(0.0f, 1.0f);
@@ -47,25 +83,10 @@ public class SpawnEnemy : MonoBehaviour
         int maxSpeed = GameManager.instance != null && GameManager.instance.LevelSystemRun != null ? GameManager.instance.LevelSystemRun.maxEnemySpeed : 5;
         enemyBaseScript.speed = Random.Range(minSpeed, maxSpeed);
 
-        float heightEnemy = instance.GetComponent<EnemyBase>().Height();
-        float middleHeight = 0;
-        if(heightEnemy % 2 == 0)
-        {
-            middleHeight = platformHeight/2;
-        } else
-        // Matfh.Ceil and Math.Floor is used to avoid colission with tilemap objects (no float number), and spawner (float number)
-        {
-            if(choosedEnemy.transform.position.y < 0) // the enemy is above the platform. A convention :)
-            {
-                middleHeight = Mathf.Floor(platformHeight/2.0f);
-            } else
-            {
-                middleHeight = Mathf.Ceil(platformHeight/2.0f);
-            }
-        }
+        
         Vector3 position = new Vector3(
-            transform.position.x,
-            transform.position.y + choosedEnemy.transform.position.y * (middleHeight + (heightEnemy/2.0f)),
+            computedXPosition(choosedEnemy),
+            computedYPosition(choosedEnemy, platformHeight),
             transform.position.z
         );
         instance.transform.position = position;
