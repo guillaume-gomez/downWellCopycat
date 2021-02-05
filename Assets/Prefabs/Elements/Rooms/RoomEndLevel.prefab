@@ -15,6 +15,7 @@ MonoBehaviour:
   spawnEnemies: []
   spawnersCenter: []
   spawnersSide: []
+  overrideGameManager: 0
   percentageCenter: 1
   percentageSide: 0
   centers:

@@ -6,13 +6,18 @@ public enum PlatformPosition{ Left, Right, Center }
 
 public class RoomGen : MonoBehaviour
 {
+    [Header("Spawners")]
     public GameObject[] spawnEnemies;
     public GameObject[] spawnersCenter;
     public GameObject[] spawnersSide;
+    [Space]
+    [Header("Stats")]
+    public bool overrideByGameManager = true;
     [Range(0,1.0f)]
     public float percentageCenter = 1.0f;
     [Range(0,1.0f)]
     public float percentageSide = 1.0f;
+    
     protected int widthSubRoom;
     protected int heightSubRoom;
     protected int offsetLeftAndRight;
@@ -26,8 +31,8 @@ public class RoomGen : MonoBehaviour
         offsetLeftAndRight = 6;
         width = 36;
         height = 20;
-        // override default data
-        if(GameManager.instance != null && GameManager.instance.LevelSystemRun != null) {
+        
+        if(overrideByGameManager && GameManager.instance != null && GameManager.instance.LevelSystemRun != null) {
             percentageCenter = GameManager.instance.LevelSystemRun.percentageCenter;
             percentageSide = GameManager.instance.LevelSystemRun.percentageSide;
         }
