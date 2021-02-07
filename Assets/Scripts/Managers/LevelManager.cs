@@ -14,11 +14,17 @@ public class OnMoneyChangedEventArgs : EventArgs
     public float money { get; set; }
 }
 
+public class OnPickedEventArgs : EventArgs
+{
+    public string item { get; set; }
+}
+
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance = null;
     public event EventHandler OnWin;
     public event EventHandler OnLose;
+    public event EventHandler<OnPickedEventArgs> OnPickedUp;
     public event EventHandler<OnComboChangedEventArgs> OnUpdateCombo;
     public event EventHandler<OnMoneyChangedEventArgs> OnMoneyChange;
 
@@ -107,6 +113,17 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1);
     }
 
+    public void PickedUp(string itemPickedName)
+    {
+        if(OnPickedUp != null)
+        {
+            OnPickedEventArgs eventArgs = new OnPickedEventArgs();
+            eventArgs.item = itemPickedName;
+            OnPickedUp(this, eventArgs);
+        }
+    }
+
+
     IEnumerator GoBackMenu()
     {
         yield return new WaitForSecondsRealtime(5);
@@ -137,7 +154,10 @@ public class LevelManager : MonoBehaviour
 
         OnMoneyChangedEventArgs eventArgs = new OnMoneyChangedEventArgs();
         eventArgs.money = GameManager.instance.LevelSystemRun.money;
-        OnMoneyChange(this, eventArgs);
+        if(OnMoneyChange != null)
+        {
+            OnMoneyChange(this, eventArgs);
+        }
     }
 
     public void IncCombo()

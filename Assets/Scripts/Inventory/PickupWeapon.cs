@@ -9,6 +9,7 @@ public class PickupWeapon : PickupBase
         if(other.CompareTag("Player"))
         {
             inventory.ReplaceWeapon(gameObject);
+            NotifyPickedUp();
         }
     }
 }

@@ -1913,6 +1913,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 166485756}
     m_Modifications:
+    - target: {fileID: 1172215231094492835, guid: 94375eab90f6ee0a195576a3373aaffe,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 550
+      objectReference: {fileID: 0}
+    - target: {fileID: 1172215231094492835, guid: 94375eab90f6ee0a195576a3373aaffe,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 350
+      objectReference: {fileID: 0}
     - target: {fileID: 3549611629286521113, guid: 94375eab90f6ee0a195576a3373aaffe,
         type: 3}
       propertyPath: m_UpdateMode
@@ -1956,7 +1966,7 @@ PrefabInstance:
     - target: {fileID: 8964980821433406490, guid: 94375eab90f6ee0a195576a3373aaffe,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8964980821433406694, guid: 94375eab90f6ee0a195576a3373aaffe,
         type: 3}
