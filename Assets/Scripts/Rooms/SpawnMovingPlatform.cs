@@ -7,14 +7,14 @@ Triangle,
 Square,
 }
 
-public class SpawnMovingPlatform : MonoBehaviour
+public class SpawnMovingPlatform : GeneratePlatformBase
 {
   public PathType pathType;
   public GameObject prefabMovingPlatform;
-  public Vector2 size;
-
+  
   void Start()
   {
+    SetSize();
     GameObject instance = (GameObject) Instantiate(prefabMovingPlatform, transform.position, transform.rotation);
     instance.transform.parent = transform;
     switch(pathType)
@@ -33,8 +33,8 @@ public class SpawnMovingPlatform : MonoBehaviour
     GameObject platformPivot = instance.transform.Find("PlatformPivot").gameObject;
     MovingPlatform script = platformPivot.GetComponent<MovingPlatform>();
 
-    float middleX = size.x / 2.0f;
-    float middleY = size.y / 2.0f;
+    float middleX = width / 2.0f;
+    float middleY = height / 2.0f;
 
     Transform dots = instance.transform.Find("Dots");
     GameObject dot1 = new GameObject("dot1");
@@ -61,8 +61,8 @@ public class SpawnMovingPlatform : MonoBehaviour
     GameObject platformPivot = instance.transform.Find("PlatformPivot").gameObject;
     MovingPlatform script = platformPivot.GetComponent<MovingPlatform>();
 
-    float middleX = size.x / 2.0f;
-    float middleY = size.y / 2.0f;
+    float middleX = width / 2.0f;
+    float middleY = height / 2.0f;
 
     Transform dots = instance.transform.Find("Dots");
     GameObject dot1 = new GameObject("dot1");

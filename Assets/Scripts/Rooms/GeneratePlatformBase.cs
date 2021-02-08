@@ -10,22 +10,23 @@ public class GeneratePlatformBase : MonoBehaviour
     [Space]
     [Header("X values")]
     [Range(2, 24)]
-    protected int xRangeMin;
+    public int xRangeMin;
     [Range(2, 24)]
-    protected int xRangeMax;
+    public int xRangeMax;
     [Space]
     [Header("Y values")]
     [Range(1, 18)]
-    protected int yRangeMin;
+    public int yRangeMin;
     [Range(1, 18)]
-    protected int yRangeMax;
+    public int yRangeMax;
     [Space]
-    protected PlatformPosition platformPosition;
-    protected SpawnEnemy spawnEnemy;
+    public PlatformPosition platformPosition;
 
-    protected void setSize() {
+    protected void SetSize() {
         width = Random.Range(xRangeMin, xRangeMax);
         height = Random.Range(yRangeMin, yRangeMax);
+        Debug.Log(width);
+        Debug.Log(height);
     }
 
 }
