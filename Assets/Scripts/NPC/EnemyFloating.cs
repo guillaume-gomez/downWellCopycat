@@ -5,8 +5,6 @@ using Pathfinding;
 
 public class EnemyFloating: EnemyBase
 {
-
-    public float speed = 200f;
     public float nextWaypointDistance = 3f;
     public float maxDistanceVision = 10f;
     public bool hasLimitY = false;

@@ -6,13 +6,18 @@ public enum PlatformPosition{ Left, Right, Center }
 
 public class RoomGen : MonoBehaviour
 {
+    [Header("Spawners")]
     public GameObject[] spawnEnemies;
     public GameObject[] spawnersCenter;
     public GameObject[] spawnersSide;
+    [Space]
+    [Header("Stats")]
+    public bool overrideByGameManager = true;
     [Range(0,1.0f)]
     public float percentageCenter = 1.0f;
     [Range(0,1.0f)]
     public float percentageSide = 1.0f;
+    
     protected int widthSubRoom;
     protected int heightSubRoom;
     protected int offsetLeftAndRight;
@@ -26,6 +31,11 @@ public class RoomGen : MonoBehaviour
         offsetLeftAndRight = 6;
         width = 36;
         height = 20;
+        
+        if(overrideByGameManager && GameManager.instance != null && GameManager.instance.LevelSystemRun != null) {
+            percentageCenter = GameManager.instance.LevelSystemRun.percentageCenter;
+            percentageSide = GameManager.instance.LevelSystemRun.percentageSide;
+        }
     }
 
 
@@ -102,7 +112,8 @@ public class RoomGen : MonoBehaviour
     protected virtual void CreateGenericBloc(float xPosition, float yPosition, GameObject[] spawners, int index, PlatformPosition platformPosition)
     {
         GameObject obj = CreateSpwaner(xPosition, yPosition, spawners, index);
-        obj.GetComponent<GeneratePlatform>().platformPosition = platformPosition;
+        obj.GetComponent<SpawnObject>().platformPosition = platformPosition;
+        obj.GetComponent<SpawnObject>().Init();
     }
 
     protected virtual GameObject CreateSpwaner(float x, float y, GameObject[] typeOfSpawn, int index)

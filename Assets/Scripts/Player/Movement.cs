@@ -185,7 +185,6 @@ public class Movement : MonoBehaviour
         if(rb2d.velocity.y < -wallSlideSpeed)
         {
             rb2d.velocity = new Vector2(push, -wallSlideSpeed);
-            Debug.Log(-wallSlideSpeed);
         }
     }
 

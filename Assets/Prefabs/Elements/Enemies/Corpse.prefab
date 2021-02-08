@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 376166311114880368}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.94, y: 0.05, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -147,12 +147,12 @@ MonoBehaviour:
   target: {fileID: 0}
   enemyScore: 0
   damage: 0
+  speed: 0
   life: 1
   coin: {fileID: 0}
   coinValue: 0
   canBeJumped: 1
   damageParticle: {fileID: 0}
-  offsetPositionSpawn: {x: 0, y: 0, z: 0}
   dieSounds:
   - {fileID: 8300000, guid: 0258634ff0fb48b43bf2a110f8bc77bb, type: 3}
   - {fileID: 8300000, guid: b9fe20c78b15c554d8f9980de541871a, type: 3}

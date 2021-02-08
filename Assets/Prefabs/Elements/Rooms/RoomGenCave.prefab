@@ -59,6 +59,16 @@ PrefabInstance:
       propertyPath: percentageSide
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1252152942740877898, guid: a9be71a95f6ef7f58b01fbefa194d4c7,
+        type: 3}
+      propertyPath: percentageCenter
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252152942740877898, guid: a9be71a95f6ef7f58b01fbefa194d4c7,
+        type: 3}
+      propertyPath: overrideByGameManager
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1313001317186485930, guid: a9be71a95f6ef7f58b01fbefa194d4c7,
         type: 3}
       propertyPath: objects.Array.size
@@ -309,6 +319,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4647217217112923367, guid: 23681662f5902253ca687f4c2b1b8a34,
         type: 3}
+    - target: {fileID: 8134331358195923482, guid: a9be71a95f6ef7f58b01fbefa194d4c7,
+        type: 3}
+      propertyPath: platformPosition
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8448392592416290459, guid: a9be71a95f6ef7f58b01fbefa194d4c7,
         type: 3}
       propertyPath: objects.Array.size
@@ -325,6 +340,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4647217217112923367, guid: 23681662f5902253ca687f4c2b1b8a34,
         type: 3}
+    - target: {fileID: 8448392592416290459, guid: a9be71a95f6ef7f58b01fbefa194d4c7,
+        type: 3}
+      propertyPath: platformPosition
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8522420684827000117, guid: a9be71a95f6ef7f58b01fbefa194d4c7,
         type: 3}
       propertyPath: objects.Array.size

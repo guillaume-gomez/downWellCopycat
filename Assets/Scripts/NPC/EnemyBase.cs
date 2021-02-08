@@ -21,20 +21,25 @@ static class EnemyConstants
 public class EnemyBase : MonoBehaviour
 {
     public Transform target;
+    [Header("Characteristics")]
     public int enemyScore = 0;
     public int damage = 0;
+    public float speed;
     [Range(1, 4)]
     public int life = 1;
     public Coin coin;
     [Range(1, 20)]
     public int coinValue;
+    public bool canBeJumped = true;
     protected Vector3 slotSize;
     protected Vector3 slotPosition;
     protected bool isVisibleOnCamera;
     private SpriteRenderer sprite;
-    public bool canBeJumped = true;
+    [Space]
+    [Header("Particles")]
     public GameObject damageParticle;
-    public Vector3 offsetPositionSpawn;
+    [Space]
+    [Header("Sounds")]
     public AudioClip[] dieSounds;
 
     public int Life {
@@ -123,8 +128,12 @@ public class EnemyBase : MonoBehaviour
 
     public virtual float Height()
     {
-        offsetPositionSpawn = offsetPositionSpawn * transform.localScale.y;
         return transform.localScale.y;
+    }
+
+    public virtual float Width()
+    {
+        return transform.localScale.x;
     }
 
     void invertColor()

@@ -6,6 +6,7 @@ public class CanvasLevelManager : MonoBehaviour
 {
     public GameObject endLevelPanel;
     public GameObject gameOverPanel;
+    public GameObject pickedUpPanel;
 
     void Start()
     {
@@ -13,6 +14,7 @@ public class CanvasLevelManager : MonoBehaviour
         {
             LevelManager.instance.OnWin += OpenEndLevelPanel;
             LevelManager.instance.OnLose += OpenGameOverPanel;
+            LevelManager.instance.OnPickedUp += OpenPickedUpPanel;
 
         }
     }
@@ -40,4 +42,18 @@ public class CanvasLevelManager : MonoBehaviour
     {
         gameOverPanel.SetActive(false);
     }
+
+    public void OpenPickedUpPanel(object sender, OnPickedEventArgs e)
+    {
+        pickedUpPanel.SetActive(true);
+        PickedUpPanel panel = pickedUpPanel.GetComponent<PickedUpPanel>();
+        panel.SetItemName(e.item);
+        Invoke("ClosePickedUpPanel", 2.0f);
+    }
+
+    public void ClosePickedUpPanel()
+    {
+        pickedUpPanel.SetActive(false);
+    }
+
 }
