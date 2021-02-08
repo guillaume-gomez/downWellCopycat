@@ -38,13 +38,13 @@ public class SpawnMovingPlatform : MonoBehaviour
 
     Transform dots = instance.transform.Find("Dots");
     GameObject dot1 = new GameObject("dot1");
-    dot1.transform.position = new Vector3(-middleX, -middleY, 0.0f);
+    dot1.transform.position = transform.position + new Vector3(- middleX, -middleY, 0.0f);
     dot1.transform.parent = dots.transform;
     GameObject dot2 = new GameObject("dot2");
-    dot2.transform.position = new Vector3(middleX, -middleY, 0.0f);
+    dot2.transform.position = transform.position + new Vector3(middleX, -middleY, 0.0f);
     dot2.transform.parent = dots.transform;
     GameObject dot3 = new GameObject("dot3");
-    dot3.transform.position = new Vector3(0.0f, middleY, 0.0f);
+    dot3.transform.position = transform.position + new Vector3(0.0f, middleY, 0.0f);
     dot3.transform.parent = dots.transform;
 
     List<GameObject> spots = new List<GameObject>();
@@ -66,16 +66,16 @@ public class SpawnMovingPlatform : MonoBehaviour
 
     Transform dots = instance.transform.Find("Dots");
     GameObject dot1 = new GameObject("dot1");
-    dot1.transform.position = new Vector3(-middleX, -middleY, 0.0f);
+    dot1.transform.position = transform.position + new Vector3(-middleX, -middleY, 0.0f);
     dot1.transform.parent = dots.transform;
     GameObject dot2 = new GameObject("dot2");
-    dot2.transform.position = new Vector3(middleX, -middleY, 0.0f);
+    dot2.transform.position = transform.position + new Vector3(middleX, -middleY, 0.0f);
     dot2.transform.parent = dots.transform;
     GameObject dot3 = new GameObject("dot3");
-    dot3.transform.position = new Vector3(middleX, middleY, 0.0f);
+    dot3.transform.position = transform.position + new Vector3(middleX, middleY, 0.0f);
     dot3.transform.parent = dots.transform;
     GameObject dot4 = new GameObject("dot3");
-    dot4.transform.position = new Vector3(-middleX, middleY, 0.0f);
+    dot4.transform.position = transform.position + new Vector3(-middleX, middleY, 0.0f);
     dot4.transform.parent = dots.transform;
 
     List<GameObject> spots = new List<GameObject>();
