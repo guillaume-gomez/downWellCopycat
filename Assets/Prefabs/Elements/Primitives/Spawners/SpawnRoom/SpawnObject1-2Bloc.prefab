@@ -92,7 +92,7 @@ PrefabInstance:
     - target: {fileID: 263025891014417195, guid: 4989cc2130623cb4eaf6d421b14ac7cb,
         type: 3}
       propertyPath: percentages.Array.data[0]
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}

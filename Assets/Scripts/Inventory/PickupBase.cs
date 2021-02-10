@@ -23,7 +23,7 @@ public class PickupBase : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag("Player"))
+        if(other.gameObject.CompareTag("Player"))
         {
             inventory.AddItem(gameObject);
             NotifyPickedUp();
