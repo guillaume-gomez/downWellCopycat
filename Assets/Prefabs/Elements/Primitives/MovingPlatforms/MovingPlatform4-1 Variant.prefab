@@ -70,7 +70,7 @@ PrefabInstance:
     - target: {fileID: 2465275724423067665, guid: ff9c03b444d4dbb7aa1af93f07ed5679,
         type: 3}
       propertyPath: xRangeMax
-      value: 24
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 2465275724423067670, guid: ff9c03b444d4dbb7aa1af93f07ed5679,
         type: 3}

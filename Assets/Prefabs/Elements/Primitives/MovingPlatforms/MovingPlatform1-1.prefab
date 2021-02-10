@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xRangeMin: 2
-  xRangeMax: 5
+  xRangeMax: 3
   yRangeMin: 1
   yRangeMax: 5
   platformPosition: 0

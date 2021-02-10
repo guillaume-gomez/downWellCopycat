@@ -25,8 +25,6 @@ public class GeneratePlatformBase : MonoBehaviour
     protected void SetSize() {
         width = Random.Range(xRangeMin, xRangeMax);
         height = Random.Range(yRangeMin, yRangeMax);
-        Debug.Log(width);
-        Debug.Log(height);
     }
 
 }
