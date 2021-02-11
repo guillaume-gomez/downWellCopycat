@@ -15,9 +15,7 @@ public class GeneratePlatform : GeneratePlatformBase
         platformPosition = transform.parent.gameObject.GetComponent<SpawnObject>().platformPosition;
         spawnEnemy = GetComponent<SpawnEnemy>();
         tilemap =  GameObject.Find("Platforms").GetComponent<Tilemap>();
-        Debug.Log(width);
-        Debug.Log(height);
-        Debug.Log(")))))");
+
         for(int x = 0; x < width; x++)
         {
             for(int y = 0; y < height; y++)
