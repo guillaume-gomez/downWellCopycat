@@ -331,14 +331,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efa8cab6c3974581498d796a2f9af19c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilemap: {fileID: 0}
-  tile: {fileID: 11400000, guid: b716de11bdd55462da00579744418363, type: 2}
-  width: 0
-  height: 0
   xRangeMin: 1
   xRangeMax: 9
   yRangeMin: 2
   yRangeMax: 10
+  platformPosition: 0
+  tilemap: {fileID: 0}
+  tile: {fileID: 11400000, guid: b716de11bdd55462da00579744418363, type: 2}
 --- !u!4 &739744916
 Transform:
   m_ObjectHideFlags: 0
@@ -1042,15 +1041,16 @@ MonoBehaviour:
   tileMap: {fileID: 428200957}
   tileBloc: {fileID: 11400000, guid: 789af5dc836fc9a3b89c285ee530749e, type: 2}
   rooms:
-  - {fileID: 8008416117604980676, guid: 4470bd635bd7da359abf76f84b4e0c7e, type: 3}
+  - {fileID: 6672203148154926776, guid: a9be71a95f6ef7f58b01fbefa194d4c7, type: 3}
   endRoom: {fileID: 2631641138411012843, guid: d9356279e368181679d7a086e368e95c, type: 3}
   caveRoom: {fileID: 8008416117604980676, guid: 4470bd635bd7da359abf76f84b4e0c7e,
     type: 3}
   player: {fileID: 602595862}
   roomWidth: 36
-  nbRooms: 2
+  nbRooms: 1
   xOrigin: 0
   yOrigin: 0
+  overrideGameManager: 1
 --- !u!1001 &4290748177422537251
 PrefabInstance:
   m_ObjectHideFlags: 0

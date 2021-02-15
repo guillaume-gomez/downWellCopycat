@@ -87,5 +87,17 @@ public class SpawnMovingPlatform : GeneratePlatformBase
 
     platformPivot.transform.position = dot1.transform.position;
   }
+
+  void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireCube(
+            transform.position,
+            new Vector3(
+                xRangeMax,
+                yRangeMax,
+                1)
+        );
+    }
   
 }
