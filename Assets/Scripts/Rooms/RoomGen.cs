@@ -66,7 +66,7 @@ public class RoomGen : MonoBehaviour
             float y = (i * heightSubRoom) + (newChunk * heightSubRoom) / 2.0f;
             if(Random.Range(0.0f, 1.0f) <= percentageSide)
             {
-                CreateGenericBloc(x, y, typeOfSpawn, 0, newChunk - 1, isLeft ? PlatformPosition.Left :  PlatformPosition.Right);
+                CreateGenericBloc(x, y, typeOfSpawn, newChunk - 1, isLeft ? PlatformPosition.Left :  PlatformPosition.Right, 1, newChunk);
             } else {
                 int randomIndex = Random.Range(0, spawnEnemies.Length);
                 GameObject obj = CreateSpwaner(x, y, spawnEnemies, randomIndex);
@@ -100,7 +100,7 @@ public class RoomGen : MonoBehaviour
                 float yPosition = (y * heightSubRoom) + (newChunkY * heightSubRoom) / 2.0f;
                 if(Random.Range(0.0f, 1.0f) <= percentageCenter)
                 {
-                    CreateGenericBloc(xPosition, yPosition, spawnersCenter, newChunkX, newChunkY, PlatformPosition.Center);
+                    CreateGenericBloc(xPosition, yPosition, spawnersCenter, convertSpawnerToIndex(newChunkX, newChunkY), PlatformPosition.Center, newChunkX, newChunkY);
                 }
                 x += newChunkX;
             }
@@ -108,9 +108,9 @@ public class RoomGen : MonoBehaviour
         }
     }
 
-    protected virtual void CreateGenericBloc(float xPosition, float yPosition, GameObject[] spawners, int newChunkX, int newChunkY, PlatformPosition platformPosition)
+    protected virtual void CreateGenericBloc(float xPosition, float yPosition, GameObject[] spawners, int index, PlatformPosition platformPosition, int newChunkX, int newChunkY)
     {
-        GameObject obj = CreateSpwaner(xPosition, yPosition, spawners, convertSpawnerToIndex(newChunkX, newChunkY));
+        GameObject obj = CreateSpwaner(xPosition, yPosition, spawners, index);
         obj.GetComponent<SpawnObject>().platformPosition = platformPosition;
         obj.GetComponent<SpawnObject>().xIndex = newChunkX;
         obj.GetComponent<SpawnObject>().yIndex = newChunkY;
