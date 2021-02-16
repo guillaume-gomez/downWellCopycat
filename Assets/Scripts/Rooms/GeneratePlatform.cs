@@ -44,5 +44,33 @@ public class GeneratePlatform : GeneratePlatformBase
         spawnEnemy.Init(width, height);
     }
 
+    void OnDrawGizmos()
+    {
+        Vector3 position = new Vector3();
+        switch(platformPosition)
+        {
+            case PlatformPosition.Left:
+                position = new Vector3(transform.position.x + (xRangeMax / 2.0f), transform.position.y, 0);
+                Gizmos.color = Color.magenta;
+            break;
+            case PlatformPosition.Right:
+                position = new Vector3(transform.position.x - (xRangeMax / 2.0f), transform.position.y, 0);
+                Gizmos.color = Color.green;
+            break;
+            default:
+            case PlatformPosition.Center:
+                position = transform.position;
+                Gizmos.color = Color.yellow;
+            break;
+        }
 
+        //sides
+        Gizmos.DrawWireCube(
+            position,
+            new Vector3(
+                xRangeMax,
+                yRangeMax,
+                1)
+        );
+    }
 }
