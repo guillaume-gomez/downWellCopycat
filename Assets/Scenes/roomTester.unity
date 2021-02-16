@@ -1047,10 +1047,13 @@ MonoBehaviour:
     type: 3}
   player: {fileID: 602595862}
   roomWidth: 36
-  nbRooms: 1
+  nbSpawners: 4
+  offsetLeftAndRight: 6
+  spawnerPercentageCenter: 0.4
+  spawnerPercentageSide: 0.9
+  nbRooms: 3
   xOrigin: 0
   yOrigin: 0
-  overrideGameManager: 1
 --- !u!1001 &4290748177422537251
 PrefabInstance:
   m_ObjectHideFlags: 0

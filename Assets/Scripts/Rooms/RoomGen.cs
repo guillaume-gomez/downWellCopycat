@@ -20,24 +20,22 @@ public class RoomGen : MonoBehaviour
     
     protected int widthSubRoom;
     protected int heightSubRoom;
-    protected int offsetLeftAndRight;
-    protected int width;
-    protected int height;
+    protected int offsetLeftAndRight = 6;
+    protected int width = 36;
+    protected int height = 24;
+    protected int nbSpawners = 4;
 
     protected void Init()
     {
-        width = 36;
-        height = 24;
-        int nbSpawners = 4;
-        
-        offsetLeftAndRight = 6;
+        if(overrideByGameManager && LevelManager.instance != null && LevelManager.instance.LevelScript != null) {
+            percentageCenter = LevelManager.instance.LevelScript.spawnerPercentageCenter;
+            percentageSide = LevelManager.instance.LevelScript.spawnerPercentageSide;
+            nbSpawners = LevelManager.instance.LevelScript.nbSpawners;
+            offsetLeftAndRight = LevelManager.instance.LevelScript.offsetLeftAndRight;
+        }
+        Debug.Log(offsetLeftAndRight);
         widthSubRoom = (width - (2 * offsetLeftAndRight)) / nbSpawners; // 6
         heightSubRoom = height / nbSpawners; // 6
-        
-        if(overrideByGameManager && GameManager.instance != null && GameManager.instance.LevelSystemRun != null) {
-            percentageCenter = GameManager.instance.LevelSystemRun.percentageCenter;
-            percentageSide = GameManager.instance.LevelSystemRun.percentageSide;
-        }
     }
 
 

@@ -35,6 +35,10 @@ public class LevelManager : MonoBehaviour
     private LevelGenerator levelScript;
     public static bool PauseGame = false;
 
+    public LevelGenerator LevelScript {
+        get => levelScript;
+    }
+
     void Awake()
     {
         if (instance == null)
