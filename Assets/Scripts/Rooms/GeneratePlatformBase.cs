@@ -23,6 +23,7 @@ public class GeneratePlatformBase : MonoBehaviour
     public PlatformPosition platformPosition;
 
     protected void SetSize() {
+        // TODO 
         width = Random.Range(xRangeMin, xRangeMax);
         height = Random.Range(yRangeMin, yRangeMax);
     }
