@@ -30,6 +30,8 @@ public class GeneratePlatformBase : MonoBehaviour
             return;
         }
 
+        platformPosition = transform.parent.gameObject.GetComponent<SpawnObject>().platformPosition;
+
         int xIndex = transform.parent.gameObject.GetComponent<SpawnObject>().xIndex;
         int yIndex = transform.parent.gameObject.GetComponent<SpawnObject>().yIndex;
 
@@ -43,7 +45,7 @@ public class GeneratePlatformBase : MonoBehaviour
             offsetLeftAndRight;
 
         int heightSubRoom = roomHeight / nbSpawners;
-
+        
         xRangeMin = Mathf.Max(2, (xIndex - 1) * widthSubRoom);
         xRangeMax = xIndex * widthSubRoom;
 
