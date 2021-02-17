@@ -1050,7 +1050,7 @@ MonoBehaviour:
   roomWidth: 36
   roomHeight: 24
   nbSpawners: 4
-  offsetLeftAndRight: 8
+  offsetLeftAndRight: 6
   spawnerPercentageCenter: 0.4
   spawnerPercentageSide: 0.9
   nbRooms: 4
