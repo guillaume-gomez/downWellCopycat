@@ -32,6 +32,8 @@ public class RoomGen : MonoBehaviour
             percentageSide = LevelManager.instance.LevelScript.spawnerPercentageSide;
             nbSpawners = LevelManager.instance.LevelScript.nbSpawners;
             offsetLeftAndRight = LevelManager.instance.LevelScript.offsetLeftAndRight;
+            width = LevelManager.instance.LevelScript.roomWidth;
+            height = LevelManager.instance.LevelScript.roomHeight;
         }
         widthSubRoom = (width - (2 * offsetLeftAndRight)) / nbSpawners; // 6
         heightSubRoom = height / nbSpawners; // 6

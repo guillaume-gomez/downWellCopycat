@@ -19,8 +19,8 @@ public class LevelGenerator : MonoBehaviour
     [Space]
     [Header("Level Characteristics")]
     // size of the level
-    public int roomWidth;
-    private int roomHeight;
+    public int roomWidth = 36;
+    public int roomHeight = 24;
     public int nbSpawners = 4;
     public int offsetLeftAndRight = 6;
     public float spawnerPercentageCenter = 0.40f;
@@ -37,7 +37,6 @@ public class LevelGenerator : MonoBehaviour
 
     public void DepthLevel()
     {
-        roomHeight = 24;
         depthLevel = roomHeight * nbRooms;
     }
 

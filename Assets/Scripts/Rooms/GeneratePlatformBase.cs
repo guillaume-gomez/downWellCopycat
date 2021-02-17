@@ -21,9 +21,41 @@ public class GeneratePlatformBase : MonoBehaviour
     public int yRangeMax;
     [Space]
     public PlatformPosition platformPosition;
+    public bool overrideGameManager = true;
+
+    protected void computeRanges()
+    {
+        if(!LevelManager.instance || !LevelManager.instance.LevelScript)
+        {
+            return;
+        }
+
+        int xIndex = transform.parent.gameObject.GetComponent<SpawnObject>().xIndex;
+        int yIndex = transform.parent.gameObject.GetComponent<SpawnObject>().yIndex;
+
+        int nbSpawners = LevelManager.instance.LevelScript.nbSpawners;
+        int offsetLeftAndRight = LevelManager.instance.LevelScript.offsetLeftAndRight;
+        int roomWidth = LevelManager.instance.LevelScript.roomWidth;
+        int roomHeight = LevelManager.instance.LevelScript.roomHeight;
+
+        int widthSubRoom = (platformPosition == PlatformPosition.Center) ?
+            (roomWidth - (2 * offsetLeftAndRight)) / nbSpawners :
+            offsetLeftAndRight;
+
+        int heightSubRoom = roomHeight / nbSpawners;
+
+        xRangeMin = Mathf.Max(2, (xIndex - 1) * widthSubRoom);
+        xRangeMax = xIndex * widthSubRoom;
+
+        yRangeMin = Mathf.Max(2, (yIndex - 1) * heightSubRoom);
+        yRangeMax = yIndex * heightSubRoom;
+    }
 
     protected void SetSize() {
-        // TODO 
+        if(overrideGameManager)
+        {
+            computeRanges();
+        }
         width = Random.Range(xRangeMin, xRangeMax);
         height = Random.Range(yRangeMin, yRangeMax);
     }
