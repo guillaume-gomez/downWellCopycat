@@ -24,10 +24,12 @@ public class LevelGenerator : MonoBehaviour
     public int xOrigin = 20;
     public int yOrigin = 0;
 
+    public bool overrideGameManager = false;
+
     public void DepthLevel()
     {
         // override value
-        if(GameManager.instance != null && GameManager.instance.LevelSystemRun != null) {
+        if(!overrideGameManager && GameManager.instance != null && GameManager.instance.LevelSystemRun != null) {
             nbRooms = GameManager.instance.LevelSystemRun.nbRooms;
         }
         roomHeight = 24;

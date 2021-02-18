@@ -26,11 +26,13 @@ public class RoomGen : MonoBehaviour
 
     protected void Init()
     {
-        widthSubRoom = 6;
-        heightSubRoom = 6;
-        offsetLeftAndRight = 6;
         width = 36;
-        height = 20;
+        height = 24;
+        int nbSpawners = 4;
+        
+        offsetLeftAndRight = 6;
+        widthSubRoom = (width - (2 * offsetLeftAndRight)) / nbSpawners; // 6
+        heightSubRoom = height / nbSpawners; // 6
         
         if(overrideByGameManager && GameManager.instance != null && GameManager.instance.LevelSystemRun != null) {
             percentageCenter = GameManager.instance.LevelSystemRun.percentageCenter;
@@ -219,5 +221,44 @@ public class RoomGen : MonoBehaviour
             }
             i = i + newChunk;
         }
+    }
+
+    void OnDrawGizmos()
+    {
+        //sides
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireCube(
+            new Vector3(
+                transform.position.x + offsetLeftAndRight/2.0f,
+                transform.position.y - height/2.0f,
+                0),
+            new Vector3(
+                offsetLeftAndRight,
+                height,
+                1)
+        );
+
+        Gizmos.DrawWireCube(
+            new Vector3(
+                transform.position.x - offsetLeftAndRight/2.0f + width,
+                transform.position.y - height/2.0f,
+                0),
+            new Vector3(
+                offsetLeftAndRight,
+                height,
+                1)
+        );
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(
+            new Vector3(
+                transform.position.x + width/2.0f,
+                transform.position.y - height/2.0f,
+                0),
+            new Vector3(
+                width - (2.0f * offsetLeftAndRight),
+                height,
+                1)
+        );
     }
 }
