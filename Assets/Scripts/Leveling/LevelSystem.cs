@@ -32,6 +32,14 @@ public class LevelSystem
     public float percentageSide;
 
 
+    public int Level {
+        get => level;
+        set {
+            level = value;
+            UpdateEnemySkills(level);
+        }
+    }
+
     public LevelSystem()
     {
         money = 0;
@@ -55,6 +63,19 @@ public class LevelSystem
         percentageCenter = 0.40f;
         percentageSide = 0.90f;
     }
+
+    private void UpdateEnemySkills(int _level)
+    {
+        minEnemyLife = (int) Mathf.Log(_level,10);
+        maxEnemyLife = (int) Mathf.Log(_level,10) + 1;
+
+        minEnemySpeed = (int) Mathf.Log(_level,2) + 2;
+        maxEnemySpeed = (int) Mathf.Log(_level,2) + 5;
+        Debug.Log(minEnemySpeed);
+        Debug.Log(maxEnemySpeed);
+    }
+
+
 
     public void AddExperience(int amount)
     {

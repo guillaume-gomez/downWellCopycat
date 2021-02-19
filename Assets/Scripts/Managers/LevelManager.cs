@@ -101,7 +101,7 @@ public class LevelManager : MonoBehaviour
         {
             OnWin(this, EventArgs.Empty);
         }
-        GameManager.instance.LevelSystemRun.level += 1;
+        GameManager.instance.LevelSystemRun.Level += 1;
         GameManager.instance.Save();
 
         SoundManager.instance.PlayAndMuteMusic(winSound);
