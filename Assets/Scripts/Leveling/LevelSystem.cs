@@ -69,8 +69,8 @@ public class LevelSystem
         minEnemySpeed = (int) Mathf.Log(level, 2f) + 1;
         maxEnemySpeed = (int) Mathf.Log(level, 2f) + 5;
 
-        minEnemyLife = (int) Mathf.Log(level, 2f);
-        maxEnemyLife = (int) Mathf.Log(level, 2f) + 1;
+        minEnemyLife = (int) Mathf.Log(level, 10f);
+        maxEnemyLife = (int) Mathf.Log(level, 10f) + 1;
     }
 
     public void AddExperience(int amount)
