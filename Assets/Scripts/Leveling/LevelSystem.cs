@@ -58,10 +58,6 @@ public class LevelSystem
         minEnemyLife = 2;
         minEnemySpeed = 2;
         maxEnemySpeed = 5;
-        
-        nbRooms = 20;
-        percentageCenter = 0.40f;
-        percentageSide = 0.90f;
     }
 
     private void UpdateEnemyValues(int level)

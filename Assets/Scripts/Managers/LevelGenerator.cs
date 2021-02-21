@@ -7,32 +7,39 @@ using Pathfinding;
 
 public class LevelGenerator : MonoBehaviour
 {
+    [Header("Tiles")]
     public Tilemap tileMap;
     public Tile tileBloc;
+    [Space]
+    [Header("References")]
     public GameObject[] rooms;
     public GameObject endRoom;
     public GameObject caveRoom;
     public GameObject player;
-
+    [Space]
+    [Header("Level Characteristics")]
     // size of the level
-    public int roomWidth;
-    private int roomHeight;
+    public int roomWidth = 36;
+    public int roomHeight = 24;
+    [Range(2,8)]
+    public int nbSpawnersX = 4;
+    [Range(2,12)]
+    public int nbSpawnersY = 4;
+    public int offsetLeftAndRight = 6;
+    public float spawnerPercentageCenter = 0.40f;
+    public float spawnerPercentageSide = 0.90f;
     [Range(0,50)]
-    public int nbRooms = 1;
+    public int nbRooms = 20;
     private int depthLevel;
+    [Space]
+    [Header("Positions")]
     // position of x or y
     public int xOrigin = 20;
     public int yOrigin = 0;
 
-    public bool overrideGameManager = false;
 
     public void DepthLevel()
     {
-        // override value
-        if(!overrideGameManager && GameManager.instance != null && GameManager.instance.LevelSystemRun != null) {
-            nbRooms = GameManager.instance.LevelSystemRun.nbRooms;
-        }
-        roomHeight = 24;
         depthLevel = roomHeight * nbRooms;
     }
 
