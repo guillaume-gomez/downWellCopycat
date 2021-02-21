@@ -31,6 +31,14 @@ public class LevelSystem
     public float percentageCenter;
     public float percentageSide;
 
+    public int Level
+    {
+        get => level;
+        set {
+            level = value;
+            UpdateEnemyValues(level);
+        }
+    }
 
     public LevelSystem()
     {
@@ -50,6 +58,15 @@ public class LevelSystem
         minEnemyLife = 2;
         minEnemySpeed = 2;
         maxEnemySpeed = 5;
+    }
+
+    private void UpdateEnemyValues(int level)
+    {
+        minEnemySpeed = (int) Mathf.Log(level, 2f) + 1;
+        maxEnemySpeed = (int) Mathf.Log(level, 2f) + 5;
+
+        minEnemyLife = (int) Mathf.Log(level, 10f);
+        maxEnemyLife = (int) Mathf.Log(level, 10f) + 1;
     }
 
     public void AddExperience(int amount)

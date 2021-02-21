@@ -35,16 +35,17 @@ public class GeneratePlatformBase : MonoBehaviour
         int xIndex = transform.parent.gameObject.GetComponent<SpawnObject>().xIndex;
         int yIndex = transform.parent.gameObject.GetComponent<SpawnObject>().yIndex;
 
-        int nbSpawners = LevelManager.instance.LevelScript.nbSpawners;
+        int nbSpawnersX = LevelManager.instance.LevelScript.nbSpawnersX;
+        int nbSpawnersY = LevelManager.instance.LevelScript.nbSpawnersY;
         int offsetLeftAndRight = LevelManager.instance.LevelScript.offsetLeftAndRight;
         int roomWidth = LevelManager.instance.LevelScript.roomWidth;
         int roomHeight = LevelManager.instance.LevelScript.roomHeight;
 
         int widthSubRoom = (platformPosition == PlatformPosition.Center) ?
-            (roomWidth - (2 * offsetLeftAndRight)) / nbSpawners :
+            (roomWidth - (2 * offsetLeftAndRight)) / nbSpawnersX :
             offsetLeftAndRight;
 
-        int heightSubRoom = roomHeight / nbSpawners;
+        int heightSubRoom = roomHeight / nbSpawnersY;
         
         xRangeMin = Mathf.Max(2, (xIndex - 1) * widthSubRoom);
         xRangeMax = xIndex * widthSubRoom;

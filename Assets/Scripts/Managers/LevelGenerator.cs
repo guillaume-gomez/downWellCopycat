@@ -21,7 +21,10 @@ public class LevelGenerator : MonoBehaviour
     // size of the level
     public int roomWidth = 36;
     public int roomHeight = 24;
-    public int nbSpawners = 4;
+    [Range(2,8)]
+    public int nbSpawnersX = 4;
+    [Range(2,12)]
+    public int nbSpawnersY = 4;
     public int offsetLeftAndRight = 6;
     public float spawnerPercentageCenter = 0.40f;
     public float spawnerPercentageSide = 0.90f;
