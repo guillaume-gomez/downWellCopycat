@@ -1128,7 +1128,7 @@ MonoBehaviour:
   offsetLeftAndRight: 6
   spawnerPercentageCenter: 0.4
   spawnerPercentageSide: 0.9
-  nbRooms: 7
+  nbRooms: 20
   xOrigin: 0
   yOrigin: 0
 --- !u!114 &4421118525083155033
