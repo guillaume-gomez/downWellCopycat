@@ -13,12 +13,5 @@ public class RoomGenSide : RoomGen
         SplitInChunkY(4, 36, spawnersSide, false);
     }
 
-    protected override void CreateGenericBloc(float xPosition, float yPosition, GameObject[] spawners, int index, PlatformPosition platformPosition)
-    {
-        GameObject obj = CreateSpwaner(xPosition, yPosition, spawners, index);
-        obj.GetComponent<SpawnObject>().platformPosition = platformPosition;
-        obj.GetComponent<SpawnObject>().Init();
-
-    }
 
 }

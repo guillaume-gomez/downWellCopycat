@@ -1,4 +1,5 @@
 using System;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
@@ -34,6 +35,10 @@ public class LevelManager : MonoBehaviour
     private ComboText comboText;
     private LevelGenerator levelScript;
     public static bool PauseGame = false;
+
+    public LevelGenerator LevelScript {
+        get => levelScript;
+    }
 
     void Awake()
     {
@@ -101,7 +106,7 @@ public class LevelManager : MonoBehaviour
         {
             OnWin(this, EventArgs.Empty);
         }
-        GameManager.instance.LevelSystemRun.level += 1;
+        GameManager.instance.LevelSystemRun.Level += 1;
         GameManager.instance.Save();
 
         SoundManager.instance.PlayAndMuteMusic(winSound);

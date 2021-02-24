@@ -330,6 +330,7 @@ MonoBehaviour:
   yRangeMin: 2
   yRangeMax: 10
   platformPosition: 0
+  overrideGameManager: 1
   tilemap: {fileID: 0}
   tile: {fileID: 11400000, guid: b716de11bdd55462da00579744418363, type: 2}
 --- !u!4 &739744916
@@ -1121,7 +1122,13 @@ MonoBehaviour:
     type: 3}
   player: {fileID: 771290432}
   roomWidth: 36
-  nbRooms: 7
+  roomHeight: 24
+  nbSpawnersX: 4
+  nbSpawnersY: 6
+  offsetLeftAndRight: 6
+  spawnerPercentageCenter: 0.4
+  spawnerPercentageSide: 0.9
+  nbRooms: 20
   xOrigin: 0
   yOrigin: 0
 --- !u!114 &4421118525083155033
