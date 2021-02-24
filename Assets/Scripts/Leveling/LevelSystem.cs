@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
@@ -13,12 +14,15 @@ public class LevelSystem
     public int currentLife;
     public int experience;
     public int experienceToNextLevel;
+    [Space]
+    [Header("Run Data")]
     public float money;
     public int currentCombo;
     public int maxCombo;
     public int nbKilled;
     public int score;
     public float saveMoneyPercentage;
+    public List<Bonus> bonuses;
     [Space]
     [Header("Enemy")]
     public int minEnemyLife;
@@ -42,6 +46,7 @@ public class LevelSystem
 
     public LevelSystem()
     {
+        bonuses = new List<Bonus>();
         money = 0;
         currentLife = 4;
         level = 1;
@@ -85,6 +90,11 @@ public class LevelSystem
         {
             OnExperienceChanged(this, EventArgs.Empty);
         }
+    }
+
+    public void AddBonus(Bonus bonus)
+    {
+        bonuses.Add(bonus);
     }
 
     public void MergeLevelSystem(LevelSystem ls)
