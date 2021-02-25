@@ -4,7 +4,8 @@ public class JumpTakeOffPower : ItemBase
 {
     public override void Equip()
     {
-        GameManager.instance.CharacterStats.jumpTakeOffSpeed.AddModifier(new StatModifier(0.1f, StatModType.Flat, this));
+      AddBonus(Bonus.JumpTakeOff);
+      GameManager.instance.CharacterStats.jumpTakeOffSpeed.AddModifier(new StatModifier(0.1f, StatModType.Flat, this));
     }
 
     public override void Unequip()
