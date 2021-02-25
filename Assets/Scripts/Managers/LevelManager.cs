@@ -110,7 +110,7 @@ public class LevelManager : MonoBehaviour
         GameManager.instance.Save();
 
         SoundManager.instance.PlayAndMuteMusic(winSound);
-        Invoke("LoadIntroScene", 2.0f);
+        Invoke("LoadIntroScene", 1.5f);
     }
 
     public void LoadIntroScene()
@@ -131,7 +131,7 @@ public class LevelManager : MonoBehaviour
 
     IEnumerator GoBackMenu()
     {
-        yield return new WaitForSecondsRealtime(5);
+        yield return new WaitForSecondsRealtime(2.5);
         Time.timeScale = 1.0f;
         PauseGame = false;
         GameManager.instance.EndRun();
