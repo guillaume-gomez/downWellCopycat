@@ -131,7 +131,12 @@ public class LevelManager : MonoBehaviour
 
     IEnumerator GoBackMenu()
     {
-        yield return new WaitForSecondsRealtime(2.5f);
+        yield return new WaitForSecondsRealtime(30.0f);
+        GoBackMenuCallBack();
+    }
+
+    public void GoBackMenuCallBack()
+    {
         Time.timeScale = 1.0f;
         PauseGame = false;
         GameManager.instance.EndRun();
