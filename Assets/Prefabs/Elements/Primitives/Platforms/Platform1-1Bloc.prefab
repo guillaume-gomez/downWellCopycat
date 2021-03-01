@@ -45,15 +45,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efa8cab6c3974581498d796a2f9af19c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilemap: {fileID: 0}
-  tile: {fileID: 0}
-  platformPosition: 0
-  width: 0
-  height: 0
   xRangeMin: 2
   xRangeMax: 5
   yRangeMin: 1
   yRangeMax: 5
+  platformPosition: 0
+  overrideGameManager: 1
+  tilemap: {fileID: 0}
+  tile: {fileID: 0}
 --- !u!114 &2394470461755004696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,4 +85,5 @@ MonoBehaviour:
   - {fileID: 3638551397553188711, guid: 4a577bacd92a79c0496e0965d8afe92b, type: 3}
   - {fileID: 785508040387150609, guid: de9e388174ae174d5a0575e15d2695ae, type: 3}
   - {fileID: 6892612120836584776, guid: 90a1238fc322e50479ffbc9e3ba25195, type: 3}
+  - {fileID: 376166311114880368, guid: 89ffbda8d1bb15f4c8b2733aee29adce, type: 3}
   autoEnable: 1
