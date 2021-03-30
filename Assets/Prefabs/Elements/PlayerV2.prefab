@@ -4966,7 +4966,7 @@ MonoBehaviour:
   jumpForce: 20
   hopJump: 15
   wallJumpForce: 75
-  wallSlideSpeed: 5
+  wallSlideSpeed: 10
   wallJumpLerp: 10
   dashSpeed: 20
   gravityScale: 3
