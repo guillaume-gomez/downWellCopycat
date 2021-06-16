@@ -5,9 +5,9 @@ using UnityEngine;
 static class EnemyConstants
 {
     public static readonly Vector3[] Size = {
-        new Vector3( 1.0f, 1.0f, 1.0f ),
-        new Vector3( 1.75f, 1.75f, 1.75f ),
-        new Vector3( 2.5f, 2.5f, 2.5f ),
+        new Vector3( 2.0f, 2.0f, 2.0f ),
+        new Vector3( 2.75f, 2.75f, 2.75f ),
+        new Vector3( 3.5f, 3.5f, 3.5f ),
     };
 
     public static readonly int[] Damage = {
