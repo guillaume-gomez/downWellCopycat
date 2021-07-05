@@ -5,15 +5,17 @@ using UnityEngine;
 static class EnemyConstants
 {
     public static readonly Vector3[] Size = {
+        new Vector3( 1.0f, 1.0f, 1.0f ),
         new Vector3( 2.0f, 2.0f, 2.0f ),
-        new Vector3( 2.75f, 2.75f, 2.75f ),
-        new Vector3( 3.5f, 3.5f, 3.5f ),
+        new Vector3( 3.0f, 3.0f, 3.0f ),
+        new Vector3( 4.0f, 4.0f, 4.0f ),
     };
 
     public static readonly int[] Damage = {
         1,
         1,
         2,
+        3
     };
 }
 
@@ -179,8 +181,11 @@ public class EnemyBase : MonoBehaviour
             case 3:
                 transform.localScale = EnemyConstants.Size[2];
             break;
+            case 4:
+                transform.localScale = EnemyConstants.Size[3];
+            break;
             default:
-                transform.localScale = EnemyConstants.Size[2];
+                transform.localScale = EnemyConstants.Size[1];
             break;
         }
     }
