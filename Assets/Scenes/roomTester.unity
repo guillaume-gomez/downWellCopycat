@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -896,7 +896,7 @@ MonoBehaviour:
   offsetLeftAndRight: 6
   spawnerPercentageCenter: 0.4
   spawnerPercentageSide: 0.9
-  nbRooms: 4
+  nbRooms: 2
   xOrigin: 0
   yOrigin: 0
 --- !u!1001 &4290748177422537251
