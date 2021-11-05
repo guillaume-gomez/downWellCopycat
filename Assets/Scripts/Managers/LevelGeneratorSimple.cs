@@ -29,10 +29,6 @@ public class LevelGeneratorSimple : MonoBehaviour
     public int xOrigin = 20;
     public int yOrigin = 0;
 
-    public void Start() {
-        SetupScene(1);
-    }
-
     public void DepthLevel()
     {
         depthLevel = roomHeight * nbRooms;
@@ -74,15 +70,13 @@ public class LevelGeneratorSimple : MonoBehaviour
         Vector3 position = new Vector3(0f, 0f, 0f);
 
         StaticRoom currentRoom = beginRoom.GetComponent<StaticRoom>();
-        float totalOfThelevel = yOrigin + depthLevel;
+        int endRoomHeight =  roomHeight;
+        float totalOfThelevel = yOrigin + depthLevel - endRoomHeight;
         for(int y = yOrigin; y < totalOfThelevel; y+= roomHeight)
         {
-            float percent = y / totalOfThelevel;
-
             GameObject obj = null;
             position.Set(xOrigin, -(y + yOrigin), 0.0f);
 
-           
             obj = Instantiate(currentRoom.gameObject, position, transform.rotation);
             obj.transform.SetParent(spwawnHolder);
 
@@ -92,6 +86,48 @@ public class LevelGeneratorSimple : MonoBehaviour
         position.Set(xOrigin, -(totalOfThelevel + yOrigin), 0.0f);
         GameObject endRoomObj = Instantiate(endRoom, position, transform.rotation);
         endRoomObj.transform.SetParent(spwawnHolder);
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        //only for the test
+        DepthLevel();
+        //end of test
+
+        // for instance scene intro
+        if(!GameObject.Find("A*"))
+        {
+            return;
+        }
+        AstarData data = AstarPath.active.data;
+        data.cacheStartup = true;
+        GridGraph gridGraph = data.gridGraph;
+        int nodeSize = 1;
+
+        // Calculating the centre based on node size and number of nodes
+        gridGraph.center.x = xOrigin + (roomWidth * nodeSize) / 2;
+        gridGraph.center.y = yOrigin + (depthLevel * nodeSize) / 2;
+        gridGraph.center = new Vector3(gridGraph.center.x, -gridGraph.center.y, gridGraph.center.z);
+
+        // Updates internal size from the above values
+        gridGraph.SetDimensions(roomWidth, depthLevel, nodeSize);
+
+        AstarPath.active.Scan(gridGraph);
+
+        Invoke("asyncScan", 2);
+
+        //only for the test
+        SetupScene(1);
+    }
+
+    // some instantiation (like bloc) are not completed after Start LevelGenerator method.
+    // So we call this function to scan again optimistically (render scene might take more than 2 seconds ?)
+    void asyncScan() {
+        AstarData data = AstarPath.active.data;
+        data.cacheStartup = true;
+        GridGraph gridGraph = data.gridGraph;
+        AstarPath.active.Scan(gridGraph);
     }
 
 }

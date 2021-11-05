@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine.Tilemaps;
 using UnityEngine;
 
@@ -29,6 +28,7 @@ public class StaticRoom : MonoBehaviour
         Tilemap destinationTilemap =  GameObject.Find("Platforms").GetComponent<Tilemap>();
 
         Vector3Int roomPosition = new Vector3Int(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y), 0);
+        tilemap.CompressBounds();
 
         foreach (var tilemapPosition in tilemap.cellBounds.allPositionsWithin) {
             TileBase tile = tilemap.GetTile(tilemapPosition);
