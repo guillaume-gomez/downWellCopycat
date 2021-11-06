@@ -92,7 +92,7 @@ public class LevelGeneratorSimple : MonoBehaviour
     void Start()
     {
         //only for the test
-        DepthLevel();
+        //DepthLevel();
         //end of test
 
         // for instance scene intro
@@ -118,7 +118,8 @@ public class LevelGeneratorSimple : MonoBehaviour
         Invoke("asyncScan", 2);
 
         //only for the test
-        SetupScene(1);
+        //SetupScene(1);
+        // end of test
     }
 
     // some instantiation (like bloc) are not completed after Start LevelGenerator method.

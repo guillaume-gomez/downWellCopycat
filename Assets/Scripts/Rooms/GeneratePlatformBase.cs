@@ -29,8 +29,9 @@ public class GeneratePlatformBase : MonoBehaviour
         {
             return;
         }
+        // DISABLE WHEN LEVELMANAGER BECOME LESS GENERATIVE 
 
-        platformPosition = transform.parent.gameObject.GetComponent<SpawnObject>().platformPosition;
+       /* platformPosition = transform.parent.gameObject.GetComponent<SpawnObject>().platformPosition;
 
         int xIndex = transform.parent.gameObject.GetComponent<SpawnObject>().xIndex;
         int yIndex = transform.parent.gameObject.GetComponent<SpawnObject>().yIndex;
@@ -51,7 +52,7 @@ public class GeneratePlatformBase : MonoBehaviour
         xRangeMax = xIndex * widthSubRoom;
 
         yRangeMin = Mathf.Max(2, (yIndex - 1) * heightSubRoom);
-        yRangeMax = yIndex * heightSubRoom;
+        yRangeMax = yIndex * heightSubRoom;*/
     }
 
     protected void SetSize() {

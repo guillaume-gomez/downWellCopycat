@@ -259,6 +259,7 @@ GameObject:
   - component: {fileID: 6157663810924754045}
   - component: {fileID: 6157663810924754046}
   - component: {fileID: 4219679313515386028}
+  - component: {fileID: 2452583900540428059}
   - component: {fileID: 7134263421356072261}
   m_Layer: 5
   m_Name: LevelManager
@@ -354,7 +355,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8193954538249333980}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09a0d61ab3177c871a5fb8d00421287a, type: 3}
   m_Name: 
@@ -368,8 +369,37 @@ MonoBehaviour:
     type: 3}
   player: {fileID: 0}
   roomWidth: 36
+  roomHeight: 24
+  nbSpawnersX: 4
+  nbSpawnersY: 4
+  offsetLeftAndRight: 6
+  spawnerPercentageCenter: 0.4
+  spawnerPercentageSide: 0.9
   nbRooms: 1
   xOrigin: 0
+  yOrigin: 0
+--- !u!114 &2452583900540428059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8193954538249333980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 101adfb31c2345b2c8d905fa836ca425, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileMap: {fileID: 0}
+  tileBloc: {fileID: 11400000, guid: 789af5dc836fc9a3b89c285ee530749e, type: 2}
+  beginRoom: {fileID: 6535786571471761710, guid: c5bdcce123b0dd312bb7ac38e252aa4a,
+    type: 3}
+  endRoom: {fileID: 5690970423425871576, guid: 3f1e20692b5099d67994f0836183b855, type: 3}
+  player: {fileID: 0}
+  roomWidth: 36
+  roomHeight: 24
+  nbRooms: 20
+  xOrigin: 20
   yOrigin: 0
 --- !u!114 &7134263421356072261
 MonoBehaviour:

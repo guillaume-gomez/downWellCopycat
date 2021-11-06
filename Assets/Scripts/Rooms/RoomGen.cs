@@ -28,7 +28,7 @@ public class RoomGen : MonoBehaviour
 
     protected void Init()
     {
-        if(overrideByGameManager && LevelManager.instance != null && LevelManager.instance.LevelScript != null) {
+       /* if(overrideByGameManager && LevelManager.instance != null && LevelManager.instance.LevelScript != null) {
             percentageCenter = LevelManager.instance.LevelScript.spawnerPercentageCenter;
             percentageSide = LevelManager.instance.LevelScript.spawnerPercentageSide;
             nbSpawnersX = LevelManager.instance.LevelScript.nbSpawnersX;
@@ -36,7 +36,7 @@ public class RoomGen : MonoBehaviour
             offsetLeftAndRight = LevelManager.instance.LevelScript.offsetLeftAndRight;
             width = LevelManager.instance.LevelScript.roomWidth;
             height = LevelManager.instance.LevelScript.roomHeight;
-        }
+        }*/
         widthSubRoom = (width - (2 * offsetLeftAndRight)) / nbSpawnersX; // 6
         heightSubRoom = height / nbSpawnersY; // 6
     }
