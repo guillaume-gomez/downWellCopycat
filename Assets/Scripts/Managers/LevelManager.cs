@@ -33,10 +33,10 @@ public class LevelManager : MonoBehaviour
     public AudioClip loseSound;
 
     private ComboText comboText;
-    private LevelGeneratorSimple levelScript;
+    private LevelGenerator levelScript;
     public static bool PauseGame = false;
 
-    public LevelGeneratorSimple LevelScript {
+    public LevelGenerator LevelScript {
         get => levelScript;
     }
 
@@ -49,7 +49,7 @@ public class LevelManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        levelScript = GetComponent<LevelGeneratorSimple>();
+        levelScript = GetComponent<LevelGenerator>();
     }
 
     void Start()

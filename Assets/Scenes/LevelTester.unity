@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -530,12 +530,18 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1418737491}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1418737493}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb738d3f6c42c786ebb0fa723050be4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1418737493 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5082514406271902629, guid: c2515910bdda68ad6ba4586ce7857434,
+    type: 3}
+  m_PrefabInstance: {fileID: 1418737491}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1503928448 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8964980821433406694, guid: 94375eab90f6ee0a195576a3373aaffe,
@@ -951,19 +957,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileMap: {fileID: 428200957}
   tileBloc: {fileID: 11400000, guid: 789af5dc836fc9a3b89c285ee530749e, type: 2}
-  rooms:
-  - {fileID: 6672203148154926776, guid: a9be71a95f6ef7f58b01fbefa194d4c7, type: 3}
-  endRoom: {fileID: 2631641138411012843, guid: d9356279e368181679d7a086e368e95c, type: 3}
-  caveRoom: {fileID: 8008416117604980676, guid: 4470bd635bd7da359abf76f84b4e0c7e,
+  beginRoom: {fileID: 6535786571471761710, guid: c5bdcce123b0dd312bb7ac38e252aa4a,
     type: 3}
-  player: {fileID: 0}
+  endRoom: {fileID: 5690970423425871576, guid: 3f1e20692b5099d67994f0836183b855, type: 3}
+  player: {fileID: 1418737493}
   roomWidth: 36
   roomHeight: 24
-  nbSpawnersX: 4
-  nbSpawnersY: 6
-  offsetLeftAndRight: 6
-  spawnerPercentageCenter: 0.4
-  spawnerPercentageSide: 0.9
   nbRooms: 20
   xOrigin: 0
   yOrigin: 0

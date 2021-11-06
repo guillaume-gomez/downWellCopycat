@@ -1293,24 +1293,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2057040322}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09a0d61ab3177c871a5fb8d00421287a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tileMap: {fileID: 931309563}
   tileBloc: {fileID: 11400000, guid: 789af5dc836fc9a3b89c285ee530749e, type: 2}
-  rooms: []
+  beginRoom: {fileID: 0}
   endRoom: {fileID: 0}
-  caveRoom: {fileID: 0}
   player: {fileID: 1367582973}
   roomWidth: 36
   roomHeight: 24
-  nbSpawnersX: 4
-  nbSpawnersY: 4
-  offsetLeftAndRight: 6
-  spawnerPercentageCenter: 0.4
-  spawnerPercentageSide: 0.9
   nbRooms: 4
   xOrigin: 0
   yOrigin: 0
@@ -1352,13 +1346,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 101adfb31c2345b2c8d905fa836ca425, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileMap: {fileID: 931309563}
-  tileBloc: {fileID: 11400000, guid: 789af5dc836fc9a3b89c285ee530749e, type: 2}
-  beginRoom: {fileID: 0}
-  endRoom: {fileID: 0}
-  player: {fileID: 1367582973}
-  roomWidth: 36
-  roomHeight: 24
-  nbRooms: 4
-  xOrigin: 0
-  yOrigin: 0

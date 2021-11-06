@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 public class Introduction : MonoBehaviour
 {
-    public LevelGeneratorSimple levelScript;
+    public LevelGenerator levelScript;
     public GameObject player;
     public GameObject canvas;
     public GameObject[] bonusItems;

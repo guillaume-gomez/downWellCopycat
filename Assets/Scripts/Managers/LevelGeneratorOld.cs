@@ -1,25 +1,33 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 using UnityEngine;
 using Pathfinding;
 
-public class LevelGeneratorSimple : MonoBehaviour
+public class LevelGeneratorOld : MonoBehaviour
 {
     [Header("Tiles")]
     public Tilemap tileMap;
     public Tile tileBloc;
     [Space]
     [Header("References")]
-    public GameObject beginRoom;
+    public GameObject[] rooms;
     public GameObject endRoom;
+    public GameObject caveRoom;
     public GameObject player;
     [Space]
     [Header("Level Characteristics")]
     // size of the level
     public int roomWidth = 36;
     public int roomHeight = 24;
+    [Range(2,8)]
+    public int nbSpawnersX = 4;
+    [Range(2,12)]
+    public int nbSpawnersY = 4;
+    public int offsetLeftAndRight = 6;
+    public float spawnerPercentageCenter = 0.40f;
+    public float spawnerPercentageSide = 0.90f;
     [Range(0,50)]
     public int nbRooms = 20;
     private int depthLevel;
@@ -28,6 +36,7 @@ public class LevelGeneratorSimple : MonoBehaviour
     // position of x or y
     public int xOrigin = 20;
     public int yOrigin = 0;
+
 
     public void DepthLevel()
     {
@@ -61,26 +70,41 @@ public class LevelGeneratorSimple : MonoBehaviour
             position.Set(xOrigin + roomWidth, -y, 0);
             tileMap.SetTile(position, tileBloc);
         }
+        // bottom
+        // for(int x = xOrigin - 1 ; x <= (xOrigin + roomWidth) + 1; ++x)
+        // {
+        //     position.Set(x, - (yOrigin + depthLevel), 0.0f);
+        //     GameObject obj = Instantiate(bloc, position, transform.rotation);
+        //     obj.transform.SetParent(boardHolder);
+        // }
     }
 
     private void SpawnRooms() {
-        
+        // cave gen
+        float nbCaves = Random.Range(0.0f, 2.0f);
+        int nbElapsedcave = (int) nbCaves;
+
         Transform spwawnHolder = new GameObject("Rooms").transform;
         spwawnHolder.transform.SetParent(transform);
         Vector3 position = new Vector3(0f, 0f, 0f);
 
-        StaticRoom currentRoom = beginRoom.GetComponent<StaticRoom>();
-        int endRoomHeight =  roomHeight;
-        float totalOfThelevel = yOrigin + depthLevel - endRoomHeight;
+        float totalOfThelevel = yOrigin + depthLevel;
         for(int y = yOrigin; y < totalOfThelevel; y+= roomHeight)
         {
+            float percent = y / totalOfThelevel;
+
             GameObject obj = null;
             position.Set(xOrigin, -(y + yOrigin), 0.0f);
 
-            obj = Instantiate(currentRoom.gameObject, position, transform.rotation);
+            if(nbElapsedcave > 0 && percent >= 0.4 && percent <= 0.8 && Random.Range(0.0f,1.0f) >= 0.5f ) // cave room
+            {
+                obj = Instantiate(caveRoom, position, transform.rotation);
+                nbElapsedcave = nbElapsedcave - 1;
+            } else // general room
+            {
+                obj = Instantiate(rooms[Random.Range(0, rooms.Length)], position, transform.rotation);
+            }
             obj.transform.SetParent(spwawnHolder);
-
-            currentRoom = currentRoom.getNextRoom();
         }
         //end room
         position.Set(xOrigin, -(totalOfThelevel + yOrigin), 0.0f);
@@ -91,10 +115,6 @@ public class LevelGeneratorSimple : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //only for the test
-        //DepthLevel();
-        //end of test
-
         // for instance scene intro
         if(!GameObject.Find("A*"))
         {
@@ -116,10 +136,6 @@ public class LevelGeneratorSimple : MonoBehaviour
         AstarPath.active.Scan(gridGraph);
 
         Invoke("asyncScan", 2);
-
-        //only for the test
-        //SetupScene(1);
-        // end of test
     }
 
     // some instantiation (like bloc) are not completed after Start LevelGenerator method.
