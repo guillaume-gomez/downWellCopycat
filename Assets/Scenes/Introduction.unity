@@ -1359,6 +1359,6 @@ MonoBehaviour:
   player: {fileID: 1367582973}
   roomWidth: 36
   roomHeight: 24
-  nbRooms: 20
-  xOrigin: 20
+  nbRooms: 4
+  xOrigin: 0
   yOrigin: 0
