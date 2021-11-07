@@ -47,6 +47,19 @@ public class StaticRoom : MonoBehaviour
         return chosenRoom;
     }
 
+    private int getRoomIndexFromPercentage(float randomNumber) {
+        int indexChoosed = 0;
+        float minDifference = 1.0f;
+        for(int i = 0; i < percentagePossibleRooms.Length; ++i) {
+            float difference = (percentagePossibleRooms[i] - randomNumber);
+            if(minDifference > difference) {
+                minDifference = difference;
+                indexChoosed = i;
+            }
+        }
+        return indexChoosed;
+    }
+
 
      void OnDrawGizmos()
     {
