@@ -14,6 +14,7 @@ public class LevelGenerator : MonoBehaviour
     [Header("References")]
     public GameObject beginRoom;
     public GameObject endRoom;
+    public GameObject caveRooms;
     public GameObject player;
     [Space]
     [Header("Level Characteristics")]
@@ -64,28 +65,35 @@ public class LevelGenerator : MonoBehaviour
     }
 
     private void SpawnRooms() {
-        
         Transform spwawnHolder = new GameObject("Rooms").transform;
         spwawnHolder.transform.SetParent(transform);
         Vector3 position = new Vector3(0f, 0f, 0f);
 
-        StaticRoom currentRoom = beginRoom.GetComponent<StaticRoom>();
-        int endRoomHeight =  roomHeight;
-        float totalOfThelevel = yOrigin + depthLevel - endRoomHeight;
-        for(int y = yOrigin; y < totalOfThelevel; y+= roomHeight)
+        var roomsList = GenerateLevel();
+        var y = yOrigin;
+        foreach(GameObject room in roomsList)
         {
-            GameObject obj = null;
             position.Set(xOrigin, -(y + yOrigin), 0.0f);
 
-            obj = Instantiate(currentRoom.gameObject, position, transform.rotation);
+            GameObject obj = Instantiate(room, position, transform.rotation);
             obj.transform.SetParent(spwawnHolder);
 
-            currentRoom = currentRoom.getNextRoom();
+            y = y + roomHeight;
         }
-        //end room
-        position.Set(xOrigin, -(totalOfThelevel + yOrigin), 0.0f);
-        GameObject endRoomObj = Instantiate(endRoom, position, transform.rotation);
-        endRoomObj.transform.SetParent(spwawnHolder);
+    }
+
+    private List<GameObject> GenerateLevel() {
+        List<GameObject> roomsList = new List<GameObject>();
+        
+        roomsList.Add(beginRoom);
+
+        StaticRoom currentRoom = beginRoom.GetComponent<StaticRoom>();
+        for(int i = 0; i < nbRooms - 2; ++i) {
+            currentRoom = currentRoom.GetNextRoom();
+            roomsList.Add(currentRoom.gameObject);
+        }
+        roomsList.Add(endRoom);
+        return roomsList;
     }
 
     // Start is called before the first frame update

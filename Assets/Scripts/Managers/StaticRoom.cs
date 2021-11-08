@@ -40,14 +40,14 @@ public class StaticRoom : MonoBehaviour
         Destroy(grid);
     }
 
-    public StaticRoom getNextRoom() {
+    public StaticRoom GetNextRoom() {
         //float randomNumber = Random.Range(0.0f, 1.0f);
         int randomIndex = Random.Range(0, possibleRooms.Length);
         StaticRoom chosenRoom = possibleRooms[randomIndex];
         return chosenRoom;
     }
 
-    private int getRoomIndexFromPercentage(float randomNumber) {
+    private int GetRoomIndexFromPercentage(float randomNumber) {
         int indexChoosed = 0;
         float minDifference = 1.0f;
         for(int i = 0; i < percentagePossibleRooms.Length; ++i) {
