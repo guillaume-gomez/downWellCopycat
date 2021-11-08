@@ -10,6 +10,7 @@ Player,
 Enemy,
 Items,
 Blocs,
+NoMoneyBloc,
 BackgroundGui,
 ButtonGui,
 SliderBackgroundGui,
@@ -30,6 +31,9 @@ public class ThemeManager : MonoBehaviour {
     public Color enemy;
     public Color items;
     public Color blocs;
+    [Space]
+    [Header("Shop")]
+    public Color noMoneyBloc;
     [Space]
     [Header("Gui")]
     public Color backgroundGui;
@@ -71,6 +75,8 @@ public class ThemeManager : MonoBehaviour {
                 return items;
             case ColorTypeTheme.Blocs:
                 return blocs;
+            case ColorTypeTheme.NoMoneyBloc:
+                return noMoneyBloc;
             case ColorTypeTheme.BackgroundGui:
                 return backgroundGui;
             case ColorTypeTheme.ButtonGui:
