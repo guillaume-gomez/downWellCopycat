@@ -14,7 +14,7 @@ public class LevelGenerator : MonoBehaviour
     [Header("References")]
     public GameObject beginRoom;
     public GameObject endRoom;
-    public GameObject caveRooms;
+    public GameObject[] caveRooms;
     public GameObject player;
     [Space]
     [Header("Level Characteristics")]
@@ -92,8 +92,23 @@ public class LevelGenerator : MonoBehaviour
             currentRoom = currentRoom.GetNextRoom();
             roomsList.Add(currentRoom.gameObject);
         }
+
+        InsertCave(roomsList);
+
         roomsList.Add(endRoom);
         return roomsList;
+    }
+
+    private void InsertCave(List<GameObject> roomsList) {
+        int nbCaves = Random.Range(0, 2);
+        if(nbCaves == 0) {
+            return;
+        }
+        int randomIndex = Random.Range(1, nbRooms - 1);
+        int leftOrRightCave = Random.Range(0, caveRooms.Length);
+
+        roomsList.Insert(randomIndex, caveRooms[leftOrRightCave]);
+        roomsList.RemoveAt(randomIndex + 1);
     }
 
     // Start is called before the first frame update
