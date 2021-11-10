@@ -645,6 +645,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 938777858009500981, guid: 92084eec381a369599ed9443577cbacd,
         type: 3}
+      propertyPath: caveRooms.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 938777858009500981, guid: 92084eec381a369599ed9443577cbacd,
+        type: 3}
       propertyPath: tileMap
       value: 
       objectReference: {fileID: 813825223}
@@ -653,6 +658,23 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1964289892}
+    - target: {fileID: 938777858009500981, guid: 92084eec381a369599ed9443577cbacd,
+        type: 3}
+      propertyPath: caveRooms.Array.data[0]
+      value: 
+      objectReference: {fileID: 2119903548772499512, guid: 7033afcaf72783a2993c291d9bddb5d0,
+        type: 3}
+    - target: {fileID: 938777858009500981, guid: 92084eec381a369599ed9443577cbacd,
+        type: 3}
+      propertyPath: caveRooms.Array.data[1]
+      value: 
+      objectReference: {fileID: 2119903548772499512, guid: 7033afcaf72783a2993c291d9bddb5d0,
+        type: 3}
+    - target: {fileID: 938777858009500981, guid: 92084eec381a369599ed9443577cbacd,
+        type: 3}
+      propertyPath: nbRooms
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 6157663810924753923, guid: 92084eec381a369599ed9443577cbacd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -945,6 +967,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2347006359878525217}
     m_Modifications:
+    - target: {fileID: 5171641427843448592, guid: 5e390c63685dc0a5dae87cf074e5b001,
+        type: 3}
+      propertyPath: noMoneyBloc.r
+      value: 0.9372549
+      objectReference: {fileID: 0}
+    - target: {fileID: 5171641427843448592, guid: 5e390c63685dc0a5dae87cf074e5b001,
+        type: 3}
+      propertyPath: noMoneyBloc.g
+      value: 0.3254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 5171641427843448592, guid: 5e390c63685dc0a5dae87cf074e5b001,
+        type: 3}
+      propertyPath: noMoneyBloc.b
+      value: 0.3137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 5171641427843448592, guid: 5e390c63685dc0a5dae87cf074e5b001,
+        type: 3}
+      propertyPath: noMoneyBloc.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5171641427843448593, guid: 5e390c63685dc0a5dae87cf074e5b001,
         type: 3}
       propertyPath: m_LocalPosition.x

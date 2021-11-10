@@ -7,6 +7,49 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6161938768526914918, guid: 1ee4c43e89b81e9c985a3c120b60acac,
+        type: 3}
+      propertyPath: possibleRooms.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -6161938768526914918, guid: 1ee4c43e89b81e9c985a3c120b60acac,
+        type: 3}
+      propertyPath: percentagePossibleRooms.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6161938768526914918, guid: 1ee4c43e89b81e9c985a3c120b60acac,
+        type: 3}
+      propertyPath: possibleRooms.Array.data[1]
+      value: 
+      objectReference: {fileID: 5013044328786127311, guid: bfe6142ab6253f893bb9eee1c6b63a4d,
+        type: 3}
+    - target: {fileID: -6161938768526914918, guid: 1ee4c43e89b81e9c985a3c120b60acac,
+        type: 3}
+      propertyPath: possibleRooms.Array.data[2]
+      value: 
+      objectReference: {fileID: 1244139223357186938, guid: efd2ede1466c0df59b087fa7dda45f90,
+        type: 3}
+    - target: {fileID: -6161938768526914918, guid: 1ee4c43e89b81e9c985a3c120b60acac,
+        type: 3}
+      propertyPath: possibleRooms.Array.data[0]
+      value: 
+      objectReference: {fileID: 4729278160330578069, guid: e3cc9cd8739a25c30a6b06b6d6e963be,
+        type: 3}
+    - target: {fileID: -6161938768526914918, guid: 1ee4c43e89b81e9c985a3c120b60acac,
+        type: 3}
+      propertyPath: percentagePossibleRooms.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6161938768526914918, guid: 1ee4c43e89b81e9c985a3c120b60acac,
+        type: 3}
+      propertyPath: percentagePossibleRooms.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6161938768526914918, guid: 1ee4c43e89b81e9c985a3c120b60acac,
+        type: 3}
+      propertyPath: percentagePossibleRooms.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1537410429808422109, guid: 1ee4c43e89b81e9c985a3c120b60acac,
         type: 3}
       propertyPath: m_LocalPosition.x

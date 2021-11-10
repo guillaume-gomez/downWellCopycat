@@ -1387,8 +1387,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilemap: {fileID: 5444962775624488996}
   grid: {fileID: 1317783751884078103}
-  possibleRooms:
-  - {fileID: 4729278160330578069, guid: e3cc9cd8739a25c30a6b06b6d6e963be, type: 3}
+  possibleRooms: []
   percentagePossibleRooms: 
 --- !u!1 &8838856966733410680
 GameObject:

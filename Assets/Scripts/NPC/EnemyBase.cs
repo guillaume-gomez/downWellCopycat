@@ -27,10 +27,10 @@ public class EnemyBase : MonoBehaviour
     public int enemyScore = 0;
     public int damage = 0;
     public float speed;
-    [Range(1, 4)]
+    [Range(1, 10)]
     public int life = 1;
     public Coin coin;
-    [Range(1, 20)]
+    [Range(1, 30)]
     public int coinValue;
     public bool canBeJumped = true;
     protected Vector3 slotSize;

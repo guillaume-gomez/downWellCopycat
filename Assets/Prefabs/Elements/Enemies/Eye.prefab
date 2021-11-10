@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 6288616398689469075, guid: d10987b03ab53b569880e9e68b5e7770,
         type: 3}
       propertyPath: life
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6288616398689469075, guid: d10987b03ab53b569880e9e68b5e7770,
         type: 3}
@@ -23,6 +23,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4354213638307553630, guid: b9abc807bbe076d4fa3002fe1d8d90d3,
         type: 3}
+    - target: {fileID: 6288616398689469075, guid: d10987b03ab53b569880e9e68b5e7770,
+        type: 3}
+      propertyPath: damage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6844951920497846240, guid: d10987b03ab53b569880e9e68b5e7770,
         type: 3}
       propertyPath: m_Name
