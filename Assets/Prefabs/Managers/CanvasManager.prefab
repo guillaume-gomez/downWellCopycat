@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7651c345215d987b8899bff8fa1d8085, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorType: 14
+  colorType: 6
 --- !u!114 &7135942781058510073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7651c345215d987b8899bff8fa1d8085, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorType: 14
+  colorType: 6
 --- !u!1 &8964980820797851523
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,6 +202,7 @@ GameObject:
   - component: {fileID: 8964980820797851534}
   - component: {fileID: 8964980820797851521}
   - component: {fileID: 8964980820797851535}
+  - component: {fileID: 4040707742506590426}
   m_Layer: 5
   m_Name: Pause Menu
   m_TagString: Untagged
@@ -286,6 +287,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4040707742506590426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8964980820797851523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7651c345215d987b8899bff8fa1d8085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorType: 6
 --- !u!1 &8964980821433406490
 GameObject:
   m_ObjectHideFlags: 0
@@ -559,6 +573,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2596101839676829383}
     m_Modifications:
+    - target: {fileID: 5785212208299688571, guid: b1e8b747276144129a7c53040b4111bc,
+        type: 3}
+      propertyPath: colorType
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6232648311741016526, guid: b1e8b747276144129a7c53040b4111bc,
         type: 3}
       propertyPath: m_Name
@@ -1319,6 +1338,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2596101839676829383}
     m_Modifications:
+    - target: {fileID: 5785212208299688571, guid: b1e8b747276144129a7c53040b4111bc,
+        type: 3}
+      propertyPath: colorType
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6232648311741016526, guid: b1e8b747276144129a7c53040b4111bc,
         type: 3}
       propertyPath: m_Name

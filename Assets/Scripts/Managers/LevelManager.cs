@@ -84,7 +84,11 @@ public class LevelManager : MonoBehaviour
     {
         gameObject.SetActive(true);
         levelScript.SetupScene(GameManager.instance.LevelSystemRun.level);
+        // use invoke to properly find enemies in the scene
+        Invoke("SetupEnemies", 0.25f);
     }
+
+
 
     public void GameOver()
     {
@@ -97,6 +101,11 @@ public class LevelManager : MonoBehaviour
         }
         SoundManager.instance.PlayAndMuteMusic(loseSound);
         StartCoroutine(GoBackMenu());
+    }
+
+    public void SetupEnemies()
+    {
+        EnemyManager.UpdateEnemiesStats(GameManager.instance.LevelSystemRun.level);
     }
 
     public void WinLevel()

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Tilemaps;
@@ -12,6 +13,7 @@ Items,
 Blocs,
 NoMoneyBloc,
 BackgroundGui,
+BackgroundMainMenu,
 ButtonGui,
 SliderBackgroundGui,
 TextColor,
@@ -22,6 +24,12 @@ HealthBarFill,
 WeaponBarFill,
 EndLevelBackground,
 ScoreLineColor,
+}
+
+public class OnColorChangedEventArgs : EventArgs
+{
+    public Color color { get; set; }
+    public ColorTypeTheme colorTypeTheme { get; set;}
 }
 
 public class ThemeManager : MonoBehaviour {
@@ -36,6 +44,7 @@ public class ThemeManager : MonoBehaviour {
     public Color noMoneyBloc;
     [Space]
     [Header("Gui")]
+    public Color backgroundMainMenu;
     public Color backgroundGui;
     public Color buttonGui;
     public Color textColor;
@@ -49,6 +58,7 @@ public class ThemeManager : MonoBehaviour {
     public Color scoreLineColor;
 
     public static ThemeManager instance = null;
+    public event EventHandler<OnColorChangedEventArgs> OnColorChanged;
 
     void Awake()
     {
@@ -79,6 +89,8 @@ public class ThemeManager : MonoBehaviour {
                 return noMoneyBloc;
             case ColorTypeTheme.BackgroundGui:
                 return backgroundGui;
+            case ColorTypeTheme.BackgroundMainMenu:
+                return backgroundMainMenu;
             case ColorTypeTheme.ButtonGui:
                 return buttonGui;
             case ColorTypeTheme.TextColor:
@@ -104,6 +116,52 @@ public class ThemeManager : MonoBehaviour {
         }
     }
 
+    private ColorTypeTheme FieldnameToColorType(string fieldname)
+    {
+        switch(fieldname)
+        {
+            case "background":
+                return ColorTypeTheme.Background;
+            case "player":
+                return ColorTypeTheme.Player;
+            case "enemy":
+                return ColorTypeTheme.Enemy;
+            case "items":
+                return ColorTypeTheme.Items;
+            case "blocs":
+                return ColorTypeTheme.Blocs;
+            case "noMoneyBloc":
+                return ColorTypeTheme.NoMoneyBloc;
+            case "backgroundGui":
+                return ColorTypeTheme.BackgroundGui;
+            case "buttonGui":
+                return ColorTypeTheme.ButtonGui;
+            case "textColor":
+                return ColorTypeTheme.TextColor;
+            case "backgroundMainMenu":
+                return ColorTypeTheme.BackgroundMainMenu;
+            case "sliderBackgroundGui":
+                return ColorTypeTheme.SliderBackgroundGui;
+            case "bonusItemGuiBorder":
+                return ColorTypeTheme.BonusItemGuiBorder;
+            case "bonusItemGuiBackground":
+                return ColorTypeTheme.BonusItemGuiBackground;
+            case "marketBackground":
+                return ColorTypeTheme.MarketBackground;
+            case "healthBarFill":
+                return ColorTypeTheme.HealthBarFill;
+            case "weaponBarFill":
+                return ColorTypeTheme.WeaponBarFill;
+            case "endLevelBackground":
+                return ColorTypeTheme.EndLevelBackground;
+            case "scoreLineColor":
+                return ColorTypeTheme.ScoreLineColor;
+            default:
+                return ColorTypeTheme.Background;
+        }
+    }
+
+
     public void SetColor(SpriteRenderer spriteRenderer, ColorTypeTheme typeColor)
     {
         spriteRenderer.color = ColorByName(typeColor);
@@ -122,5 +180,21 @@ public class ThemeManager : MonoBehaviour {
     public void SetColor(Image image, ColorTypeTheme typeColor)
     {
         image.color = ColorByName(typeColor);
+    }
+
+    public void UpdatePalette(Color color, string fieldname) {
+        // generic setter
+        var field = GetType().GetField(fieldname);
+        field.SetValue(this, color);
+
+        Debug.Log(background);
+
+        OnColorChangedEventArgs args = new OnColorChangedEventArgs();
+        args.color = color;
+        args.colorTypeTheme = FieldnameToColorType(fieldname);
+        if(OnColorChanged != null)
+        {
+            OnColorChanged(this, args);
+        }
     }
 }

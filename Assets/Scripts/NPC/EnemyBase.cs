@@ -60,6 +60,13 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
+     public float Speed {
+        get => speed;
+        set {
+            speed = value;
+        }
+    }
+
     protected void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();

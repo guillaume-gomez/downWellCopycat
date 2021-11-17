@@ -139,7 +139,6 @@ public class LevelGenerator : MonoBehaviour
         AstarPath.active.Scan(gridGraph);
 
         Invoke("asyncScan", 2);
-
         //only for the test
         //SetupScene(1);
         // end of test
