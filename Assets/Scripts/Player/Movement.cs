@@ -407,10 +407,6 @@ public class Movement : MonoBehaviour
         {
             Jump(Vector2.up, jumpForce * 0.75f, false);
             enemy.Hurt(inventory.GetDamage());
-            if(enemy.Life == 0)
-            {
-                inventory.Reload();
-            }
         }
         else if(hurtEnemyDuringJump)
         {

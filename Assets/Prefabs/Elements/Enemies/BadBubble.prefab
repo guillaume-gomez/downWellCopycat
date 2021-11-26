@@ -58,6 +58,12 @@ PrefabInstance:
       propertyPath: damage
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3638551397553188706, guid: 4a577bacd92a79c0496e0965d8afe92b,
+        type: 3}
+      propertyPath: onDied
+      value: 
+      objectReference: {fileID: 11400000, guid: 7b4100e0b42191ea2babb1da65a40dff,
+        type: 2}
     - target: {fileID: 3638551397553188709, guid: 4a577bacd92a79c0496e0965d8afe92b,
         type: 3}
       propertyPath: m_LocalPosition.x

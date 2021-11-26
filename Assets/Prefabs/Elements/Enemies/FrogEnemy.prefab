@@ -159,6 +159,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b9fe20c78b15c554d8f9980de541871a, type: 3}
   - {fileID: 8300000, guid: 076e177a65f943b479dadcefcbc56498, type: 3}
   - {fileID: 8300000, guid: a9fbe952d9962454183f398f356a7239, type: 3}
+  onDied: {fileID: 11400000, guid: 7b4100e0b42191ea2babb1da65a40dff, type: 2}
   maxDistanceVision: 10
   jumpVelocity: 5
   jumpRememberTime: 2

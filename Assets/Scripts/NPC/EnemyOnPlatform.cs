@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyOnPlatform : EnemyBase
 {
+  [Space]
+  [Header("CustomCollisions")]
   public Transform groundDetection;
   private float distance = 1.0f;
   private bool movingRight = true;

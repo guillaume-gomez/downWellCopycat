@@ -10,27 +10,32 @@ public class OnLifeChangedEventArgs : EventArgs
     public int diff { get; set; }
 }
 
+public class OnTimerDeathChangedEventArgs: EventArgs {
+    public float elapsedTimerDeath { get; set; }
+}
+
 public class LifeScript : MonoBehaviour
 {
     public event EventHandler<OnLifeChangedEventArgs> OnLifeChanged;
+    public event EventHandler<OnTimerDeathChangedEventArgs> OnTimerDeathChanged;
+
+    private float timerDeathValue = 10.0f;
+    protected float elapsedTimerDeath = 0.0f;
+
     public SpriteRenderer spriteRenderer;
     public bool godMode;
     public int Life {
         get => life;
         set {
-            OnLifeChangedEventArgs args = new OnLifeChangedEventArgs();
-            args.life = value;
-            args.diff = value - life;
-            if(OnLifeChanged != null)
-            {
-                OnLifeChanged(this, args);
-            }
             life = value;
         }
     }
     public float unvisibleTimer = 0.5f;
     public bool Unvisible {
         get => unvisible;
+    }
+    public float TimerDeathValue {
+        get => timerDeathValue;
     }
 
     private bool unvisible = false;
@@ -46,12 +51,33 @@ public class LifeScript : MonoBehaviour
         }
     }
 
+    void FixedUpdate()
+    {
+        elapsedTimerDeath = elapsedTimerDeath + Time.deltaTime;
+        OnTimerDeathChangedEventArgs args = new OnTimerDeathChangedEventArgs();
+        args.elapsedTimerDeath = timerDeathValue - elapsedTimerDeath;
+        if(OnTimerDeathChanged != null)
+        {
+            OnTimerDeathChanged(this, args);
+        }
+
+        if(elapsedTimerDeath >= timerDeathValue) {
+            LoseLife(Math.Max(life - 1, 0));
+            ResetTimer();
+        }
+    }
+
+    public void ResetTimer() {
+        elapsedTimerDeath = 0.0f;
+    }
+
+
     public void Hurt(EnemyBase enemy)
     {
         if(!unvisible && !godMode) {
             if(life >= 1) {
                 // todo add armor
-                Life = Math.Max(life - enemy.Damage, 0);
+                LoseLife(Math.Max(life - enemy.Damage, 0));
                 // SoundManager.instance.PlaySingle(hurtSound);
             }
 
@@ -64,6 +90,17 @@ public class LifeScript : MonoBehaviour
             StartCoroutine(FlashSprite(spriteRenderer, 0.0f, 1.0f, 0.1f, unvisibleTimer));
             StartCoroutine(GetUnvisible(unvisibleTimer, enemy));
         }
+    }
+
+    private void LoseLife(int newLife) {
+        OnLifeChangedEventArgs args = new OnLifeChangedEventArgs();
+        args.life = newLife;
+        args.diff = newLife - life;
+        if(OnLifeChanged != null)
+        {
+            OnLifeChanged(this, args);
+        }
+        Life = newLife;
     }
 
     IEnumerator FlashSprite(SpriteRenderer renderer, float minAlpha, float maxAlpha, float interval, float duration)

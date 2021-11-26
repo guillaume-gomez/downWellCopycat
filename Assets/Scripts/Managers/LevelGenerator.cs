@@ -29,6 +29,8 @@ public class LevelGenerator : MonoBehaviour
     // position of x or y
     public int xOrigin = 20;
     public int yOrigin = 0;
+    [Header("Debug")]
+    public bool standalone = false;
 
     public void DepthLevel()
     {
@@ -115,7 +117,9 @@ public class LevelGenerator : MonoBehaviour
     void Start()
     {
         //only for the test
-        //DepthLevel();
+        if(standalone) {
+            DepthLevel();
+        }
         //end of test
 
         // for instance scene intro
@@ -140,7 +144,9 @@ public class LevelGenerator : MonoBehaviour
 
         Invoke("asyncScan", 2);
         //only for the test
-        //SetupScene(1);
+        if(standalone) {
+            SetupScene(1);
+        }
         // end of test
     }
 

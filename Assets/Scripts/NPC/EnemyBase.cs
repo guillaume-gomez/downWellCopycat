@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Events;
 using UnityEngine;
 
 static class EnemyConstants
@@ -43,6 +44,9 @@ public class EnemyBase : MonoBehaviour
     [Space]
     [Header("Sounds")]
     public AudioClip[] dieSounds;
+    [Space]
+    [Header("Events")]
+    [SerializeField] GameEvent onDied;
 
     public int Life {
         get => life;
@@ -114,6 +118,7 @@ public class EnemyBase : MonoBehaviour
                 coinInstance.CoinValue = coinValue;
             }
             Instantiate(damageParticle, transform.position, transform.rotation);
+            onDied?.Raise();
         } else {
             invertColor();
             Invoke("BackToNormalColor", 0.1f);

@@ -83,6 +83,27 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6802380436552789703, guid: 644b6dc8f327236bf9f7563d1e1f4faf,
+        type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6802380436552789703, guid: 644b6dc8f327236bf9f7563d1e1f4faf,
+        type: 3}
+      propertyPath: Event
+      value: 
+      objectReference: {fileID: 11400000, guid: 7b4100e0b42191ea2babb1da65a40dff,
+        type: 2}
+    - target: {fileID: 6802380436552789703, guid: 644b6dc8f327236bf9f7563d1e1f4faf,
+        type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6802380436552789703, guid: 644b6dc8f327236bf9f7563d1e1f4faf,
+        type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6992144150588225017, guid: 644b6dc8f327236bf9f7563d1e1f4faf,
         type: 3}
       propertyPath: m_Size.x
@@ -103,5 +124,6 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.03
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6802380436552789703, guid: 644b6dc8f327236bf9f7563d1e1f4faf, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 644b6dc8f327236bf9f7563d1e1f4faf, type: 3}
