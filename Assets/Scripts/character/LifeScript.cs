@@ -10,17 +10,10 @@ public class OnLifeChangedEventArgs : EventArgs
     public int diff { get; set; }
 }
 
-public class OnTimerDeathChangedEventArgs: EventArgs {
-    public float elapsedTimerDeath { get; set; }
-}
 
 public class LifeScript : MonoBehaviour
 {
     public event EventHandler<OnLifeChangedEventArgs> OnLifeChanged;
-    public event EventHandler<OnTimerDeathChangedEventArgs> OnTimerDeathChanged;
-
-    private float timerDeathValue = 10.0f;
-    protected float elapsedTimerDeath = 0.0f;
 
     public SpriteRenderer spriteRenderer;
     public bool godMode;
@@ -34,10 +27,6 @@ public class LifeScript : MonoBehaviour
     public bool Unvisible {
         get => unvisible;
     }
-    public float TimerDeathValue {
-        get => timerDeathValue;
-    }
-
     private bool unvisible = false;
     private int life = 4;
 
@@ -50,27 +39,6 @@ public class LifeScript : MonoBehaviour
             Life = life;
         }
     }
-
-    void FixedUpdate()
-    {
-        elapsedTimerDeath = elapsedTimerDeath + Time.deltaTime;
-        OnTimerDeathChangedEventArgs args = new OnTimerDeathChangedEventArgs();
-        args.elapsedTimerDeath = timerDeathValue - elapsedTimerDeath;
-        if(OnTimerDeathChanged != null)
-        {
-            OnTimerDeathChanged(this, args);
-        }
-
-        if(elapsedTimerDeath >= timerDeathValue) {
-            LoseLife(Math.Max(life - 1, 0));
-            ResetTimer();
-        }
-    }
-
-    public void ResetTimer() {
-        elapsedTimerDeath = 0.0f;
-    }
-
 
     public void Hurt(EnemyBase enemy)
     {
@@ -92,7 +60,7 @@ public class LifeScript : MonoBehaviour
         }
     }
 
-    private void LoseLife(int newLife) {
+    public void LoseLife(int newLife) {
         OnLifeChangedEventArgs args = new OnLifeChangedEventArgs();
         args.life = newLife;
         args.diff = newLife - life;

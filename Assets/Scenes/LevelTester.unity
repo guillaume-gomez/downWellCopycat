@@ -278,6 +278,18 @@ Tilemap:
     type: 3}
   m_PrefabInstance: {fileID: 648794556880362155}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &605787807 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5082514406455619225, guid: c2515910bdda68ad6ba4586ce7857434,
+    type: 3}
+  m_PrefabInstance: {fileID: 1418737491}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f80869b27c633d7d8b37bb9ed52578e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1125214395
 GameObject:
   m_ObjectHideFlags: 0
@@ -427,6 +439,16 @@ PrefabInstance:
       propertyPath: godMode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6295020891278882129, guid: c2515910bdda68ad6ba4586ce7857434,
+        type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1418737494}
+    - target: {fileID: 6295020891278882129, guid: c2515910bdda68ad6ba4586ce7857434,
+        type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResetTimer
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2515910bdda68ad6ba4586ce7857434, type: 3}
 --- !u!114 &1418737492 stripped
@@ -447,6 +469,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1418737491}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1418737494 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2090595019263436096, guid: c2515910bdda68ad6ba4586ce7857434,
+    type: 3}
+  m_PrefabInstance: {fileID: 1418737491}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418737493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1aa98a3b0d799bc68a9e5df751a16d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1503928448 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8964980821433406694, guid: 94375eab90f6ee0a195576a3373aaffe,
@@ -750,6 +784,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 166485756}
     m_Modifications:
+    - target: {fileID: 590052124, guid: 92084eec381a369599ed9443577cbacd, type: 3}
+      propertyPath: Inventory
+      value: 
+      objectReference: {fileID: 605787807}
     - target: {fileID: 938777858009500981, guid: 92084eec381a369599ed9443577cbacd,
         type: 3}
       propertyPath: tileMap
@@ -1020,6 +1058,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1418737492}
+    - target: {fileID: 7913141030587325354, guid: 92084eec381a369599ed9443577cbacd,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1418737494}
     - target: {fileID: 8193954538249333980, guid: 92084eec381a369599ed9443577cbacd,
         type: 3}
       propertyPath: m_Name
@@ -1085,7 +1128,8 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7813746130563025356, guid: 92084eec381a369599ed9443577cbacd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 92084eec381a369599ed9443577cbacd, type: 3}
 --- !u!224 &6157663811409464787 stripped
 RectTransform:

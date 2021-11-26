@@ -2,10 +2,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class TimerDeath : MonoBehaviour
+public class TimerDeathUI : MonoBehaviour
 {
     private Slider slider;
-    public LifeScript player;
+    public TimerDeath player;
 
     void Start()
     {

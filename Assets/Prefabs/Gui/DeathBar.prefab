@@ -84,7 +84,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5319973828158393257}
   - component: {fileID: 5319973828158393262}
-  - component: {fileID: 8776092993616903180}
+  - component: {fileID: 8677290206386679402}
   m_Layer: 5
   m_Name: DeathBar
   m_TagString: Untagged
@@ -163,7 +163,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &8776092993616903180
+--- !u!114 &8677290206386679402
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5319973828158393256}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9dfd9b325313a9f7789b00fdcd8d6026, type: 3}
+  m_Script: {fileID: 11500000, guid: b9b0fca3ce85eba379d7f333ef904137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
