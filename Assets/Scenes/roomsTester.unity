@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -429,6 +429,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac6b211518760eb2fa87ee0d72fbc12d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileBloc: {fileID: 11400000, guid: 789af5dc836fc9a3b89c285ee530749e, type: 2}
+  tileMap: {fileID: 428200957}
   rooms:
   - {fileID: 6535786571471761710, guid: c5bdcce123b0dd312bb7ac38e252aa4a, type: 3}
   - {fileID: 8842948384011423627, guid: bfe6142ab6253f893bb9eee1c6b63a4d, type: 3}
@@ -449,9 +451,8 @@ MonoBehaviour:
   - {fileID: 3345486218587342142, guid: efd2ede1466c0df59b087fa7dda45f90, type: 3}
   - {fileID: 6075164130737165741, guid: 875c18d5987fee217b216e7430645c75, type: 3}
   - {fileID: 5166209652668594136, guid: 18f1c60db4235577eb1d8bef94ae8dd9, type: 3}
+  - {fileID: 2959272010368667462, guid: dd3af2dec09bc2ca4a9a05179ea4c8cd, type: 3}
   - {fileID: 5690970423425871576, guid: 3f1e20692b5099d67994f0836183b855, type: 3}
-  tileBloc: {fileID: 11400000, guid: 789af5dc836fc9a3b89c285ee530749e, type: 2}
-  tileMap: {fileID: 428200957}
 --- !u!4 &1435113491
 Transform:
   m_ObjectHideFlags: 0
