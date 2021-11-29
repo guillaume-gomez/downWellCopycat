@@ -148,7 +148,7 @@ MonoBehaviour:
   enemyScore: 1
   damage: 1
   speed: 1
-  life: 4
+  life: 1
   coin: {fileID: -9087340583689344853, guid: 28426c3f44616d913a8f649cee2a5d6c, type: 3}
   coinValue: 20
   canBeJumped: 1

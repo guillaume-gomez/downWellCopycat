@@ -23,6 +23,10 @@ public class TimerDeath : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(LevelManager.PauseGame) {
+            return;
+        }
+
         elapsedTimerDeath = elapsedTimerDeath + Time.deltaTime;
         OnTimerDeathChangedEventArgs args = new OnTimerDeathChangedEventArgs();
         args.elapsedTimerDeath = timerDeathValue - elapsedTimerDeath;
