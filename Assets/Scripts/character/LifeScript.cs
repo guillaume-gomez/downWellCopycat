@@ -46,7 +46,7 @@ public class LifeScript : MonoBehaviour
             if(life >= 1) {
                 // todo add armor
                 LoseLife(Math.Max(life - enemy.Damage, 0));
-                // SoundManager.instance.PlaySingle(hurtSound);
+                StartCoroutine(GetUnvisible(unvisibleTimer, enemy));
             }
 
             if(life <= 0)
@@ -55,8 +55,6 @@ public class LifeScript : MonoBehaviour
                 return;
             }
             LevelManager.instance.UpdateLife(life);
-            StartCoroutine(FlashSprite(spriteRenderer, 0.0f, 1.0f, 0.1f, unvisibleTimer));
-            StartCoroutine(GetUnvisible(unvisibleTimer, enemy));
         }
     }
 
@@ -69,6 +67,8 @@ public class LifeScript : MonoBehaviour
             OnLifeChanged(this, args);
         }
         Life = newLife;
+        StartCoroutine(FlashSprite(spriteRenderer, 0.0f, 1.0f, 0.1f, unvisibleTimer));
+        // SoundManager.instance.PlaySingle(hurtSound);
     }
 
     IEnumerator FlashSprite(SpriteRenderer renderer, float minAlpha, float maxAlpha, float interval, float duration)
