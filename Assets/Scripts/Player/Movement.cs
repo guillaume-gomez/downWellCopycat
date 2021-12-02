@@ -366,7 +366,7 @@ public class Movement : MonoBehaviour
         }
         EnemyBase enemy = collision.collider.GetComponent<EnemyBase>();
         if(!enemy) {
-            //Debug.Log(collision.collider.name);
+            Debug.Log(collision.collider.name);
             // otherwise it must be floor
             if(LevelManager.instance != null)
             {

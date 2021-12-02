@@ -12,6 +12,7 @@ public class TimerDeath : MonoBehaviour
     private LifeScript lifeScript;
     private float timerDeathValue = 10.0f;
     protected float elapsedTimerDeath = 0.0f;
+    public bool godMode = false;
 
     public float TimerDeathValue {
         get => timerDeathValue;
@@ -23,7 +24,7 @@ public class TimerDeath : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(LevelManager.PauseGame) {
+        if(LevelManager.PauseGame || godMode) {
             return;
         }
 

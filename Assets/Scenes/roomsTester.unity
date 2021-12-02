@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -433,25 +433,26 @@ MonoBehaviour:
   tileMap: {fileID: 428200957}
   rooms:
   - {fileID: 6535786571471761710, guid: c5bdcce123b0dd312bb7ac38e252aa4a, type: 3}
-  - {fileID: 8842948384011423627, guid: bfe6142ab6253f893bb9eee1c6b63a4d, type: 3}
-  - {fileID: 557471825703186819, guid: b4b612b5c7fd83134b636c1f77ee38ac, type: 3}
-  - {fileID: 3972310506377442407, guid: c9b973aabcf617bbeb1b5ca433444d4c, type: 3}
+  - {fileID: 6339151832998391856, guid: 26f72f7c264c3c171a73c81899de6fd3, type: 3}
+  - {fileID: 6643623032023776940, guid: a6e35c37075b9dc37a30f515e498fa74, type: 3}
+  - {fileID: 120646834218775517, guid: f6cbcdb0e49c30ce09bc2ce633fef4a0, type: 3}
+  - {fileID: 1776379754541113783, guid: 1ea4d89af0b563038bcbc02750a101be, type: 3}
+  - {fileID: 3600246225659057396, guid: 26bb33934d763f56b999e7e9b981465c, type: 3}
   - {fileID: 6638272433499478125, guid: ee5da7738d4cf10518766fa95ba6771e, type: 3}
-  - {fileID: 2009582135068740846, guid: a94578f38972297b280df71e6e1142e3, type: 3}
+  - {fileID: 5166209652668594136, guid: 18f1c60db4235577eb1d8bef94ae8dd9, type: 3}
+  - {fileID: 5313856706185055144, guid: c0494c902183b516b89da577c2dfc41d, type: 3}
+  - {fileID: 6681241453542742361, guid: e2b4c7a667baa6f058afa6ae7d7c5915, type: 3}
+  - {fileID: 8448601294354023243, guid: 0a9604e5744cf3e9a9ca8d76ae0dc0a4, type: 3}
+  - {fileID: 8842948384011423627, guid: bfe6142ab6253f893bb9eee1c6b63a4d, type: 3}
   - {fileID: 7937649343707679817, guid: 97d123767e3e8428fa404f9cfc67638f, type: 3}
   - {fileID: 7436560913097477952, guid: f61690e034a3a88ad80c7cd380f5ae27, type: 3}
+  - {fileID: 703461193875437618, guid: 8c603896b182d2cf18ca5bb1268d3aeb, type: 3}
+  - {fileID: 8313173658795559728, guid: 7d3451a3292d8a6908b24f5f3aa19da3, type: 3}
+  - {fileID: 3426875319023180708, guid: 607511b6223db5a4a8843fa2c2a3defe, type: 3}
   - {fileID: 129133959101062432, guid: 738b94a4bf39cb9d5a599410d4f8fdb4, type: 3}
-  - {fileID: 5310664551551731059, guid: 19d912a3fe45e5ee3b2caf79e471225f, type: 3}
-  - {fileID: 1425105040783191511, guid: d613962186cf38e2b8047b1f983ad708, type: 3}
-  - {fileID: 2986822392284772894, guid: 15696d2f5beb290f7af406fc21a84df6, type: 3}
-  - {fileID: 2119903548772499512, guid: 7033afcaf72783a2993c291d9bddb5d0, type: 3}
-  - {fileID: 9117637070163853009, guid: e3cc9cd8739a25c30a6b06b6d6e963be, type: 3}
   - {fileID: 8765412069968237768, guid: 39d918d4da3e18d74b4f5f695e6ef486, type: 3}
-  - {fileID: 120646834218775517, guid: f6cbcdb0e49c30ce09bc2ce633fef4a0, type: 3}
-  - {fileID: 3345486218587342142, guid: efd2ede1466c0df59b087fa7dda45f90, type: 3}
   - {fileID: 6075164130737165741, guid: 875c18d5987fee217b216e7430645c75, type: 3}
-  - {fileID: 5166209652668594136, guid: 18f1c60db4235577eb1d8bef94ae8dd9, type: 3}
-  - {fileID: 2959272010368667462, guid: dd3af2dec09bc2ca4a9a05179ea4c8cd, type: 3}
+  - {fileID: 7789511446369377269, guid: fae102a064cdb2d3f8ccf24ec55eba17, type: 3}
   - {fileID: 5690970423425871576, guid: 3f1e20692b5099d67994f0836183b855, type: 3}
 --- !u!4 &1435113491
 Transform:
@@ -561,6 +562,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2090595019263436096, guid: c2515910bdda68ad6ba4586ce7857434,
+        type: 3}
+      propertyPath: godMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5082514406271902629, guid: c2515910bdda68ad6ba4586ce7857434,
         type: 3}
       propertyPath: m_Name

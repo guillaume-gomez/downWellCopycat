@@ -175,7 +175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   enemyScore: 1
-  damage: 0
+  damage: 1
   speed: 5
   life: 1
   coin: {fileID: -9087340583689344853, guid: 28426c3f44616d913a8f649cee2a5d6c, type: 3}

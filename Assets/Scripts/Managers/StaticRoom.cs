@@ -87,6 +87,25 @@ public class StaticRoom : MonoBehaviour
                 1)
         );
 
+        Gizmos.color = Color.green;
+        for(var x = offsetLeftAndRight;
+                x <= width - 2 * offsetLeftAndRight;
+                x += offsetLeftAndRight) {
+            for(var y = 0; y < height; y += offsetLeftAndRight) {
+
+                Gizmos.DrawWireCube(
+                    new Vector3(
+                        transform.position.x + x + offsetLeftAndRight/2.0f,
+                        transform.position.y - y - offsetLeftAndRight/2.0f,
+                        0),
+                    new Vector3(
+                        offsetLeftAndRight,
+                        offsetLeftAndRight,
+                        1)
+                );
+            }
+        }
+
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(
             new Vector3(

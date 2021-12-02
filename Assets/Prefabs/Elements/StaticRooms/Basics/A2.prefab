@@ -96,25 +96,37 @@ PrefabInstance:
     - target: {fileID: -6161938768526914918, guid: 1ee4c43e89b81e9c985a3c120b60acac,
         type: 3}
       propertyPath: possibleRooms.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -6161938768526914918, guid: 1ee4c43e89b81e9c985a3c120b60acac,
         type: 3}
       propertyPath: possibleRooms.Array.data[1]
       value: 
-      objectReference: {fileID: 579245464388702755, guid: c9b973aabcf617bbeb1b5ca433444d4c,
+      objectReference: {fileID: 2850611490687715315, guid: 1ea4d89af0b563038bcbc02750a101be,
         type: 3}
     - target: {fileID: -6161938768526914918, guid: 1ee4c43e89b81e9c985a3c120b60acac,
         type: 3}
       propertyPath: possibleRooms.Array.data[0]
       value: 
-      objectReference: {fileID: 4077189631976363975, guid: b4b612b5c7fd83134b636c1f77ee38ac,
+      objectReference: {fileID: 7149040472655789609, guid: ee5da7738d4cf10518766fa95ba6771e,
         type: 3}
     - target: {fileID: -6161938768526914918, guid: 1ee4c43e89b81e9c985a3c120b60acac,
         type: 3}
       propertyPath: possibleRooms.Array.data[2]
       value: 
-      objectReference: {fileID: 5837137840429328909, guid: 97d123767e3e8428fa404f9cfc67638f,
+      objectReference: {fileID: 5338711594801587471, guid: 0a9604e5744cf3e9a9ca8d76ae0dc0a4,
+        type: 3}
+    - target: {fileID: -6161938768526914918, guid: 1ee4c43e89b81e9c985a3c120b60acac,
+        type: 3}
+      propertyPath: possibleRooms.Array.data[3]
+      value: 
+      objectReference: {fileID: 5013044328786127311, guid: bfe6142ab6253f893bb9eee1c6b63a4d,
+        type: 3}
+    - target: {fileID: -6161938768526914918, guid: 1ee4c43e89b81e9c985a3c120b60acac,
+        type: 3}
+      propertyPath: possibleRooms.Array.data[4]
+      value: 
+      objectReference: {fileID: 5083825260309525132, guid: 39d918d4da3e18d74b4f5f695e6ef486,
         type: 3}
     - target: {fileID: 1537410429808422109, guid: 1ee4c43e89b81e9c985a3c120b60acac,
         type: 3}
@@ -174,7 +186,7 @@ PrefabInstance:
     - target: {fileID: 1537410429808422110, guid: 1ee4c43e89b81e9c985a3c120b60acac,
         type: 3}
       propertyPath: m_Name
-      value: FourSquaresDestructible
+      value: A2
       objectReference: {fileID: 0}
     - target: {fileID: 5444962775624488996, guid: 1ee4c43e89b81e9c985a3c120b60acac,
         type: 3}
