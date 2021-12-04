@@ -7,10 +7,13 @@ public class LifeLight : MonoBehaviour
 
     public TimerDeath timerDeathScript;
     private Light2D light;
+    private float initialPointLightOuterRadius;
+    private float initialPointLightInnerRadius;
 
     void Start() {
         light = GetComponent<Light2D>();
-        //timerDeathScript = GetComponent<TimerDeath>();
+        initialPointLightOuterRadius = light.pointLightOuterRadius;
+        initialPointLightInnerRadius = light.pointLightInnerRadius;
     }
 
     void FixedUpdate()
@@ -18,9 +21,8 @@ public class LifeLight : MonoBehaviour
         if(LevelManager.PauseGame) {
             return;
         }
-        //Debug.Log(timerDeathScript.TimerDeathValue/ 10000 * light.pointLightInnerAngle);
-        light.pointLightInnerAngle = timerDeathScript.TimerDeathValue/ 10000 * light.pointLightInnerAngle;
-
+        light.pointLightOuterRadius = timerDeathScript.TimerDeathRatio * initialPointLightOuterRadius;
+        light.pointLightInnerRadius = timerDeathScript.TimerDeathRatio * initialPointLightInnerRadius;
     }
 
 
