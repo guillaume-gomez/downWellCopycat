@@ -102,9 +102,7 @@ public class EnemyBase : MonoBehaviour
 
     public void Hurt(int loss)
     {
-        life = life - loss;
-        computeColor();
-
+        Life = life - loss;
         if (life <= 0.0f)
         {
             Destroy(this.gameObject);
