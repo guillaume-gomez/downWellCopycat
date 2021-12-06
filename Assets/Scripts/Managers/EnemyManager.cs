@@ -8,7 +8,7 @@ public class EnemyManager : MonoBehaviour
     {
         EnemyBase[] components = GameObject.FindObjectsOfType<EnemyBase>();
         foreach(EnemyBase enemy in components) {
-            enemy.life = enemy.Life + level;
+            enemy.life = enemy.Life + (int)Mathf.Floor(level * 0.2f);
             enemy.speed = enemy.Speed + level * 0.2f;
         }
     }
