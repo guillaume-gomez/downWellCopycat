@@ -366,13 +366,13 @@ public class Movement : MonoBehaviour
         }
         EnemyBase enemy = collision.collider.GetComponent<EnemyBase>();
         if(!enemy) {
-            Debug.Log(collision.collider.name);
+            // Debug.Log(collision.collider.name);
             // otherwise it must be floor
             if(LevelManager.instance != null)
             {
                 foreach(ContactPoint2D point in collision.contacts)
                 {
-                    if(point.normal.y >= 0.9f)
+                    if(point.normal.y >= 0.75f)
                     {
                         LevelManager.instance.ResetCombo();
                         return;
@@ -391,7 +391,7 @@ public class Movement : MonoBehaviour
                 Debug.DrawLine(point.point, point.point + point.normal, Color.red,100);
                 // Debug.Log(point.normal);
                 // if fall into enemy
-                if( point.normal.y >= 0.9f)
+                if( point.normal.y >= 0.75f)
                 {
                   hasJumpedOnEnemy = true;
                 }
