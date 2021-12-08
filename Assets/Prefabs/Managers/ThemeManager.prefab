@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ece2e79f0d82be048e8bb85a7140c97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  background: {r: 0.07226771, g: 0.073869705, b: 0.0754717, a: 1}
+  background: {r: 0, g: 0, b: 0, a: 1}
   player: {r: 0.7264151, g: 0.7264151, b: 0.7264151, a: 1}
   enemy: {r: 0.9607843, g: 0.54509807, b: 0.5176471, a: 1}
   items: {r: 0.92156863, g: 0.9607843, b: 0.6156863, a: 1}
