@@ -4796,6 +4796,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1648697162901226161}
   - component: {fileID: 8819186915232872532}
+  - component: {fileID: 1181580964}
   m_Layer: 0
   m_Name: Point Light 2D
   m_TagString: Untagged
@@ -4834,7 +4835,7 @@ MonoBehaviour:
   m_FalloffIntensity: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_LightVolumeOpacity: 0.025
+  m_LightVolumeOpacity: 0.158
   m_ApplyToSortingLayers: 000000002d7a3cb1aba54caa53e3efef01e0de25
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
@@ -4844,8 +4845,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensity: 0
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 4
-  m_PointLightOuterRadius: 20
+  m_PointLightInnerRadius: 15
+  m_PointLightOuterRadius: 30
   m_PointLightDistance: 3
   m_PointLightQuality: 1
   m_ShapeLightParametricSides: 5
@@ -4858,6 +4859,19 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &1181580964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120329620167678591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f379a7972cdda390a649d1af47ca48c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerDeathScript: {fileID: 2090595019263436096}
 --- !u!1 &5082514406271902629
 GameObject:
   m_ObjectHideFlags: 0
@@ -4957,7 +4971,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5082514406271902629}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e153e80f1d2b5876b98cd24adee7e1fb, type: 3}
   m_Name: 
@@ -5052,6 +5066,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1aa98a3b0d799bc68a9e5df751a16d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  godMode: 0
 --- !u!70 &293383091
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -5084,7 +5099,7 @@ MonoBehaviour:
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5082514406271902634}
+      - m_Target: {fileID: 2090595019263436096}
         m_MethodName: ResetTimer
         m_Mode: 1
         m_Arguments:

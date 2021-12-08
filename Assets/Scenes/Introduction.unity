@@ -544,6 +544,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2090595019263436096, guid: c2515910bdda68ad6ba4586ce7857434,
+        type: 3}
+      propertyPath: godMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5082514406271902629, guid: c2515910bdda68ad6ba4586ce7857434,
         type: 3}
       propertyPath: m_Name
@@ -1302,12 +1307,14 @@ MonoBehaviour:
   tileBloc: {fileID: 11400000, guid: 789af5dc836fc9a3b89c285ee530749e, type: 2}
   beginRoom: {fileID: 0}
   endRoom: {fileID: 0}
+  caveRooms: []
   player: {fileID: 1367582973}
   roomWidth: 36
   roomHeight: 24
   nbRooms: 4
   xOrigin: 0
   yOrigin: 0
+  standalone: 0
 --- !u!61 &2057040326
 BoxCollider2D:
   m_ObjectHideFlags: 0
