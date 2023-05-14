@@ -18,8 +18,13 @@ public class TimerDeath : MonoBehaviour
         get => timerDeathValue;
     }
 
+    public float TimerDeathRatio {
+        get => (timerDeathValue - elapsedTimerDeath) / timerDeathValue;
+    }
+
     void Start() {
         lifeScript = GetComponent<LifeScript>();
+        lifeScript.OnLifeChanged += OnPlayerHurt;
     }
 
     void FixedUpdate()
@@ -45,6 +50,16 @@ public class TimerDeath : MonoBehaviour
     public void ResetTimer() {
         elapsedTimerDeath = 0.0f;
     }
+
+    private void OnPlayerHurt(object sender, OnLifeChangedEventArgs e)
+    {
+        //Debug.Log("OnPlayerHurt " +  e.life + " " +  e.diff);
+        if((int) e.life > 0 && (int) e.diff < 0)
+        {
+            ResetTimer();
+        }
+    }
+
 
 
 }

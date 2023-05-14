@@ -164,6 +164,11 @@ PrefabInstance:
       propertyPath: shotSound
       value: 
       objectReference: {fileID: 8300000, guid: 34a6ceeacf204764a9443df243733e87, type: 3}
+    - target: {fileID: 8852556650836462881, guid: 31ff3fe6847f42501b3f9d8a587db044,
+        type: 3}
+      propertyPath: shootPressedTimerRemember
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -9098993596571789541, guid: 31ff3fe6847f42501b3f9d8a587db044, type: 3}
     - {fileID: -6294408824271950648, guid: 31ff3fe6847f42501b3f9d8a587db044, type: 3}
