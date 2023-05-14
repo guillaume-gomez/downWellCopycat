@@ -70,7 +70,12 @@ PrefabInstance:
     - target: {fileID: 263025891014417195, guid: 4989cc2130623cb4eaf6d421b14ac7cb,
         type: 3}
       propertyPath: objects.Array.size
-      value: 1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 263025891014417195, guid: 4989cc2130623cb4eaf6d421b14ac7cb,
+        type: 3}
+      propertyPath: percentages.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 263025891014417195, guid: 4989cc2130623cb4eaf6d421b14ac7cb,
         type: 3}
@@ -78,6 +83,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1726130398281543960, guid: 00d5e0b81f469d416977ac3e81967c84,
         type: 3}
+    - target: {fileID: 263025891014417195, guid: 4989cc2130623cb4eaf6d421b14ac7cb,
+        type: 3}
+      propertyPath: objects.Array.data[1]
+      value: 
+      objectReference: {fileID: 8949564039063712372, guid: ce833e9a88f52064e8135a1f367df39c,
+        type: 3}
+    - target: {fileID: 263025891014417195, guid: 4989cc2130623cb4eaf6d421b14ac7cb,
+        type: 3}
+      propertyPath: percentages.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 4989cc2130623cb4eaf6d421b14ac7cb, type: 3}

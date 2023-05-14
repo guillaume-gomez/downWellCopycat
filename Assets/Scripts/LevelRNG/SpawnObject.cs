@@ -9,6 +9,8 @@ public class SpawnObject : MonoBehaviour
     public GameObject[] objects;
     public float[] percentages;
     public PlatformPosition platformPosition = PlatformPosition.Left;
+    public int xIndex;
+    public int yIndex;
 
     public void Init()
     {

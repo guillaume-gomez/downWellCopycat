@@ -66,7 +66,13 @@ PrefabInstance:
         type: 3}
       propertyPath: objects.Array.data[0]
       value: 
-      objectReference: {fileID: 1485192249525272430, guid: 63ab0d56aba1cc31d936c83951b7bc24,
+      objectReference: {fileID: 2895166682009361185, guid: 5e35f27a6214e07d1aeda8b05de3f98d,
+        type: 3}
+    - target: {fileID: 4356527139320456181, guid: b3877ed4e16b6b04390c249187055461,
+        type: 3}
+      propertyPath: objects.Array.data[1]
+      value: 
+      objectReference: {fileID: 6677119063764165614, guid: 9dfdb26f7784c75ad95e81a34b19236d,
         type: 3}
     - target: {fileID: 4356527139320456182, guid: b3877ed4e16b6b04390c249187055461,
         type: 3}

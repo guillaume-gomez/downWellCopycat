@@ -6,6 +6,7 @@ public class BreakableBlocShop : MonoBehaviour
 {
     public SpawnObject spawner;
     public TextMeshPro text;
+    public SpriteRenderer platformRenderer;
     private float priceToBeDestroyed;
     private bool canBeBought;
 
@@ -33,11 +34,13 @@ public class BreakableBlocShop : MonoBehaviour
         {
             canBeBought = true;
             text.color = new Color32(255, 255, 255, 255);
+            ThemeManager.instance.SetColor(platformRenderer, ColorTypeTheme.Blocs);
         }
         else
         {
             canBeBought = false;
             text.color = new Color32(255, 50, 50, 255);
+            ThemeManager.instance.SetColor(platformRenderer, ColorTypeTheme.NoMoneyBloc);
         }
     }
 

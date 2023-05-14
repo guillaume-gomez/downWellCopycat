@@ -48,6 +48,11 @@ PrefabInstance:
       propertyPath: dieSounds.Array.data[3]
       value: 
       objectReference: {fileID: 8300000, guid: a9fbe952d9962454183f398f356a7239, type: 3}
+    - target: {fileID: 5815458887183426485, guid: bb6a83010a7f74f048305b895a4e013c,
+        type: 3}
+      propertyPath: damage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5815458887183426504, guid: bb6a83010a7f74f048305b895a4e013c,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -175,20 +175,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   enemyScore: 1
-  damage: 0
+  damage: 1
+  speed: 5
   life: 1
   coin: {fileID: -9087340583689344853, guid: 28426c3f44616d913a8f649cee2a5d6c, type: 3}
   coinValue: 5
   canBeJumped: 1
   damageParticle: {fileID: 4354213638307553630, guid: b9abc807bbe076d4fa3002fe1d8d90d3,
     type: 3}
-  offsetPositionSpawn: {x: 0, y: 0, z: 0}
   dieSounds:
   - {fileID: 8300000, guid: 0258634ff0fb48b43bf2a110f8bc77bb, type: 3}
   - {fileID: 8300000, guid: b9fe20c78b15c554d8f9980de541871a, type: 3}
   - {fileID: 8300000, guid: 076e177a65f943b479dadcefcbc56498, type: 3}
   - {fileID: 8300000, guid: a9fbe952d9962454183f398f356a7239, type: 3}
-  speed: 5
+  onDied: {fileID: 11400000, guid: 7b4100e0b42191ea2babb1da65a40dff, type: 2}
   nextWaypointDistance: 3
   maxDistanceVision: 50
   hasLimitY: 0

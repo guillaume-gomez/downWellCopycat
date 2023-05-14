@@ -1,4 +1,5 @@
 using System;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
@@ -14,11 +15,17 @@ public class OnMoneyChangedEventArgs : EventArgs
     public float money { get; set; }
 }
 
+public class OnPickedEventArgs : EventArgs
+{
+    public string item { get; set; }
+}
+
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance = null;
     public event EventHandler OnWin;
     public event EventHandler OnLose;
+    public event EventHandler<OnPickedEventArgs> OnPickedUp;
     public event EventHandler<OnComboChangedEventArgs> OnUpdateCombo;
     public event EventHandler<OnMoneyChangedEventArgs> OnMoneyChange;
 
@@ -28,6 +35,10 @@ public class LevelManager : MonoBehaviour
     private ComboText comboText;
     private LevelGenerator levelScript;
     public static bool PauseGame = false;
+
+    public LevelGenerator LevelScript {
+        get => levelScript;
+    }
 
     void Awake()
     {
@@ -73,7 +84,11 @@ public class LevelManager : MonoBehaviour
     {
         gameObject.SetActive(true);
         levelScript.SetupScene(GameManager.instance.LevelSystemRun.level);
+        // use invoke to properly find enemies in the scene
+        Invoke("SetupEnemies", 0.25f);
     }
+
+
 
     public void GameOver()
     {
@@ -88,6 +103,11 @@ public class LevelManager : MonoBehaviour
         StartCoroutine(GoBackMenu());
     }
 
+    public void SetupEnemies()
+    {
+        EnemyManager.UpdateEnemiesStats(GameManager.instance.LevelSystemRun.level);
+    }
+
     public void WinLevel()
     {
         Debug.Log("WinLevel");
@@ -95,11 +115,11 @@ public class LevelManager : MonoBehaviour
         {
             OnWin(this, EventArgs.Empty);
         }
-        GameManager.instance.LevelSystemRun.level += 1;
+        GameManager.instance.LevelSystemRun.Level += 1;
         GameManager.instance.Save();
 
         SoundManager.instance.PlayAndMuteMusic(winSound);
-        Invoke("LoadIntroScene", 2.0f);
+        Invoke("LoadIntroScene", 1.5f);
     }
 
     public void LoadIntroScene()
@@ -107,9 +127,25 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1);
     }
 
+    public void PickedUp(string itemPickedName)
+    {
+        if(OnPickedUp != null)
+        {
+            OnPickedEventArgs eventArgs = new OnPickedEventArgs();
+            eventArgs.item = itemPickedName;
+            OnPickedUp(this, eventArgs);
+        }
+    }
+
+
     IEnumerator GoBackMenu()
     {
-        yield return new WaitForSecondsRealtime(5);
+        yield return new WaitForSecondsRealtime(30.0f);
+        GoBackMenuCallBack();
+    }
+
+    public void GoBackMenuCallBack()
+    {
         Time.timeScale = 1.0f;
         PauseGame = false;
         GameManager.instance.EndRun();
@@ -137,7 +173,10 @@ public class LevelManager : MonoBehaviour
 
         OnMoneyChangedEventArgs eventArgs = new OnMoneyChangedEventArgs();
         eventArgs.money = GameManager.instance.LevelSystemRun.money;
-        OnMoneyChange(this, eventArgs);
+        if(OnMoneyChange != null)
+        {
+            OnMoneyChange(this, eventArgs);
+        }
     }
 
     public void IncCombo()

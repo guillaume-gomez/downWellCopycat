@@ -71,6 +71,8 @@ public class Movement : MonoBehaviour
     public ParticleSystem slideParticle;
     public ParticleSystem dust;
 
+    public event EventHandler OnJump;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -230,6 +232,11 @@ public class Movement : MonoBehaviour
 
         rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
         rb2d.velocity += dir * jumpTakeOffSpeed;
+
+        if(OnJump != null)
+        {
+            OnJump(this, EventArgs.Empty);
+        }
         particle.Play();
     }
 
@@ -359,13 +366,13 @@ public class Movement : MonoBehaviour
         }
         EnemyBase enemy = collision.collider.GetComponent<EnemyBase>();
         if(!enemy) {
-            //Debug.Log(collision.collider.name);
+            // Debug.Log(collision.collider.name);
             // otherwise it must be floor
             if(LevelManager.instance != null)
             {
                 foreach(ContactPoint2D point in collision.contacts)
                 {
-                    if(point.normal.y >= 0.9f)
+                    if(point.normal.y >= 0.75f)
                     {
                         LevelManager.instance.ResetCombo();
                         return;
@@ -384,7 +391,7 @@ public class Movement : MonoBehaviour
                 Debug.DrawLine(point.point, point.point + point.normal, Color.red,100);
                 // Debug.Log(point.normal);
                 // if fall into enemy
-                if( point.normal.y >= 0.9f)
+                if( point.normal.y >= 0.75f)
                 {
                   hasJumpedOnEnemy = true;
                 }
@@ -400,10 +407,6 @@ public class Movement : MonoBehaviour
         {
             Jump(Vector2.up, jumpForce * 0.75f, false);
             enemy.Hurt(inventory.GetDamage());
-            if(enemy.Life == 0)
-            {
-                inventory.Reload();
-            }
         }
         else if(hurtEnemyDuringJump)
         {
