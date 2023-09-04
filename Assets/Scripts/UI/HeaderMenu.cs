@@ -24,7 +24,7 @@ public class HeaderMenu : MonoBehaviour
    }
 
    IEnumerator FlashPricePaid(float pricePaidEvent) {
-      pricePaid.text = "- " + pricePaidEvent.ToString("F2");
+      pricePaid.text = "-" + pricePaidEvent.ToString("F2");
       yield return new WaitForSeconds(1f);
       pricePaid.text = "";
 
