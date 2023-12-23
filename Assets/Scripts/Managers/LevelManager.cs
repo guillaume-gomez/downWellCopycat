@@ -13,6 +13,7 @@ public class OnComboChangedEventArgs : EventArgs
 public class OnMoneyChangedEventArgs : EventArgs
 {
     public float money { get; set; }
+    public float pricePaid { get; set; }
 }
 
 public class OnPickedEventArgs : EventArgs
@@ -173,6 +174,7 @@ public class LevelManager : MonoBehaviour
 
         OnMoneyChangedEventArgs eventArgs = new OnMoneyChangedEventArgs();
         eventArgs.money = GameManager.instance.LevelSystemRun.money;
+        eventArgs.pricePaid = 0;
         if(OnMoneyChange != null)
         {
             OnMoneyChange(this, eventArgs);
