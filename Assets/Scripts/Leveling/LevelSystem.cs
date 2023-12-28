@@ -44,6 +44,14 @@ public class LevelSystem
         }
     }
 
+    public int Level {
+        get => level;
+        set {
+            level = value;
+            UpdateEnemySkills(level);
+        }
+    }
+
     public LevelSystem()
     {
         bonuses = new List<Bonus>();
@@ -73,6 +81,19 @@ public class LevelSystem
         minEnemyLife = (int) Mathf.Log(level, 10f);
         maxEnemyLife = (int) Mathf.Log(level, 10f) + 1;
     }
+
+    private void UpdateEnemySkills(int _level)
+    {
+        minEnemyLife = (int) Mathf.Log(_level,10);
+        maxEnemyLife = (int) Mathf.Log(_level,10) + 1;
+
+        minEnemySpeed = (int) Mathf.Log(_level,2) + 2;
+        maxEnemySpeed = (int) Mathf.Log(_level,2) + 5;
+        Debug.Log(minEnemySpeed);
+        Debug.Log(maxEnemySpeed);
+    }
+
+
 
     public void AddExperience(int amount)
     {
