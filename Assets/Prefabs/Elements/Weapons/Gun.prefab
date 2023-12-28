@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6294408824271950648, guid: 31ff3fe6847f42501b3f9d8a587db044,
+        type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7691761357189701268}
     - target: {fileID: 2680727740545336086, guid: 31ff3fe6847f42501b3f9d8a587db044,
         type: 3}
       propertyPath: itemName
@@ -159,5 +164,24 @@ PrefabInstance:
       propertyPath: shotSound
       value: 
       objectReference: {fileID: 8300000, guid: 34a6ceeacf204764a9443df243733e87, type: 3}
-    m_RemovedComponents: []
+    - target: {fileID: 8852556650836462881, guid: 31ff3fe6847f42501b3f9d8a587db044,
+        type: 3}
+      propertyPath: shootPressedTimerRemember
+      value: 0.1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: -9098993596571789541, guid: 31ff3fe6847f42501b3f9d8a587db044, type: 3}
+    - {fileID: -6294408824271950648, guid: 31ff3fe6847f42501b3f9d8a587db044, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 31ff3fe6847f42501b3f9d8a587db044, type: 3}
+--- !u!114 &7691761357189701268 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8852556650836462881, guid: 31ff3fe6847f42501b3f9d8a587db044,
+    type: 3}
+  m_PrefabInstance: {fileID: 1181132144194311093}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6501300fb1220fb34995f49707732f7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

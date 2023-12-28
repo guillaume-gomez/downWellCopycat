@@ -64,6 +64,7 @@ public class MarketManager : MonoBehaviour
         levelSystem.money -= itemPrice;
         OnMoneyChangedEventArgs eventArgs = new OnMoneyChangedEventArgs();
         eventArgs.money = levelSystem.money;
+        eventArgs.pricePaid = itemPrice;
         OnMoneyChange(this, eventArgs);
     }
 

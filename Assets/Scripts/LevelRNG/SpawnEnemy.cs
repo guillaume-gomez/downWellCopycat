@@ -67,7 +67,7 @@ public class SpawnEnemy : MonoBehaviour
         EnemyBase enemyBaseScript = instance.GetComponent<EnemyBase>();
 
         int maxSize = Mathf.Min(
-            GameManager.instance != null && GameManager.instance.LevelSystemRun != null ? GameManager.instance.LevelSystemRun.maxEnemyLife : 3,
+            GameManager.instance != null && GameManager.instance.LevelSystemRun != null ? GameManager.instance.LevelSystemRun.maxEnemyLife : 4,
             platformWidth - 1
         ); //-1 to make sure the enemy can move around the platform
         int lifeAnDamage = Random.Range(

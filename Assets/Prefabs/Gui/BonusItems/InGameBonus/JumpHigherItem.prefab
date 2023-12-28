@@ -283,7 +283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7651c345215d987b8899bff8fa1d8085, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorType: 10
+  colorType: 12
 --- !u!1 &9045174661125108952
 GameObject:
   m_ObjectHideFlags: 0
@@ -441,7 +441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7651c345215d987b8899bff8fa1d8085, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorType: 9
+  colorType: 11
 --- !u!1001 &8375112999902894866
 PrefabInstance:
   m_ObjectHideFlags: 0

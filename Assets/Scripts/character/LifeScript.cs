@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 
 public class OnLifeChangedEventArgs : EventArgs
@@ -10,29 +11,23 @@ public class OnLifeChangedEventArgs : EventArgs
     public int diff { get; set; }
 }
 
+
 public class LifeScript : MonoBehaviour
 {
     public event EventHandler<OnLifeChangedEventArgs> OnLifeChanged;
+
     public SpriteRenderer spriteRenderer;
     public bool godMode;
     public int Life {
         get => life;
         set {
-            OnLifeChangedEventArgs args = new OnLifeChangedEventArgs();
-            args.life = value;
-            args.diff = value - life;
-            if(OnLifeChanged != null)
-            {
-                OnLifeChanged(this, args);
-            }
             life = value;
         }
     }
-    public float unvisibleTimer = 0.5f;
+    public float unvisibleTimer = 1.0f;
     public bool Unvisible {
         get => unvisible;
     }
-
     private bool unvisible = false;
     private int life = 4;
 
@@ -41,8 +36,17 @@ public class LifeScript : MonoBehaviour
         if(GameManager.instance)
         {
             life = (int) GameManager.instance.LevelSystemRun.currentLife;
-            // notify others by calling the setter
+            
             Life = life;
+            // notify others by calling the setter
+            OnLifeChangedEventArgs args = new OnLifeChangedEventArgs();
+            args.life = life;
+            args.diff = 0;
+            if(OnLifeChanged != null)
+            {
+                OnLifeChanged(this, args);
+            }
+            
         }
     }
 
@@ -51,19 +55,37 @@ public class LifeScript : MonoBehaviour
         if(!unvisible && !godMode) {
             if(life >= 1) {
                 // todo add armor
-                Life = Math.Max(life - enemy.Damage, 0);
-                // SoundManager.instance.PlaySingle(hurtSound);
+                LoseLife(Math.Max(life - enemy.Damage, 0));
+                StartCoroutine(GetUnvisible(unvisibleTimer, enemy));
             }
-
-            if(life <= 0)
-            {
-                LevelManager.instance.GameOver();
-                return;
-            }
-            LevelManager.instance.UpdateLife(life);
-            StartCoroutine(FlashSprite(spriteRenderer, 0.0f, 1.0f, 0.1f, unvisibleTimer));
-            StartCoroutine(GetUnvisible(unvisibleTimer, enemy));
+            CheckIfDied();
         }
+    }
+
+    public void LoseLife(int newLife) {
+        OnLifeChangedEventArgs args = new OnLifeChangedEventArgs();
+        args.life = newLife;
+        args.diff = newLife - life;
+        if(OnLifeChanged != null)
+        {
+            OnLifeChanged(this, args);
+        }
+        Life = newLife;
+        StartCoroutine(FlashSprite(spriteRenderer, 0.0f, 1.0f, 0.1f, unvisibleTimer));
+        CheckIfDied();
+    }
+
+    private void CheckIfDied() {
+        if(life <= 0)
+        {
+            LevelManager.instance.GameOver();
+            return;
+        }
+        LevelManager.instance.UpdateLife(life);
+    }
+
+    private void Flash() {
+        spriteRenderer.DOColor(UnityEngine.Random.ColorHSV(), 0.7f).SetEase(Ease.InFlash, 4, 0);
     }
 
     IEnumerator FlashSprite(SpriteRenderer renderer, float minAlpha, float maxAlpha, float interval, float duration)

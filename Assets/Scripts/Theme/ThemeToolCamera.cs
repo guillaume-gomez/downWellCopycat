@@ -8,6 +8,16 @@ public class ThemeToolCamera : MonoBehaviour {
     
     void Start()
     {
+        SetColor(colorType);
+        ThemeManager.instance.OnColorChanged += UpdateColor;
+    }
+
+    private void SetColor(ColorTypeTheme colorType) {
         ThemeManager.instance.SetColor(GetComponent<Camera>(), colorType);
+    }
+
+    private void UpdateColor(object sender, OnColorChangedEventArgs e) {
+        Debug.Log("mad");
+        SetColor(e.colorTypeTheme);
     }
 }

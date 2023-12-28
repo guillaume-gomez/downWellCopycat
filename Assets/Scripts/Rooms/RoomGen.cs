@@ -20,22 +20,25 @@ public class RoomGen : MonoBehaviour
     
     protected int widthSubRoom;
     protected int heightSubRoom;
-    protected int offsetLeftAndRight;
-    protected int width;
-    protected int height;
+    protected int offsetLeftAndRight = 6;
+    protected int width = 36;
+    protected int height = 24;
+    protected int nbSpawnersX = 4;
+    protected int nbSpawnersY = 4;
 
     protected void Init()
     {
-        widthSubRoom = 6;
-        heightSubRoom = 6;
-        offsetLeftAndRight = 6;
-        width = 36;
-        height = 20;
-        
-        if(overrideByGameManager && GameManager.instance != null && GameManager.instance.LevelSystemRun != null) {
-            percentageCenter = GameManager.instance.LevelSystemRun.percentageCenter;
-            percentageSide = GameManager.instance.LevelSystemRun.percentageSide;
-        }
+       /* if(overrideByGameManager && LevelManager.instance != null && LevelManager.instance.LevelScript != null) {
+            percentageCenter = LevelManager.instance.LevelScript.spawnerPercentageCenter;
+            percentageSide = LevelManager.instance.LevelScript.spawnerPercentageSide;
+            nbSpawnersX = LevelManager.instance.LevelScript.nbSpawnersX;
+            nbSpawnersY = LevelManager.instance.LevelScript.nbSpawnersY;
+            offsetLeftAndRight = LevelManager.instance.LevelScript.offsetLeftAndRight;
+            width = LevelManager.instance.LevelScript.roomWidth;
+            height = LevelManager.instance.LevelScript.roomHeight;
+        }*/
+        widthSubRoom = (width - (2 * offsetLeftAndRight)) / nbSpawnersX; // 6
+        heightSubRoom = height / nbSpawnersY; // 6
     }
 
 
@@ -67,7 +70,7 @@ public class RoomGen : MonoBehaviour
             float y = (i * heightSubRoom) + (newChunk * heightSubRoom) / 2.0f;
             if(Random.Range(0.0f, 1.0f) <= percentageSide)
             {
-                CreateGenericBloc(x, y, typeOfSpawn, newChunk - 1, isLeft ? PlatformPosition.Left :  PlatformPosition.Right);
+                CreateGenericBloc(x, y, typeOfSpawn, newChunk - 1, isLeft ? PlatformPosition.Left :  PlatformPosition.Right, 1, newChunk);
             } else {
                 int randomIndex = Random.Range(0, spawnEnemies.Length);
                 GameObject obj = CreateSpwaner(x, y, spawnEnemies, randomIndex);
@@ -101,7 +104,7 @@ public class RoomGen : MonoBehaviour
                 float yPosition = (y * heightSubRoom) + (newChunkY * heightSubRoom) / 2.0f;
                 if(Random.Range(0.0f, 1.0f) <= percentageCenter)
                 {
-                    CreateGenericBloc(xPosition, yPosition, spawnersCenter, convertSpawnerToIndex(newChunkX, newChunkY), PlatformPosition.Center);
+                    CreateGenericBloc(xPosition, yPosition, spawnersCenter, convertSpawnerToIndex(newChunkX, newChunkY), PlatformPosition.Center, newChunkX, newChunkY);
                 }
                 x += newChunkX;
             }
@@ -109,10 +112,12 @@ public class RoomGen : MonoBehaviour
         }
     }
 
-    protected virtual void CreateGenericBloc(float xPosition, float yPosition, GameObject[] spawners, int index, PlatformPosition platformPosition)
+    protected virtual void CreateGenericBloc(float xPosition, float yPosition, GameObject[] spawners, int index, PlatformPosition platformPosition, int newChunkX, int newChunkY)
     {
         GameObject obj = CreateSpwaner(xPosition, yPosition, spawners, index);
         obj.GetComponent<SpawnObject>().platformPosition = platformPosition;
+        obj.GetComponent<SpawnObject>().xIndex = newChunkX;
+        obj.GetComponent<SpawnObject>().yIndex = newChunkY;
         obj.GetComponent<SpawnObject>().Init();
     }
 
@@ -219,5 +224,44 @@ public class RoomGen : MonoBehaviour
             }
             i = i + newChunk;
         }
+    }
+
+    void OnDrawGizmos()
+    {
+        //sides
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireCube(
+            new Vector3(
+                transform.position.x + offsetLeftAndRight/2.0f,
+                transform.position.y - height/2.0f,
+                0),
+            new Vector3(
+                offsetLeftAndRight,
+                height,
+                1)
+        );
+
+        Gizmos.DrawWireCube(
+            new Vector3(
+                transform.position.x - offsetLeftAndRight/2.0f + width,
+                transform.position.y - height/2.0f,
+                0),
+            new Vector3(
+                offsetLeftAndRight,
+                height,
+                1)
+        );
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(
+            new Vector3(
+                transform.position.x + width/2.0f,
+                transform.position.y - height/2.0f,
+                0),
+            new Vector3(
+                width - (2.0f * offsetLeftAndRight),
+                height,
+                1)
+        );
     }
 }

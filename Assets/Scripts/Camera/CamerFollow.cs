@@ -49,7 +49,7 @@ public class CamerFollow : MonoBehaviour
 
     private void OnPlayerHurt(object sender, OnLifeChangedEventArgs e)
     {
-        Debug.Log("OnPlayerHurt");
+        //Debug.Log("OnPlayerHurt " +  e.life + " " +  e.diff);
         if((int) e.life > 0 && (int) e.diff < 0)
         {
             StartCoroutine(Shake(1f, 0.2f));

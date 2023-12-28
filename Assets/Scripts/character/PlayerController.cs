@@ -48,7 +48,6 @@ public class PlayerController : MonoBehaviour {
     public event EventHandler<OnLifeChangedEventArgs> OnLifeChanged;
 
 
-    private int life = 4;
     private HealthBar healthBar;
     private Vector2 velocity;
     protected Vector2 targetVelocity;
@@ -67,24 +66,10 @@ public class PlayerController : MonoBehaviour {
     private bool unvisible = false;
     public float unvisibleTimer = 0.5f;
 
-    public int Life {
-        get => life;
-        set {
-            OnLifeChangedEventArgs args = new OnLifeChangedEventArgs();
-            args.life = value;
-            args.diff = value - life;
-            if(OnLifeChanged != null)
-            {
-                OnLifeChanged(this, args);
-            }
-            life = value;
-        }
-    }
 
     protected new void Start()
     {
         if(GameManager.instance) {
-            Life = (int) GameManager.instance.CharacterStats.life.Value;
             jumpTakeOffSpeed += GameManager.instance.CharacterStats.jumpTakeOffSpeed.Value;
             maxSpeed += GameManager.instance.CharacterStats.maxSpeed.Value;
         }
@@ -207,25 +192,6 @@ public class PlayerController : MonoBehaviour {
         return groundedRemember > 0.0f;
     }
 
-    public void Hurt(EnemyBase enemy)
-    {
-        if(!unvisible && !godMode) {
-            if(life >= 1) {
-                // todo add armor
-                Life = Math.Max(life - enemy.Damage, 0);
-                SoundManager.instance.PlaySingle(hurtSound);
-            }
-
-            if(life <= 0)
-            {
-                LevelManager.instance.GameOver();
-                return;
-            }
-            StartCoroutine(FlashSprite(GetComponent<SpriteRenderer>(), 0.0f, 1.0f, 0.1f, unvisibleTimer));
-            StartCoroutine(GetUnvisible(unvisibleTimer, enemy));
-        }
-    }
-
     void OnCollisionEnter2D(Collision2D collision)
     {
         if(unvisible) {
@@ -273,61 +239,10 @@ public class PlayerController : MonoBehaviour {
         if(hasJumpedOnEnemy)
         {
             velocity.y = jumpTakeOffSpeed * 0.75f;
-            enemy.Hurt(inventory.GetDamage());
-            if(enemy.Life == 0)
-            {
-                inventory.Reload();
-            }
         }
         else if(hurtEnemyDuringJump)
         {
-            enemy.Hurt(inventory.GetDamage());
             inventory.Reload();
-        }
-        else
-        {
-            Hurt(enemy);
-        }
-    }
-
-    IEnumerator FlashSprite(SpriteRenderer renderer, float minAlpha, float maxAlpha, float interval, float duration)
-    {
-        Color colorNow = renderer.color;
-        Color minColor = new Color(renderer.color.r, renderer.color.g, renderer.color.b, minAlpha);
-        Color maxColor = new Color(renderer.color.r, renderer.color.g, renderer.color.b, maxAlpha);
-
-        float currentInterval = 0;
-        while(duration > 0)
-        {
-            float tColor = currentInterval / interval;
-            renderer.color = Color.Lerp(minColor, maxColor, tColor);
-
-            currentInterval += Time.deltaTime;
-            if(currentInterval >= interval)
-            {
-                Color temp = minColor;
-                minColor = maxColor;
-                maxColor = temp;
-                currentInterval = currentInterval - interval;
-            }
-            duration -= Time.deltaTime;
-            yield return null;
-        }
-        renderer.color = maxColor;
-    }
-
-    IEnumerator GetUnvisible(float unvisibleTimer, EnemyBase enemy)
-    {
-        unvisible = true;
-        if(enemy)
-        {
-            enemy.gameObject.layer = LayerMask.NameToLayer("enemy_hurt");
-        }
-        yield return new WaitForSeconds(unvisibleTimer);
-        unvisible = false;
-        if(enemy)
-        {
-            enemy.gameObject.layer = LayerMask.NameToLayer("enemy");
         }
     }
 
