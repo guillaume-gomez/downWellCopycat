@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9071843040349707018}
   - component: {fileID: -2264689695320230670}
   - component: {fileID: -2833018961254771949}
+  - component: {fileID: 8018142498958461585}
   m_Layer: 0
   m_Name: BonusBase
   m_TagString: Untagged
@@ -48,7 +49,6 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -122,4 +122,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89a29d068f36c780192c919d665ff7ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemName: not defined yet :-|
   price: 10
+--- !u!114 &8018142498958461585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9071843040349707017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6bc82603af475828be6b952b563066c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
