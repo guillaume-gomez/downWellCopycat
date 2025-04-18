@@ -11,6 +11,7 @@ public class FrogEnemy : EnemyBase
     private bool isJumping;
     private Rigidbody2D rb2d;
     private float jumpRemember;
+    private float shakeAmount = 0.1f;
 
     void OnEnable()
     {
@@ -48,6 +49,14 @@ public class FrogEnemy : EnemyBase
             jumpRemember = 0.0f;
             rb2d.velocity = new Vector2 (direction.x, jumpVelocity);
             isJumping = true;
+        }
+        // shaking
+        else if(!isJumping) {
+            Debug.Log("shakke");
+            gameObject.transform.position = new Vector3(
+                gameObject.transform.position.x - Random.Range(-shakeAmount , shakeAmount),
+                gameObject.transform.position.y,
+                0);
         }
     }
 
